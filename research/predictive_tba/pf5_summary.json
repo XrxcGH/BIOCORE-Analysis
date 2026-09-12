@@ -1,0 +1,391 @@
+{
+ "source": "The Blue Alliance public event pages, scraped by tools/tba_predictive_scrape.py",
+ "generated_by": "tools/predictive_factor_stats5.py",
+ "rank_pctile_convention": "0 = best at event, 100 = worst; lower is better",
+ "years": {
+  "2023": {
+   "week_curve": {
+    "Week 1": [
+     28,
+     65.2
+    ],
+    "Week 2": [
+     24,
+     65.7
+    ],
+    "Week 3": [
+     33,
+     72.9
+    ],
+    "Week 4": [
+     35,
+     81.5
+    ],
+    "Week 5": [
+     31,
+     82.8
+    ],
+    "Week 6": [
+     20,
+     114.8
+    ],
+    "FIRST Championship": [
+     8,
+     135.6
+    ]
+   },
+   "early_late_all": {
+    "n_teams": 2441,
+    "median_pct_growth_avg_match": 45.3,
+    "median_change_rank_pctile": 5.3,
+    "pct_improved_rank_pctile": 42.9
+   },
+   "early_late_weeks_1_6": {
+    "n_teams": 2372,
+    "median_pct_growth_avg_match": 37.0,
+    "median_change_rank_pctile": 0.2,
+    "pct_improved_rank_pctile": 48.8
+   },
+   "winning_alliance": {
+    "captain": {
+     "n": 179,
+     "median_rank_pctile": 2.9,
+     "p90_rank_pctile": 10.7,
+     "pct_from_bottom_half": 0.0
+    },
+    "pick1": {
+     "n": 179,
+     "median_rank_pctile": 9.4,
+     "p90_rank_pctile": 30.6,
+     "pct_from_bottom_half": 3.4
+    },
+    "pick2": {
+     "n": 179,
+     "median_rank_pctile": 63.2,
+     "p90_rank_pctile": 91.7,
+     "pct_from_bottom_half": 72.1
+    },
+    "backup": {
+     "n": 33,
+     "median_rank_pctile": 44.7,
+     "p90_rank_pctile": 62.1,
+     "pct_from_bottom_half": 42.4
+    }
+   },
+   "captaincy": {
+    "1": {
+     "n_teams": 833,
+     "pct_ever_captain": 8.4
+    },
+    "2": {
+     "n_teams": 1393,
+     "pct_ever_captain": 23.0
+    },
+    "3": {
+     "n_teams": 686,
+     "pct_ever_captain": 53.8
+    },
+    "4+": {
+     "n_teams": 372,
+     "pct_ever_captain": 80.9
+    },
+    "ALL": {
+     "n_teams": 3284,
+     "pct_ever_captain": 32.3
+    }
+   }
+  },
+  "2024": {
+   "week_curve": {
+    "Week 1": [
+     32,
+     37.4
+    ],
+    "Week 2": [
+     30,
+     37.4
+    ],
+    "Week 3": [
+     32,
+     42.2
+    ],
+    "Week 4": [
+     38,
+     46.7
+    ],
+    "Week 5": [
+     17,
+     46.4
+    ],
+    "Week 6": [
+     28,
+     63.4
+    ],
+    "FIRST Championship": [
+     8,
+     84.4
+    ]
+   },
+   "early_late_all": {
+    "n_teams": 2603,
+    "median_pct_growth_avg_match": 46.9,
+    "median_change_rank_pctile": 4.3,
+    "pct_improved_rank_pctile": 42.9
+   },
+   "early_late_weeks_1_6": {
+    "n_teams": 2543,
+    "median_pct_growth_avg_match": 39.6,
+    "median_change_rank_pctile": 0.6,
+    "pct_improved_rank_pctile": 48.1
+   },
+   "winning_alliance": {
+    "captain": {
+     "n": 182,
+     "median_rank_pctile": 2.9,
+     "p90_rank_pctile": 10.0,
+     "pct_from_bottom_half": 0.0
+    },
+    "pick1": {
+     "n": 182,
+     "median_rank_pctile": 9.6,
+     "p90_rank_pctile": 30.2,
+     "pct_from_bottom_half": 0.5
+    },
+    "pick2": {
+     "n": 182,
+     "median_rank_pctile": 66.7,
+     "p90_rank_pctile": 93.5,
+     "pct_from_bottom_half": 76.9
+    },
+    "backup": {
+     "n": 33,
+     "median_rank_pctile": 44.0,
+     "p90_rank_pctile": 62.9,
+     "pct_from_bottom_half": 42.4
+    }
+   },
+   "captaincy": {
+    "1": {
+     "n_teams": 843,
+     "pct_ever_captain": 6.6
+    },
+    "2": {
+     "n_teams": 1532,
+     "pct_ever_captain": 22.5
+    },
+    "3": {
+     "n_teams": 730,
+     "pct_ever_captain": 54.7
+    },
+    "4+": {
+     "n_teams": 369,
+     "pct_ever_captain": 79.4
+    },
+    "ALL": {
+     "n_teams": 3474,
+     "pct_ever_captain": 31.5
+    }
+   }
+  },
+  "2025": {
+   "week_curve": {
+    "Week 1": [
+     25,
+     72.5
+    ],
+    "Week 2": [
+     31,
+     67.3
+    ],
+    "Week 3": [
+     39,
+     77.1
+    ],
+    "Week 4": [
+     38,
+     88.3
+    ],
+    "Week 5": [
+     28,
+     96.2
+    ],
+    "Week 6": [
+     29,
+     128.3
+    ],
+    "FIRST Championship": [
+     8,
+     182.0
+    ]
+   },
+   "early_late_all": {
+    "n_teams": 2757,
+    "median_pct_growth_avg_match": 57.2,
+    "median_change_rank_pctile": 4.1,
+    "pct_improved_rank_pctile": 43.9
+   },
+   "early_late_weeks_1_6": {
+    "n_teams": 2702,
+    "median_pct_growth_avg_match": 45.7,
+    "median_change_rank_pctile": -0.2,
+    "pct_improved_rank_pctile": 50.1
+   },
+   "winning_alliance": {
+    "captain": {
+     "n": 198,
+     "median_rank_pctile": 2.8,
+     "p90_rank_pctile": 5.3,
+     "pct_from_bottom_half": 0.0
+    },
+    "pick1": {
+     "n": 198,
+     "median_rank_pctile": 8.4,
+     "p90_rank_pctile": 24.1,
+     "pct_from_bottom_half": 1.5
+    },
+    "pick2": {
+     "n": 198,
+     "median_rank_pctile": 68.8,
+     "p90_rank_pctile": 92.7,
+     "pct_from_bottom_half": 76.3
+    },
+    "backup": {
+     "n": 28,
+     "median_rank_pctile": 41.2,
+     "p90_rank_pctile": 67.7,
+     "pct_from_bottom_half": 28.6
+    }
+   },
+   "captaincy": {
+    "1": {
+     "n_teams": 910,
+     "pct_ever_captain": 5.8
+    },
+    "2": {
+     "n_teams": 1610,
+     "pct_ever_captain": 23.2
+    },
+    "3": {
+     "n_teams": 816,
+     "pct_ever_captain": 57.6
+    },
+    "4+": {
+     "n_teams": 351,
+     "pct_ever_captain": 79.8
+    },
+    "ALL": {
+     "n_teams": 3687,
+     "pct_ever_captain": 31.9
+    }
+   }
+  },
+  "2026": {
+   "week_curve": {
+    "Week 1": [
+     29,
+     115.4
+    ],
+    "Week 2": [
+     32,
+     119.7
+    ],
+    "Week 3": [
+     38,
+     133.7
+    ],
+    "Week 4": [
+     36,
+     159.9
+    ],
+    "Week 5": [
+     21,
+     159.4
+    ],
+    "Week 6": [
+     25,
+     192.6
+    ],
+    "Week 7": [
+     16,
+     275.3
+    ],
+    "FIRST Championship": [
+     8,
+     407.8
+    ],
+    "Week 17": [
+     1,
+     262.5
+    ],
+    "Week 18": [
+     1,
+     179.7
+    ],
+    "Week 19": [
+     1,
+     328.3
+    ]
+   },
+   "early_late_all": {
+    "n_teams": 2835,
+    "median_pct_growth_avg_match": 67.4,
+    "median_change_rank_pctile": 7.2,
+    "pct_improved_rank_pctile": 40.4
+   },
+   "early_late_weeks_1_6": {
+    "n_teams": 2653,
+    "median_pct_growth_avg_match": 40.3,
+    "median_change_rank_pctile": -1.9,
+    "pct_improved_rank_pctile": 52.6
+   },
+   "winning_alliance": {
+    "captain": {
+     "n": 207,
+     "median_rank_pctile": 2.9,
+     "p90_rank_pctile": 5.6,
+     "pct_from_bottom_half": 0.0
+    },
+    "pick1": {
+     "n": 207,
+     "median_rank_pctile": 7.3,
+     "p90_rank_pctile": 17.2,
+     "pct_from_bottom_half": 0.0
+    },
+    "pick2": {
+     "n": 207,
+     "median_rank_pctile": 71.0,
+     "p90_rank_pctile": 94.4,
+     "pct_from_bottom_half": 84.5
+    },
+    "backup": {
+     "n": 43,
+     "median_rank_pctile": 43.8,
+     "p90_rank_pctile": 66.7,
+     "pct_from_bottom_half": 34.9
+    }
+   },
+   "captaincy": {
+    "1": {
+     "n_teams": 852,
+     "pct_ever_captain": 9.2
+    },
+    "2": {
+     "n_teams": 1639,
+     "pct_ever_captain": 21.8
+    },
+    "3": {
+     "n_teams": 828,
+     "pct_ever_captain": 59.7
+    },
+    "4+": {
+     "n_teams": 380,
+     "pct_ever_captain": 79.7
+    },
+    "ALL": {
+     "n_teams": 3699,
+     "pct_ever_captain": 33.3
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,979 @@
+# parts_manipulation.yaml -- machine-readable companion to 02_MANIPULATION_ELEVATION.md
+#
+# COTS parts for game-piece manipulation (intake / indexing / grippers) and for
+# elevation & articulation (elevators / arms / climbers) on an FRC robot.
+# Target consumer: a 15-student team building for BIOCORE presented by Haas (FRC 2027).
+#
+# EVERY price marked `evidence: C` was read off the live vendor page listed in `source`
+# on 2026-08-22. Nothing here is invented. Where a price could not be fetched the row
+# carries `price_usd: null` and `evidence: UNVERIFIED` -- it is NOT filled in from memory.
+#
+# RE-VERIFY (see 02_MANIPULATION_ELEVATION.md Sec 15):
+#   python -c "import yaml;d=yaml.safe_load(open('parts_manipulation.yaml'));\
+#     print(sum(len(v) for v in d['parts'].values()),'rows')"
+#   then open every `source` URL and diff the price. >10% drift == this file is stale.
+#
+# SCHEMA (one mapping per part)
+#   name          vendor's product string, as displayed
+#   vendor        AM | WCP | TTB | REV | VEX | CTRE | MMC | igus
+#   sku           vendor part number, or null if the page did not publish one
+#   price_usd     number, or {from: n} for "from $n", or null
+#   price_note    free text qualifying the number
+#   spec          mapping of whatever the page stated (diameter, durometer, travel, ...)
+#   game_piece_class  list of a|b|c|d|e from Sec 1, or "any"
+#   role          intake_roller | roller_surface | transmission | elevator_kit |
+#                 elevator_component | linear_motion | pivot | counterbalance |
+#                 climber | gripper | printing
+#   evidence      C | H | S | UNVERIFIED
+#   source        URL fetched, or null
+
+meta:
+  title: "Manipulation & Elevation COTS parts"
+  companion_md: "02_MANIPULATION_ELEVATION.md"
+  season: "2026-27"
+  game: "BIOCORE presented by Haas"
+  program: "FIRST Robotics Competition (FRC)"
+  kickoff: "2027-01-09T12:00:00-05:00"
+  built: "2026-08-22"
+  prices_verified_on: "2026-08-22"
+  currency: USD
+  scope_guard: >-
+    BIOCORE is FRC. Nothing here draws on FTC BIOBUZZ. "Pollen", StarterBots and Skill
+    Builders are FTC BIOBUZZ concepts and appear nowhere in this file. BIOCORE's scoring
+    element name and specifications are NOT public as of 2026-08-22, so manipulation is
+    organised by game-piece CLASS, not by a specific piece.
+  control_system_note: >-
+    2027 replaces the roboRIO with Systemcore. Nothing in this file is Systemcore-dependent
+    (rollers and elevators are mechanical) but motor-controller count, CAN topology and the
+    2027 legal motor list all live downstream of it. See reference/team-ops/03_programming_stack.md.
+  sibling_files:
+    drivetrain: ["01_DRIVETRAIN.md", "parts_drivetrain.yaml"]
+    launchers_electronics: ["03_LAUNCHERS_ELECTRONICS.md", "parts_electronics.yaml"]
+    note: "motors, gearboxes, motor controllers and the Systemcore-side electrical budget live in the siblings; this file deliberately does not re-price them"
+  schema_divergence_warning: >-
+    recheck_prices.sh in this directory parses `url:` / `unit_usd:` keys (the drivetrain schema).
+    THIS file uses `source:` / `price_usd:`. The shared script will silently find ZERO rows here.
+    Use the Python validator in 02_MANIPULATION_ELEVATION.md Sec 15 for this file, or normalise
+    the two schemas before running a combined check.
+  evidence_labels:
+    C: "Fetched from a live vendor page on 2026-08-22; price quoted verbatim"
+    H: "Historical pattern across prior FRC seasons; not stated for BIOCORE"
+    S: "Inference, flagged as such"
+    UNVERIFIED: "Could not be checked in this pass. Check before spending money."
+  # These two rows are `evidence: C` with `price_usd: null` ON PURPOSE. The validator in
+  # 02_MANIPULATION_ELEVATION.md Sec 15 will flag them; that is expected, not a defect.
+  expected_validator_exceptions:
+    - part: "Greyt Universal Elevator v2"
+      why: "verified DISCONTINUED / sold out -- there is no price to record"
+    - part: "Ratchet Sport"
+      why: "vendor publishes only a $44.00-$110.00 range across five verified SKUs; no per-SKU price"
+  price_ranges_not_resolved_this_pass:
+    - {family: "REV ION Compliant Wheels", range_usd: [6.50, 30.00], verified_skus: 8, source: "https://www.revrobotics.com/ION-Compliant-Wheels/"}
+    - {family: "AM Ratchet Sport",         range_usd: [44.00, 110.00], verified_skus: 5, source: "https://andymark.com/products/ratchet-sport"}
+    - {family: "WCP Straight Flex Wheels", entry_usd: 2.99, priced_skus: 1, verified_skus: 12, source: "https://store.ctr-electronics.com/products/stretch-core-straight-flex-wheel"}
+  pages_that_failed_this_pass:
+    - url: "https://www.vexrobotics.com/flex-wheels.html"
+      status: "HTTP 403 Forbidden"
+      recheck_2026_09_04: "HTTP 403 again. Bot mitigation, not removal -- see price_note below"
+    - url: "https://docs.wcproducts.com/greyt-elevator-cascade"
+      status: "HTTP 404 at the URL tried"
+      recheck_2026_09_04: "HTTP 200. The page is live; the 2026-08-22 404 was transient or the URL
+        was mistyped in that pass. This entry is retained rather than deleted so the correction is
+        visible, but the page is NOT a failure any more"
+    - url: "https://wcproducts.com/products/straight-flex-wheels"
+      status: "200, but only an entry price was published; no per-variant table"
+
+# ---------------------------------------------------------------------------------
+# Sec 1 -- the fork. Game-piece class decides everything downstream.
+# ---------------------------------------------------------------------------------
+game_piece_classes:
+  a:
+    label: "small ball, ~3-7 in."
+    prior_examples: ["INFINITE RECHARGE Power Cell ~7in", "STEAMWORKS Fuel ~5in"]
+    intake_that_wins: "horizontal over-the-bumper roller, 2 in. compliant wheels on 1/2 hex"
+    lift_that_wins: "usually none -- shoot instead"
+    small_team_verdict: "best case; cheapest and most COTS-covered"
+    evidence: H
+  b:
+    label: "large ball, >8 in."
+    prior_examples: ["RAPID REACT Cargo 9.5in", "2016 Boulder ~10in", "2014 ball 24in"]
+    intake_that_wins: "wide roller + polycord bridge, or scoop"
+    lift_that_wins: "rare"
+    small_team_verdict: "moderate; roller width drives cost"
+    evidence: H
+  c:
+    label: "flat / disc"
+    prior_examples: ["2013 Frisbee"]
+    intake_that_wins: "sticky roller pair or side-grip belt; hardest to singulate"
+    lift_that_wins: "elevator or four-bar"
+    small_team_verdict: "hard -- ground pickup of flats is a machining problem"
+    evidence: H
+  d:
+    label: "cube / tote / box"
+    prior_examples: ["POWER UP Power Cube 13in", "CHARGED UP Cube 9.5in", "2015 Tote"]
+    intake_that_wins: "two opposed vertical roller arms (claw-take)"
+    lift_that_wins: "elevator (stacking) or arm"
+    small_team_verdict: "moderate; very COTS-friendly; the classic elevator game"
+    evidence: H
+  e:
+    label: "ring / tube / cone"
+    prior_examples: ["CRESCENDO Note 14in torus", "CHARGED UP Cone", "DEEP SPACE Hatch Panel"]
+    intake_that_wins: "over-the-bumper roller that folds the ring; or passive V-funnel"
+    lift_that_wins: "arm / four-bar preferred over elevator"
+    small_team_verdict: "moderate; rings forgiving, cones are not"
+    evidence: H
+  biocore_hint:
+    statement: >-
+      AndyMark sells the BIOCORE scoring element as a pre-order: Kit-of-Parts quantity $70.00,
+      1/5-of-a-field quantity $169.00, described as a custom item manufactured overseas.
+      That packaging pattern is consistent with MANY SMALL elements per field.
+    evidence: S
+    do_not_act_on_it: true
+    source: "https://andymark.com/products/biocore-frc-scoring-element-pre-order"
+
+parts:
+
+  # -------------------------------------------------------------------------------
+  # Sec 2.1 -- compliant / flex wheels
+  # -------------------------------------------------------------------------------
+  intake_rollers:
+
+    - name: "Compliant Wheels, 2 in."
+      vendor: AM
+      sku: null
+      price_usd: 6.20
+      price_note: "per wheel; all durometers same price at this diameter"
+      spec: {diameter_in: 2, durometer: ["35A","40A","50A","60A"], bore: ["1/2 hex","3/8 hex","nub"]}
+      game_piece_class: ["a","b","d","e"]
+      role: intake_roller
+      evidence: C
+      source: "https://andymark.com/products/compliant-wheels"
+
+    - name: "Compliant Wheels, 2 1/4 in."
+      vendor: AM
+      sku: null
+      price_usd: 7.20
+      spec: {diameter_in: 2.25, durometer: ["35A","40A","50A","60A"], bore: ["1/2 hex","3/8 hex","5mm hex"]}
+      game_piece_class: ["a","b","d","e"]
+      role: intake_roller
+      evidence: C
+      source: "https://andymark.com/products/compliant-wheels"
+
+    - name: "Compliant Wheels, 3 in."
+      vendor: AM
+      sku: null
+      price_usd: 8.40
+      spec: {diameter_in: 3, durometer: ["35A","40A","50A","60A"], bore: ["1/2 hex","3/8 hex","5mm hex"]}
+      game_piece_class: ["a","b","d","e"]
+      role: intake_roller
+      evidence: C
+      source: "https://andymark.com/products/compliant-wheels"
+
+    - name: "Compliant Wheels, 4 in."
+      vendor: AM
+      sku: null
+      price_usd: 11.00
+      spec: {diameter_in: 4, durometer: ["35A","40A","50A","60A"], bore: ["1/2 hex","3/8 hex","5mm hex","nub"]}
+      game_piece_class: ["a","b","d","e"]
+      role: intake_roller
+      evidence: C
+      source: "https://andymark.com/products/compliant-wheels"
+
+    - name: "ION Compliant Wheel, 2 in., Soft"
+      vendor: REV
+      sku: "REV-21-2029-PK4"
+      price_usd: null
+      price_note: "page publishes an MSRP RANGE of $6.50-$30.00 across all ION compliant wheels; the 2 in. pack band is $6.50. Per-SKU mapping not machine-readable -- price UNVERIFIED, SKU is C."
+      spec: {diameter_in: 2, durometer: "30A", bore: "1/2 hex", pack: 4}
+      game_piece_class: ["a","d","e"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://www.revrobotics.com/ION-Compliant-Wheels/"
+
+    - name: "ION Compliant Wheel, 2 in., Medium"
+      vendor: REV
+      sku: "REV-21-2030-PK4"
+      price_usd: null
+      spec: {diameter_in: 2, durometer: "40A", bore: "1/2 hex", pack: 4}
+      game_piece_class: ["a","d","e"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://www.revrobotics.com/ION-Compliant-Wheels/"
+
+    - name: "ION Compliant Wheel, 2 in., Hard"
+      vendor: REV
+      sku: "REV-21-2031-PK4"
+      price_usd: null
+      spec: {diameter_in: 2, durometer: "60A", bore: "1/2 hex", pack: 4}
+      game_piece_class: ["a","d","e"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://www.revrobotics.com/ION-Compliant-Wheels/"
+
+    - name: "ION Compliant Wheel, 2 in., Medium, MAXSpline"
+      vendor: REV
+      sku: "REV-21-6555-PK10"
+      price_usd: null
+      spec: {diameter_in: 2, durometer: "40A", bore: "MAXSpline", pack: 10}
+      game_piece_class: ["a","d","e"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://www.revrobotics.com/ION-Compliant-Wheels/"
+
+    - name: "ION Compliant Wheel, 3 in., Soft"
+      vendor: REV
+      sku: "REV-21-2452"
+      price_usd: null
+      spec: {diameter_in: 3, durometer: "30A", bore: "MAXSpline"}
+      game_piece_class: ["a","b","d","e"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://www.revrobotics.com/ION-Compliant-Wheels/"
+
+    - name: "ION Compliant Wheel, 3 in., Medium"
+      vendor: REV
+      sku: "REV-21-2456"
+      price_usd: null
+      spec: {diameter_in: 3, durometer: "40A", bore: "MAXSpline"}
+      game_piece_class: ["a","b","d","e"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://www.revrobotics.com/ION-Compliant-Wheels/"
+
+    - name: "ION Compliant Wheel, 4 in., Soft"
+      vendor: REV
+      sku: "REV-21-2453"
+      price_usd: null
+      spec: {diameter_in: 4, durometer: "30A", bore: "MAXSpline"}
+      game_piece_class: ["b","d"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://www.revrobotics.com/ION-Compliant-Wheels/"
+
+    - name: "ION Compliant Wheel, 4 in., Medium"
+      vendor: REV
+      sku: "REV-21-2457"
+      price_usd: null
+      spec: {diameter_in: 4, durometer: "40A", bore: "MAXSpline"}
+      game_piece_class: ["b","d"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://www.revrobotics.com/ION-Compliant-Wheels/"
+
+    - name: "Straight Stretch Core Flex Wheels (family)"
+      vendor: WCP
+      sku: null
+      price_usd: {from: 2.99}
+      price_note: >-
+        CTRE listing shows $2.99 for WCP-1281 and publishes no other per-variant price.
+        wcproducts.com shows an entry price of $4.99 for the same family. Both are C for the
+        number quoted; the eleven other variants are UNVERIFIED on price.
+      spec:
+        diameters_in: [1.625, 2, 3, 4]
+        durometer: ["30A (Soft)","45A (Medium)","60A (Hard)"]
+        bore: "1/2in Hex Stretch on 1.625 and 2 in.; 1-1/4in Round Stretch on 3 and 4 in."
+        width_in: {small: 0.5, large: 1.0}
+        material: "custom high-strength silicone rubber compound"
+        stated_uses: ["intake systems","conveyor systems","shooter mechanisms"]
+      variants:
+        - {sku: "WCP-1281", dia_in: 1.625, width_in: 0.5, durometer: "30A", bore: "1/2in Hex Stretch", price_usd: 2.99, evidence: C}
+        - {sku: "WCP-1282", dia_in: 1.625, width_in: 0.5, durometer: "45A", bore: "1/2in Hex Stretch", price_usd: null, evidence: UNVERIFIED}
+        - {sku: "WCP-1283", dia_in: 1.625, width_in: 0.5, durometer: "60A", bore: "1/2in Hex Stretch", price_usd: null, evidence: UNVERIFIED}
+        - {sku: "WCP-1284", dia_in: 2,     width_in: 0.5, durometer: "30A", bore: "1/2in Hex Stretch", price_usd: null, evidence: UNVERIFIED}
+        - {sku: "WCP-1285", dia_in: 2,     width_in: 0.5, durometer: "45A", bore: "1/2in Hex Stretch", price_usd: null, evidence: UNVERIFIED}
+        - {sku: "WCP-1286", dia_in: 2,     width_in: 0.5, durometer: "60A", bore: "1/2in Hex Stretch", price_usd: null, evidence: UNVERIFIED}
+        - {sku: "WCP-1358", dia_in: 3,     width_in: 1.0, durometer: "30A", bore: "1-1/4in Round Stretch", price_usd: null, evidence: UNVERIFIED}
+        - {sku: "WCP-1359", dia_in: 3,     width_in: 1.0, durometer: "45A", bore: "1-1/4in Round Stretch", price_usd: null, evidence: UNVERIFIED}
+        - {sku: "WCP-1360", dia_in: 3,     width_in: 1.0, durometer: "60A", bore: "1-1/4in Round Stretch", price_usd: null, evidence: UNVERIFIED}
+        - {sku: "WCP-1361", dia_in: 4,     width_in: 1.0, durometer: "30A", bore: "1-1/4in Round Stretch", price_usd: null, evidence: UNVERIFIED}
+        - {sku: "WCP-1362", dia_in: 4,     width_in: 1.0, durometer: "45A", bore: "1-1/4in Round Stretch", price_usd: null, evidence: UNVERIFIED}
+        - {sku: "WCP-1363", dia_in: 4,     width_in: 1.0, durometer: "60A", bore: "1-1/4in Round Stretch", price_usd: null, evidence: UNVERIFIED}
+      warning: >-
+        Flex wheels use a STRETCH bore (wheel stretched onto an oversized hub), not a keyed hex bore.
+        Do not mix flex wheels and hex-bore compliant wheels on one shaft without checking hub compatibility.
+      game_piece_class: ["a","b","d","e"]
+      role: intake_roller
+      evidence: C
+      source: "https://store.ctr-electronics.com/products/stretch-core-straight-flex-wheel"
+      source_alt: "https://wcproducts.com/products/straight-flex-wheels"
+
+    - name: "Straight Solid Core Flex Wheels"
+      vendor: WCP
+      sku: null
+      price_usd: null
+      spec: {note: "solid-core variant of the above; resold by CTRE"}
+      game_piece_class: ["a","b","d","e"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://store.ctr-electronics.com/products/solid-core-straight-flex-wheel"
+
+    - name: "Flex Wheel (VEXpro)"
+      vendor: VEX
+      sku: null
+      price_usd: null
+      price_note: "vexrobotics.com/flex-wheels.html: HTTP 403 to the 2026-08-22 BOM pass, HTTP 404 to
+        the 2026-08-22 audit re-curl, HTTP 403 again on 2026-09-04. The 2026-08-22 audit read the
+        403-then-404 as proof the page was GONE; that reading is withdrawn. A host that answers 403
+        and 404 to identical requests is running bot mitigation, and neither code is evidence about
+        the page. Status is UNVERIFIED and the way to settle it is a browser, not curl. No priced
+        line depends on this page."
+      spec: {durometer: ["30A","40A","60A"], bore: ["1/2 hex","1-1/8 round"]}
+      game_piece_class: ["a","b","d","e"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://www.vexrobotics.com/flex-wheels.html"
+
+    - name: "Compliant Stars"
+      vendor: AM
+      sku: null
+      price_usd: null
+      game_piece_class: ["a","e"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://andymark.com/products/compliant-stars"
+
+    - name: "SmoothGrip Wheels"
+      vendor: AM
+      sku: null
+      price_usd: null
+      game_piece_class: ["a","b","c","d","e"]
+      role: intake_roller
+      evidence: UNVERIFIED
+      source: "https://andymark.com/products/smoothgrip-wheels"
+
+  # -------------------------------------------------------------------------------
+  # Sec 2.3 -- non-wheel roller surfaces. All UNVERIFIED on price this pass.
+  # -------------------------------------------------------------------------------
+  roller_surfaces:
+    - name: "Polycord / urethane round belting"
+      vendor: MMC
+      sku: null
+      price_usd: null
+      spec: {typical_dia_in: [0.125, 0.1875], joined_by: "hot weld / splice"}
+      best_for: "spanning wide gaps; ball transport; bridging two roller shafts"
+      game_piece_class: ["a","b"]
+      role: roller_surface
+      evidence: UNVERIFIED
+      source: null
+
+    - name: "Surgical tubing (latex)"
+      vendor: MMC
+      sku: null
+      price_usd: null
+      best_for: "very grippy, very cheap"
+      failure_mode: "work-hardens, glazes, snaps mid-event; do not use where re-tubing takes >4 min"
+      game_piece_class: ["a","b","e"]
+      role: roller_surface
+      evidence: UNVERIFIED
+      source: null
+
+    - name: "Silicone tubing over 1/2 hex shaft"
+      vendor: MMC
+      sku: null
+      price_usd: null
+      best_for: "sticky roller at near-zero cost"
+      game_piece_class: ["a","c","e"]
+      role: roller_surface
+      evidence: UNVERIFIED
+      source: null
+
+    - name: "Mecanum / angled rollers"
+      vendor: AM
+      sku: null
+      price_usd: null
+      best_for: "singulating and centring small balls while pulling them in"
+      game_piece_class: ["a"]
+      role: roller_surface
+      evidence: UNVERIFIED
+      source: null
+
+    - name: "Nylon strip brush roller stock"
+      vendor: MMC
+      sku: null
+      price_usd: null
+      best_for: "picking flats/discs off carpet where wheels skid"
+      game_piece_class: ["c"]
+      role: roller_surface
+      evidence: UNVERIFIED
+      source: null
+
+  # -------------------------------------------------------------------------------
+  # Sec 3 -- transmission. All TTB rows fetched live.
+  # -------------------------------------------------------------------------------
+  transmission:
+    - name: "QTY 2 - Half Inch Hex 22 Tooth #25 Sprocket"
+      vendor: TTB
+      sku: null
+      price_usd: 19.99
+      spec: {teeth: 22, chain: "#25", bore: "1/2 hex", qty: 2}
+      role: transmission
+      evidence: C
+      source: "https://www.thethriftybot.com/collections/elevator-kits"
+
+    - name: "QTY 1 - #25 Chain Tensioner"
+      vendor: TTB
+      sku: null
+      price_usd: 14.99
+      role: transmission
+      evidence: C
+      source: "https://www.thethriftybot.com/collections/elevator-kits"
+
+    - name: "QTY 1 - 25 Chain Attachment Part"
+      vendor: TTB
+      sku: null
+      price_usd: 22.99
+      spec: {use: "chain-to-carriage anchor"}
+      role: transmission
+      evidence: C
+      source: "https://www.thethriftybot.com/collections/elevator-kits"
+
+    - name: "QTY 2 - Half Inch Hex Coupler"
+      vendor: TTB
+      sku: null
+      price_usd: 22.99
+      spec: {qty: 2}
+      role: transmission
+      evidence: C
+      source: "https://www.thethriftybot.com/collections/elevator-kits"
+
+    - name: "QTY 10 - .75in OD x .25in ID x .280in Wide Radial Ball Bearing"
+      vendor: TTB
+      sku: null
+      price_usd: 20.00
+      spec: {od_in: 0.75, id_in: 0.25, width_in: 0.280, qty: 10}
+      role: transmission
+      evidence: C
+      source: "https://www.thethriftybot.com/collections/elevator-kits"
+
+    - name: "QTY 10 - .50in OD x .25in ID x .188in Wide Round Radial Bearing"
+      vendor: TTB
+      sku: null
+      price_usd: 20.00
+      spec: {od_in: 0.50, id_in: 0.25, width_in: 0.188, qty: 10}
+      role: transmission
+      evidence: C
+      source: "https://www.thethriftybot.com/collections/elevator-kits"
+
+    - name: "Thrifty Dead Axle Tube Roller Kit"
+      vendor: TTB
+      sku: null
+      price_usd: 45.00
+      spec: {use: "roller spinning on a fixed axle through box tube"}
+      role: intake_roller
+      evidence: C
+      source: "https://www.thethriftybot.com/collections/elevator-kits"
+
+    - name: "Thrifty Live Axle Tube Roller Kit"
+      vendor: TTB
+      sku: null
+      price_usd: 15.00
+      spec: {use: "roller driven by a through-shaft in box tube"}
+      note: "highest value-per-dollar line in this file for a small team; 2x these + ~$50 of compliant wheels = a complete intake"
+      role: intake_roller
+      evidence: C
+      source: "https://www.thethriftybot.com/collections/elevator-kits"
+
+  # -------------------------------------------------------------------------------
+  # Sec 7 -- elevator kits
+  # -------------------------------------------------------------------------------
+  elevator_kits:
+    - name: "GreyT Cascade Elevator"
+      vendor: WCP
+      sku: null
+      price_usd: 299.99
+      spec:
+        stages: "single / 2 / 3 configurable per provided CAD (exact contents of the base SKU UNVERIFIED)"
+        drive: "single #25 chain lift, spur gearbox, multi-motor support"
+        bearings: "bearings on all surfaces"
+        travel: null
+      you_must_supply: ["motors","gearbox pinions","structure/tube","mounting"]
+      role: elevator_kit
+      evidence: C
+      source: "https://wcproducts.com/products/greyt-cascade-elevator"
+
+    - name: "Kit: GreyT Elevator (Cascade, First Stage)"
+      vendor: WCP
+      sku: "KIT-0048"
+      price_usd: 324.99
+      spec: {stages: 1, contents_list: null}
+      role: elevator_kit
+      evidence: C
+      source: "https://wcproducts.com/products/kit-0048"
+
+    - name: "Greyt Universal Elevator v2"
+      vendor: WCP
+      sku: "WCP-0223"
+      price_usd: null
+      price_note: "DISCONTINUED / sold out as of 2026-08-22 -- do not plan on it"
+      spec: {stages: 2, drive: "double chain cascade", motors: "775pro or Falcon 500 configurations"}
+      role: elevator_kit
+      evidence: C
+      source: "https://wcproducts.com/products/greyt-universal-elevator-v2"
+
+    - name: "Thrifty Elevator Stage Kit -- Single Stage"
+      vendor: TTB
+      sku: null
+      price_usd: 389.00
+      spec:
+        stages: 1
+        drive: "#25H chain + Dyneema, CAM tensioning system"
+        compatible_with: "various brands of 2 in. x 1 in. aluminum box extrusion, any wall thickness"
+      contents:
+        - "1x Sliding Elevator Bearing Block Kit"
+        - "1x Elevator #25 Chain Drive Kit"
+        - "1x Constant Force Spring Kit"
+        - "1x Elevator Gusset Kit"
+      you_must_supply: ["2x1 box tube","hex shaft","structural fasteners","gearbox","motors"]
+      role: elevator_kit
+      evidence: C
+      source: "https://www.thethriftybot.com/products/thrifty-elevator-stage-kit"
+
+    - name: "Thrifty Elevator Stage Kit -- 2 Stage"
+      vendor: TTB
+      sku: null
+      price_usd: 599.99
+      spec: {stages: 2, drive: "#25H chain + Dyneema, CAM tensioning system"}
+      contents:
+        - "2x Sliding Elevator Bearing Block Kit"
+        - "1x Elevator #25 Chain Drive Kit"
+        - "2x Elevator Dyneema Pulley Kit"
+        - "1x Constant Force Spring Kit"
+        - "1x Elevator Gusset Kit"
+      you_must_supply: ["2x1 box tube","hex shaft","structural fasteners","gearbox","motors"]
+      role: elevator_kit
+      evidence: C
+      source: "https://www.thethriftybot.com/products/thrifty-elevator-stage-kit"
+
+  elevator_components:
+    - name: "Sliding Elevator Bearing Block Kit"
+      vendor: TTB
+      sku: null
+      price_usd: 99.99
+      spec:
+        covers: "one stage of a sliding 2in x 1in box extrusion elevator"
+        contents:
+          sliding_bearing_block_plate_2024: 4
+          bearing_050od_025id_0188w: 8
+          bearing_075od_025id_0280w: 8
+          steel_dowel_025dia_175long: 4
+          bearing_block_shoulder_bolt_spacer: 8
+          bolt_1420_x_1in_button_head: 8
+          locknut_1420_thin: 8
+          screw_1032_x_058in_button_head: 16
+          locknut_1032_thin: 16
+          zip_tie_4in: 4
+        total_bearings: 16
+        total_fasteners: 60
+      note: "60 fasteners per stage is why Sec 13 puts a 1-stage elevator at 22 build-hours: not one hard job, sixty small accurate ones"
+      role: linear_motion
+      evidence: C
+      source: "https://www.thethriftybot.com/products/sliding-elevator-bearing-block-kit"
+    - {name: "Elevator #25H Chain Drive Kit",      vendor: TTB, sku: null, price_usd: 199.99, role: elevator_component, evidence: C, source: "https://www.thethriftybot.com/collections/elevator-kits"}
+    - {name: "Elevator Dyneema Pulley Kit",        vendor: TTB, sku: null, price_usd: 59.99,  role: elevator_component, evidence: C, source: "https://www.thethriftybot.com/collections/elevator-kits"}
+    - {name: "Elevator Gusset Kit",                vendor: TTB, sku: null, price_usd: 39.99,  role: elevator_component, evidence: C, source: "https://www.thethriftybot.com/collections/elevator-kits"}
+    - {name: "QTY 1 - Thrifty Top Elevator Bearing Plate", vendor: TTB, sku: null, price_usd: 10.99, role: elevator_component, evidence: C, source: "https://www.thethriftybot.com/collections/elevator-kits"}
+    - {name: "QTY 1 - Thrifty Planetary Mount Plate",      vendor: TTB, sku: null, price_usd: 10.99, role: elevator_component, evidence: C, source: "https://www.thethriftybot.com/collections/elevator-kits"}
+    - {name: "QTY 8 - V1 Thrifty Elevator Bearing Block Shoulder Bolt", vendor: TTB, sku: null, price_usd: 12.99, role: elevator_component, evidence: C, source: "https://www.thethriftybot.com/collections/elevator-kits"}
+    - {name: '1/8" Dyneema Rope - 25 FT',          vendor: TTB, sku: null, price_usd: 10.99,  role: elevator_component, evidence: C, source: "https://www.thethriftybot.com/collections/elevator-kits"}
+    - {name: 'Telescoping Tube Kit 2" x 2" Stage Internal End Block',   vendor: TTB, sku: null, price_usd: 20.00, role: linear_motion, evidence: C, source: "https://www.thethriftybot.com/collections/elevator-kits"}
+    - {name: 'Telescoping Tube Kit 1.5" x 1.5" Stage Internal End Block', vendor: TTB, sku: null, price_usd: 20.00, role: linear_motion, evidence: C, source: "https://www.thethriftybot.com/collections/elevator-kits"}
+
+  # -------------------------------------------------------------------------------
+  # Sec 8 -- linear motion
+  # -------------------------------------------------------------------------------
+  linear_motion:
+    - name: "Thrifty Telescoping Tube Kit -- Base Stage Only (2in to 1.5in)"
+      vendor: TTB
+      sku: null
+      price_usd: 140.00
+      spec:
+        tube_sizes: ['2" x 2" x 1/16"', '1.5" x 1.5" x 1/16"']
+        constant_force_springs: {qty: 2, length_in: 39, pull_lb: 5.94}
+        bearings: {qty: 8, od_in: 0.5}
+        includes: ['1/8" Dyneema cable 25 ft', "2 aluminum plates", "spacers/rivets", "assorted screws and nylocks"]
+      role: linear_motion
+      evidence: C
+      source: "https://www.thethriftybot.com/products/thrifty-telescoping-tube-kit"
+
+    - name: "Thrifty Telescoping Tube Kit -- 2nd Stage Only (1.5in to 1in)"
+      vendor: TTB
+      sku: null
+      price_usd: 140.00
+      spec:
+        tube_sizes: ['1.5" x 1.5" x 1/16"', '1" x 1" x 1/16"']
+        constant_force_springs: {qty: 2, length_in: 39}
+        bearings: {qty: 8}
+      role: linear_motion
+      evidence: C
+      source: "https://www.thethriftybot.com/products/thrifty-telescoping-tube-kit"
+
+    - name: "Thrifty Telescoping Tube Kit -- Base + 2nd Stage (2in to 1.5in to 1in)"
+      vendor: TTB
+      sku: null
+      price_usd: 220.00
+      role: linear_motion
+      evidence: C
+      source: "https://www.thethriftybot.com/products/thrifty-telescoping-tube-kit"
+
+    - {name: "UHMW / Delrin slide pad stock",   vendor: MMC,  sku: null, price_usd: null, role: linear_motion, evidence: UNVERIFIED, source: null}
+    - {name: "igus DryLin linear rail + carriage", vendor: igus, sku: null, price_usd: null, role: linear_motion, evidence: UNVERIFIED, source: null}
+
+  # -------------------------------------------------------------------------------
+  # Sec 10 -- counterbalance / holding under gravity
+  # -------------------------------------------------------------------------------
+  counterbalance:
+    - name: "Constant Force Spring Kit"
+      vendor: TTB
+      sku: null
+      price_usd: 49.99
+      spec:
+        spring_force_lb: 16.5
+        travel_in: 50
+        kit_weight_lb: 0.60
+        contents: ["2 Constant Force Spring Holders","1 Constant Force Spring Spool","2 Constant Force Spring Retainers","4 Socket Head 10-32 bolts 2.25in","2 Socket Head 1/4-20 bolts 2.25in","2 1/4-20 locknuts"]
+        vendor_recommendation: "1-2 kits per elevator"
+      sizing_rule:
+        text: "target 80-95% static offset, never 100%. A 20 lb carriage with one 16.5 lb kit = 82.5%."
+        evidence: H
+      safety: "SEE 02_MANIPULATION_ELEVATION.md Sec 14.1 BEFORE HANDLING. Sharp hardened steel strip under permanent tension."
+      role: counterbalance
+      evidence: C
+      source: "https://www.thethriftybot.com/products/constant-force-spring-kit"
+
+    - {name: "Gas spring / gas strut (sized by force and stroke)", vendor: MMC, sku: null, price_usd: null, role: counterbalance, evidence: UNVERIFIED, source: null,
+       safety: "charged pressure vessel; never cut, heat, puncture or disassemble"}
+
+  # -------------------------------------------------------------------------------
+  # Sec 11 -- climbers
+  # -------------------------------------------------------------------------------
+  climbers:
+    - name: "Climber in a Box, With Extrusion, Stage 1"
+      vendor: AM
+      sku: "am-4667"
+      price_usd: 195.00
+      spec:
+        travel_in_per_stage: 24.5
+        tubes_included: ['1.5" x 1.5" x 0.062"', '1.0" x 1.0" x 0.062"']
+        not_included: ["motor","gearbox"]
+        vendor_claim: "requires no precision machining"
+      role: climber
+      evidence: C
+      source: "https://andymark.com/products/climber-in-a-box"
+
+    - name: "Climber in a Box, With Extrusion, Stage 2"
+      vendor: AM
+      sku: "am-4668"
+      price_usd: 277.00
+      spec:
+        travel_in_per_stage: 24.5
+        travel_in_total: 49
+        tubes_included: ['2.0" x 2.0"', '1.5" x 1.5"', '1.0" x 1.0" x 0.062"']
+        not_included: ["motor","gearbox"]
+      role: climber
+      evidence: C
+      source: "https://andymark.com/products/climber-in-a-box"
+
+    - name: "Climber in a Box, Without Extrusion, Stage 1"
+      vendor: AM
+      sku: "am-4677"
+      price_usd: 144.00
+      spec: {travel_in_per_stage: 24.5, not_included: ["motor","gearbox","aluminum tubing"]}
+      role: climber
+      evidence: C
+      source: "https://andymark.com/products/climber-in-a-box"
+
+    - name: "Climber in a Box, Without Extrusion, Stage 2"
+      vendor: AM
+      sku: "am-4678"
+      price_usd: 214.00
+      spec: {travel_in_total: 49, not_included: ["motor","gearbox","aluminum tubing"]}
+      role: climber
+      evidence: C
+      source: "https://andymark.com/products/climber-in-a-box"
+
+    - name: "Climber in a Box Winch Kit (1.5 x 1.5 in. extrusion)"
+      vendor: AM
+      sku: "am-4663"
+      price_usd: 66.00
+      spec: {includes_ratchet: false, note: "works with your own planetary gearbox or supplied powertrain"}
+      role: climber
+      evidence: C
+      source: "https://andymark.com/products/climber-in-a-box-winch-kits"
+
+    - name: "Climber in a Box Winch Kit (2 x 2 in. extrusion)"
+      vendor: AM
+      sku: "am-4664"
+      price_usd: 72.00
+      spec: {includes_ratchet: false}
+      role: climber
+      evidence: C
+      source: "https://andymark.com/products/climber-in-a-box-winch-kits"
+
+    - {name: "Climber in a Box Swappable Hook Kit", vendor: AM, sku: null, price_usd: null, role: climber, evidence: UNVERIFIED, source: "https://andymark.com/products/climber-in-a-box-swappable-hook-kit"}
+    - {name: "Climber in a Box Hook Kit",           vendor: AM, sku: null, price_usd: null, role: climber, evidence: UNVERIFIED, source: "https://andymark.com/products/climber-in-a-box-hook-kit"}
+    - {name: "Climber in a Box Bearing Kits",       vendor: AM, sku: null, price_usd: null, role: climber, evidence: UNVERIFIED, source: "https://andymark.com/products/climber-in-a-box-bearing-kits"}
+    - {name: "Climber in a Box Brace Upgrade Kits", vendor: AM, sku: null, price_usd: null, role: climber, evidence: UNVERIFIED, source: "https://andymark.com/products/climber-in-a-box-brace-upgrade-kits"}
+    - name: "Ratchet Sport"
+      vendor: AM
+      sku: ["am-4424","am-4425","am-4426","am-5408","am-5409"]
+      price_usd: null
+      price_note: "page publishes a range of $44.00 - $110.00 USD across the five configurations; per-SKU mapping not published in fetched content"
+      spec:
+        variants:
+          am-4424: "Ratchet Only"
+          am-4425: "Pneumatic Actuator Only"
+          am-4426: "Ratchet with Pneumatic Actuator"
+          am-5408: "Servo Actuator Only"
+          am-5409: "Ratchet with Servo Actuator"
+        vendor_claim: "This ratchet assembly works with the Sport gearboxes to control back drive."
+        can_be_retrofitted: "added to an already installed gearbox without changing the motor"
+        releases_under_load: true
+      buying_advice: >-
+        Buy an ACTUATED configuration (am-4426 pneumatic or am-5409 servo), not the bare am-4424.
+        A ratchet that cannot release under load turns a failed climb into a stuck robot.
+      role: climber
+      evidence: C
+      source: "https://andymark.com/products/ratchet-sport"
+
+    - {name: "Ratchet Sport Gear", vendor: AM, sku: null, price_usd: null, role: climber, evidence: UNVERIFIED, source: "https://andymark.com/products/ratchet-sport-gear"}
+    - {name: "WCP Ratchet Plate (gearbox accessory)", vendor: WCP, sku: null, price_usd: null, role: climber, evidence: UNVERIFIED, source: "https://docs.wcproducts.com/frc-build-system/gearboxes/more-gearboxes-and-accessories"}
+
+  # -------------------------------------------------------------------------------
+  # Sec 9 -- pivot hardware. Nothing priced this pass.
+  # -------------------------------------------------------------------------------
+  pivots:
+    - {name: "Large-bore / thin-section pivot bearing", vendor: null, sku: null, price_usd: null, role: pivot, evidence: UNVERIFIED, source: null,
+       note: "WCP, TTB and AM all list options; none priced in this pass"}
+    - {name: "Turntable / lazy-susan bearing", vendor: null, sku: null, price_usd: null, role: pivot, evidence: UNVERIFIED, source: null,
+       note: "heavy; rarely worth it for a small team"}
+    - {name: "Absolute encoder at the joint (not at the motor)", vendor: null, sku: null, price_usd: null, role: pivot, evidence: H, source: null,
+       note: "MANDATORY for any gravity-loaded arm. See reference/team-ops/03_programming_stack.md"}
+
+# ---------------------------------------------------------------------------------
+# Sec 4 -- intake architectures
+# ---------------------------------------------------------------------------------
+intake_architectures:
+  A1_fixed_inside_perimeter:
+    cots_fab_split: "80:20"
+    tooling_floor: ["drill press","hacksaw","hand tools","rivet gun"]
+    hours: {design: 4, build: 6, debug: 4, total: 14}
+    failure_modes: ["cannot reach pieces against the wall","funnel jams","driver frustration"]
+    evidence: H
+  A2_over_the_bumper_fixed:
+    cots_fab_split: "70:30"
+    tooling_floor: ["drill press","band saw","1.125in step drill or hole saw"]
+    hours: {design: 6, build: 10, debug: 6, total: 22}
+    failure_modes: ["bumper-height rule violation","roller struck in collisions","long unsupported shaft twists"]
+    small_team_recommendation: "DEFAULT CHOICE -- highest reliability per hour, 2016-2026"
+    evidence: H
+  A3_over_the_bumper_deploying:
+    cots_fab_split: "55:45"
+    tooling_floor: ["drill press","band saw","tap set","1/4in plate cutting"]
+    hours: {design: 10, build: 20, debug: 12, total: 42}
+    failure_modes: ["pivot hardstop fatigue","cylinder mount tears out","deploy timing bugs"]
+    small_team_recommendation: "use only if the frame-perimeter extension rule makes A2 illegal"
+    evidence: H
+  A4_under_the_bumper:
+    cots_fab_split: "45:55"
+    tooling_floor: ["mill or CNC router","precise floor-clearance machining"]
+    hours: {design: 14, build: 24, debug: 14, total: 52}
+    failure_modes: ["ground clearance vs field seams","piece wedges under bumper","unrecoverable if the piece class is large"]
+    small_team_recommendation: "SKIP -- this is a machining-capability bet a 15-student team loses"
+    evidence: H
+
+# ---------------------------------------------------------------------------------
+# Sec 7.2 -- rigging physics. Define by BEHAVIOUR, not by vendor vocabulary.
+# ---------------------------------------------------------------------------------
+elevator_rigging:
+  invariant: "T * v_drum = W * v_carriage  (energy conservation, frictionless)"
+  cascade:
+    behaviour: "all stages move simultaneously and proportionally"
+    carriage_speed: "N * v_drum"
+    total_travel: "N * s"
+    rope_tension: "N * W"
+    drum_torque: "N * W * r"
+    consequence: "N times faster, N times the torque; rope stretch and backlash also multiply by N"
+  sequential_continuous:
+    behaviour: "stages extend one after another"
+    carriage_speed: "v_drum"
+    total_travel: "N * s"
+    rope_tension: "W"
+    drum_torque: "W * r"
+    consequence: "1/N torque, 1/N speed; mechanical hand-off clunk at each stage; CG rises in steps"
+  terminology_caution:
+    evidence: S
+    text: >-
+      Some vendors use "continuous rigging" to mean a single continuous rope loop that drives the
+      carriage positively in BOTH directions, as opposed to gravity return. That is a different axis.
+      When reading a vendor page ask two separate questions: (1) do stages move together or in
+      sequence? (2) is the down-stroke driven or gravity-fed? The physics above depends only on (1).
+  sizing_rule:
+    text: "size the gear ratio so the required drum torque is <= 40% of available stall torque; elevators are sized by HOLDING and ACCELERATION, not steady-state lift"
+    evidence: H
+  motor_specs_prior_seasons:
+    evidence: H
+    warning: "UNVERIFIED for 2027. The 2027 legal motor list is published in the BIOCORE manual on 2027-01-09. Systemcore changes the controller side. Re-verify every number before calculating."
+    nominal:
+      kraken_x60:  {stall_nm: 7.09, free_rpm: 6000}
+      falcon_500:  {stall_nm: 4.69, free_rpm: 6380}
+      neo_vortex:  {stall_nm: 3.60, free_rpm: 6784}
+      neo_1_1:     {stall_nm: 2.60, free_rpm: 5676}
+      cim:         {stall_nm: 2.41, free_rpm: 5330}
+
+# ---------------------------------------------------------------------------------
+# Sec 9 -- articulation topologies
+# ---------------------------------------------------------------------------------
+articulation:
+  single_jointed_arm:  {relative_cost: 1.0,  use_when: "two or three discrete heights; end-effector angle may vary", avoid_when: "piece must stay level", evidence: H}
+  virtual_four_bar:    {relative_cost: 1.2,  use_when: "single-jointed arm PLUS a level end effector; 1:1 belt from a fixed ground pulley to the wrist", avoid_when: "wrist must be independently controlled", small_team_rank: 1, evidence: H}
+  true_four_bar:       {relative_cost: 1.6,  use_when: "end effector translates along an arc staying level; load split over two links", avoid_when: "space is tight -- big swept envelope", evidence: H}
+  double_jointed_arm:  {relative_cost: 3.0,  use_when: "must reach OVER an obstacle, or one mechanism serves floor pickup and high score", avoid_when: "you have not written inverse kinematics before", software_risk: high, evidence: H}
+  elevator_plus_wrist: {relative_cost: 2.5,  use_when: "score locations at very different heights directly above the robot", avoid_when: "horizontal reach matters more than vertical", evidence: H}
+  small_team_ordering: ["virtual_four_bar","single_jointed_arm","elevator_plus_wrist","true_four_bar","double_jointed_arm"]
+
+# ---------------------------------------------------------------------------------
+# Sec 13 -- build hours and tooling. [H] estimates for a ~15-student team, first build.
+# ---------------------------------------------------------------------------------
+build_hours:
+  basis: "team-hours, ~15 students + experienced mentor, first time building that class, CAD to reliable-3-matches-in-a-row"
+  evidence: H
+  calibrated_against: "reference/04_PREDICTIVE_FACTORS.md"
+  halve_for_repeat_build: true
+  rows:
+    - {mechanism: "Fixed roller intake (A1)",            design: 4,  build: 6,  debug: 4,  total: 14,  risk: low}
+    - {mechanism: "OTB fixed intake (A2)",               design: 6,  build: 10, debug: 6,  total: 22,  risk: low}
+    - {mechanism: "OTB deploying intake (A3)",           design: 10, build: 20, debug: 12, total: 42,  risk: medium_high}
+    - {mechanism: "UTB intake (A4)",                     design: 14, build: 24, debug: 14, total: 52,  risk: high}
+    - {mechanism: "Roller tower / indexer (2 stage)",    design: 6,  build: 12, debug: 10, total: 28,  risk: medium}
+    - {mechanism: "Hopper + singulator",                 design: 12, build: 20, debug: 24, total: 56,  risk: high}
+    - {mechanism: "Passive funnel gripper",              design: 2,  build: 4,  debug: 3,  total: 9,   risk: very_low}
+    - {mechanism: "Roller claw-take gripper",            design: 4,  build: 6,  debug: 5,  total: 15,  risk: low}
+    - {mechanism: "Motorized claw",                      design: 8,  build: 12, debug: 10, total: 30,  risk: medium}
+    - {mechanism: "Single-jointed arm",                  design: 8,  build: 14, debug: 14, total: 36,  risk: medium}
+    - {mechanism: "Virtual four-bar",                    design: 10, build: 16, debug: 14, total: 40,  risk: medium}
+    - {mechanism: "True four-bar",                       design: 12, build: 18, debug: 16, total: 46,  risk: medium_high}
+    - {mechanism: "Double-jointed arm",                  design: 20, build: 24, debug: 36, total: 80,  risk: very_high}
+    - {mechanism: "Elevator, 1 stage, COTS kit",         design: 10, build: 22, debug: 20, total: 52,  risk: high}
+    - {mechanism: "Elevator, 2 stage, COTS kit",         design: 14, build: 32, debug: 28, total: 74,  risk: very_high}
+    - {mechanism: "Elevator, fabricated from scratch",   design: 24, build: 60, debug: 40, total: 124, risk: do_not}
+    - {mechanism: "Climber, COTS kit",                   design: 6,  build: 14, debug: 10, total: 30,  risk: medium}
+    - {mechanism: "Climber, custom telescoping",         design: 16, build: 30, debug: 24, total: 70,  risk: high}
+  elevator_warning:
+    headline: "Elevators are the classic small-team schedule killer"
+    reasons:
+      - "unforgiving of squareness -- tooling floor is a chop saw or band saw with a fence, not a drill press"
+      - "chain and Dyneema both need retensioning after the first few dozen cycles -- unscheduled sessions"
+      - "needs absolute encoder + soft limits + gravity feedforward + homing routine (4 software features a roller does not need)"
+      - "fails loudly -- a binding elevator jams the whole robot"
+      - "puts weight high, forcing unscheduled drivetrain and CG work"
+    decision_rule: "build an elevator only when the manual REQUIRES travel no arm can cover -- typically >4 ft between the highest and lowest score locations from a compact footprint"
+    evidence: H
+
+# ---------------------------------------------------------------------------------
+# Sec 12 -- 3D printing
+# ---------------------------------------------------------------------------------
+printing:
+  evidence: H
+  materials:
+    pla_plus:  {ok_for: ["prototypes","sensor brackets","wire guides","templates"], fails_at: ["heat near motors","impact"], never: ["load path","near a motor"]}
+    petg:      {ok_for: ["funnels","chutes","hoppers","ball guides","light covers"], fails_at: ["Z layer adhesion in tension","creep under sustained load"], never: ["pivots","spring-loaded parts"]}
+    abs_asa:   {ok_for: ["motor shrouds"], fails_at: ["warping without an enclosure"], never: ["fine detail"]}
+    nylon:     {ok_for: ["living hinges","wear surfaces","gripper pads"], fails_at: ["moisture absorption","printing difficulty"], never: ["dimensional precision parts"]}
+    nylon_cf:  {ok_for: ["gears","pulleys","sprockets","roller cores","gripper jaws","structural brackets"], fails_at: ["cost","needs hardened nozzle + dry filament"], never: ["replacing a machined pivot in the main load path"], verdict: "best general-purpose FRC filament"}
+    onyx:      {ok_for: ["structural brackets if a sponsor prints them"], fails_at: ["proprietary machine + filament","slow","expensive"], never: ["anything you need in 24 hours"]}
+    tpu:       {ok_for: ["intake grip surfaces","bumper corner pads","cable strain relief"], fails_at: ["no stiffness"], never: ["structure"]}
+  competition_failure_modes:
+    - "heat creep near a motor -- a PLA bracket 2 in. from a hard-working motor deforms on Saturday, not Thursday"
+    - "layer separation in tension -- orient every part so the primary load is in-plane, never peeling layers"
+    - "threads tapped into plastic strip -- use heat-set brass inserts or a through-bolt and nut"
+  rule: "print fixtures, guides, prototypes and enclosures; machine or buy anything in the load path"
+
+# ---------------------------------------------------------------------------------
+# Sec 14 -- SAFETY. Stored energy is the top school-shop injury risk.
+# ---------------------------------------------------------------------------------
+safety:
+  headline: "Elevators and springs store enough energy to break fingers and put fragments in eyes."
+  constant_force_springs:
+    hazard: "hardened steel strip under permanent tension; sharp edges; uncoils violently if it slips its spool"
+    example_energy: "TTB kit spring = 16.5 lb over 50 in. of travel"
+    rules:
+      - "safety glasses on EVERYONE within reach, including observers"
+      - "never uncoil by hand and let go; retain the free end mechanically at all times"
+      - "install with the spool captured in its bracket, never free-standing"
+      - "gloves for handling the strip"
+      - "one person installs, one supervises -- never a lone student"
+      - "never cut, drill, grind or heat a constant-force spring -- it is hardened and will shatter"
+      - "a kinked or set spring is scrap; do not straighten and reuse"
+      - "store spares coiled, in packaging, in a labelled box"
+  elevators:
+    rules:
+      - "physically block the carriage before working on it -- a wooden block or hard-stop pin, not hands"
+      - "a counterbalanced carriage can move UP as well as down when the drive is disengaged"
+      - "disconnect the battery and vent all pneumatic pressure before reaching into the travel path"
+      - "never put a hand between the carriage and a hard stop with the robot enabled"
+      - "guard or tape-mark the sprocket/chain nips and the top pulley -- amputation-class hazards"
+      - "first power-on: elevator at the bottom, current limit low, everyone behind the drive team"
+      - "soft limits and a homing routine must exist BEFORE the first full-speed run"
+      - "brake mode is NOT a safety device and does nothing when disabled"
+  climbers_and_stored_pressure:
+    rules:
+      - "a charged gas spring is a pressure vessel -- never cut, puncture, heat, disassemble or bin it"
+      - "a robot hanging from a climber is a suspended load -- nobody underneath, ever, including in the pit"
+      - "vent pneumatics to zero and confirm at the gauge before disconnecting any line"
+      - "Dyneema under tension cuts -- never run a hand along a loaded rope or use rope as a handle"
+  shop_practice:
+    - "safety glasses in the shop, always"
+    - "no loose hair, sleeves or lanyards near rollers or sprockets"
+    - "nobody operates a power tool alone or without a training sign-off"
+    - "announce a powered test out loud before it runs"
+    - "a mechanism that surprised you once gets guarded before it runs again"
+
+# ---------------------------------------------------------------------------------
+# Buy-vs-build arithmetic on verified prices (NOT a part; kept out of `parts`)
+# ---------------------------------------------------------------------------------
+buy_vs_build_check:
+  - claim: "TTB a-la-carte vs 1-stage bundle"
+    components_usd: [99.99, 199.99, 59.99, 49.99, 39.99]
+    alacarte_sum_usd: 449.95
+    bundle_usd: 389.00
+    conclusion: "bundle is cheaper by $60.95"
+    evidence: C
+  - claim: "AM 2-stage COTS climber before powertrain"
+    components_usd: [214.00, 72.00, 10.99]
+    sum_usd: 296.99
+    note: "am-4678 + am-4664 + 25ft Dyneema; motor, gearbox and ratchet still to add"
+    evidence: C
+  - claim: "8x AM 2in compliant wheels = a complete intake wheel set"
+    components_usd: [6.20]
+    qty: 8
+    sum_usd: 49.60
+    evidence: C
+
+# ---------------------------------------------------------------------------------
+# Validation
+# ---------------------------------------------------------------------------------
+validation:
+  arithmetic_self_checks:
+    - {name: "TTB a-la-carte vs bundle", expect: "449.95 vs 389.00"}
+    - {name: "AM 2-stage climber COTS (am-4678 + am-4664 + Dyneema)", expect: 296.99}
+    - {name: "8x AM 2in compliant wheels", expect: 49.60}
+  staleness_rule: "any price diff >10% against the live page means this file is stale; re-run the whole pass"
+  kickoff_checklist:
+    - "Sec 0 step 1 produced a game-piece class -- write it on the whiteboard"
+    - "Sec 0 step 3 answered capacity. Capped => NO indexer"
+    - "Sec 0 step 2 produced a max scoring height. Compare to a virtual four-bar BEFORE anyone says 'elevator'"
+    - "Sec 0 step 4 answered whether a climb exists. No climb => delete the climber budget"
+    - "sum of Sec 13 hours for the chosen set <= (students who show up) x (hours/week) x (weeks to first event) x 0.6"
+    - "every part about to be ordered has been re-priced TODAY, not read from this file"
+
+known_limitations:
+  - "BIOCORE's game piece is unknown; Sec 1 is a decision tree, not a prediction"
+  - "prices are a 2026-08-22 snapshot and will drift before the 2027 season"
+  - "3 vendor pages unreadable this pass (VEX 403, WCP docs 404, WCP flex-wheel per-variant table absent)"
+  - "REV ION per-SKU prices UNVERIFIED; the SKUs themselves are C"
+  - "no part numbers, prices or URLs were invented anywhere in this file"
+  - "build hours are H estimates, not measured against this team's own build log"
+  - "motor torque/speed figures are prior-season H values; the 2027 legal motor list is unknown"
+  - "cascade/continuous terminology is contested; the physics given is from first principles"
+  - "weight is not budgeted here; the 2027 weight allowance is unknown"
+  - "tools/cycle-model.py was not run against an elevator parameter set; whether it accepts one is UNVERIFIED"

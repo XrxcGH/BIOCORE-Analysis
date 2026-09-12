@@ -1,0 +1,163 @@
+rule_id	prefix	num	page	chars	starred	sha1	headline
+G101	G	101	49	512	1	f99a7ca2b19a	Dangerous ROBOTS: not allowed.
+G102	G	102	49	360	1	b37df035c42e	ROBOTS, stay on the FIELD during the MATCH.
+G103	G	103	49	153	1	a1af9fda22c5	Keep your BUMPERS low.
+G104	G	104	49	240	1	c8536aad5063	Keep your BUMPERS together.
+G105	G	105	49	104	1	7f99b62e6480	Keep it together.
+G106	G	106	49	894	0	174b55553774	Tall ROBOTS in HANGAR ZONE only.
+G107	G	107	50	916	0	b2b6a94c2946	Don’t overextend yourself.
+G108	G	108	50	207	0	90c6d325e7dd	Not too high.
+G109	G	109	50	93	0	5b6aa93c361a	Avoid the PURPLE PLANE.
+G201	G	201	51	863	1	6f82a4efa9a3	Don’t expect to gain by doing others harm.
+G202	G	202	51	1027	1	98c8a5894e7c	There’s a 5-count on PINS.
+G203	G	203	51	1001	1	8948ff0dd453	Don’t collude with your partners to shut down major parts of game play.
+G204	G	204	52	523	1	3563a6fcce8c	Stay out of other ROBOTS.
+G205	G	205	52	2169	1	d87b0378b16a	This isn’t combat robotics.
+G206	G	206	53	835	1	aaec62a53009	Don’t tip or entangle.
+G207	G	207	53	209	0	8b6ee2a9ac45	Let them shoot.
+G208	G	208	53	493	0	9323be3f74a3	Let them climb.
+G209	G	209	53	220	0	f4643917c768	Don’t climb on each other.
+G210	G	210	53	313	0	1aa1210bc063	During AUTO, no defense.
+G301	G	301	54	1267	0	90c90a716481	Be careful what you interact with.
+G302	G	302	54	242	0	0701c243ef24	LOWER EXITS are off limits.
+G401	G	401	54	201	1	980685024014	Keep CARGO in bounds.
+G402	G	402	54	386	1	048313008c85	CARGO: use as directed.
+G403	G	403	54	854	0	066718ce5b10	2 CARGO max.
+G404	G	404	55	781	0	3339f32253a2	Don’t hoard opposing CARGO.
+G405	G	405	55	407	0	e918d760633f	Don’t catch CARGO.
+H101	H	101	57	1401	1	0e3922793499	Be a good person.
+H102	H	102	57	1103	1	1fe0d3efc039	Enter only 1 ROBOT.
+H103	H	103	58	962	1	93c35817ee65	Humans, stay off the FIELD until green.
+H104	H	104	58	910	1	89fadf847735	Never step over the guardrail.
+H105	H	105	58	1408	1	1a44f8dda38a	Asking other teams to throw a MATCH – not cool.
+H106	H	106	59	1460	1	ead012209656	Letting someone coerce you in to throwing a MATCH – also not cool.
+H107	H	107	59	815	1	ba1cff0c52a7	Don’t abuse ARENA access.
+H108	H	108	60	309	1	33ec114a86ee	Be careful what you interact with.
+H201	H	201	60	1847	1	f7743e1ce1db	Egregious or exceptional violations.
+H202	H	202	60	304	1	209e719be970	1 STUDENT, 1 Head Referee.
+H301	H	301	61	1471	1	20990fa4a1cb	Be prompt/safe when coming to and going from the FIELD.
+H302	H	302	61	962	1	b02b597370af	Teams may not enable their ROBOTS on the FIELD.
+H303	H	303	61	2249	1	87d3aacae11b	You can’t bring/use anything you want.
+H304	H	304	62	188	1	a51163a75c9a	By invitation only.
+H305	H	305	62	391	1	57b677b1ca9c	Show up to your MATCHES.
+H306	H	306	63	997	1	cba25b01128a	Identify yourself.
+H307	H	307	63	958	1	98b76fb6a0db	Plug in to/be in your DRIVER STATION.
+H308	H	308	64	185	1	a3160344695b	Don’t bang on the glass.
+H309	H	309	64	938	0	8c10f865ac7a	Know your ROBOT setup.
+H310	H	310	64	666	0	5ee2b3b2e504	Know your DRIVETEAM positions
+H311	H	311	64	176	0	a0a13008d033	Leave the CARGO alone.
+H312	H	312	64	287	0	ab6a3a6ad6da	No CARGO shots after the MATCH.
+H401	H	401	65	726	1	535ac9d3f605	Behind the lines.
+H402	H	402	65	474	1	25b6ee87d708	Disconnect or set down controllers.
+H403	H	403	65	308	1	190a5fe6adf3	Let the ROBOT do its thing.
+H404	H	404	65	140	0	ea0b9966bc15	AUTO CARGO delivery.
+H501	H	501	65	279	1	beba33c426fe	COACHES and other teams: hands off the controls.
+H502	H	502	65	375	0	b0347c6196f6	No wandering.
+H503	H	503	65	114	1	ece27a4d650a	COACHES, CARGO is off limits.
+H504	H	504	66	153	0	4133aa1ae2a9	TELEOP CARGO delivery.
+H505	H	505	66	412	0	af58172c095a	Opponent CARGO is off limits.
+H506	H	506	66	120	0	cdb3180d9271	Only feed your ALLIANCE ROBOTS.
+H507	H	507	66	105	0	409295ea0640	DRIVE TEAMS, watch your reach.
+I101	I	101	105	1825	1	9604d36f4a6e	It’s your team’s ROBOT.
+I102	I	102	106	778	1	782054446715	Get inspected before playing a Qualification/Playoff MATCH.
+I103	I	103	106	554	1	2250fdfadc75	Bring it all to inspection.
+I104	I	104	106	1256	1	be910413f3db	Unless the change is listed below, any change to a ROBOT must get re-inspected.
+I105	I	105	107	2074	1	94702c1c254a	Don’t exploit re-inspection.
+I106	I	106	107	942	1	098623d9f8db	ROBOTS are off for inspection (mostly).
+I107	I	107	108	223	1	2f825127ddf1	No STUDENT, no inspection.
+R101	R	101	69	913	1	28a4e1875123	FRAME PERIMETER must be fixed.
+R102	R	102	70	869	1	dc01291d097a	STARTING CONFIGURATION – no overhang.
+R103	R	103	70	676	1	b757f0bee4bd	ROBOT weight limit.
+R104	R	104	70	482	0	32627b77b64e	STARTING CONFIGURATION – max size.
+R105	R	105	71	415	0	3d6a5d95006d	ROBOT extension limit.
+R201	R	201	71	348	1	32dc4266bcdc	No digging into carpet.
+R202	R	202	71	151	1	2ea0dffe8419	No sharp edges.
+R203	R	203	71	1986	1	a345b8260996	General safety.
+R204	R	204	72	347	1	803b53ba073f	CARGO stays with the FIELD.
+R205	R	205	72	153	1	b6e4248a431e	Don’t contaminate the FIELD.
+R301	R	301	72	5128	1	3f22da9945fa	Individual item cost limit.
+R302	R	302	74	2942	1	f05112a5878f	Custom parts, generally from this year only.
+R303	R	303	75	2235	1	96e04dac5696	Create new designs and software, unless they’re public.
+R304	R	304	75	1332	1	d75b7990782f	During an event, only work during pit hours.
+R401	R	401	76	971	1	292f9c094834	BUMPERS should protect all corners.
+R402	R	402	78	914	1	eaf24b6b8e3f	BUMPERS must stay low.
+R403	R	403	78	90	1	b071d1624d1b	BUMPERS shouldn’t move.
+R404	R	404	78	234	1	d9f1eb62763a	BUMPERS must come off.
+R405	R	405	78	752	1	e2af53bbf215	BUMPERS indicate your ALLIANCE.
+R406	R	406	79	1358	1	524e835d0245	Team number on BUMPERS.
+R407	R	407	79	502	1	f48cebe1bd31	BUMPER weight limit.
+R408	R	408	79	3903	1	b79cc6513659	BUMPER construction.
+R409	R	409	81	185	1	1129b96d22ce	Fill BUMPER corners.
+R410	R	410	82	801	1	411008a72605	BUMPERS must be supported.
+R501	R	501	83	3002	1	84a5ce56dd9f	Allowable motors.
+R502	R	502	84	1496	1	fb55f88b74ee	Don’t modify motors (mostly).
+R503	R	503	85	1914	1	f17116bc17a7	Power (most) actuators offof approved devices.
+R504	R	504	86	959	1	2d26b81806e8	Don’t overload controllers.
+R505	R	505	86	230	1	2a6d4dd8b1ce	Control servos safely.
+R601	R	601	87	1335	1	b70e6cbbeacc	Battery limit – everyone has the same power.
+R602	R	602	87	584	1	85034b780a86	Other batteries for cameras or computers only.
+R603	R	603	87	151	1	21a9bf183cf6	Charge batteries with safe connectors.
+R604	R	604	87	148	1	adb42770d004	Charge batteries at a safe rate.
+R605	R	605	87	246	1	e06aa80af998	Batteries are not ballast.
+R606	R	606	88	197	1	df89d12e5f2b	Secure the battery.
+R607	R	607	88	196	1	c865caacbd98	Insulate battery connections.
+R608	R	608	88	457	1	d3f8806fad6a	Limit non-battery energy.
+R609	R	609	88	1068	1	aec29ac3975d	Connect main power safely.
+R610	R	610	89	277	1	46841c4dbfe5	1 breaker per circuit.
+R611	R	611	89	768	1	edbbc15e423f	The ROBOT frame is not a wire.
+R612	R	612	89	538	1	ee47a80538a2	Must be able to turn ROBOT on and off safely.
+R613	R	613	89	128	1	cf1b9df587d7	Electrical system must be inspectable.
+R614	R	614	89	234	1	e9ddca494de4	No high voltage allowed.
+R615	R	615	89	433	1	ff5c89cb5e9a	Power roboRIO as specified.
+R616	R	616	90	698	1	f36dda208e95	Power radio as specified – Part 1.
+R617	R	617	91	798	1	f324141160c3	Power radio as specified – Part 2.
+R618	R	618	92	455	1	d96e20353429	Use PDP/PDH terminals as designed.
+R619	R	619	92	289	1	8c7539d9d60a	Only use specified circuit breakers in PDP/PDH.
+R620	R	620	92	474	1	3ebdd8f63ada	Only use specified fuses in PDP/PDH.
+R621	R	621	92	964	1	57642678fa77	Protect circuits with appropriate circuit breakers.
+R622	R	622	93	1581	1	b914c91a9b10	Use appropriately sized wire.
+R623	R	623	94	318	1	7454c8a43336	Use only appropriate connectors.
+R624	R	624	94	631	1	964f93aeb34d	Use specified wire colors (mostly).
+R625	R	625	94	1021	1	a7d1523e9c1f	Don’t modify critical power paths.
+R701	R	701	95	439	1	79c8afe7bce6	Control the ROBOT with a roboRIO.
+R702	R	702	95	291	1	676dd54e84b8	Communicate with the ROBOT with the specified radio.
+R703	R	703	95	475	1	7cb1e53f61b6	Use specific Ethernet port for roboRIO.
+R704	R	704	95	1434	1	646d65824826	Only use allowed ports and bandwidth to communicate with the ROBOT.
+R705	R	705	96	251	1	672827b6bf31	Configure devices for your team number.
+R706	R	706	96	149	1	9a4adff93009	Don’t bypass the ARENA network.
+R707	R	707	96	518	1	67c847258642	No other wireless allowed.
+R708	R	708	96	276	1	73f579e512a7	Wireless bridge must be visible.
+R709	R	709	96	541	1	1365fa15d39c	ROBOTS must have a signal light.
+R710	R	710	97	2705	1	7bbe18c8fd1a	Only specified modifications to control system devices permitted.
+R711	R	711	98	199	1	365e72e8e51e	Don’t connect motor outputs to roboRIO.
+R712	R	712	98	526	1	376b9f130e4c	Control PWM controllers from the roboRIO.
+R713	R	713	98	1139	1	4d867d87ec3b	Only approved MXP devices can control actuators.
+R714	R	714	98	667	1	67c711a0531b	Control CAN motor controllers from the roboRIO.
+R715	R	715	98	258	1	4dd800e15a6f	Control PCM/PH(S) and Servo Hubs from roboRIO.
+R716	R	716	99	278	1	5bfa7bb7eb78	Connect the PDP/PDH to the roboRIO CAN bus.
+R717	R	717	99	358	1	2576b3f68f90	Don’t alter the CAN bus.
+R718	R	718	99	305	1	517a61c9e426	USB to CAN adapter permitted.
+R801	R	801	99	258	1	8f0ba8274000	Only use explicitly permitted pneumatic parts.
+R802	R	802	99	578	1	defbabf540e6	No custom pneumatics and meet minimum pressure ratings.
+R803	R	803	99	759	1	e71e87b91c74	Don’t modify pneumatics.
+R804	R	804	100	2254	1	6c6e534c3080	Only use specific pneumatic devices.
+R805	R	805	100	706	1	a9416d984a16	If using pneumatics, these parts are required.
+R806	R	806	101	641	1	a12b057314d7	Compressed air from ROBOT compressor only.
+R807	R	807	101	187	1	04439f62fb34	Air storage pressure limit.
+R808	R	808	101	333	1	3146cb8567d0	Working air pressure limit.
+R809	R	809	101	439	1	3dead60f0181	Limited devices at high pressure.
+R810	R	810	102	242	1	1f538926a4b2	Pressure gauges must be visible.
+R811	R	811	102	460	1	0e52c5352a67	Relief valve requirements.
+R812	R	812	102	971	1	a213590b5312	Pressure switch requirements.
+R813	R	813	102	294	1	22096af770eb	Vent plug requirements.
+R814	R	814	102	113	1	53e332dae352	Don’t connect solenoid outputs together.
+R901	R	901	102	520	1	f1e73d6d55f9	Use the specified Driver Station Software.
+R902	R	902	103	407	1	8dbbebb4fc7d	The OPERATOR CONSOLE must have a visible display.
+R903	R	903	103	791	1	d7dd8e85ec85	Connect FMS Ethernet directly to the OPERATOR CONSOLE.
+R904	R	904	103	791	1	314259234ea8	OPERATOR CONSOLE physical requirements.
+R905	R	905	103	463	1	c75e7c6f5127	FIELD wireless only.
+R906	R	906	103	200	1	bce1e1c68053	No unsafe OPERATOR CONSOLES.
+T401	T	401	112	369	1	665c3e2ca758	Freeze, ROBOT.
+T701	T	701	118	4318	1	7320e0998f1b	There’s a window for TIMEOUT coupons.
+T702	T	702	120	3271	1	f1003a4aea5a	No coupons if MATCH stopped prematurely.
+T901	T	901	129	3262	1	c02f502867a3	Wear your buttons.

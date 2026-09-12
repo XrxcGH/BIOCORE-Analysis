@@ -1,0 +1,69 @@
+# Generated files
+__pycache__/
+*.pyc
+*.bak
+# Kept despite the suffix: reference/05_RUBRIC_BACKTEST.md cites both files.
+!tools/.score-strategy.py.pretune.bak
+!reference/.achievability_rubric.v1.bak
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# Per-machine run state
+review/LATEST
+review/*/.ingest_dir
+research/teamupdate_analysis/.watch_state.json
+
+# FIRST copyrighted material
+# FIRST's game manuals, Q&A, Team Updates, award documents and web pages are
+# not redistributed here, and neither is text extracted from them in bulk.
+# Download the sources and regenerate the extractions with
+# tools/rebuild-corpus.sh (run it with --help for the steps). A README.md
+# stays tracked wherever a whole directory is left out.
+
+# Source documents
+manuals/*
+!manuals/README.md
+!manuals/2026-27_BIOCORE/
+manuals/2026-27_BIOCORE/*
+!manuals/2026-27_BIOCORE/README.md
+reference/awards/pdfs/*.pdf
+
+# Full-text extractions
+**/_text/*
+!**/_text/README.md
+reference/awards/_web/
+reference/validation/*/spans/
+reference/validation/*/full_*.txt
+
+# Full rule bodies
+research/rule_inventories/[0-9][0-9][0-9][0-9].json
+research/rule_inventories/*_bodies_v2.jsonl
+research/rule_inventories/*_rules_full.txt
+research/rule_inventories/_changes*_v2.md
+research/rule_inventories/[0-9][0-9][0-9][0-9]_violations.tsv
+reference/validation/*/rules_CHANGED_DETAIL.txt
+
+# Glossary definitions, Violation clauses and raw manual lines
+reference/validation/*/glossary.tsv
+reference/validation/*/glossary_ADDED.txt
+reference/validation/*/glossary_REMOVED.txt
+reference/validation/*/glossary_CHANGED.tsv
+reference/validation/*/violations.tsv
+reference/validation/*/violation_lines_raw.txt
+reference/validation/*/*_mentions.txt
+reference/validation/*/SCORED_WHEN.txt
+reference/validation/*/TRIPWIRES.txt
+reference/validation/*/UNDEFINED_CAPS.tsv
+review/*/BRIEFING_PACK.md
+
+# Temporary: these two files quote FIRST's full award descriptions and
+# guidelines next to original analysis, and no tool rebuilds them. Remove
+# these lines once the quotes are cut to a sentence each with a citation.
+reference/awards/awards.yaml
+reference/awards/01_AWARD_WINNING_PATTERNS.md

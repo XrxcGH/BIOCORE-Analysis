@@ -1,0 +1,162 @@
+# FRC ALL-CAPS STOPLIST  --  non-game vocabulary only
+#
+# Purpose: tools/frc_diff.py flags every ALL-CAPS token that the manual uses in its body
+# text but never defines in the Glossary. Manual s1.6 promises that ALL CAPS == defined
+# term, so an undefined ALL-CAPS token is one of:
+#     (a) an acronym or vendor/part name  -> noise, and that is what this file suppresses
+#     (b) a load-bearing term FIRST forgot to define -> THE LOOPHOLE SIGNAL, keep it
+#
+# RULE FOR EDITING: only add a token here if it is provably NOT game vocabulary --
+# an industry acronym, a unit, a vendor, a brand, a standards body. Never add a word
+# that describes robot or game behaviour (PINNING, REPEATEDLY, CONTROLLED, MOMENTARILY,
+# DISABLE, BLUE, PRACTICE, TEST ...). Those staying visible is the entire point.
+#
+# Vendor part numbers (VH-109, WCP-0941, REV-11-1850, R504-B) need no entry -- frc_diff.py
+# drops any token that mixes letters, digits and hyphens.
+#
+# Seeded 2026-08-22 from the 2026 REBUILT Game Manual (TU22) undefined-caps run.
+# Re-review at BIOCORE kickoff: a BIOCORE noun must NEVER end up in this file.
+#
+# ---- programme / organisation ----
+FIRST
+FRC
+FTC
+FLL
+FTA
+LRI
+CSA
+STEM
+DCMP
+FCMP
+FIM
+FIRSTINSPIRES
+# ---- units, standards bodies, materials ----
+AWG
+SWG
+ANSI
+ASTM
+CSA
+CE
+EN
+IEC
+NEMA
+UL
+ISO
+IP
+HDPE
+UHMW
+ABS
+PLA
+PETG
+PVC
+MPH
+FPS
+RPM
+PSI
+NM
+IN
+CM
+MM
+LBS
+KG
+OZ
+USD
+FMV
+GT2
+HTD
+# ---- electrical / control-system acronyms ----
+AC
+DC
+CAN
+PWM
+DIO
+PDH
+PDP
+PCM
+PH
+VRM
+RSL
+SPX
+SRX
+RIO
+ROBORIO
+DS
+FMS
+USB
+UDP
+TCP
+HTTP
+HTTPS
+IP
+API
+LED
+SNR
+RSSI
+IMU
+NAVX
+ATO
+ATM
+MXP
+I2C
+SPI
+UART
+GPIO
+POE
+AUX
+APP
+CAD
+CAM
+CNC
+BOM
+KOP
+KIT
+# ---- motor / vendor / brand names ----
+CIM
+NEO
+NEO550
+FALCON
+KRAKEN
+BAG
+REV
+CTR
+CTRE
+VEX
+VEXPRO
+WCP
+AM
+ANDYMARK
+REDLINE
+BANEBOTS
+MINICIM
+LEGO
+TETRIX
+MATRIX
+NI
+LABVIEW
+JAVA
+KOTLIN
+PYTHON
+WPILIB
+SB
+ANDERSON
+POWERPOLE
+MOLEX
+# ---- date/time/misc typographic ----
+ET
+PT
+CT
+MT
+AM
+PM
+TBD
+TBA
+NA
+OK
+PDF
+CSV
+TSV
+URL
+QA
+Q
+A
+I

@@ -1,0 +1,192 @@
+rule_id	prefix	num	page	chars	starred	sha1	headline
+A1	A	1	60	666	0	59e709462ef4	Behind the lines.
+A2	A	2	60	538	0	78d25d15b19c	During AUTO, let the ROBOT do its thing.
+A3	A	3	60	415	0	1cb3ae2698d1	Disconnect or set down controllers.
+A4	A	4	60	402	0	d9540f2a1a13	Stay out of your opponent’s side of the FIELD.
+A5	A	5	60	168	0	c9431fd8497c	POWER CUBES are off-limits.
+C1	C	1	47	425	0	6b23a9edce3c	Egregious or exceptional violations.
+C2	C	2	47	920	0	5ad53aa93f74	Be a good person.
+C3	C	3	47	1393	0	c98bb0064186	Asking other Teams to throw a MATCH – not cool.
+C4	C	4	47	1460	0	62be48359b12	Letting someone coerce you in to throwing a MATCH – also not cool.
+C5	C	5	48	820	0	edaada4709a8	Compete with only one (1) ROBOT.
+C6	C	6	48	487	0	f573c8a1177a	Show up to your MATCHES.
+C7	C	7	49	1089	0	5d681ddea9b3	Don’t expect to gain by doing others harm.
+C8	C	8	49	362	0	03563d16e77e	One student, one Head REFEREE.
+C9	C	9	50	921	0	2c94b9aa47be	Plug in to/be in your PLAYER STATION.
+C10	C	10	50	711	0	70d974ed1fbc	No work outside your pit.
+G1	G	1	51	1009	0	562e27635f6d	Know your ROBOT setup.
+G2	G	2	51	957	0	f7827e064f6f	Be prompt/safe when coming to and going from the FIELD.
+G3	G	3	52	702	0	aff89d937e09	Know your DRIVE TEAM positions.
+G4	G	4	52	323	0	b80c61c15f06	Leave the POWER CUBES alone.
+G5	G	5	52	933	0	9311552492d4	Don’t overextend yourself
+G6	G	6	53	262	0	6f2460f9edea	Keep it together.
+G7	G	7	53	293	0	5d848f29b72d	Keep your BUMPERS together.
+G8	G	8	53	952	0	1986a53ba07f	ROBOTS must be removed from the FIELD by hand (i.e. no enabling, power, etc.).
+G9	G	9	53	1254	0	0ddfd51b7c38	Launching POWER CUBES is okay, but keep it short.
+G10	G	10	54	690	0	f790e6d676eb	Don’t tear others down to lift yourself up.
+G11	G	11	55	593	0	7775a53fb146	Stay out of other ROBOTS.
+G12	G	12	55	553	0	7446395a2c72	Don’t collude with your partners to shut down major parts of game play.
+G13	G	13	55	440	0	70b7c71b643f	If an opponent’s down, back off.
+G14	G	14	55	1127	0	52a2be39ec8d	There’s a 5-count on pins.
+G15	G	15	55	1032	0	0a824c962861	Opponent’s EXCHANGE ZONE: no camping.
+G16	G	16	56	609	0	e4064ec7cfc3	The NULL TERRITORY is safe.
+G17	G	17	56	249	0	7955d0002eaa	Don’t climb on each other until the end.
+G18	G	18	56	566	0	17d2de706f41	Don’t mess with opponents in their PLATFORM ZONE.
+G19	G	19	56	1562	0	2076d513effe	Be careful about what you interact with.
+G20	G	20	57	636	0	bce6431ff760	POWER CUBES: use as directed.
+G21	G	21	57	295	0	143d37e065c0	Keep POWER CUBES in bounds.
+G22	G	22	57	1575	0	f0529df292ca	One POWER CUBE per ROBOT.
+G23	G	23	58	490	0	90ca825fa815	POWER CUBES in opponent’s POWER CUBE ZONE – off limits.
+G24	G	24	58	355	0	2e9a687ae8c2	POWER CUBES stay on PLATES
+G25	G	25	58	1834	0	8fde0996033e	PLATES are moved by POWER CUBES, not ROBOTS.
+H1	H	1	60	324	0	a9b2e5c7e183	COACHES and other Teams: hands off the controls.
+H2	H	2	61	244	0	73dc35b3b799	Wireless devices not allowed.
+H3	H	3	61	268	0	aa8878c5f970	Don’t trick the sensors.
+H4	H	4	61	186	0	906f1212b585	By invitation only.
+H5	H	5	61	700	0	f2fd932fd4d8	Identify yourself.
+H6	H	6	61	356	0	87e9b7a2265b	No wandering.
+H7	H	7	61	2090	0	30f8809ba5f3	You can’t bring/use anything you want.
+H8	H	8	62	565	0	c476cfe96be8	Don’t abuse ARCADE access.
+H9	H	9	62	231	0	b00e6715d9e0	Don’t mess with the POWER CUBES.
+H10	H	10	62	208	0	12b74770080f	It doesn’t support you.
+H11	H	11	62	137	0	89e5dc81c7d2	COACHES, no POWER CUBES.
+H12	H	12	62	206	0	de6e6da10818	COACHES, stay clear of the VAULT
+H13	H	13	63	625	0	7f975e7dd4dc	POWER CUBES only enter the FIELD as designated.
+H14	H	14	63	9371	0	a51e77591ba6	POWER CUBES stay in the VAULT.
+I1	I	1	103	891	0	692d6a5d3ab1	The ROBOT must be built by the Team to play FIRST® POWER UPSM.
+I2	I	2	103	774	0	dc834b5f5c73	Get inspected before playing a Qualification/Playoff MATCH.
+I3	I	3	103	617	0	7c1210698f4c	Bring it all to Inspection.
+I4	I	4	104	2648	0	e7a3c2ad7e89	Unless the change is listed below, any change to a ROBOT must get re-inspected.
+I5	I	5	105	437	0	b21423862821	Document your costs.
+I6	I	6	105	931	0	2aad5f563e30	ROBOTS are off for Inspection, mostly.
+I7	I	7	105	2200	0	bb1fb784e552	No student, no Inspection.
+R1	R	1	66	1088	0	295fc0099ef0	The ROBOT (excluding BUMPERS) must have a FRAME PERIMETER, contained within the
+R2	R	2	67	679	0	2442b81aeade	In the STARTING CONFIGURATION (the physical configuration in which a ROBOT starts a
+R3	R	3	67	721	0	48ed618c51ea	In the STARTING CONFIGURATION, the maximum ROBOT size (excluding BUMPERS) must be
+R4	R	4	67	169	0	80e4b0e6a4fd	ROBOTS may not extend more than 16 in. (~40 cm) beyond their FRAME PERIMETER (see
+R5	R	5	67	629	0	aff53e591d89	The ROBOT weight must not exceed 120 lbs. When determining weight, the basic ROBOT
+R6	R	6	68	325	0	1bef967b72dc	Traction devices must not have surface features such as metal, sandpaper, hard plastic studs,
+R7	R	7	68	440	0	a26398dbbff2	Protrusions from the ROBOT and exposed surfaces on the ROBOT shall not pose hazards to the
+R8	R	8	68	2109	0	bd868e5218b4	ROBOT parts shall not be made from hazardous materials, be unsafe, cause an unsafe condition,
+R9	R	9	69	262	0	c2d63d7c9394	ROBOTS must allow removal of POWER CUBES from the ROBOT and the ROBOT from FIELD
+R10	R	10	69	170	0	cbd368246dfb	Lubricants may be used only to reduce friction within the ROBOT. Lubricants must not
+R11	R	11	69	872	0	e1945988a983	The total cost of all items on the ROBOT shall not exceed $4000 USD. All costs are to be
+R12	R	12	69	2018	0	f4a6abb846ca	No individual, non-KOP item shall have a value that exceeds $500 USD. The total cost of
+R13	R	13	70	2486	0	37f77890118e	The CAW cost of each non-KOP item must be calculated based on the unit fair market value for
+R14	R	14	71	1850	0	37bd1ad1e5f7	Physical ROBOT elements created before Kickoff are not permitted. Exceptions are:
+R15	R	15	72	2199	0	660aee11e941	Software and mechanical/electrical designs created before Kickoff are only permitted if the source
+R16	R	16	72	1234	0	cbc0bc66d775	All ROBOT elements (including items intended for use during the competition in alternative
+R17	R	17	73	465	0	852e9e72f543	For convenience, Teams may disassemble their ROBOT and use up to three (3) bags to “Bag
+R18	R	18	73	240	0	aaff6150d6ee	If you are attending another event, such as a FIRST Championship or another Regional or District
+R19	R	19	73	3436	0	8c0f7f3116fa	Teams must stay “hands-off” their bagged ROBOT elements during the following time periods:
+R20	R	20	74	458	0	385e4066ab07	Teams permitted to use the ROBOT Access Period per R19-H may only unlock their ROBOT for
+R21	R	21	74	331	0	96b8babf92de	If the ROBOT is accessed before the event, the unbagging must be noted on the ROBOT Lock-
+R22	R	22	75	2987	0	7687223fe1c2	At each Event, Teams may have access to a WITHHOLDING ALLOWANCE. The
+R23	R	23	76	934	0	e0da0bf7e8ee	ROBOTS are required to use BUMPERS to protect all outside corners of the FRAME
+R24	R	24	77	900	0	5af09a46b543	BUMPERS must be located entirely within the BUMPER ZONE, which is the volume contained
+R25	R	25	78	66	0	8dcd68e12999	BUMPERS must not be articulated (relative to the FRAME PERIMETER).
+R26	R	26	78	263	0	43155b67bbdf	BUMPERS (the entire BUMPER, not just the cover) must be designed for quick and easy
+R27	R	27	78	578	0	04d0c75c486e	Each ROBOT must be able to display Red or Blue BUMPERS to MATCH their ALLIANCE color,
+R28	R	28	78	1333	0	6848da879000	Team numbers must be displayed and positioned on the BUMPERS such that an observer
+R29	R	29	79	479	0	43ea8d495646	Each set of BUMPERS (including any fasteners and/or structures that attach them to the
+R30	R	30	79	3409	0	01b9618dc651	BUMPERS must be constructed as follows (see Figure 8-6):
+R31	R	31	81	164	0	6c8bfae2160f	Corner joints between BUMPERS must be filled with pool noodle material. Examples of
+R32	R	32	81	583	0	8508e8630e78	BUMPERS must be supported by the structure/frame of the ROBOT (see Figure 8-8). To be
+R33	R	33	83	2200	0	e87f1d504922	The only motors and actuators permitted on 2018 ROBOTS include the following (in any
+R34	R	34	84	1440	0	629a8dcde8ca	The integral mechanical and electrical system of any motor must not be modified. Motors, servos,
+R35	R	35	84	1163	0	130069715eb0	With the exception of servos, fans, or motors integral to sensors of COTS computing devices
+R36	R	36	85	1298	0	dc535304c997	Each power regulating device may control electrical loads per Table 8-2. Unless otherwise noted,
+R37	R	37	85	240	0	4b254d1687c0	Servos must be connected to, and only to, one of the following:
+R38	R	38	86	1274	0	a42387b0951a	The only legal source of electrical energy for the ROBOT during the competition, the ROBOT
+R39	R	39	86	548	0	c8599a576321	COTS USB battery packs with a capacity of 100Wh or less (20000mAh at 5V) and 2.5 Amp max
+R40	R	40	87	111	0	078e964b097b	Any battery charger used to charge a ROBOT battery must have the corresponding Anderson SB
+R41	R	41	87	115	0	a8fae3b35909	Any battery charger used to charge a ROBOT battery may not be used such that it exceeds 6-
+R42	R	42	87	227	0	c9e583684b0d	No batteries other than those allowed per R38 and R39 are allowed on the ROBOT, whether or
+R43	R	43	87	176	0	b2418bd27f9f	The ROBOT battery must be secured such that it will not dislodge during vigorous ROBOT
+R44	R	44	87	165	0	1e76eccedc3d	Each electrical terminal on the ROBOT battery, main breaker, and their connections (lugs,
+R45	R	45	87	431	0	ba3490cf0944	Non-electrical sources of energy used by the ROBOT, (i.e., stored at the start of a MATCH), shall
+R46	R	46	87	863	0	ace1b452c53a	The one (1) ROBOT battery, a single pair of Anderson Power Products (or APP) 2-pole SB type
+R47	R	47	88	291	0	b54a6eeae05d	All circuits, with the exceptions of those listed in R52 and R54, must connect to, and have power
+R48	R	48	88	727	0	724190e4c59f	All wiring and electrical devices, including all Control System COMPONENTS, shall be electrically
+R49	R	49	88	513	0	0e917e235392	The 120A circuit breaker must be quickly and safely accessible from the exterior of the ROBOT.
+R50	R	50	89	91	0	b5639c29ba8f	The PDP, associated wiring, and all circuit breakers must be easily visible for Inspection.
+R51	R	51	89	206	0	aa343f1b50e9	Any active electrical item that is not an actuator (specified in R33) or core Control System item
+R52	R	52	89	206	0	2d7bd7795d6f	The roboRIO power input must be connected to the dedicated supply terminals on the PDP
+R53	R	53	89	750	0	c7d645332fff	The Wireless Bridge (Radio) power must be supplied directly by the 12V 2A output of a CTR
+R54	R	54	89	524	0	5692cc075f28	The VRM supplying power to the Wireless Bridge per R53 must be connected to the designated
+R55	R	55	90	431	0	d8fedf13bbf5	Only one wire shall be connected to each WAGO connector on the PDP.
+R56	R	56	90	165	0	97f6cf426c22	The only circuit breakers permitted for use in the PDP are:
+R57	R	57	90	153	0	b1eab2eee1a0	The fuses in the PDP shall only be replaced with functionally identical fuses (mini automotive
+R58	R	58	90	735	0	3005a1e1a8f9	Each branch circuit must be protected by one and only one circuit breaker on the PDP per Table
+R59	R	59	91	1054	0	a631f3bb3bb3	All circuits shall be wired with appropriately sized insulated copper wire (SIGNAL LEVEL cables
+R60	R	60	91	229	0	e949ddb1d283	Branch circuits may include intermediate elements such as COTS connectors, splices, COTS
+R61	R	61	91	605	0	3c2688178c90	All non-SIGNAL LEVEL wiring with a constant polarity (i.e., except for outputs of relay modules,
+R62	R	62	91	1054	0	0eb16264fb65	CUSTOM CIRCUITS shall not directly alter the power pathways between the ROBOT battery,
+R63	R	63	92	380	0	70c717744a20	ROBOTS must be controlled via one (1) programmable National Instruments roboRIO (P/N:
+R64	R	64	92	243	0	e48f714d8214	One (1) OpenMesh Wireless Bridge (P/N: OM5P-AN or OM5P-AC), that has been configured with
+R65	R	65	92	453	0	5f213e811d5c	The roboRIO Ethernet port must be connected to the Wireless Bridge port labeled “18-24 vPOE,”
+R66	R	66	92	1349	0	d7e24e178215	Communication between the ROBOT and the OPERATOR CONSOLE is restricted as follows:
+R67	R	67	93	194	0	7097c2ba2d2a	The roboRIO, Driver Station software, and Wireless Bridge must be configured to correspond to
+R68	R	68	93	117	0	ac96a5505df2	All signals must originate from the OPERATOR CONSOLE and be transmitted to the ROBOT via
+R69	R	69	93	413	0	6709ee6dcd74	No form of wireless communication shall be used to communicate to, from, or within the ROBOT,
+R70	R	70	93	234	0	f5340279f44c	The Wireless Bridge must be mounted on the ROBOT such that the diagnostic lights are visible to
+R71	R	71	93	556	0	e44f07a4b9e2	ROBOTS must use at least one (1), but no more than two (2), diagnostic Robot Signal Lights
+R72	R	72	94	2217	0	67aca6a904f8	The Driver Station software, roboRIO, Power Distribution Panel, Pneumatics Control Modules,
+R73	R	73	94	159	0	6e9ee56b0849	Neither 12VDC power nor relay module or motor controller outputs shall be directly connected to
+R74	R	74	94	503	0	bcda3a6034b0	Every relay module (per R35-B), servo controller, and PWM motor controller shall be connected
+R75	R	75	95	1057	0	c935e6ed2d5d	If a motor is controlled via the MXP, its power regulating device must be connected by one of the
+R76	R	76	95	615	0	238025bf55ad	Each CAN motor controller must be controlled with signal inputs sourced from the roboRIO and
+R77	R	77	95	187	0	558952d72fc6	Each PCM must be controlled with signal inputs sourced from the roboRIO and passed via a
+R78	R	78	95	241	0	823e1d182a46	The PDP CAN interface must be connected to the CAN-bus on the roboRIO (either directly or
+R79	R	79	95	602	0	0c2fafeb0f59	The CAN-bus must be connected to the roboRIO CAN port.
+R80	R	80	96	226	0	11f141108d72	To satisfy multiple constraints associated with safety, consistency, Inspection, and constructive
+R81	R	81	96	515	0	9125d670e651	All pneumatic items must be COTS pneumatic devices and either:
+R82	R	82	96	729	0	af33f759824f	All pneumatic COMPONENTS must be used in their original, unaltered condition. Exceptions are
+R83	R	83	96	1792	0	25c0375fe1e0	The only pneumatic system items permitted on ROBOTS include the items listed below.
+R84	R	84	97	656	0	084f59c3d06d	If pneumatic COMPONENTS are used, the following items are required as part of the pneumatic
+R85	R	85	98	565	0	57f4958ff505	Throughout an event, compressed air on the ROBOT must be provided by its one compressor.
+R86	R	86	98	602	0	9199ae8fd2d6	The compressor (permitted per R85) may be located off-board the ROBOT, however the
+R87	R	87	98	160	0	904de9ae628f	“Stored” air pressure on the ROBOT must be no greater than 120 psi (~827 kPa). No stored air
+R88	R	88	98	264	0	25ed60f0a1dc	“Working” air pressure on the ROBOT must be no greater than 60 psi (~413 kPa) and must be
+R89	R	89	99	395	0	df7e1eed43fe	Only the compressor, relief valve, pressure switch, pressure vent plug, pressure gauge, storage
+R90	R	90	99	148	0	c42e0f8e58fe	Pressure gauges must be placed in easily visible locations upstream and downstream of the
+R91	R	91	99	379	0	e052fea181bf	If the compressor is not included on the ROBOT (under the provisions of R87) the “stored”
+R92	R	92	100	360	0	815c19e16479	If the stored pressure gauge is kept off-board the ROBOT with the compressor, then only low-
+R93	R	93	100	431	0	a15a9f9958c9	The relief valve must be attached directly to the compressor or attached by legal hard fittings (e.g.
+R94	R	94	100	637	0	ea52836b609c	The pressure switch requirements are:
+R95	R	95	100	475	0	810af26d6715	Any pressure vent plug must be:
+R96	R	96	100	115	0	be730ec05c51	The outputs from multiple solenoid valves must not be plumbed together.
+R97	R	97	101	477	0	5a2eb607b984	The Driver Station software provided on the National Instruments website is the only application
+R98	R	98	101	346	0	85c4645bd535	The OPERATOR CONSOLE, the set of COMPONENTS and MECHANISMS used by the
+R99	R	99	101	742	0	72dc191792db	Devices hosting the Driver Station software must only interface with the Field Management
+R100	R	100	101	748	0	db9e898062d1	The OPERATOR CONSOLE must not
+R101	R	101	101	464	0	96da61f46957	Other than the system provided by the ARCADE, no other form of wireless communications shall
+R102	R	102	102	1371	0	9f6d9d194880	OPERATOR CONSOLES shall not be made using hazardous materials, be unsafe, cause an
+S1	S	1	45	503	0	0c2f04fb7761	Dangerous ROBOTS: not allowed.
+S2	S	2	45	223	0	5a399d97d7bf	Wait for the green lights.
+S3	S	3	45	979	0	7113b4d75fb5	Never step/jump over the GUARDRAIL.
+S4	S	4	46	365	0	d6535a2f1a16	Humans, stay off the FIELD during the MATCH.
+S5	S	5	46	398	0	a0da1b2bda69	ROBOTS, stay on the FIELD during the MATCH.
+S6	S	6	46	257	0	aa3570419219	Stay out of the tunnels.
+T1	T	1	108	911	0	d814f1ae9a92	Teams wanting additional Practice MATCHES may not join the Filler Line unless all criteria listed
+T2	T	2	108	13562	0	de582b126b78	During the period when the ARCADE is open for measurement, ROBOTS can be enabled, but
+T3	T	3	114	5616	0	49c45c5cf9e8	Egregious or repeated violations of any rule or procedure is prohibited.
+T4	T	4	116	285	0	42cffd6d3683	An ALLIANCE may not call more than one (1) TIMEOUT during the Playoff MATCHES.
+T5	T	5	117	464	0	287fd0070a59	If an ALLIANCE wishes to call a TIMEOUT, the ALLIANCE CAPTAIN must submit their
+T6	T	6	117	368	0	8bd335729379	There are no cascading TIMEOUTS. If an ALLIANCE calls a TIMEOUT during a FIELD
+T7	T	7	117	261	0	38d9c36c52de	TIMEOUTS are not transferrable between ALLIANCES.
+T8	T	8	117	1118	0	7612fd6486e2	I
+T9	T	9	117	657	0	42a3035cf350	An ALLIANCE may request neither a TIMEOUT nor a BACKUP TEAM after a Playoff MATCH is
+T10	T	10	117	1720	0	eb76b186e653	Pit Crew members may not be in the ALLIANCE STATION or PORTAL during a MATCH.
+T11	T	11	118	1057	0	714629540744	The ALLIANCE CAPTAIN must report the LINEUP to the Head REFEREE, or their designee, in
+T12	T	12	118	765	0	d74bd73fc885	Once the LINEUP has been declared, it cannot be changed unless there is a TIMEOUT. If there
+T13	T	13	119	482	0	57fe5bfdc79f	If a MATCH must be replayed due to an ARCADE FAULT, the LINEUP for the replayed MATCH
+T14	T	14	119	3318	0	a061d4b32e29	Only Team members wearing proper buttons are allowed on the ARCADE floor during
+T15	T	15	120	581	0	cb71eebf0c70	During the Einstein Finals, if the MATCH score of each ALLIANCE is equal, the MATCH is
+T16	T	16	120	686	0	1b71dd07f4e3	A team is considered to have already earned a FIRST Championship invitation prior to the
+T17	T	17	121	391	0	d45cc4454b61	A Team competing at a Regional Event qualifies for the FIRST Championship by meeting one of
+T18	T	18	121	936	0	ff6340184b78	All Regional events have a minimum of one (1) Wild Card slot. Additional Wild Cards are
+T19	T	19	121	184	0	dddc93a6fe24	If a member of the Finalist ALLIANCE has already qualified for the FIRST Championship, per
+T20	T	20	121	215	0	f50c93b20e92	Unused Wild Card slots will not be backfilled or replaced.
+T21	T	21	122	7864	0	71f675e6c8fb	Teams selected from the FIRST Championship Waitlist to participate at the FIRST Championship
+T22	T	22	124	21037	0	7d792bac2115	A Team competing in a District qualifies for their District Championship by meeting one of the

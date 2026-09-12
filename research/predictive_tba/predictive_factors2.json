@@ -1,0 +1,514 @@
+{
+  "2023": {
+    "p_picked_by_rank_band_pct": {
+      "0-10%": 100.0,
+      "10-25%": 98.2,
+      "25-33%": 90.8,
+      "33-50%": 78.0,
+      "50-66%": 53.7,
+      "66-75%": 40.4,
+      "75-90%": 25.9,
+      "90-100%": 16.4
+    },
+    "n_by_rank_band": {
+      "0-10%": 637,
+      "10-25%": 1102,
+      "25-33%": 543,
+      "33-50%": 1284,
+      "50-66%": 1107,
+      "66-75%": 675,
+      "75-90%": 1079,
+      "90-100%": 781
+    },
+    "winning_alliance_rank_pct": {
+      "captain": {
+        "n": 179,
+        "median": 2.9,
+        "p90": 11.1,
+        "pct_from_bottom_half": 0.0
+      },
+      "pick1": {
+        "n": 179,
+        "median": 9.4,
+        "p90": 30.6,
+        "pct_from_bottom_half": 2.8
+      },
+      "pick2": {
+        "n": 179,
+        "median": 63.2,
+        "p90": 92.1,
+        "pct_from_bottom_half": 69.3
+      },
+      "backup": {
+        "n": 33,
+        "median": 44.7,
+        "p90": 66.7,
+        "pct_from_bottom_half": 42.4
+      }
+    },
+    "picked_vs_unpicked_in_band": {
+      "25-33%": {
+        "n_picked": 493,
+        "n_unpicked": 50,
+        "median_avg_match_picked": 84.2,
+        "median_avg_match_unpicked": 126.6,
+        "score_premium_pct": -33.5,
+        "median_avg_auto_picked": 23.9,
+        "median_avg_auto_unpicked": 32.6,
+        "auto_premium_pct": -26.8
+      },
+      "33-50%": {
+        "n_picked": 1002,
+        "n_unpicked": 282,
+        "median_avg_match_picked": 79.2,
+        "median_avg_match_unpicked": 87.4,
+        "score_premium_pct": -9.4,
+        "median_avg_auto_picked": 22.2,
+        "median_avg_auto_unpicked": 25.5,
+        "auto_premium_pct": -12.6
+      },
+      "50-66%": {
+        "n_picked": 594,
+        "n_unpicked": 513,
+        "median_avg_match_picked": 74.8,
+        "median_avg_match_unpicked": 73.8,
+        "score_premium_pct": 1.3,
+        "median_avg_auto_picked": 20.5,
+        "median_avg_auto_unpicked": 21.1,
+        "auto_premium_pct": -2.7
+      },
+      "66-75%": {
+        "n_picked": 273,
+        "n_unpicked": 402,
+        "median_avg_match_picked": 70.0,
+        "median_avg_match_unpicked": 70.9,
+        "score_premium_pct": -1.3,
+        "median_avg_auto_picked": 20.2,
+        "median_avg_auto_unpicked": 19.8,
+        "auto_premium_pct": 1.9
+      },
+      "75-90%": {
+        "n_picked": 280,
+        "n_unpicked": 799,
+        "median_avg_match_picked": 66.2,
+        "median_avg_match_unpicked": 67.8,
+        "score_premium_pct": -2.4,
+        "median_avg_auto_picked": 18.6,
+        "median_avg_auto_unpicked": 19.0,
+        "auto_premium_pct": -2.3
+      },
+      "90-100%": {
+        "n_picked": 128,
+        "n_unpicked": 653,
+        "median_avg_match_picked": 59.6,
+        "median_avg_match_unpicked": 62.5,
+        "score_premium_pct": -4.6,
+        "median_avg_auto_picked": 16.2,
+        "median_avg_auto_unpicked": 17.2,
+        "auto_premium_pct": -6.0
+      }
+    },
+    "p_win_event_by_slot_pct": {
+      "backup": 16.6,
+      "captain": 12.5,
+      "pick1": 12.5,
+      "pick2": 12.5
+    },
+    "auto_pct_of_score_by_rank_decile": {
+      "decile_1": 26.9,
+      "decile_2": 27.2,
+      "decile_3": 27.5,
+      "decile_4": 27.2,
+      "decile_5": 27.1,
+      "decile_6": 27.3,
+      "decile_7": 27.4,
+      "decile_8": 27.1,
+      "decile_9": 27.2,
+      "decile_10": 27.2
+    }
+  },
+  "2024": {
+    "p_picked_by_rank_band_pct": {
+      "0-10%": 100.0,
+      "10-25%": 97.6,
+      "25-33%": 91.2,
+      "33-50%": 77.2,
+      "50-66%": 50.8,
+      "66-75%": 38.9,
+      "75-90%": 25.1,
+      "90-100%": 14.3
+    },
+    "n_by_rank_band": {
+      "0-10%": 684,
+      "10-25%": 1146,
+      "25-33%": 577,
+      "33-50%": 1356,
+      "50-66%": 1173,
+      "66-75%": 709,
+      "75-90%": 1127,
+      "90-100%": 833
+    },
+    "winning_alliance_rank_pct": {
+      "captain": {
+        "n": 182,
+        "median": 2.9,
+        "p90": 10.0,
+        "pct_from_bottom_half": 0.0
+      },
+      "pick1": {
+        "n": 182,
+        "median": 9.6,
+        "p90": 30.3,
+        "pct_from_bottom_half": 0.5
+      },
+      "pick2": {
+        "n": 182,
+        "median": 66.7,
+        "p90": 93.8,
+        "pct_from_bottom_half": 74.7
+      },
+      "backup": {
+        "n": 33,
+        "median": 44.0,
+        "p90": 68.9,
+        "pct_from_bottom_half": 39.4
+      }
+    },
+    "picked_vs_unpicked_in_band": {
+      "25-33%": {
+        "n_picked": 526,
+        "n_unpicked": 51,
+        "median_avg_match_picked": 49.0,
+        "median_avg_match_unpicked": 53.2,
+        "score_premium_pct": -7.8,
+        "median_avg_auto_picked": 18.6,
+        "median_avg_auto_unpicked": 20.6,
+        "auto_premium_pct": -9.4
+      },
+      "33-50%": {
+        "n_picked": 1047,
+        "n_unpicked": 309,
+        "median_avg_match_picked": 45.9,
+        "median_avg_match_unpicked": 47.4,
+        "score_premium_pct": -3.2,
+        "median_avg_auto_picked": 17.3,
+        "median_avg_auto_unpicked": 17.8,
+        "auto_premium_pct": -2.8
+      },
+      "50-66%": {
+        "n_picked": 596,
+        "n_unpicked": 577,
+        "median_avg_match_picked": 42.2,
+        "median_avg_match_unpicked": 41.8,
+        "score_premium_pct": 0.9,
+        "median_avg_auto_picked": 15.9,
+        "median_avg_auto_unpicked": 16.2,
+        "auto_premium_pct": -1.8
+      },
+      "66-75%": {
+        "n_picked": 276,
+        "n_unpicked": 433,
+        "median_avg_match_picked": 39.9,
+        "median_avg_match_unpicked": 40.3,
+        "score_premium_pct": -1.0,
+        "median_avg_auto_picked": 14.9,
+        "median_avg_auto_unpicked": 15.7,
+        "auto_premium_pct": -5.2
+      },
+      "75-90%": {
+        "n_picked": 283,
+        "n_unpicked": 844,
+        "median_avg_match_picked": 36.2,
+        "median_avg_match_unpicked": 37.7,
+        "score_premium_pct": -3.9,
+        "median_avg_auto_picked": 13.8,
+        "median_avg_auto_unpicked": 14.7,
+        "auto_premium_pct": -6.3
+      },
+      "90-100%": {
+        "n_picked": 119,
+        "n_unpicked": 714,
+        "median_avg_match_picked": 31.0,
+        "median_avg_match_unpicked": 34.0,
+        "score_premium_pct": -8.8,
+        "median_avg_auto_picked": 11.8,
+        "median_avg_auto_unpicked": 13.4,
+        "auto_premium_pct": -12.4
+      }
+    },
+    "p_win_event_by_slot_pct": {
+      "backup": 15.5,
+      "captain": 12.3,
+      "pick1": 12.3,
+      "pick2": 12.3
+    },
+    "auto_pct_of_score_by_rank_decile": {
+      "decile_1": 36.4,
+      "decile_2": 36.6,
+      "decile_3": 36.9,
+      "decile_4": 36.9,
+      "decile_5": 36.9,
+      "decile_6": 37.5,
+      "decile_7": 37.5,
+      "decile_8": 37.7,
+      "decile_9": 38.1,
+      "decile_10": 39.0
+    }
+  },
+  "2025": {
+    "p_picked_by_rank_band_pct": {
+      "0-10%": 100.0,
+      "10-25%": 98.1,
+      "25-33%": 87.8,
+      "33-50%": 73.2,
+      "50-66%": 51.6,
+      "66-75%": 39.1,
+      "75-90%": 30.0,
+      "90-100%": 17.4
+    },
+    "n_by_rank_band": {
+      "0-10%": 719,
+      "10-25%": 1211,
+      "25-33%": 607,
+      "33-50%": 1423,
+      "50-66%": 1241,
+      "66-75%": 742,
+      "75-90%": 1190,
+      "90-100%": 880
+    },
+    "winning_alliance_rank_pct": {
+      "captain": {
+        "n": 198,
+        "median": 2.8,
+        "p90": 5.4,
+        "pct_from_bottom_half": 0.0
+      },
+      "pick1": {
+        "n": 198,
+        "median": 8.4,
+        "p90": 25.0,
+        "pct_from_bottom_half": 1.5
+      },
+      "pick2": {
+        "n": 198,
+        "median": 68.8,
+        "p90": 92.9,
+        "pct_from_bottom_half": 74.2
+      },
+      "backup": {
+        "n": 28,
+        "median": 41.2,
+        "p90": 69.2,
+        "pct_from_bottom_half": 28.6
+      }
+    },
+    "picked_vs_unpicked_in_band": {
+      "25-33%": {
+        "n_picked": 533,
+        "n_unpicked": 74,
+        "median_avg_match_picked": 92.8,
+        "median_avg_match_unpicked": 113.7,
+        "score_premium_pct": -18.4,
+        "median_avg_auto_picked": 17.6,
+        "median_avg_auto_unpicked": 22.6,
+        "auto_premium_pct": -22.3
+      },
+      "33-50%": {
+        "n_picked": 1041,
+        "n_unpicked": 382,
+        "median_avg_match_picked": 88.8,
+        "median_avg_match_unpicked": 84.5,
+        "score_premium_pct": 5.2,
+        "median_avg_auto_picked": 16.7,
+        "median_avg_auto_unpicked": 16.3,
+        "auto_premium_pct": 2.1
+      },
+      "50-66%": {
+        "n_picked": 640,
+        "n_unpicked": 601,
+        "median_avg_match_picked": 82.0,
+        "median_avg_match_unpicked": 81.1,
+        "score_premium_pct": 1.1,
+        "median_avg_auto_picked": 15.2,
+        "median_avg_auto_unpicked": 16.0,
+        "auto_premium_pct": -5.2
+      },
+      "66-75%": {
+        "n_picked": 290,
+        "n_unpicked": 452,
+        "median_avg_match_picked": 78.0,
+        "median_avg_match_unpicked": 77.0,
+        "score_premium_pct": 1.4,
+        "median_avg_auto_picked": 14.6,
+        "median_avg_auto_unpicked": 15.1,
+        "auto_premium_pct": -3.4
+      },
+      "75-90%": {
+        "n_picked": 357,
+        "n_unpicked": 833,
+        "median_avg_match_picked": 72.2,
+        "median_avg_match_unpicked": 74.2,
+        "score_premium_pct": -2.7,
+        "median_avg_auto_picked": 13.8,
+        "median_avg_auto_unpicked": 14.8,
+        "auto_premium_pct": -6.6
+      },
+      "90-100%": {
+        "n_picked": 153,
+        "n_unpicked": 727,
+        "median_avg_match_picked": 66.8,
+        "median_avg_match_unpicked": 66.7,
+        "score_premium_pct": 0.1,
+        "median_avg_auto_picked": 12.4,
+        "median_avg_auto_unpicked": 13.4,
+        "auto_premium_pct": -6.8
+      }
+    },
+    "p_win_event_by_slot_pct": {
+      "backup": 16.3,
+      "captain": 12.5,
+      "pick1": 12.5,
+      "pick2": 12.5
+    },
+    "auto_pct_of_score_by_rank_decile": {
+      "decile_1": 21.2,
+      "decile_2": 20.0,
+      "decile_3": 19.6,
+      "decile_4": 19.9,
+      "decile_5": 19.8,
+      "decile_6": 19.8,
+      "decile_7": 19.8,
+      "decile_8": 20.0,
+      "decile_9": 19.9,
+      "decile_10": 20.1
+    }
+  },
+  "2026": {
+    "p_picked_by_rank_band_pct": {
+      "0-10%": 100.0,
+      "10-25%": 98.4,
+      "25-33%": 93.9,
+      "33-50%": 75.6,
+      "50-66%": 54.4,
+      "66-75%": 43.3,
+      "75-90%": 32.6,
+      "90-100%": 21.9
+    },
+    "n_by_rank_band": {
+      "0-10%": 730,
+      "10-25%": 1225,
+      "25-33%": 618,
+      "33-50%": 1446,
+      "50-66%": 1262,
+      "66-75%": 744,
+      "75-90%": 1219,
+      "90-100%": 898
+    },
+    "winning_alliance_rank_pct": {
+      "captain": {
+        "n": 207,
+        "median": 2.9,
+        "p90": 5.7,
+        "pct_from_bottom_half": 0.0
+      },
+      "pick1": {
+        "n": 207,
+        "median": 7.3,
+        "p90": 17.2,
+        "pct_from_bottom_half": 0.0
+      },
+      "pick2": {
+        "n": 207,
+        "median": 71.0,
+        "p90": 95.9,
+        "pct_from_bottom_half": 83.6
+      },
+      "backup": {
+        "n": 43,
+        "median": 43.8,
+        "p90": 71.4,
+        "pct_from_bottom_half": 32.6
+      }
+    },
+    "picked_vs_unpicked_in_band": {
+      "25-33%": {
+        "n_picked": 580,
+        "n_unpicked": 38,
+        "median_avg_match_picked": 158.2,
+        "median_avg_match_unpicked": 288.2,
+        "score_premium_pct": -45.1,
+        "median_avg_auto_picked": 31.2,
+        "median_avg_auto_unpicked": 54.5,
+        "auto_premium_pct": -42.6
+      },
+      "33-50%": {
+        "n_picked": 1093,
+        "n_unpicked": 353,
+        "median_avg_match_picked": 145.1,
+        "median_avg_match_unpicked": 147.2,
+        "score_premium_pct": -1.5,
+        "median_avg_auto_picked": 29.1,
+        "median_avg_auto_unpicked": 30.7,
+        "auto_premium_pct": -5.2
+      },
+      "50-66%": {
+        "n_picked": 687,
+        "n_unpicked": 575,
+        "median_avg_match_picked": 126.8,
+        "median_avg_match_unpicked": 134.9,
+        "score_premium_pct": -6.0,
+        "median_avg_auto_picked": 26.2,
+        "median_avg_auto_unpicked": 28.8,
+        "auto_premium_pct": -9.0
+      },
+      "66-75%": {
+        "n_picked": 322,
+        "n_unpicked": 422,
+        "median_avg_match_picked": 119.0,
+        "median_avg_match_unpicked": 123.6,
+        "score_premium_pct": -3.7,
+        "median_avg_auto_picked": 25.9,
+        "median_avg_auto_unpicked": 26.5,
+        "auto_premium_pct": -2.3
+      },
+      "75-90%": {
+        "n_picked": 398,
+        "n_unpicked": 821,
+        "median_avg_match_picked": 110.3,
+        "median_avg_match_unpicked": 115.4,
+        "score_premium_pct": -4.4,
+        "median_avg_auto_picked": 23.6,
+        "median_avg_auto_unpicked": 25.8,
+        "auto_premium_pct": -8.3
+      },
+      "90-100%": {
+        "n_picked": 197,
+        "n_unpicked": 701,
+        "median_avg_match_picked": 102.9,
+        "median_avg_match_unpicked": 99.0,
+        "score_premium_pct": 4.0,
+        "median_avg_auto_picked": 22.3,
+        "median_avg_auto_unpicked": 23.5,
+        "auto_premium_pct": -5.0
+      }
+    },
+    "p_win_event_by_slot_pct": {
+      "backup": 17.0,
+      "captain": 12.4,
+      "pick1": 12.4,
+      "pick2": 12.4
+    },
+    "auto_pct_of_score_by_rank_decile": {
+      "decile_1": 19.1,
+      "decile_2": 18.9,
+      "decile_3": 19.6,
+      "decile_4": 20.1,
+      "decile_5": 20.4,
+      "decile_6": 20.6,
+      "decile_7": 21.4,
+      "decile_8": 21.4,
+      "decile_9": 21.8,
+      "decile_10": 22.9
+    }
+  }
+}

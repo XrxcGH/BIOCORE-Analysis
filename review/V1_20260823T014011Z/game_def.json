@@ -1,0 +1,34 @@
+{
+  "_comment": "REHEARSAL. Filled from 2026 REBUILT GameManual (TU22) Tables 6-2/6-4/6-5, pp.44-48. [VERIFIED]",
+  "_schema_gap_1": "teleop_s is the FULL 140s TELEOP incl. the 30s ENDGAME. cycle-model.py subtracts the chosen fixed_action time_s as endgame reserve, so do not double-count.",
+  "_schema_gap_2": "REBUILT gates FUEL on HUB ACTIVE/INACTIVE (Table 6-3). Each ALLIANCE HUB is active only 10s TRANSITION + 2 of 4 x25s SHIFTS + 30s ENDGAME = 90s of 140s. The schema cannot express a duty cycle, so raw model output overstates FUEL by ~1.56x. Corrected by hand in REVIEW.md section 2.",
+  "name": "REBUILT (2026) -- REHEARSAL stand-in for BIOCORE",
+  "auto_s": 20,
+  "teleop_s": 140,
+  "endgame_s": 30,
+  "cycle_actions": [
+    {
+      "name": "FUEL scored in an active HUB",
+      "points_auto": 1,
+      "points_teleop": 1,
+      "per_cycle": 8,
+      "_note": "1 pt AUTO and TELEOP [VERIFIED Table 6-4 p.47]. 0 in an inactive HUB. per_cycle=8 is an [INFERENCE] hopper capacity for a small-team robot; CHUTE retains ~25 FUEL (p.717)."
+    }
+  ],
+  "fixed_actions": [
+    { "name": "TOWER L1 (AUTO, 2 ROBOT max)", "points": 15, "time_s": 6, "phase": "auto" },
+    { "name": "TOWER L1 (TELEOP)", "points": 10, "time_s": 8, "phase": "endgame" },
+    { "name": "TOWER L2 (TELEOP)", "points": 20, "time_s": 15, "phase": "endgame" },
+    { "name": "TOWER L3 (TELEOP)", "points": 30, "time_s": 25, "phase": "endgame" },
+    { "name": "No climb", "points": 0, "time_s": 0, "phase": "endgame" }
+  ],
+  "_fixed_note": "L1 AUTO=15 / TELEOP=10; L2=20 TELEOP only; L3=30 TELEOP only [VERIFIED Table 6-4]. A ROBOT may earn L1 only in AUTO and only a SINGLE LEVEL during TELEOP; an AUTO scorer may also score in TELEOP (p.46). time_s values are [INFERENCE] -- the manual states no time cost for any action.",
+  "rp": [
+    { "name": "ENERGIZED", "metric": "FUEL in active HUB", "threshold": 100,
+      "note": "Regional/District 100 -> DCMP 240 -> Champs 360 [VERIFIED Table 6-5 p.48]. 3.6x escalation: an RP-optimised design correct at Week 1 is wrong at DCMP." },
+    { "name": "SUPERCHARGED", "metric": "FUEL in active HUB", "threshold": 360,
+      "note": "360 / 360 / 500. Alliance-wide; unreachable solo at any tier." },
+    { "name": "TRAVERSAL", "metric": "TOWER points scored during the MATCH", "threshold": 50,
+      "note": "50 at ALL THREE tiers -- the only non-escalating BONUS RP. This is the cheapest RP in the game and the small-team lever." }
+  ]
+}

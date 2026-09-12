@@ -1,0 +1,43 @@
+# candidates_example.yaml -- the shape of a kickoff-day candidate file.
+# Replace every entry on 2027-01-09. The three below are 2026 REBUILT designs used
+# ONLY to demonstrate the cycle-model.py -> VALUE-axis handoff. None describes BIOCORE.
+#
+# Score the achievability factors BY HAND against the anchors in
+# reference/ACHIEVABILITY-RUBRIC.md section 2. Two people, independently, then reconcile.
+#
+#   python tools/score-strategy.py --candidates reference/examples/candidates_example.yaml
+
+team_overrides:
+  outsourced_2d_account: false      # flip to true once a test order has shipped
+
+candidates:
+
+- id: S1
+  name: Fixed-position bulk scorer
+  achievability: {A1: 2, A2: 3, A3: 4, A4: 3, A5: 4, A6: 5, A7: 4,
+                  A8: 5, A9: 4, A10: 4, A11: 4, A12: 3, A13: 4}
+  value:         {V2: 4, V3: 4, V4: 1, V5: 4}     # V1 comes from cycle-model.py
+  gates_input:   {mfg_floor: bandsaw+drill, new_workstreams: 1, novel_mechanisms: 2,
+                  marginal_cost_high_usd: 1100, mechanism_hours: 174,
+                  mentor_minutes_per_week: 80, drive_practice_sensitivity: med}
+  cycle_model:   {game: rebuilt, cycle: 12, auto_scored: 3, median_alliance_score: 147}
+
+- id: S2
+  name: Endgame specialist, cheapest RP tier
+  achievability: {A1: 4, A2: 3, A3: 4, A4: 2, A5: 4, A6: 1, A7: 4,
+                  A8: 5, A9: 4, A10: 4, A11: 4, A12: 4, A13: 4}
+  value:         {V2: 5, V3: 3, V4: 4, V5: 2}
+  gates_input:   {mfg_floor: bandsaw+drill, new_workstreams: 1, novel_mechanisms: 2,
+                  marginal_cost_high_usd: 700, mechanism_hours: 174,
+                  mentor_minutes_per_week: 80, drive_practice_sensitivity: high}
+  cycle_model:   {game: rebuilt, cycle: 12, auto_scored: 3,
+                  endgame: "TOWER L3 (TELEOP)", median_alliance_score: 147}
+
+- id: S3
+  name: Do-everything robot (control)
+  achievability: {A1: 0, A2: 0, A3: 1, A4: 1, A5: 1, A6: 1, A7: 0,
+                  A8: 1, A9: 0, A10: 1, A11: 1, A12: 0, A13: 0}
+  value:         {V1: 5, V2: 5, V3: 5, V4: 2, V5: 5}
+  gates_input:   {mfg_floor: CNC, new_workstreams: 3, novel_mechanisms: 4,
+                  marginal_cost_high_usd: 2400, mechanism_hours: 579,
+                  mentor_minutes_per_week: 190, drive_practice_sensitivity: high}

@@ -1,0 +1,555 @@
+# 05_rubric_backtest.yaml
+# Machine-readable companion to reference/05_RUBRIC_BACKTEST.md
+#
+# The validation record for reference/achievability_rubric.yaml: full scored
+# results for all 30 archetypes, the v1 -> v2 tuning changelog, the hit rate and
+# every miss, the independent TBA test, the uncertainty register, and the
+# regression assertions to re-run after ANY future edit to the rubric.
+#
+# Written 2026-08-22. Nothing in this file describes BIOCORE. BIOCORE is FRC,
+# kickoff 2027-01-09 12:00 ET, and its game is not public as of 2026-08-22.
+# See research/00_PREMISE_CORRECTION.md.
+#
+# evidence: C = confirmed in a primary source in this corpus (manual text or
+#               scraped TBA data)
+#           H = historical pattern across prior FRC seasons
+#           S = speculation / model calibration
+#           U = unverified
+
+meta:
+  version: 1
+  written: 2026-08-22
+  companion_md: reference/05_RUBRIC_BACKTEST.md
+  instrument_under_test: reference/achievability_rubric.yaml
+  instrument_version_before: 1
+  instrument_version_after: 2
+  test_set: reference/archetype_corpus.yaml        # 30 archetypes, 2022-2026
+  scorer: tools/score-strategy.py
+  independent_test: tools/backtest_specialists.py
+  team_profile: "~15 students, 1 experienced technical mentor, COTS path, $2,500 robot discretionary"
+  machine_run_on: 2026-08-22
+  deterministic: true
+  network_used: false
+
+# ===================================================== HEADLINE RESULT
+headline:
+  agreement_v2: {hits: 27, total: 30, pct: 90}
+  agreement_v1: {hits: 24, total: 30, pct: 80}
+  baseline_arch_own_predicate: {hits: 21, total: 30, pct: 70}
+  false_green_count: 0            # THE safety property: no T1 GREEN row is anything but hand-YES
+  false_green_denominator: 12
+  false_gate_count: 3
+  spearman_ach_vs_hand_verdict: -0.709     # load-bearing
+  spearman_val_vs_outcome: -0.899          # PARTLY CIRCULAR -- see uncertainty U4
+  confusion_matrix_monotone: true
+  agreement_mapping:
+    YES: [T1 GREEN, T2 STRETCH]
+    CONDITIONAL: [T2 STRETCH, T3 RED]
+    MARGINAL: [T2 STRETCH, T3 RED]
+    NO: [T3 RED, T4 GATED]
+  interpretation: >
+    In-sample consistency, not out-of-sample accuracy. The rubric's anchors were
+    calibrated against this same 30-record set and this pass tuned three gate
+    parameters against it. 27/30 is a floor on internal consistency. The honest
+    out-of-sample test is 2027: score candidates on kickoff day, seal the file,
+    compare in April.
+
+confusion_matrix_v2:            # rows = rubric tier, cols = corpus hand verdict
+  T1 GREEN:   {YES: 12, CONDITIONAL: 0, MARGINAL: 0, NO: 0}
+  T2 STRETCH: {YES:  5, CONDITIONAL: 4, MARGINAL: 0, NO: 0}
+  T3 RED:     {YES:  0, CONDITIONAL: 2, MARGINAL: 0, NO: 0}
+  T4 GATED:   {YES:  0, CONDITIONAL: 2, MARGINAL: 1, NO: 4}
+
+hit_rate_by_season:
+  2026: {n: 8, hits: 7, pct: 88, misses: [R7]}
+  2025: {n: 6, hits: 6, pct: 100, misses: []}
+  2024: {n: 6, hits: 5, pct: 83, misses: [C1]}
+  2023: {n: 5, hits: 5, pct: 100, misses: []}
+  2022: {n: 5, hits: 4, pct: 80, misses: [P1]}
+
+hit_rate_by_invariant:
+  I1: {name: reliable high-volume single-task scorer, n: 9, hits: 6, pct: 67}
+  I2: {name: do-everything robot,                     n: 1, hits: 1, pct: 100}
+  I3: {name: defense specialist,                      n: 4, hits: 4, pct: 100}
+  I4: {name: endgame specialist,                      n: 6, hits: 6, pct: 100}
+  I5: {name: AUTO specialist,                         n: 4, hits: 4, pct: 100}
+  I6: {name: feeder / support,                        n: 3, hits: 3, pct: 100}
+  I7: {name: minimal flawless,                        n: 4, hits: 4, pct: 100}
+  diagnosis: >
+    100% everywhere except I1 -- the family whose whole question is "which variant
+    of this?". That is exactly the failure mode archetype_corpus.yaml predicted for
+    any predicate that scores the family instead of the variant.
+
+# ===================================================== FULL SCORED RESULTS
+# ACH / VAL / idx are verbatim tools/score-strategy.py output under rubric v2.
+# hand + outcome + invariant are from archetype_corpus.yaml (not computed here).
+# All factor scores behind ACH/VAL are machine-derived from corpus metadata: [S].
+results:
+  evidence: S                    # the SCORES are S; hand/outcome/invariant are C/H
+  columns: [id, season, ach, val, idx, quadrant, tier_v2, tier_v1, hand, outcome, invariant, agrees]
+  rows:
+    - [P2, 2022, 93.7, 49.0, 73.6, CHEAP INSURANCE, T1 GREEN,   T1 GREEN,   YES,         third-pick,    I7, true]
+    - [G4, 2023, 90.6, 49.0, 71.9, CHEAP INSURANCE, T1 GREEN,   T1 GREEN,   YES,         third-pick,    I7, true]
+    - [R8, 2026, 87.9, 32.4, 62.9, CHEAP INSURANCE, T1 GREEN,   T1 GREEN,   YES,         third-pick,    I7, true]
+    - [R5, 2026, 86.9, 72.8, 80.5, BUILD THIS,      T1 GREEN,   T1 GREEN,   YES,         captain-tier,  I5, true]
+    - [C6, 2024, 86.4, 65.2, 76.8, BUILD THIS,      T2 STRETCH, T2 STRETCH, YES,         second-pick,   I3, true]
+    - [R3, 2026, 86.4, 49.3, 69.7, CHEAP INSURANCE, T1 GREEN,   T1 GREEN,   YES,         second-pick,   I6, true]
+    - [P5, 2022, 83.3, 78.3, 81.0, BUILD THIS,      T2 STRETCH, T2 STRETCH, CONDITIONAL, captain-tier,  I5, true]
+    - [G3, 2023, 82.7, 74.1, 78.9, BUILD THIS,      T1 GREEN,   T1 GREEN,   YES,         second-pick,   I4, true]
+    - [F6, 2025, 81.0, 65.2, 73.9, BUILD THIS,      T2 STRETCH, T2 STRETCH, YES,         second-pick,   I3, true]
+    - [G5, 2023, 81.0, 56.9, 70.2, BUILD THIS,      T2 STRETCH, T2 STRETCH, CONDITIONAL, third-pick,    I3, true]
+    - [C5, 2024, 80.2, 83.8, 81.8, BUILD THIS,      T2 STRETCH, T2 STRETCH, CONDITIONAL, captain-tier,  I5, true]
+    - [F5, 2025, 80.2, 78.3, 79.3, BUILD THIS,      T2 STRETCH, T2 STRETCH, CONDITIONAL, captain-tier,  I5, true]
+    - [R6, 2026, 80.1, 59.7, 70.9, BUILD THIS,      T2 STRETCH, T2 STRETCH, YES,         second-pick,   I3, true]
+    - [F3, 2025, 73.2, 75.2, 74.1, BUILD THIS,      T1 GREEN,   T1 GREEN,   YES,         first-pick,    I1, true]
+    - [R2, 2026, 73.2, 72.8, 73.0, BUILD THIS,      T1 GREEN,   T1 GREEN,   YES,         first-pick,    I1, true]
+    - [F2, 2025, 73.2, 57.2, 66.0, BUILD THIS,      T1 GREEN,   T1 GREEN,   YES,         second-pick,   I6, true]
+    - [C2, 2024, 73.2, 51.7, 63.6, CHEAP INSURANCE, T1 GREEN,   T1 GREEN,   YES,         second-pick,   I6, true]
+    - [P4, 2022, 73.2, 40.7, 58.6, CHEAP INSURANCE, T2 STRETCH, T2 STRETCH, YES,         second-pick,   I7, true]
+    - [R4, 2026, 72.1, 63.1, 68.0, BUILD THIS,      T1 GREEN,   T1 GREEN,   YES,         second-pick,   I4, true]
+    - [C3, 2024, 70.2, 54.8, 63.3, CHEAP INSURANCE, T1 GREEN,   T1 GREEN,   YES,         second-pick,   I7, true]
+    - [F4, 2025, 54.6, 57.6, 56.0, TRAP,            T3 RED,     T4 GATED,   CONDITIONAL, second-pick,   I4, true]
+    - [C4, 2024, 53.7, 57.6, 55.5, TRAP,            T3 RED,     T4 GATED,   CONDITIONAL, second-pick,   I4, true]
+    - [G1, 2023, 51.2, 80.7, 64.5, TRAP,            T2 STRETCH, T4 GATED,   YES,         first-pick,    I1, true]
+    - [R7, 2026, 45.0, 61.0, 52.2, TRAP,            T4 GATED,   T4 GATED,   MARGINAL,    third-pick,    I1, false]
+    - [C1, 2024, 37.3, 89.0, 60.6, TRAP,            T4 GATED,   T4 GATED,   CONDITIONAL, event-winning, I1, false]
+    - [P1, 2022, 37.3, 83.4, 58.1, TRAP,            T4 GATED,   T4 GATED,   CONDITIONAL, event-winning, I1, false]
+    - [F1, 2025, 30.8, 89.0, 57.0, TRAP,            T4 GATED,   T4 GATED,   NO,          event-winning, I1, true]
+    - [R1, 2026, 22.0, 89.0, 52.2, TRAP,            T4 GATED,   T4 GATED,   NO,          event-winning, I1, true]
+    - [P3, 2022, 19.0, 69.0, 41.5, TRAP,            T4 GATED,   T4 GATED,   NO,          first-pick,    I4, true]
+    - [G2, 2023, 14.9, 92.8, 50.0, TRAP,            T4 GATED,   T4 GATED,   NO,          event-winning, I2, true]
+
+quadrant_populations_v2:
+  BUILD THIS:      [C5, P5, R5, F5, G3, C6, F3, F6, R2, R6, G5, R4, F2]
+  CHEAP INSURANCE: [P2, G4, R3, C2, C3, R8, P4]
+  TRAP:            [G1, C1, P1, F1, F4, C4, R7, R1, G2, P3]   # all gated or soft-downgraded
+  DELETE:          []            # empty by construction: the corpus only records archetypes
+                                 # someone, somewhere, ran successfully. Your kickoff
+                                 # whiteboard will populate this quadrant.
+
+# ===================================================== THE MISSES
+misses_v2:
+  count: 3
+  single_root_cause: true
+  root_cause: >
+    The corpus auto-scorer maps novel_mechanisms := mechanism_count, but
+    archetype_corpus.yaml defines mechanism_count as "powered subsystems BEYOND
+    the drivetrain" -- NOT "subsystems this team must invent". Gate G2's constant
+    (novel_mechanisms_max = 2, derived four independent ways in the capacity model
+    sec 5.2 and 6.3) is correct; its INPUT is wrong. This is a missing factor, not
+    a bad weight and not a bad anchor.
+  records:
+    - id: C1
+      season: 2024
+      name: SPEAKER Cycler (variable distance)
+      hand: CONDITIONAL
+      rubric: T4 GATED
+      fired: "G2 WORKSTREAMS: 3 novel mechanisms > novel_mechanisms_max 2"
+      diagnosis: "By 2024 the intake and flywheel had released copyable precedents; only the variable-range aim stack was genuinely novel. True novel count is ~2, not 3."
+      fix_class: missing_factor
+    - id: P1
+      season: 2022
+      name: UPPER HUB Cycler
+      hand: CONDITIONAL
+      rubric: T4 GATED
+      fired: "G2 WORKSTREAMS: 3 novel mechanisms > novel_mechanisms_max 2"
+      diagnosis: same as C1
+      fix_class: missing_factor
+    - id: R7
+      season: 2026
+      name: Depot Cycler / Lift Dumper
+      hand: MARGINAL
+      rubric: T4 GATED
+      fired: "G2 WORKSTREAMS: 3 novel mechanisms > novel_mechanisms_max 2"
+      diagnosis: same as C1
+      fix_class: missing_factor
+  why_not_fixed_this_pass: >
+    The correct fix needs a per-mechanism cots_status field that
+    archetype_corpus.yaml does not have -- the same gap the rubric's own
+    limitations already confess for A10. Fabricating that field for 30 records to
+    move 27 to 30 would be tuning the test set, not the instrument.
+  does_not_occur_on_real_candidates: >
+    A human scoring a real design against ACHIEVABILITY-RUBRIC.md sec 2 A2's
+    five-part tie-break already answers the COTS question. This miss is an
+    artefact of the auto-scorer, which the rubric labels "a regression-test
+    harness, not a scoring method".
+
+misses_v1_fixed_by_the_tune:
+  - {id: G1, hand: YES,         v1: T4 GATED, v2: T2 STRETCH, cause: "router treated as a hard capability wall"}
+  - {id: F4, hand: CONDITIONAL, v1: T4 GATED, v2: T3 RED,     cause: "router treated as a hard capability wall"}
+  - {id: C4, hand: CONDITIONAL, v1: T4 GATED, v2: T3 RED,     cause: "router treated as a hard capability wall"}
+
+# ===================================================== THE TUNE (v1 -> v2)
+tuning_changelog:
+  target_file: reference/achievability_rubric.yaml
+  backup_v1: reference/.achievability_rubric.v1.bak
+  weights_changed: 0             # deliberately. No weight, threshold, anchor or
+                                 # quadrant/tier cut was touched.
+  changes:
+    - id: A
+      key: gates.checks[G1].grading
+      before: "absent -- manufacturing floor was a binary in/out of owned_manufacturing"
+      after: "hard_floors: [CNC]; soft_floors: [router]; soft effect = one-tier downgrade"
+      principle: >
+        A gate must distinguish a machine that cannot be bought as a service from
+        one that can. In-house CNC mill/lathe on a load-bearing part is the former;
+        2D profile cutting is the latter.
+      implements: "archetype_corpus.yaml's own stated fix: 'make mfg_floor a graded term rather than a binary'"
+      evidence: S
+      revert: "soft_floors: []"
+      records_moved: [G1, F4, C4]
+    - id: B
+      key: gates.checks[G4].soft_band_multiplier
+      before: "absent (effectively 1.0) -- hard gate at >205 h"
+      after: 1.25                # hard above 256 h; soft between 205 and 256 h
+      principle: >
+        A hard gate must not fire inside its own input's error bar. The capacity
+        model calls hours_per_novel_mechanism = 90 "deliberately generous" and
+        archetype_corpus states its effort/cost bands are +/-40%. 205 < est <= 256 h
+        is not "unbuildable", it is "needs an enabler bought" = T2 STRETCH.
+      evidence: S
+      revert: "soft_band_multiplier: 1.0"
+      records_moved: [G1, F4, C4]
+    - id: C
+      key: gates.soft_downgrade_max_tiers
+      before: "absent (unbounded stacking)"
+      after: 1
+      principle: >
+        T2 STRETCH already MEANS "possible only if you buy a specific named
+        enabler". Two soft flags = two enablers, still STRETCH. Stacking to T3 RED
+        asserts un-buildability, which is what a HARD gate is for.
+      evidence: S
+      revert: "soft_downgrade_max_tiers: 99"
+      records_moved: [G1]        # only bites in combination with A and B
+    - id: D
+      key: meta.version / meta.tuned / meta.tuning_record
+      before: "version: 1"
+      after: "version: 2, tuned: 2026-08-22, tuning_record: reference/05_RUBRIC_BACKTEST.md"
+      principle: provenance
+      evidence: C
+
+scorer_patch:
+  file: tools/score-strategy.py
+  backup: tools/.score-strategy.py.pretune.bak
+  reason: "new YAML keys need code that reads them"
+  backwards_compatible: true
+  compatibility_verified: "patched scorer + UNMODIFIED v1 yaml reproduces agreement 24/30 and an identical 30-row table"
+  changes:
+    - "run_gates() returns (hard_gates, soft_gates) instead of (hard_gates, bool)"
+    - "run_gates() reads G1.grading.soft_floors, default [] -> v1 behaviour"
+    - "run_gates() reads G4.soft_band_multiplier, default 1.0 -> v1 behaviour"
+    - "G6 DRIVE_HOURS became an entry in the same soft-gate list"
+    - "evaluate() applies min(len(softs), gates.soft_downgrade_max_tiers) downgrades, default cap 99 -> v1 behaviour"
+    - "print_detail() prints every soft gate with its reason instead of a hardcoded G6 line"
+    - "binding-constraint string: '[+G6 drive-hours]' -> '[soft G1,G4,G6]'"
+
+before_after:
+  agreement:      {v1: "24/30 = 80%", v2: "27/30 = 90%", delta: "+3"}
+  false_green:    {v1: "0/12", v2: "0/12", delta: "unchanged -- the safety property held"}
+  rows_changing_tier: 6
+  distinct_root_causes_among_misses: {v1: 1, v2: 1}
+  re_diagnosis_value: >
+    C1, P1 and R7 are still misses, but v1 said "you need a machine you do not own"
+    (relaxable with money, capacity constraint #5 of 5) and v2 says "you need more
+    unsupervised student leads than you have" (constraint #2, in-season elasticity
+    None). The second statement is the true one, and it is the one that changes
+    what the team does in the fall.
+
+sensitivity_outsourced_2d_account:
+  command: "python tools/score-strategy.py --from-corpus reference/archetype_corpus.yaml --set outsourced_2d_account=true"
+  agreement: "27/30 = 90%"
+  misses: [C1, P1, R7]
+  finding: >
+    Unchanged, and stronger than in v1. The router grading has already absorbed the
+    machine question, so buying the fabrication account moves nothing at all: the
+    surviving blocker was never money. The rubric independently reproduces capacity
+    model sec 7.1's constraint hierarchy -- mentor attention #1, unsupervised leads
+    #2, effective hours #3, machines #4, money #5.
+
+# ============================== INDEPENDENT TEST (never fitted to anything)
+independent_tba_test:
+  evidence: C
+  script: tools/backtest_specialists.py
+  source: research/predictive_tba/tba_{copr,alliances}_{2023..2026}.csv
+  question: >
+    Among teams whose TOTAL component-OPR is below the event median, does being
+    top-quartile in ABSOLUTE auto or endgame COPR raise the alliance-selection
+    rate? If yes, the rubric's top-ranked archetype families (I5 AUTO Specialist,
+    I4 Endgame Specialist) are supported by data nobody in this project labelled.
+  method_note: "ABSOLUTE component COPR, not share of total. A team with total 10 and auto 5 is a small robot, not an auto specialist."
+  results:
+    2023: {n_below_median: 3566, base_pick_pct: 32.9, hi_auto_pct: 53.5, hi_auto_n: 99,  hi_endgame_pct: 43.2, hi_endgame_n: 475, neither_pct: 30.7}
+    2024: {n_below_median: 3763, base_pick_pct: 30.7, hi_auto_pct: 45.5, hi_auto_n: 110, hi_endgame_pct: 45.4, hi_endgame_n: 425, neither_pct: 28.5}
+    2025: {n_below_median: 3960, base_pick_pct: 31.8, hi_auto_pct: 54.7, hi_auto_n: 150, hi_endgame_pct: 55.7, hi_endgame_n: 366, neither_pct: 28.6}
+    2026: null                   # see caveat_2026_missing
+  reading: "1.4-1.7x lift in pick rate, every season measured, for both specialisms."
+  supports_rubric_rows:
+    I5_auto_specialist: [C5, P5, R5, F5]     # the four highest combined indices in the file
+    I4_endgame_specialist: [G3, R4]
+  caveat_2026_missing: >
+    tba_copr_2026.csv has empty auto/teleop/endgame columns for all 8,160
+    team-events, because TBA's 2026 score-breakdown keys differ from 2023-2025.
+    The test therefore covers three seasons and NOT the corpus's primary
+    calibration season. Fix: re-run tools/tba_copr_scrape.py with the REBUILT keys
+    mapped. Cost: under an hour.
+  other_caveats:
+    - "component COPR cannot distinguish deliberate specialisation from a robot that only managed the auto"
+    - "being picked is not the same as being useful, though PF treats pct_picked as the terminal outcome"
+    - "selection effects: teams good at auto may be good in ways total COPR under-measures"
+    - "suggestive evidence, not a causal claim"
+
+base_rates_context:
+  evidence: C
+  source: archetype_corpus.yaml base_rates (derived from research/predictive_tba/)
+  winning_alliances_with_a_below_median_opr_member_pct: {2023: 64, 2024: 69, 2025: 68, 2026: 78}
+  rank1_seeds_with_a_below_median_opr_member_pct: {2023: 71, 2024: 68, 2025: 71, 2026: 81}
+  reading: >
+    The second- and third-pick slots that the rubric's T1 GREEN population targets
+    are the statistically normal route onto a winning alliance for this team
+    profile, not a consolation prize. Upper bound: OPR percentile cannot tell a
+    deliberate support robot from a broken one.
+
+# ===================================================== UNCERTAINTY REGISTER
+uncertainties:
+  - id: U1
+    title: novel-mechanism counting (C1 / P1 / R7)
+    status: LIVE -- causes all three residual misses
+    question: "Is a 3-mechanism design 3 novel workstreams, or 2 novel + 1 copied?"
+    resolved_by: >
+      Add a per-mechanism cots_status field [released_design | vendor_kit | bespoke]
+      to all 30 archetype_corpus.yaml records and set
+      novel_mechanisms = count(bespoke). Sources already on disk: the five manuals
+      plus reference/bom/06_MECHANISM_CATALOG.md.
+    cost: "~2 hours, before kickoff, not on kickoff day"
+    falsifier: "if agreement does NOT reach 30/30 after the fix, G2's constant is the thing to question, not its input"
+    evidence: S
+  - id: U2
+    title: F4 and C4 at T3 RED -- over-correction or correct caution?
+    status: OPEN, no evidence available to choose
+    question: >
+      Both are I4 endgame designs that reached second-pick, sitting at indices 56.0
+      and 55.5 -- inside the STRETCH band, pushed to T3 RED by one soft downgrade.
+      I4 is otherwise 6/6.
+    resolved_by:
+      - "how many PARTS actually need the router floor (A9 tie-break: one router part is a purchase order, eight is a fabrication programme); neither corpus record states a part count"
+      - "whether soft downgrades should apply below the T1 boundary at all -- a defensible v3 change is to restrict them to T1->T2"
+    not_changed_this_pass_because: "it moves nothing on the current test set, so there is no evidence to choose it"
+    evidence: S
+  - id: U3
+    title: the AUTO specialists' A7 = 0 under SystemCore
+    status: LARGEST SINGLE SOURCE OF VARIANCE
+    question: >
+      C5, P5 and F5 are held at T2 STRETCH solely by the no-zeros rule firing on
+      A7 = 0/5, produced by the systemcore_adjustment table. If SystemCore + WPILib
+      2027 turn out easier than the mature roboRIO stack for path-following autos,
+      the rubric's four highest-index rows all turn T1 GREEN at once.
+    resolved_by:
+      - "has SystemCore hardware shipped to teams"
+      - "does WPILib 2027 ship a working path-follower on SystemCore"
+      - "is the roboRIO still legal in 2027 (UNVERIFIED as of 2026-08-22)"
+    downside_case: "if SystemCore has not shipped at kickoff, A13 floors at 1 for everything that touches it -- these rows get WORSE, not better"
+    evidence: "C that the control system changes; S on the direction of the difficulty delta"
+  - id: U4
+    title: the VALUE-axis correlation is partly circular
+    status: KNOWN, disclose it rather than quote the number
+    question: >
+      rho = -0.899 between VALUE and corpus outcome looks like a triumph and is not
+      one: the auto-scorer derives V3 alliance_selection_appeal and V5 ceiling
+      DIRECTLY from the outcome field. Those two carry 120 of the 290 value weight
+      = 41%.
+    resolved_by:
+      - "recompute rho using V1 only against outcome"
+      - "re-derive V3 from TBA pick data rather than from the corpus label"
+    partial_progress: "the independent_tba_test above is the first instalment of exactly that, and it holds -- but it tests the archetype FAMILY, not the per-record V3"
+    use_instead: "spearman_ach_vs_hand_verdict = -0.709"
+    evidence: S
+  - id: U5
+    title: 2026 REBUILT is absent from the only non-circular test
+    status: OPEN, cheap to fix
+    question: >
+      The component-COPR test covers 2023-2025 only. 2026 is the corpus's
+      primary_calibration_season and the manual archetype_corpus says BIOCORE most
+      plausibly resembles -- so the season that matters most is the one missing
+      from the independent test.
+    resolved_by: "re-run tools/tba_copr_scrape.py with the 2026 REBUILT score-breakdown keys mapped; verify field names against manuals/archive/frc/_txt/2026_REBUILT.txt Table 6-4"
+    cost: "under an hour"
+    evidence: "C that the data are missing; S that the 2026 result would match"
+
+# ===================================================== REGRESSION ASSERTIONS
+# Run these after ANY future edit to achievability_rubric.yaml or score-strategy.py.
+regression_assertions:
+  - {id: R1, assert: "--from-corpus agreement >= 27/30",                                     current: "27/30",  pass: true}
+  - {id: R2, assert: "false-GREEN count == 0 (no T1 GREEN row whose hand label is not YES)", current: "0/12",   pass: true}
+  - {id: R3, assert: "all four NO records (F1, R1, G2, P3) are T3 RED or T4 GATED",          current: "4/4",    pass: true}
+  - {id: R4, assert: "G2 (Full-Grid, I2 do-everything) has the LOWEST ACH in the file",      current: "14.9",   pass: true}
+  - {id: R5, assert: "patched scorer + v1 yaml still reproduces exactly 24/30",              current: "24/30",  pass: true}
+  - {id: R6, assert: "confusion matrix is monotone -- no off-diagonal cell >1 step off",     current: "monotone", pass: true}
+  - {id: R7, assert: "ACH vs hand-verdict Spearman rho <= -0.65",                            current: -0.709,   pass: true}
+  - {id: R8, assert: "every miss's binding constraint names the SAME gate (one root cause)", current: "G2 x3",  pass: true}
+
+reproduce:
+  - "python tools/score-strategy.py --from-corpus reference/archetype_corpus.yaml"
+  - "python tools/score-strategy.py --from-corpus reference/archetype_corpus.yaml --rubric reference/.achievability_rubric.v1.bak"
+  - "python tools/score-strategy.py --from-corpus reference/archetype_corpus.yaml --set outsourced_2d_account=true"
+  - "python tools/score-strategy.py --from-corpus reference/archetype_corpus.yaml --detail R2"
+  - "python tools/score-strategy.py --from-corpus reference/archetype_corpus.yaml --detail G1"
+  - "python tools/score-strategy.py --candidates reference/examples/candidates_example.yaml"
+  - "python tools/backtest_specialists.py"
+
+# ===================================================== WORKED EXAMPLE (sec 7)
+# 2026 REBUILT, so every step is real. NOTHING HERE IS A BIOCORE CLAIM.
+worked_example:
+  season: 2026
+  season_name: REBUILT presented by Haas
+  archetype_id: R2
+  name: Fixed-Zone Bulk Shooter
+  manual_source: manuals/archive/frc/_txt/2026_REBUILT.txt
+  manual_facts_used:
+    evidence: C
+    fuel_active_hub_points: 1
+    fuel_inactive_hub_points: 0
+    tower: {L1_auto: 15, L1_teleop: 10, L2: 20, L3: 30}
+    bonus_rp_regional: {ENERGIZED: 100, SUPERCHARGED: 360, TRAVERSAL: 50}
+    hub_status_rule: "both HUBS active during AUTO, TRANSITION SHIFT and END GAME; during ALLIANCE SHIFTS only one is active"
+    hub_opening_height_in: 72
+    hub_opening_size_in: 41.7
+    hub_distance_from_alliance_wall_in: 158.6
+    fuel_staged_per_match: 504
+    possession_cap: none
+    auto_seconds: 20
+    teleop_seconds: 140
+  kickoff_input_slots_filled:
+    median_alliance_score_estimate: 147
+    scoring_table_rows: 7
+    auto_gated_ranking_point: false
+    protected_zone_rule_count: 1        # TOWER only
+    one_defender_at_a_time: false
+    pin_count_seconds: 3
+    foul_values_minor_major: "read from manual sec 8"
+    systemcore_shipping: "n/a for a 2026 example; MUST be filled for 2027"
+  candidate_statement: >
+    Floor intake feeds a single fixed-angle flywheel by gravity and a roller. No
+    powered indexer, no turret, no hood articulation. Drive to ONE surveyed spot in
+    the neutral zone, burst into the active HUB, return. One hood angle, one RPM
+    setpoint, encoder feedback only. 2 mechanisms beyond the drivetrain.
+    ~12 points per trip x 5 trips = 60 points/match.
+  descope_note: >
+    This is the VARIANT, not the family. Its full-spec sibling on this same test
+    set is R1 Cycle Cannon: ACH 22.0, T4 GATED. archetype_corpus measures I1 at
+    0/4 at full spec and 6/9 restricted to the fixed-range variant. Write both as
+    separate rows on kickoff day, never one.
+  achievability:
+    A1: {score: 2, weight: 85, why: "2 mechanisms x 90 h x 0.8 bandsaw factor + 15 h x 2 programming ~= 174 h; anchor 2 = <=205 h, consumes the pool"}
+    A2: {score: 3, weight: 85, why: "1 new stream -- this IS the primary scoring mechanism, the second of the three mandatory ones"}
+    A3: {score: 4, weight: 80, why: "40 min x 2 mechanisms = 80 min/wk = 39% of the 204 min budget; no machine supervision beyond the bandsaw"}
+    A4: {score: 3, weight: 90, why: "med. One repeated path to one surveyed spot; ~50% of ceiling at 9 h seat time"}
+    A5: {score: 4, weight: 88, why: "serial chain intake -> flywheel; 0.93^2 = 0.865, anchor 4 band 0.85-0.89"}
+    A6: {score: 5, weight: 66, why: "corpus: 'one setpoint, one distance; failure = the burst misses until the driver re-acquires the spot. GRACEFUL'"}
+    A7: {score: 4, weight: 70, why: "base difficulty 2, sensing=encoders so SystemCore delta +0.0; adjusted ~2"}
+    A8: {score: 5, weight: 30, why: "encoders only; nothing stops working if the coprocessor never boots"}
+    A9: {score: 4, weight: 45, why: "bandsaw+drill on stock tube/plate -- owned, but one of each, so queue contention with the drivetrain stream"}
+    A10: {score: 4, weight: 55, why: "vendor sells the hard part and build guides exist; geometry around it is ours. SCORE BY HAND -- the corpus proxies this from mfg_floor and it is the weakest mapping in the instrument"}
+    A11: {score: 4, weight: 60, why: "~2 fabricating loops: rough shooter to find the setpoint, then final"}
+    A12: {score: 3, weight: 40, why: "$600-1,100 band, use the HIGH end = $1,100, roughly half the discretionary budget"}
+    A13: {score: 4, weight: 62, why: "one dependency (gearbox order) satisfiable from stock or a 1-week lead. FLOORS AT 1 in 2027 if SystemCore has not shipped"}
+  value:
+    V1: {score: 4, weight: 80, why: "60 pts / 147 median alliance score = 0.41 share; band 0.30-0.44. Above the 0.33 one-robot-of-three parity line"}
+    V2: {score: 4, weight: 55, why: "ENERGIZED needs 100 FUEL; 60/match is a countable share, and two such robots clear it alone"}
+    V3: {score: 4, weight: 75, why: "corpus outcome first-pick; PF measures Avg Match as the best separator of picked from unpicked, AUC 0.801-0.872 all four seasons"}
+    V4: {score: 1, weight: 35, why: "one surveyed shooting position is exactly what a defender parks on; REBUILT's neutral zone is unrestricted"}
+    V5: {score: 4, weight: 45, why: "first/second-pick tier; practice keeps paying but plateaus once the setpoint is dialled"}
+  result:
+    achievability_index: 73.2
+    value_index: 72.8
+    combined_index: 73.0
+    quadrant: BUILD THIS
+    tier: T1 GREEN
+    hard_gates_fired: []
+    soft_gates_fired: []
+    zeros: []
+    binding_constraint: "A1 build_hours_fit = 2/5 (weighted deficit 255)"
+    binding_constraint_lever: >
+      At ~174 h against a 205 h pool the thing that beats this design is HOURS, not
+      money and not difficulty. The lever is therefore the EVENT WEEK, not the
+      design: Week 1 -> Week 4 buys +255 effective hours free (capacity sec 7.4).
+      Round-1 event preferencing opens 2026-09-24. The highest-leverage decision on
+      this robot is made four months before anyone touches it.
+    q1_decision_rule: "commit on kickoff weekend; unsupervised lead assigned by day 3; CAD-freeze by day 10"
+  recommended_awards:
+    source: reference/awards/00_AWARD_LIST_EMPIRICAL_2026.md      # real TBA 2026 award records
+    evidence: C
+    targets:
+    - name: Quality Award
+      events_offering_2026: 209
+      thesis: "the A5/A6 case: a 2-element serial chain at 0.865 expected reliability, one setpoint, one distance, graceful failure. Bring the match-by-match reliability log."
+      from: "archetype_corpus I1 award_pairing, first entry"
+    - name: Industrial Design Award
+      events_offering_2026: 210
+      thesis: "the submission is the DESCOPE DECISION: show the turreted concept, show the fixed-position variant, show the 174 h vs 205 h arithmetic that chose the second."
+      from: "archetype_corpus I1 award_pairing, second entry"
+    do_not_chase_with_this_robot:
+      - {name: Creativity Award sponsored by Rockwell Automation, events_offering_2026: 208, why: "a deliberately unsurprising mechanism is the opposite of its thesis"}
+      - {name: Autonomous Award sponsored by Google.org,          events_offering_2026: 208, why: "belongs to the I5 AUTO Specialist rows -- a DIFFERENT candidate"}
+  materials_checklist:
+    source: [reference/bom/parts_manipulation.yaml, reference/bom/03_LAUNCHERS_ELECTRONICS.md]
+    price_basis: "2026 USD, verified when those files were written. RE-VERIFY against live vendor pages before ordering: reference/bom/recheck_prices.sh"
+    vendor_codes: {AM: AndyMark, TTB: The Thrifty Bot, WCP: WestCoast Products, MMC: McMaster-Carr}
+    items:
+      - {n: 1,  item: "Compliant Wheels, 4 in. (intake roller)",        vendor: AM,  unit_usd: 11.00, evidence: C, note: "also 2 in. 6.20 / 2.25 in. 7.20 / 3 in. 8.40"}
+      - {n: 2,  item: "Roller surface: polycord, surgical tubing or silicone over 1/2 hex", vendor: MMC, unit_usd: null, evidence: UNVERIFIED, note: "no resolved price in parts_manipulation.yaml; pick ONE and price it"}
+      - {n: 3,  item: "1/2 hex 22-tooth #25 sprocket, qty 2",           vendor: TTB, unit_usd: 19.99, evidence: C}
+      - {n: 4,  item: "#25 chain tensioner, qty 1",                     vendor: TTB, unit_usd: 14.99, evidence: C}
+      - {n: 5,  item: "1/2 inch hex coupler, qty 2",                    vendor: TTB, unit_usd: 22.99, evidence: C}
+      - {n: 6,  item: "Flywheel motors + gearbox",                      vendor: null, unit_usd: null, evidence: UNVERIFIED, note: "choose from bom/03_LAUNCHERS_ELECTRONICS.md and verify live"}
+      - {n: 7,  item: "2x1 aluminium tube + 1/8 plate, bandsaw stock",  vendor: null, unit_usd: null, evidence: H, note: "the A9=4 commitment. Any part needing a router is a DIFFERENT candidate -- re-score it"}
+      - {n: 8,  item: "Encoders (through-bore or integrated)",          vendor: null, unit_usd: null, evidence: UNVERIFIED, note: "the A8=5 commitment: no camera in the critical chain"}
+      - {n: 9,  item: "SystemCore control system",                      vendor: null, unit_usd: null, evidence: "C for 2027, n/a for this 2026 example", note: "order the day it is orderable; if unshipped at kickoff, A13 floors at 1"}
+      - {n: 10, item: "Spare flywheel wheel set + spare intake roller", vendor: AM,  unit_usd: null, evidence: C, note: "~11-22 USD. 'It never failed' requires spares to exist before event 1"}
+    budget_check:
+      archetype_band_usd: [600, 1100]
+      use: high                  # 1100
+      gate_G3_threshold_usd: 2500
+      fires: false
+      remaining_usd: ~1400
+      excluded_by_construction: [drivetrain, control system, "registration $6,500", travel]
+
+# ===================================================== FILES + LIMITATIONS
+files_written:
+  - {path: reference/05_RUBRIC_BACKTEST.md,          status: new,    contents: "the back-test document"}
+  - {path: reference/05_rubric_backtest.yaml,        status: new,    contents: "this file"}
+  - {path: tools/backtest_specialists.py,            status: new,    contents: "the independent TBA component-COPR test"}
+  - {path: reference/achievability_rubric.yaml,      status: EDITED, contents: "v1 -> v2: G1 graded, G4 soft band, soft-downgrade cap, version bump. NO weight/threshold/anchor changed"}
+  - {path: reference/.achievability_rubric.v1.bak,   status: new,    contents: "verbatim v1, so every 'before' number is re-runnable"}
+  - {path: tools/score-strategy.py,                  status: EDITED, contents: "reads the new graded-gate keys; defaults reproduce v1 exactly (verified)"}
+  - {path: tools/.score-strategy.py.pretune.bak,     status: new,    contents: "verbatim pre-patch scorer"}
+files_read_not_edited:
+  - reference/ACHIEVABILITY-RUBRIC.md
+  - reference/03_ARCHETYPE_CORPUS.md
+  - reference/archetype_corpus.yaml
+  - reference/04_PREDICTIVE_FACTORS.md
+  - reference/02_TEAM_CAPACITY_MODEL.md
+  - reference/awards/00_AWARD_LIST_EMPIRICAL_2026.md
+  - reference/bom/parts_manipulation.yaml
+  - manuals/archive/frc/_txt/2026_REBUILT.txt
+  - research/predictive_tba/tba_{copr,alliances}_{2023..2026}.csv
+
+limitations:
+  - "90% is IN-SAMPLE. The rubric anchors were calibrated against these 30 records and this pass tuned three gate parameters against the same 30. It is a consistency floor, not accuracy."
+  - "Three tunes against thirty records. Mitigations: no weight touched; each tune states a principle checkable independently of the test set; each is a one-line revert; backwards compatibility verified BEFORE the yaml was edited."
+  - "The scorer was patched, not just the yaml. Every default reproduces v1 exactly (assertion R5), but this is a code change and is disclosed as one."
+  - "The soft_floors: [router] pricing is UNVERIFIED. '2D profile cutting buyable at $50-200/order, 5-10 business day lead' is a plausible market claim written from general knowledge; NO vendor page was checked. Verify before the 2026-12 fabrication-account deadline. If materially wrong, revert tune A."
+  - "All three residual misses share one cause that cannot be fixed today without fabricating a corpus field (U1). It was deliberately not fabricated."
+  - "auto_score_from_corpus is a regression harness, not a scoring method. Every factor score in `results` is machine-derived from corpus metadata and is [S]."
+  - "The independent TBA test covers 2023-2025 only; 2026 has empty component-COPR columns for all 8,160 team-events (U5)."
+  - "The VALUE-vs-outcome correlation is partly circular: V3 and V5 derive from the outcome field and carry 41% of the value weight (U4). Use ACH rho = -0.709."
+  - "The corpus outcome field means 'this archetype achieved this somewhere, for some team' -- it carries no team-size or budget qualifier."
+  - "reference/team_capacity.yaml still does not exist on disk, so team_constants remains hand-transcribed from the capacity model sec 8. Every gate threshold inherits that."
+  - "Nothing here is a BIOCORE claim. No weight, gate, threshold or anchor derives from any BIOCORE rule; the game is not public until 2027-01-09 12:00 ET."
+  - "The worked example predates SystemCore. Its A7=4 and A13=4 are 2026 values. For 2027 add the systemcore_adjustment delta before banding A7, and floor A13 at 1 if SystemCore hardware has not shipped."
+
+security_note: >
+  Every source read for this pass was a local file in this project. All of it was
+  treated as DATA. None contained text addressed to an AI assistant or any attempt
+  to issue instructions. No network request was made, no external endpoint was
+  contacted, and no authentication was used or attempted. The two edited files were
+  backed up verbatim first and both changes are one-line reversible.

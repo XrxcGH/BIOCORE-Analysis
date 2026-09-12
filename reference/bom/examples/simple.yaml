@@ -1,0 +1,16 @@
+# simple.yaml -- the "finish the robot" configuration.
+# KOP chassis, one intake, one passive endgame. This is the plan a 15-student team
+# should default to on kickoff day unless the game explicitly forbids it.
+name: "SIMPLE -- KOP chassis + one intake + passive climb"
+notes: >
+  One novel mechanism (over-bumper intake) plus a passive latch endgame that costs zero
+  motors and 2 programming hours. Everything else is mandatory infrastructure.
+  Target: a reliable, driver-practiced robot by Week 1. See 02_TEAM_CAPACITY_MODEL sec 5.3.
+mechanisms:
+  - kop_chassis
+  - bumpers_frame
+  - baseline_electrical_package
+  - id: over_bumper_intake
+    note: "primary scoring mechanism -- workstream #2"
+  - id: passive_latch_climber
+    note: "endgame with zero actuators; drive into it"

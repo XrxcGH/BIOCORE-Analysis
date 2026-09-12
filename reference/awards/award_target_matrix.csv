@@ -1,0 +1,40 @@
+# award_target_matrix.csv -- machine-readable companion to 01_AWARD_WINNING_PATTERNS.md
+# Built 2026-08-22. One row per robot-adjacent judged award on the FRC 2026 slate.
+#
+# SOURCES
+#   criteria_*        : firstinspires.org Awards Based on Machine/Team Attributes pages (Rev Oct 2025)
+#                       + Award Workbook (Rev Oct 2025) + Judge Manual (Rev 2 - 2/18/2026)
+#   pct_events_offered, median_winner_rank_pct : reference/awards/award_accessibility.csv (prior pass)
+#   pct_wins_by_3plus_winners, pct_one_time_winners, bottomhalf_robot_share_pct :
+#                       computed this pass from research/awards_tba/tba_awards_2022..2026.csv
+#
+# COLUMN NOTES
+#   openness_rank            1 = easiest for a team that is NOT a field powerhouse to break into.
+#                            Ranked by pct_wins_by_3plus_winners ascending (low = not a dynasty award).
+#   median_winner_rank_pct   median qualification-rank percentile of winners; LOWER = winners rank higher.
+#                            9.0 means the median Autonomous winner finished in the top 9% of quals.
+#   bottomhalf_robot_share   of all ROBOT-award wins by teams finishing in the bottom half of quals,
+#                            the % that were this award. Blank for non-robot awards.
+#   required_signal          the robot property without which this award is not a live target.
+#   prep_hours_*             student-hours to build the artifact set from scratch, one season. [S] estimate.
+#   verdict_15_student       PRIMARY / SECONDARY / OPPORTUNISTIC / AVOID  for a ~15-student team.
+#
+# THE GOVERNING CONSTRAINT: FIRST judges may not give one team more than 1 judged award at a
+# single event (Judge Manual, "Equitable Award Distribution"). Back-tested: 12,992 of 12,993
+# award-winning team-events in 2022-2026 won exactly one. DO NOT chase more than 2-3 lanes.
+#
+award,category,status_2026,district_points,pct_events_offered,median_winner_rank_pct,pct_wins_by_3plus_winners,pct_one_time_winners,bottomhalf_robot_share_pct,openness_rank,required_signal,supporting_signals,primary_artifacts,pitch_anchor,prep_hours_low,prep_hours_high,owner_role,verdict_15_student
+Creativity Award,machine,active,5,91.3,31.8,16.1,76.3,35.6,2,novel_mechanism,risk_mitigation;traceable_concept,concept sketch->CAD->part timeline on one board;the failed prototype kept and labelled;30s bench demo of the mechanism,"One mechanism, its origin story, why it was risky, how we de-risked it",25,45,DESIGN_DOC_OWNER,PRIMARY
+Quality Award,machine,active,5,92.2,18.2,24.1,69.6,15.6,3,build_finish,reliability_data;redundancy_design,wiring/labelling photo set;the written quality plan (1 page);match-by-match failure log,"Our quality plan, and the log that proves it held for N matches",20,35,BUILD_LEAD,SECONDARY
+Industrial Design Award,machine,active,5,91.3,17.5,31.8,68.0,15.0,4,whole_machine_coherence,build_finish;packaging_discipline,full-robot CAD render vs finished robot side by side;packaging cutaway;design language one-pager,"The whole machine as one designed object -- form, function, aesthetics",25,40,DESIGN_DOC_OWNER,SECONDARY
+Innovation in Control Award,machine,active,5,91.8,17.6,31.8,68.6,13.3,5,control_demo,reliability_data;sensor_integration,live bench demo of the closed loop;plotted step response / tuning data;control block diagram,"Watch this loop close, here is the data, here is why it matters in a match",30,55,CONTROLS_OWNER,OPPORTUNISTIC
+Excellence in Engineering Award,machine,active,5,91.6,15.4,38.7,65.7,14.3,6,process_docs,traceable_concept;subsystem_integration,design journal with dated decision points;requirements->solution trace matrix;iteration photo series,"The problem we chose, the process we ran, the trace from concept to final part",35,60,DESIGN_DOC_OWNER,OPPORTUNISTIC
+Autonomous Award,machine,active,5,91.5,9.0,44.6,62.7,6.2,7,auto_multi,control_demo;reliability_data,auto success-rate table by routine;field-relative path visualisation;sensor/vision explainer,"N routines, M% success across K matches, and how the robot senses the field",40,70,CONTROLS_OWNER,AVOID
+Judges' Award,discretionary,active,5,93.5,50.0,9.2,83.0,,1,none,any_distinctive_story,nothing buildable -- this award is unpitchable by design,"Not pitchable. Won by being memorable to many judges across the event",0,0,PIT_LEAD,OPPORTUNISTIC
+Imagery Award,team,active,5,91.2,48.7,36.5,66.6,,8,theme_integration,build_finish,robot+pit+uniform in one visual language;theme origin one-pager;mascot/livery source art,"Our theme, where it came from, and every place it shows up",20,40,MEDIA_BRAND_OWNER,SECONDARY
+Rookie All-Star Award,team,active,8,59.3,66.7,6.2,84.0,,1,rookie_year_only,working_robot;outreach_story,"Impact-award-in-miniature: outreach evidence, sponsor partnership, a robot that plays","We are an Impact team in the making -- here is the evidence",30,60,PIT_LEAD,AVOID
+Rising All-Star Award,team,active,5,75.8,67.5,5.9,87.2,,1,recent_turnover_or_young,persistence_story,turnover/growth narrative with numbers;succession plan,"We are young or rebuilt, here is what we survived and what we built",10,20,PIT_LEAD,OPPORTUNISTIC
+# ---- RETIRED. Do not build materials for these. Confirmed absent from the 2026 slate. ----
+Industrial Safety Award,retired,removed_2022,0,0,,,,,,none,none,"REMOVED for the 2022 season. Safety is now an award-ELIGIBILITY gate, not an award.",n/a,0,0,none,AVOID
+Media and Technology Innovation Award,retired,absent,0,0,,,,,,none,none,"Not on the 2022-2026 FRC slate. Zero TBA records. Do not confuse with FTC awards.",n/a,0,0,none,AVOID
+Safety Animation Award,submitted,active_not_judged_at_event,0,0,,,,,,none,none,"Submitted award, sponsored by UL. Judged off-event; earns ZERO district points.",n/a,0,0,MEDIA_BRAND_OWNER,AVOID

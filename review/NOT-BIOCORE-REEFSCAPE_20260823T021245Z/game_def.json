@@ -1,0 +1,47 @@
+{
+  "_comment": "Fill from the manual. Feeds tools/cycle-model.py. Remove every FILL_ME. Keys beginning with _ are notes and are ignored by every tool.",
+  "_units": "every *_s field is SECONDS (int); every points field is POINTS (int).",
+  "name": "FILL_ME BIOCORE (2027) -- game name as printed on the manual cover",
+
+  "auto_s": "FILL_ME int seconds of AUTO, from the match-timing table",
+
+  "_teleop_s_note": "INCLUSIVE of the endgame window. Put the FULL teleop period here (REBUILT: 140, which CONTAINS the 30 s END GAME). The model computes cycling time as teleop_s minus the chosen fixed action time_s, so subtracting the endgame here too makes every number in the review wrong.",
+  "teleop_s": "FILL_ME int seconds of TELEOP, endgame INCLUDED",
+
+  "_endgame_s_note": "INFORMATIONAL ONLY. Printed in the banner, used in no arithmetic anywhere. The real cost of an endgame action is fixed_actions[].time_s. Fill it for the reader; changing it changes no output.",
+  "endgame_s": "FILL_ME int seconds of the endgame window",
+
+  "_cycle_actions_note": "ONLY cycle_actions[0] is modelled. Entries 1..n are IGNORED (the tool now prints a SCHEMA WARNING if you supply more). If the game has two repeatable scoring actions of different value, put the DOMINANT one here, run the model once per action, and combine by hand in REVIEW.md section 2.",
+  "cycle_actions": [
+    {
+      "name": "FILL_ME primary repeatable scoring action",
+      "points_auto": "FILL_ME int points for ONE unit scored during AUTO",
+      "points_teleop": "FILL_ME int points for ONE unit scored during TELEOP",
+      "_per_cycle_note": "ROBOT DESIGN ASSUMPTION, not a manual fact. How many units one round trip delivers. Largest single lever on every number downstream. Tag it [INFERENCE] in REVIEW.md and name the source below: last season match video, an archetype in reference/03_ARCHETYPE_CORPUS.md, or an explicit guess.",
+      "per_cycle": "FILL_ME how many units one robot trip delivers",
+      "_per_cycle_source": "FILL_ME where this number came from"
+    }
+  ],
+
+  "_fixed_actions_note": "One-off actions: climbs, endgame tasks, AUTO-only bonuses. phase is exactly one of: auto | teleop | endgame. phase=auto is additive and consumes no teleop time; phase=endgame or teleop costs time_s of cycling. If one act pays differently in AUTO than in TELEOP (REBUILT: TOWER L1 = 15 auto / 10 teleop) the schema CANNOT express it -- split into two rows named ACT (AUTO) and ACT (TELEOP). There is likewise no way to say an action is legal in only one phase; encode that in the name and a _note.",
+  "fixed_actions": [
+    {
+      "name": "FILL_ME endgame or one-off action",
+      "points": "FILL_ME int points it pays",
+      "_time_s_note": "NO FRC MANUAL STATES A TIME COST FOR ANY ACTION. This is always an estimate. Source it below: measured from last season match video, or the entry in reference/bom/06_MECHANISM_CATALOG.md, or an explicit guess. The entire break-even table in REVIEW.md section 2 is a function of these numbers.",
+      "time_s": "FILL_ME seconds it consumes",
+      "_time_s_source": "FILL_ME where this number came from",
+      "phase": "endgame"
+    }
+  ],
+
+  "_rp_note": "basis tells the model how to count the RP and REPLACES the old hard-coded game-noun match. Set basis to cycle when the RP counts units of cycle_actions[0], or fixed when it counts a fixed/endgame action such as a climb total. If basis is omitted the tool guesses by matching metric against fixed_actions names -- set it explicitly, do not rely on the guess. threshold is a SINGLE scalar: enter the tier your team actually competes at (district/regional) and put any per-tier escalation in note. NOTHING PARSES note, so if the escalation is strategically decisive you must say so yourself in REVIEW.md section 2.",
+  "rp": [
+    { "name": "FILL_ME bonus RP", "metric": "FILL_ME which action counts",
+      "basis": "cycle",
+      "threshold": "FILL_ME int, at YOUR event tier",
+      "note": "note tier escalation if thresholds differ by event tier" }
+  ],
+
+  "_known_gaps": "This schema CANNOT express: a scoring duty cycle (a target that is periodically inactive), a conditional or positional multiplier, or a phase in which points are worth zero. REBUILT HUB active/inactive was unrepresentable and had to be corrected by hand. If BIOCORE has any such mechanic, model it by HAND-DERATING per_cycle (target live 90 s of 140 s -> multiply per_cycle by 0.64) and record the derate and its arithmetic in a _derate key here AND in REVIEW.md section 2."
+}

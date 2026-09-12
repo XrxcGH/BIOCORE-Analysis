@@ -1,0 +1,822 @@
+# parts_electronics.yaml
+# Companion to reference/bom/03_LAUNCHERS_ELECTRONICS.md
+#
+# Machine-readable parts table for BIOCORE (FRC 2027) electronics + launcher planning.
+# Every price carries a `verified` boolean, the date it was read, and the source URL.
+# Anything not read off a live vendor page on the verification date is verified: false
+# with price: null -- NEVER an estimate. Per project accuracy policy: UNVERIFIED, not guessed.
+
+meta:
+  file: reference/bom/parts_electronics.yaml
+  companion_md: reference/bom/03_LAUNCHERS_ELECTRONICS.md
+  season_target: 2027 BIOCORE presented by Haas (FRC)
+  kickoff: "2027-01-09T12:00:00-05:00"
+  rules_source: manuals/archive/frc/2026_REBUILT_GameManual.pdf
+  rules_text: research/rule_inventories/2026_rules_full.txt
+  rules_season: 2026 REBUILT
+  price_verification_date: "2026-08-22"
+  currency: USD
+  labels:
+    C: CONFIRMED - quoted from the 2026 manual, or read from a live vendor page on price_verification_date
+    H: HISTORICAL-PATTERN - recurs across seasons; not stated for BIOCORE
+    S: SPECULATION - engineering inference or design judgement
+    UNVERIFIED: not confirmed against a live source; do not buy against it
+  warnings:
+    - "All rule quotations are from the 2026 manual. 2027 replaces the roboRIO with Systemcore;
+       R615, R701, R703, R711-R717 are guaranteed to change."
+    - "Prices reprice at kickoff. Re-verify the week of 2027-01-09 before committing budget."
+    - "Educational (FRC team) pricing shown where the vendor lists it; MSRP differs."
+
+# ---------------------------------------------------------------------------
+# 2027 CONTROL SYSTEM TRANSITION
+# ---------------------------------------------------------------------------
+systemcore:
+  status: replaces_roborio_for_2027
+  label: C
+  confirmed:
+    soc: Raspberry Pi Compute Module 5 (CM5)
+    cpu: quad-core ARM Cortex-A76 (real-time Linux)
+    ram_gb: 4
+    gpu: VideoCore VII
+    io_coprocessor: Raspberry Pi RP2350 for reconfigurable I/O
+    size_note: "approximately the size of a large smartphone"
+    ports:
+      can_fd: 5           # Weidmuller wire-to-board
+      smartio: 6          # 3-pin Molex-SL, flexible analog/digital in/out (PWM/DIO/AI)
+      i2c: 2              # 4-pin Molex-SL
+      usb3_a: 4
+      usb_c_device: 1
+      ethernet: 1
+      power_input: 1      # Weidmuller wire-to-board
+      rsl: 1              # 2-pin Molex-SL
+      motioncore_bridge: 1  # 4-pin Molex Microfit+
+    onboard:
+      imu: true
+      leds: true
+      display: true
+      wifi: "integrated 2.4GHz / 5GHz radio"
+      m2_a_e_slot: "compatible with Hailo-8 AI accelerator"
+    software:
+      web_ui_vendor: Limelight
+      web_ui_features: [device config, on-robot hosted coding (Blockly/Java/Python), live sensor values]
+      driver_station: "2027 FIRST Driver Station - Systemcore only; roboRIO keeps the existing DS"
+      ds_platforms: [Windows x64, Windows arm64, macOS x64, macOS arm64, Linux x64, Linux arm64]
+      ds_fms_support: "FMS (At Event) support only on Windows and the hardware appliance"
+      ds_gamepad: "16-bit resolution (was 8-bit), up to 64 buttons and 8 POVs"
+      ds_logging: "WPILib log format, AdvantageScope-compatible"
+      ds_min_display_width_px: 1280
+      labview: "Emerson/NI LabVIEW support being explored - not committed"
+    timeline:
+      frc_alpha_start: "2025-06"
+      frc_alpha_teams: 50
+      ftc_alpha_start: "2025-09 (delayed by MotionCore design changes)"
+      frc_season: 2027
+      ftc_season: "2027-28"
+  pricing:
+    exact_price: null
+    verified: false
+    official_statement: "on target to meet our goal of offering Systemcore at a lower price than the roboRIO"
+    statement_source: https://community.firstinspires.org/2025-control-system-testing-reminder-for-2027
+    statement_date: "2025-10"
+    label: C   # the STATEMENT is confirmed; the PRICE is not
+  unverified_open_questions:
+    - "Exact price to teams"
+    - "KoP distribution: free to all teams? voucher? rookie vs veteran? (a claim that every team
+       gets one in the 2027 year-specific KoP box circulates second-hand but was NOT confirmed
+       from a primary FIRST source in this pass)"
+    - "Whether the external VH-109 radio remains required given Systemcore's integrated WiFi"
+    - "Whether the roboRIO remains legal as a fallback in 2027"
+    - "Whether PWM motor controllers remain usable, and via which port (SmartIO is described as analog/digital)"
+    - "Servo support and the fate of R506 / R712"
+    - "Fate of MXP and the R713 approved-active-device list (navX MXP, RIOduino, Digit Board, Spartan, HUSKIE 2.0)"
+    - "Systemcore built-in IMU noise/drift spec vs Pigeon 2.0"
+    - "Whether WPILib ships a supported Hailo-8 vision pipeline for 2027"
+  blocking_event:
+    name: Pre-Kickoff Virtual Kit Release
+    date: "2026-11-12"
+    label: S   # date per project brief; confirm on firstinspires.org calendar
+    action: "Watch live. Update this file the same day. This is when price, KoP contents, and the radio question resolve."
+  preseason_actions:
+    - "Do NOT buy a roboRIO 2.0"
+    - "Do NOT buy a CANivore (Systemcore has 5 native CAN-FD ports)"
+    - "Track github.com/wpilibsuite/SystemcoreTesting and the WPILib 2027 beta docs"
+    - "Budget 2x normal offseason software time for the port"
+    - "Hold $300-500 unallocated for control-system surprises"
+
+# ---------------------------------------------------------------------------
+# PARTS
+# ---------------------------------------------------------------------------
+parts:
+
+  # ===================== MOTORS (legal per R501, Table 8-1) =================
+  - name: Kraken X60
+    category: motor
+    vendor: West Coast Products / CTR Electronics
+    part_numbers: [WCP-0940, am-5274]
+    price: 217.99
+    price_type: FRC_educational
+    msrp: 399.99
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://store.ctr-electronics.com/products/kraken-x60
+    legal_rule: R501 (Table 8-1, "West Coast Products Kraken x60")
+    controller: integrated Talon FX (R504-A-e; R505 "integrated controller only")
+    specs:
+      trapezoidal: {free_speed_rpm: 6000, free_current_a: 2, stall_torque_nm: 7.09, stall_current_a: 366, peak_power_w: 1108}
+      foc:          {free_speed_rpm: 5800, free_current_a: 2, stall_torque_nm: 9.37, stall_current_a: 483, peak_power_w: 1405}
+      power_at_40a_w: 413
+      max_efficiency_pct: 87
+    specs_verified: true
+    specs_source: https://docs.wcproducts.com/welcome/electronics/kraken-x60/kraken-x60-motor/overview-and-features/motor-performance
+    notes: "R503-G permits removing #10-32 plug screws from the Kraken X60."
+
+  - name: Kraken X44
+    category: motor
+    vendor: West Coast Products / CTR Electronics
+    part_numbers: [WCP-0941]
+    price: 217.99
+    price_type: FRC_educational
+    msrp: 399.99
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://store.ctr-electronics.com/products/kraken-x44
+    legal_rule: R501 (Table 8-1, "West Coast Products Kraken x44")
+    controller: integrated Talon FX
+    specs:
+      trapezoidal: {free_speed_rpm: 7758, free_current_a: 3, stall_torque_nm: 4.11, stall_current_a: 279, peak_power_w: 835}
+      foc:          {free_speed_rpm: 7368, free_current_a: 3, stall_torque_nm: 5.01, stall_current_a: 329, peak_power_w: 966}
+    specs_verified: true
+    specs_source: https://docs.wcproducts.com/welcome/electronics/kraken-x44/kraken-x44-motor/overview-and-features/motor-performance
+    availability_note: "Backorder, expected no earlier than mid-fall 2026 (as of 2026-08-22)."
+
+  - name: NEO Vortex Brushless Motor
+    category: motor
+    vendor: REV Robotics
+    part_numbers: [REV-21-1652, am-5275]
+    price: 90.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-21-1652/
+    legal_rule: R501 (Table 8-1, "REV Robotics NEO Vortex")
+    controller: SPARK Flex (dockable) or SPARK MAX
+    specs: {free_speed_rpm: 6784, stall_torque_nm: 3.6, stall_current_a: 211, peak_power_w: 640, kv: 565}
+    specs_verified: true
+    notes: "Integrated high-resolution encoder, dual temperature sensors, through-hex bore rotor."
+
+  - name: NEO Brushless Motor V1.1
+    category: motor
+    vendor: REV Robotics
+    part_numbers: [REV-21-1650, REV-21-1653, am-4258, am-4258a]
+    price: 50.00
+    sale_price: 42.50
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-21-1650/
+    legal_rule: R501 (Table 8-1, "REV Robotics NEO Brushless", v1.0 or v1.1)
+    controller: [SPARK MAX, SPARK Flex, Thrifty Nova]
+    specs:
+      empirical:   {free_speed_rpm: 5676, stall_torque_nm: 2.6, stall_current_a: 105}
+      theoretical: {stall_torque_nm: 3.75, stall_current_a: 150}
+    specs_verified: true
+
+  - name: NEO 550 Brushless Motor
+    category: motor
+    vendor: REV Robotics
+    part_numbers: [REV-21-1651, am-4259]
+    price: 30.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-21-1651/
+    legal_rule: R501 (Table 8-1, "REV Robotics NEO 550")
+    controller: [SPARK MAX, SPARK Flex, Thrifty Nova]
+    specs: {free_speed_rpm: 11000, stall_torque_nm: 0.97, stall_current_a: 100}
+    specs_verified: true
+    notes: "Best value-per-dollar motor in the legal set for intakes, indexers, feeders, turrets."
+
+  - name: "Minion: Standalone Brushless Motor"
+    category: motor
+    vendor: CTR Electronics
+    part_numbers: [24-777378, WCP-1691]
+    price: 79.99
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://store.ctr-electronics.com/products/minion-brushless-motor
+    legal_rule: R501 (Table 8-1, "CTR Electronics Minion")
+    controller: Talon FXS (separate, +$119.99)
+    specs: {peak_power_w: 610, stall_torque_nm: 3.1, free_speed_rpm: null, stall_current_a: null}
+    specs_verified: partial
+    dimensions: {diameter_in: 1.5, length_in: 2.85, weight_lb: 0.65}
+    notes: "SplineXS shaft. Total cost per axis with Talon FXS = $199.98, above NEO Vortex + SPARK Flex."
+
+  # Legal but not price-verified in this pass
+  - {name: CIM, category: motor, vendor: various, part_numbers: [am-0255, 217-2000, FR801-001, M4-R0062-12, AM802-001A, PM25R-44F-1005, PM25R-45F-1004, PM25R-45F-1003, PMR25R-45F-1003, PMR25R-44F-1005], price: null, verified: false, legal_rule: R501}
+  - {name: Mini-CIM, category: motor, vendor: VEX, part_numbers: [217-3371], price: null, verified: false, legal_rule: R501}
+  - {name: BAG motor, category: motor, vendor: VEX, part_numbers: [217-3351], price: null, verified: false, legal_rule: "R501; R505 allows up to 2 per controller"}
+  - {name: Falcon 500, category: motor, vendor: CTR Electronics/VEX, part_numbers: [217-6515, am-6515, 19-708850, am-6515_Short], price: null, verified: false, legal_rule: R501, controller: integrated Talon FX, notes: "Discontinued; legacy stock only. R503-G permits removing #10-32 plug screws."}
+  - {name: RedLine Motor, category: motor, vendor: AndyMark, part_numbers: [am-3775, am-3775a], price: null, verified: false, legal_rule: R501}
+  - {name: NEO 550 alternative - REV HD Hex, category: motor, vendor: REV Robotics, part_numbers: [REV-41-1291], price: null, verified: false, legal_rule: "R501; R505 allows up to 2 per controller and relay control"}
+  - {name: Thrifty Bot Pulsar 775, category: motor, vendor: The Thrifty Bot, part_numbers: [TTB-0350], price: null, verified: false, legal_rule: R501}
+  - {name: Venom Motor with Controller, category: motor, vendor: Playing With Fusion, part_numbers: [BDC-10001], price: null, verified: false, legal_rule: "R501; R504-A-j integrated controller only"}
+
+  # ===================== MOTOR CONTROLLERS (legal per R504-A) ===============
+  - name: SPARK MAX Motor Controller
+    category: motor_controller
+    vendor: REV Robotics
+    part_numbers: [REV-11-2158, am-4261]
+    price: 100.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-11-2158/
+    legal_rule: R504-A-d
+    specs:
+      current_continuous_a: 60
+      current_peak_a: 100    # 2 s surge
+      voltage_range_v: "5.5 - 24 (12 nominal)"
+      interfaces: [PWM, CAN, USB-C]
+      weight_lb: 0.25
+      dimensions_mm: [70, 35, 25.5]
+    compatible_motors: [NEO, NEO 550, NEO Vortex, CIM, Mini-CIM, 775Pro, RedLine, BAG, most 12V brushed]
+
+  - name: SPARK Flex Motor Controller
+    category: motor_controller
+    vendor: REV Robotics
+    part_numbers: [REV-11-2159, am-5276]
+    price: 110.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-11-2159/
+    legal_rule: R504-A-b
+    specs:
+      current_continuous_a: 60   # 3 min
+      current_peak_a: 100        # 2 s surge
+      voltage_range_v: "6 - 24 (12 nominal, 30 abs max)"
+      interfaces: [PWM, CAN, USB-C]
+      weight_g: 142
+      mounting: "#10-32 on 2in bolt circle; fits 2in rectangular tube; docks directly to NEO Vortex"
+
+  - name: Talon FXS Motor Controller
+    category: motor_controller
+    vendor: CTR Electronics
+    part_numbers: [24-708883, WCP-1692]
+    price: 119.99
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://store.ctr-electronics.com/products/talon-fxs
+    legal_rule: R504-A-f
+    specs:
+      interfaces: [PWM, CAN, CAN FD]
+      api: Phoenix 6
+    notes: "Auto-detects PWM vs CAN. Advanced Hall Support with Phoenix Pro claims up to +2% peak efficiency."
+
+  - name: Thrifty Nova
+    category: motor_controller
+    vendor: The Thrifty Bot
+    part_numbers: [TTB-0100]
+    price: 90.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.thethriftybot.com/products/thrifty-nova
+    legal_rule: R504-A-i
+    specs:
+      current_continuous_a: 45
+      current_burst_a: 80     # 2 s
+      current_abs_max_a: 110
+      voltage_range_v: "4 - 20 (12 nominal, 25 abs max)"
+      interfaces: [CAN 2.0, USB]
+      weight_lb: 0.21
+    compatible_motors: [NEO, NEO 550]
+    notes: "Cheapest legal brushless controller. Closed-loop velocity and position; regenerative braking."
+
+  - {name: Koors40 Motor Controller, category: motor_controller, vendor: AndyMark, part_numbers: [am-5600], price: null, verified: false, legal_rule: R504-A-a}
+  - {name: Spark Motor Controller (PWM), category: motor_controller, vendor: REV Robotics, part_numbers: [REV-11-1200, am-4260], price: null, verified: false, legal_rule: R504-A-c}
+  - {name: Talon SRX, category: motor_controller, vendor: CTR Electronics, part_numbers: [217-8080, am-2854, 14-838288], price: null, verified: false, legal_rule: R504-A-h}
+  - {name: Victor SP, category: motor_controller, vendor: VEX, part_numbers: [217-9090, am-2855, 14-868380], price: null, verified: false, legal_rule: R504-A-k}
+  - {name: Victor SPX, category: motor_controller, vendor: VEX, part_numbers: [217-9191, 17-868388, am-3748], price: null, verified: false, legal_rule: R504-A-l}
+  - {name: Spike H-Bridge Relay, category: relay, vendor: VEX/AndyMark, part_numbers: [217-0220, SPIKE-RELAY-H], price: null, verified: false, legal_rule: R504-B-a}
+  - {name: Automation Direct Relay, category: relay, vendor: Automation Direct, part_numbers: [AD-SSR6M12-DC-200D, AD-SSRM6M25-DC-200D, AD-SSR6M40-DC-200D], price: null, verified: false, legal_rule: R504-B-b}
+
+  - name: Servo Hub
+    category: servo_controller
+    vendor: REV Robotics
+    part_numbers: [REV-11-1855]
+    price: 90.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-11-1855/
+    legal_rule: R504-D-a
+    specs: {servo_channels: 6, total_output_current_a: 15, interfaces: [CAN, USB-C]}
+
+  # ===================== POWER DISTRIBUTION (R609-D) =======================
+  - name: Power Distribution Hub (PDH)
+    category: power_distribution
+    vendor: REV Robotics
+    part_numbers: [REV-11-1850]
+    price: 250.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-11-1850/
+    legal_rule: R609-D-c
+    specs:
+      high_current_channels: 20     # 40A max each, ATO breaker/fuse
+      low_current_channels: 3       # 15A continuous / 20A peak, ATM fuse
+      switchable_channels: 1        # R504-B-c: non-actuator CUSTOM CIRCUITS only
+      input_voltage_v: "4.75 - 18"
+      terminals: "toolless latching WAGO"
+      interfaces: [CAN, USB-C]
+      dimensions_in: [8.875, 4.375, 1.563]
+      weight_g: 517
+    fuse_rule: "R620-C: ATM <=15A, except a single 20A fuse for a PCM or PH"
+
+  - {name: Power Distribution Panel (PDP 1.0), category: power_distribution, vendor: CTR Electronics, part_numbers: [am-2856, 217-4244, 14-806880], price: null, verified: false, status: DISCONTINUED, source: https://store.ctr-electronics.com/products/power-distribution-panel, legal_rule: R609-D-a, notes: "CTRE recommends PDP 2.0. Has shared VRM/PCM 20A pairs per R617."}
+  - {name: Power Distribution Panel 2.0 (PDP 2.0), category: power_distribution, vendor: CTR Electronics, part_numbers: [24-806880, WCP-1690], price: null, verified: false, legal_rule: R609-D-b}
+  - {name: AndyMark Power Distribution (AMPD), category: power_distribution, vendor: AndyMark, part_numbers: [am-5754], price: null, verified: false, legal_rule: R609-D-d}
+
+  # ===================== POWER PATH (R609) =================================
+  - name: Surface Mount 120 Amp Breaker (Eaton Bussmann CB285-120)
+    category: main_breaker
+    vendor: AndyMark
+    part_numbers: [CB285-120]
+    alt_part_numbers: [am-0282]   # AndyMark alternative, 1/4-28 threads
+    price: null
+    verified: false
+    verified_date: "2026-08-22"
+    source: https://andymark.com/products/surface-mount-120-amp-breaker-by-eaton-bussmann
+    availability: SOLD OUT as of 2026-08-22
+    legal_rule: "R609-C (CB185-120, CB185F-120, CB285-120, CB285F-120, CB285120F, Optifuse 153120/253120)"
+    specs: {rating_a: 120, voltage_vdc: 48, dimensions_in: [2.9, 1.9, 1.5], reset: manual, thread: M6, weight_lb: 0.24}
+    notes: "R612: must be quickly and safely accessible from the exterior; only one allowed on the ROBOT."
+
+  - name: Anderson Power Products SB50 Connector with Contacts
+    category: connector
+    vendor: AndyMark
+    part_numbers: []
+    price: 6.60
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://andymark.com/products/sb50-anderson-powerpole-connector-with-contacts
+    legal_rule: R609-B ("a single pair of Anderson Power Products (APP) 2-pole SB type connectors")
+    contents: "1 SB50 housing (red) + 2 contacts for 6 AWG wire"
+    weight_lb: 0.2
+    notes: "R603: any charger used on a ROBOT battery must have the corresponding Anderson SB connector installed."
+
+  - name: Robot Signal Light (RSL)
+    category: signal_light
+    vendor: AndyMark
+    part_numbers: [am-3583]
+    price: 70.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://andymark.com/products/robot-signal-light
+    legal_rule: R709 (am-3583 and/or Allen-Bradley 855PB-B12ME522; 1-2 permitted)
+    specs: {height_in: 3.23, weight_lb: 0.1085, connectors: "two spade, no polarity"}
+    notes: "Must be visible from 36in away from at least one side (R709-A). Systemcore has a dedicated 2-pin Molex-SL RSL port."
+
+  # ===================== BATTERY / CHARGING (R601-R607) ====================
+  - name: MK ES17-12 12V SLA Battery (Set of 2)
+    category: battery
+    vendor: AndyMark
+    part_numbers: [ES17-12]
+    price: 116.00
+    price_note: "for a set of 2 (=$58.00 each)"
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://andymark.com/products/mk-es17-12-12v-sla-battery-set-of-2
+    legal_rule: R601
+    specs:
+      nominal_voltage_v: 12
+      capacity_ah: 18
+      dimensions_in: [7.13, 2.99, 6.57]
+      weight_lb: 12.89
+      terminals: nut and bolt
+      chemistry: SLA/AGM
+      cycle_life: {full_discharge: 200, half_discharge: 500, thirty_pct_discharge: 1000}
+    r601_compliance:
+      nominal_capacity_ah_range: "17.0 - 18.2"   # 18 Ah: PASS
+      nominal_dimensions_in: "7.1 x 3.0 x 6.6 +/- 0.1"  # PASS
+      weight_lb_range: "11.0 - 14.5"              # 12.89: PASS
+      terminals: "nut and bolt"                    # PASS
+
+  - name: MK Battery ES17-12 - 2 Pack
+    category: battery
+    vendor: REV Robotics
+    part_numbers: [REV-19-2487-PK2]
+    price: 120.00
+    price_note: "for a 2-pack (=$60.00 each)"
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-19-2487/
+    legal_rule: R601
+
+  - {name: NOCO GEN5X3 battery charger, category: charger, vendor: NOCO, part_numbers: [GEN5X3], price: null, verified: false, source: https://docs.wcproducts.com/frc-build-system/electronics-and-pneumatics/miscellaneous, legal_rule: "R603 (must have Anderson SB connector installed); R604 (<=6A average charge current)", notes: "Three-bank 12V charger rated 15A total; 5A/bank keeps each bank under the R604 6A cap. VERIFY per-bank current before use."}
+
+  # ===================== RADIO (R702) ======================================
+  - name: Vivid-Hosting VH-109 FRC Radio V1.5
+    category: radio
+    vendor: AndyMark (also WCP, CTR Electronics)
+    part_numbers: [VH-109, WCP-1538]
+    vendor_sku: am-5583a
+    price: 201.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://andymark.com/products/vivid-hosting-vh-109-frc-radio-v1-5
+    availability: SOLD OUT as of 2026-08-22
+    legal_rule: "R702 - the ONLY permitted robot-to-field comms device (except China events, which use OpenMesh OM5P-AN/OM5P-AC)"
+    specs:
+      standard: "Wi-Fi 6E (802.11ax)"
+      operating_voltage_v: "4.5 - 19 (12 nominal)"
+      current_draw_a: 0.5   # at 12V
+      bands: "2.4GHz and 5.9-7.1GHz (varies by region)"
+      channel_widths_mhz: "20 - 160"
+    firmware:
+      floor_2025: "1.3.0"
+      kop_2025_shipped: "1.1.2"
+      floor_2027: null
+      floor_2027_verified: false
+    rules:
+      bandwidth_cap_mbps: 7.0        # R704-A (OpenMesh: 4.0)
+      power: "R616-A: PoE into the RIO port via passive injector/modified cable direct from a PD, and/or direct 12V input"
+      power_circuit: "R617: non-switched protected pair, 10A fuse/breaker, no other load"
+      poe_passthrough: "R626: one COTS device <=2A at 12V over Cat5e/6/7/8; VH-109 powered via 12V input with >=18 AWG"
+      mounting: "R708: diagnostic lights visible to FIELD STAFF"
+    risk_2027: "Systemcore has an integrated 2.4/5GHz radio. Whether the external VH-109 remains required is UNVERIFIED."
+
+  - name: Radio Power Module (RPM)
+    category: radio_power
+    vendor: REV Robotics
+    part_numbers: [REV-11-1856]
+    price: 34.00
+    list_price: 40.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-11-1856/
+    legal_rule: "R616-B-b (OpenMesh/China events); R710 lists RPM as a protected control-system device"
+    specs: {poe: "18V passive PoE", connectors: "2x socketed RJ45, WAGO latching terminals"}
+
+  # ===================== SENSORS ===========================================
+  - name: Through Bore Encoder V1
+    category: sensor
+    subcategory: absolute_encoder
+    vendor: REV Robotics
+    part_numbers: [REV-11-1271]
+    price: 40.80
+    list_price: 48.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-11-1271/
+    status: DISCONTINUED (in stock as of 2026-08-22)
+    specs:
+      type: "incremental + absolute magnetic, built-in magnet"
+      outputs: "quadrature (A/B/Index) + absolute pulse width"
+      resolution_cpr: 2048
+      resolution_counts_per_rev: 8192
+      voltage_v: "3.3 - 5.0"
+      max_speed_rpm: 10000
+      connector: JST-PH 6-pin
+      bore_options: ["1/2in hex (default)", "3/8in hex", "5mm hex", "1/4in round"]
+      weight_g: "23 - 24"
+    risk: "DISCONTINUED - do not design a 2027 robot around this SKU. Successor not identified in this pass."
+
+  - name: CANcoder (CAN Bus Magnetic Encoder)
+    category: sensor
+    subcategory: absolute_encoder
+    vendor: CTR Electronics
+    part_numbers: [22-676768]
+    price: 89.99
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://store.ctr-electronics.com/products/cancoder
+    specs:
+      bus: "CAN FD and CAN 2.0"
+      supply_voltage_v: "6 - 16"
+      current_ma: "<50 nominal"
+      esd_protection_kv: 30
+      variants: [standard (PCB only), wired, wired with Molex SL]
+      api: Phoenix 6
+    typical_use: "swerve module azimuth absolute position"
+
+  - name: "Pigeon 2.0: 9-DOF IMU with AHRS"
+    category: sensor
+    subcategory: imu
+    vendor: CTR Electronics
+    part_numbers: [21-737785]
+    price: 199.99
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://store.ctr-electronics.com/products/pigeon-2
+    specs:
+      dof: 9   # 3-axis accel + 3-axis gyro + 3-axis magnetometer
+      fusion: Kalman filter
+      yaw_drift_deg_per_hr: 0.12
+      calibration: "none required on boot or for temperature"
+      bus: CAN
+    risk_2027: "Systemcore has a built-in IMU. Reassess this line item after 2026-11-12; potential $199.99 saving."
+
+  - name: "CANrange: Time-of-Flight Proximity Sensor"
+    category: sensor
+    subcategory: tof
+    vendor: CTR Electronics
+    part_numbers: [24-827871]
+    price: 64.99
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://store.ctr-electronics.com/products/canrange
+    specs:
+      resolution_mm: 1
+      range_short_cm: 100
+      range_long_cm: 300
+      range_highspeed_cm: 100   # fixed 100 Hz
+      bus: CAN
+      api: Phoenix 6
+
+  - name: Analog Pressure Sensor
+    category: sensor
+    subcategory: pressure
+    vendor: REV Robotics
+    part_numbers: [REV-11-1107]
+    price: 39.42
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-11-1107/
+    legal_rule: "R805-C / R812-B (analog output must go to analog input 0, or the PH analog port)"
+    specs: {supply_v: 5, max_pressure_psi: 200, output: "analog voltage proportional to pressure"}
+
+  - {name: Nason pressure switch, category: sensor, subcategory: pressure, vendor: Nason, part_numbers: [SM-2B-115R/443], price: null, verified: false, legal_rule: "R805-C / R812-A"}
+  - {name: navX2 MXP / navX2 Micro, category: sensor, subcategory: imu, vendor: Kauai Labs, part_numbers: [], price: null, verified: false, legal_rule: "R713-C-a/b lists navX MXP and navX2 MXP as approved active MXP devices", risk_2027: "Systemcore has no MXP in its confirmed port list. Prefer USB/I2C variants."}
+  - {name: Beam break sensor pair (through-beam IR), category: sensor, subcategory: beam_break, vendor: various, part_numbers: [], price: null, verified: false, notes: "Highest value-per-dollar sensor in FRC. Use modulated sensors to reject arena lighting."}
+  - {name: Limit switch, category: sensor, subcategory: limit, vendor: various, part_numbers: [], price: null, verified: false, notes: "Wire normally-closed so a broken wire fails safe."}
+
+  # ===================== CAN =============================================
+  - {name: CANivore USB-to-CAN adapter, category: can, vendor: CTR Electronics, part_numbers: [21-678682, WCP-1522], price: null, verified: false, legal_rule: R717, recommendation_2027: "DO NOT BUY - Systemcore has 5 native CAN-FD ports."}
+
+  # ===================== VISION ==========================================
+  - {name: Limelight 4, category: vision, vendor: Limelight Vision, part_numbers: [], price: 449.00, verified: true, verified_date: "2026-08-22", source: https://limelightvision.io/collections/products, notes: "Integrated camera + compute + LEDs + IMU. Lowest setup effort of any vision option."}
+  - {name: Limelight 3G, category: vision, vendor: Limelight Vision, part_numbers: [], price: 400.00, verified: true, verified_date: "2026-08-22", source: https://limelightvision.io/collections/products, availability: "SOLD OUT as of 2026-08-22", notes: "Global shutter - best AprilTag pose accuracy while moving."}
+  - {name: Limelight 3, category: vision, vendor: Limelight Vision, part_numbers: [], price: 400.00, verified: true, verified_date: "2026-08-22", source: https://limelightvision.io/collections/products, notes: "Rolling shutter predecessor to 3G."}
+  - {name: Limelight 3A, category: vision, vendor: Limelight Vision, part_numbers: [], price: 189.00, verified: true, verified_date: "2026-08-22", source: https://limelightvision.io/collections/products, notes: "Compute module; you supply the USB camera. Best value pick - pair with a global-shutter camera."}
+  - {name: "Hailo-8 / Hailo-8L Upgrade Kit for Limelight 4", category: vision, vendor: Limelight Vision, part_numbers: [], price: 95.00, price_note: "from $95.00", verified: true, verified_date: "2026-08-22", source: https://limelightvision.io/collections/products}
+  - {name: PhotonVision on Orange Pi 5 / Raspberry Pi 5, category: vision, vendor: DIY, part_numbers: [], price: null, verified: false, notes: "Open source. ~$80-150 SBC + ~$40-90 global-shutter camera + power. Highest setup effort - budget multiple weekends of student time."}
+
+  # ===================== PNEUMATICS (R801-R814) ==========================
+  - name: Pneumatic Hub (PH)
+    category: pneumatics
+    vendor: REV Robotics
+    part_numbers: [REV-11-1852]
+    price: 90.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://www.revrobotics.com/rev-11-1852/
+    legal_rule: R504-C-b
+    specs:
+      solenoid_channels: 16     # 16 single-acting or 8 double-acting
+      output_voltage: "user-selectable 12V or 24V, fully regulated"
+      input_voltage_v: "4.75 - 18"
+      channel_current_ma: 200
+      compressor_current_a: 15
+      pressure_inputs: "1 digital switch + 2 analog sensor"
+      interfaces: [CAN, USB-C]
+      dimensions_in: [4.375, 1.875, 0.750]
+      weight_g: 74
+    fuse: "20A per R620-C / R621 (PCM/PH with compressor)"
+
+  - name: Viair 90C Air Compressor
+    category: pneumatics
+    vendor: AndyMark
+    part_numbers: [am-2005]
+    price: 118.00
+    verified: true
+    verified_date: "2026-08-22"
+    source: https://andymark.com/products/viair-90c-air-compressor
+    legal_rule: "R806 - compressor spec must not exceed nominal 1.1 cfm (519.1 cm3/s) at 12 VDC at any pressure"
+    specs:
+      manufacturer_cfm: 1.03
+      andymark_bench_cfm: {at_0_psi: 0.88, at_110_psi: 0.22}
+      voltage_vdc: 12
+      port: "1/8 in NPT"
+      weight_lb: 2.4
+    r806_compliance: "1.03 cfm nominal < 1.1 cfm cap: PASS"
+
+  - {name: PCM (Pneumatics Control Module), category: pneumatics, vendor: CTR Electronics, part_numbers: [am-2858, 217-4243], price: null, verified: false, legal_rule: R504-C-a}
+  - {name: Pressure relief valve, category: pneumatics, vendor: various, part_numbers: [], price: null, verified: false, legal_rule: "R804-B, R805-B, R811 - must be attached directly to the compressor or by legal hard fittings; teams must check/adjust to release at 125.0 psi"}
+  - {name: Primary working pressure regulator (adjustable, relieving), category: pneumatics, vendor: various, part_numbers: [], price: null, verified: false, legal_rule: "R805-F, R808 - working pressure <=60.0 psi through a single primary regulator"}
+  - {name: Pressure gauges (stored + working), category: pneumatics, vendor: various, part_numbers: [], price: null, verified: false, quantity_required: 2, legal_rule: "R805-E, R810 - easily visible, upstream and downstream of the regulator"}
+  - {name: Pressure vent plug valve, category: pneumatics, vendor: various, part_numbers: [], price: null, verified: false, legal_rule: "R804-A, R805-D, R813 - must vent to atmosphere and be visible and easily accessible"}
+  - {name: Solenoid valve, category: pneumatics, vendor: various, part_numbers: [], price: null, verified: false, legal_rule: "R804-C - max 1/8in NPT/BSPP/BSPT port or integrated 1/4in OD quick-connect; R814 - outputs must not be combined"}
+  - {name: Pneumatic tubing 1/4in OD, category: pneumatics, vendor: various, part_numbers: [], price: null, verified: false, legal_rule: "R804-D - max 1/4in OD; R803-A - tubing may be cut"}
+  - {name: Pneumatic cylinder, category: pneumatics, vendor: various, part_numbers: [], price: null, verified: false, legal_rule: "R802 - COTS, rated >=125 psi (or >=70 psi if downstream of the primary regulator); R803-D - mounting pin may be removed"}
+
+  # ===================== LAUNCHER MECHANICAL (all UNVERIFIED) =============
+  - {name: Colson Performa wheel, category: launcher_wheel, vendor: "AndyMark / VEX / WCP / TTB", part_numbers: [], price: null, verified: false, label: S, notes: "~80A polyurethane on nylon hub. FRC default flywheel wheel: excellent wear, consistent behaviour week 1 to week 6. Verify bore (1/2in hex vs 3/8in hex vs round) before ordering."}
+  - {name: Compliant wheel, category: launcher_wheel, vendor: "VEX / AndyMark", part_numbers: [], price: null, verified: false, label: S, notes: "30A-60A hollow-spoke. Very high grip, poor wear - spokes take a set. Needs an added inertia disc to work as a flywheel."}
+  - {name: Fairlane / blue nitrile roller, category: launcher_wheel, vendor: various, part_numbers: [], price: null, verified: false, label: S, notes: "~70A nitrile. Better as an intake/feeder roller than a flywheel."}
+  - {name: BaneBots T81 / T40 wheel, category: launcher_wheel, vendor: BaneBots, part_numbers: [], price: null, verified: false, label: S, notes: "40A / 30A urethane. Cheap dual-flywheel and indexer option; chunks under high slip."}
+
+# ---------------------------------------------------------------------------
+# BASELINE ELECTRICAL BOM (one competitive robot)
+# ---------------------------------------------------------------------------
+baseline_bom:
+  assumptions:
+    drivetrain: "4-motor swerve (R502 caps propulsion at 4 motors) + 4 azimuth motors"
+    mechanism_motors: 2
+    power_distribution: REV PDH
+    vision: Limelight 3A
+    pneumatics: false
+    turret: false
+  line_items:
+    - {item: Systemcore, qty: 1, unit: null, ext: null, verified: false, note: "price unannounced; 'lower than roboRIO'"}
+    - {item: Robot Signal Light (am-3583), qty: 1, unit: 70.00, ext: 70.00, verified: true}
+    - {item: VH-109 radio (am-5583a), qty: 1, unit: 201.00, ext: 201.00, verified: true}
+    - {item: REV PDH (REV-11-1850), qty: 1, unit: 250.00, ext: 250.00, verified: true}
+    - {item: 120A main breaker (CB285-120), qty: 1, unit: null, ext: null, verified: false}
+    - {item: Anderson SB50 connector kit, qty: 3, unit: 6.60, ext: 19.80, verified: true}
+    - {item: 6 AWG copper wire, qty_ft: 6, unit: null, ext: null, verified: false}
+    - {item: MK ES17-12 battery, qty: 6, unit: 58.00, ext: 348.00, verified: true, note: "AndyMark 2-pack $116.00 => $58.00 each; buy 3 packs"}
+    - {item: Battery charger (<=6A, SB connector), qty: 2, unit: null, ext: null, verified: false}
+    - {item: Breaker/fuse assortment, qty: 1, unit: null, ext: null, verified: false}
+    - {item: Wire 12AWG/18AWG + ferrules, qty: 1, unit: null, ext: null, verified: false}
+    - {item: Kraken X60 (WCP-0940) drive, qty: 4, unit: 217.99, ext: 871.96, verified: true}
+    - {item: NEO (REV-21-1650) azimuth, qty: 4, unit: 50.00, ext: 200.00, verified: true}
+    - {item: Thrifty Nova (TTB-0100) azimuth controller, qty: 4, unit: 90.00, ext: 360.00, verified: true}
+    - {item: NEO Vortex (REV-21-1652) mechanism, qty: 2, unit: 90.00, ext: 180.00, verified: true}
+    - {item: SPARK Flex (REV-11-2159) mechanism controller, qty: 2, unit: 110.00, ext: 220.00, verified: true}
+    - {item: CANcoder (22-676768), qty: 4, unit: 89.99, ext: 359.96, verified: true}
+    - {item: Pigeon 2.0 (21-737785), qty: 1, unit: 199.99, ext: 199.99, verified: true, note: "may be redundant with Systemcore built-in IMU"}
+    - {item: CANrange (24-827871), qty: 1, unit: 64.99, ext: 64.99, verified: true}
+    - {item: Beam break pairs, qty: 3, unit: null, ext: null, verified: false}
+    - {item: Limit switches, qty: 4, unit: null, ext: null, verified: false}
+    - {item: Limelight 3A, qty: 1, unit: 189.00, ext: 189.00, verified: true, note: "global-shutter USB camera extra"}
+    - {item: CAN wire 50ft, qty: 1, unit: null, ext: null, verified: false}
+    - {item: Cat6 patch + passive PoE injector, qty: 2, unit: null, ext: null, verified: false}
+    - {item: Consumables (zip ties, heat shrink, loom, labels), qty: 1, unit: null, ext: null, verified: false}
+    - {item: "Spares: 1x Kraken + 1x NEO + 1x Nova + 1x CANcoder", qty: 1, unit: 447.98, ext: 447.98, verified: derived}
+  totals:
+    verified_price_subtotal: 3982.68
+    verified_price_subtotal_note: "sum of all ext values with verified: true or derived"
+    unverified_bucket_estimate_low: 900
+    unverified_bucket_estimate_high: 1500
+    unverified_bucket_label: S
+    unverified_bucket_contents: [Systemcore, 120A breaker, 6 AWG wire, chargers x2, breaker/fuse assortment,
+                                 12/18 AWG wire, beam breaks, limit switches, CAN wire, Cat6 + PoE injector,
+                                 consumables, global-shutter camera]
+    realistic_all_in_low: 4900
+    realistic_all_in_high: 5500
+    realistic_all_in_label: S
+  cost_reduction_levers:
+    - {swap: "4x NEO Vortex + SPARK Flex instead of 4x Kraken X60 on drive", saves: 71.96, costs: "little - Vortex is a strong drive motor"}
+    - {swap: "4x NEO + Thrifty Nova instead of Kraken on drive", saves: 311.96, costs: "power density and Phoenix 6 closed-loop quality"}
+    - {swap: "Drop Pigeon 2.0 pending Systemcore built-in IMU", saves: 199.99, costs: "risk if the built-in IMU underperforms - HOLD until 2026-11-12"}
+    - {swap: "Tank/West-Coast drive instead of swerve", saves: 919.96, costs: "manoeuvrability - see reference/04_PREDICTIVE_FACTORS.md first"}
+    - {swap: "Skip vision entirely", saves: 189.00, costs: "only viable if the game does not reward ranged/aligned scoring"}
+    - {swap: "Buy 4 batteries not 6", saves: 116.00, costs: "reliability - DO NOT DO THIS. Highest-ROI line in the BOM."}
+
+# ---------------------------------------------------------------------------
+# KOP vs YOU-BUY -- 2027 contents UNKNOWN. All rows [H], projected from 2025/26.
+# ---------------------------------------------------------------------------
+kop_split:
+  label: H
+  authority: "Pre-Kickoff Virtual Kit Release, 2026-11-12 -- replace this table that day"
+  rows:
+    - {item: Robot controller (roboRIO -> Systemcore), historical: "roboRIO to rookies / at cost to veterans", expect_2027: UNVERIFIED, label: "H/UNVERIFIED",
+       note: "A second-hand claim that every team receives a Systemcore in the 2027 year-specific KoP box circulates but was NOT confirmed from a primary FIRST source in this pass."}
+    - {item: Power distribution (PDP/PDH), historical: "usually KOP or FIRST Choice", expect_2027: likely_present, label: H}
+    - {item: VH-109 radio, historical: "distributed in the 2025 KoP (fw 1.1.2)", expect_2027: "likely present IF still required", label: H}
+    - {item: Battery x1, historical: "usually 1 in the KOP", expect_2027: "likely 1; you buy the other 5", label: H}
+    - {item: Battery charger, historical: sometimes, expect_2027: assume_you_buy, label: H}
+    - {item: "120A main breaker, SB50, 6 AWG", historical: usually_included, expect_2027: likely, label: H}
+    - {item: Breaker/fuse assortment, historical: partially, expect_2027: "assume you top up", label: H}
+    - {item: Robot Signal Light, historical: usually_included, expect_2027: likely, label: H}
+    - {item: Motors, historical: "rotating allotment (CIMs, then brushless vouchers)", expect_2027: UNVERIFIED, label: "H/UNVERIFIED"}
+    - {item: Motor controllers, historical: "occasionally via FIRST Choice / vendor vouchers", expect_2027: assume_you_buy, label: H}
+    - {item: Pneumatics starter kit, historical: "FIRST Choice / vendor", expect_2027: assume_you_buy, label: H}
+    - {item: "Sensors, vision, CAN wire, consumables", historical: rarely, expect_2027: you_buy, label: H}
+    - {item: "Vendor discount vouchers (REV, CTRE, WCP, AndyMark, Limelight)", historical: "offered every season", expect_2027: very_likely, label: H}
+  planning_rule: "Budget as if the KOP contains the controller, the PD, the radio, one battery, the
+                  main breaker, and the RSL -- and nothing else you need."
+
+# ---------------------------------------------------------------------------
+# RULE INDEX -- 2026 REBUILT rule numbers cited in the companion .md
+# ---------------------------------------------------------------------------
+rules_cited:
+  motors_actuators:
+    R501: "Allowable motors (Table 8-1)"
+    R502: "Only 4 propulsion motors"
+    R503: "Don't modify motors (mostly)"
+    R504: "Power (most) actuators off of approved devices"
+    R505: "Don't overload controllers (Table 8-2)"
+    R506: "Control servos safely"
+  power:
+    R601: "Battery limit - 1 SLA, 12V, 17-18.2Ah, 11.0-14.5lb, nut-and-bolt terminals"
+    R602: "Other batteries for cameras or computers only (<=100Wh USB-PD)"
+    R603: "Charge batteries with safe connectors (Anderson SB)"
+    R604: "Charge batteries at a safe rate (<=6A average)"
+    R605: "Batteries are not ballast"
+    R606: "Secure the battery"
+    R607: "Insulate battery connections"
+    R608: "Limit non-battery energy (compressed air, CoG change, deformation, gas shocks, pneumatic wheels)"
+    R609: "Connect main power safely (6 AWG, SB, 120A breaker, PD)"
+    R610: "1 breaker/fuse per circuit"
+    R611: "The ROBOT frame is not a wire"
+    R612: "Must be able to turn ROBOT on and off safely"
+    R613: "Electrical system must be inspectable"
+    R614: "No high voltage allowed (<=24V for CUSTOM CIRCUITS)"
+    R615: "Power roboRIO as specified (10A, non-switched, dedicated)  <-- WILL CHANGE FOR SYSTEMCORE"
+    R616: "Power radio as specified - Part 1"
+    R617: "Power radio as specified - Part 2 (10A dedicated)"
+    R618: "Use PD terminals as designed (1 wire per terminal)"
+    R619: "Only use specified circuit breakers in a PD"
+    R620: "Only use specified fuses in PD"
+    R621: "Protect circuits with appropriate circuit breakers (Table 8-3)"
+    R622: "Use appropriately sized wire (Table 8-4)"
+    R623: "Use only appropriate connectors (permits COTS slip rings)"
+    R624: "Use specified wire colors (mostly)"
+    R625: "Don't modify critical power paths"
+    R626: "VH-109 PoE passthrough (<=2A at 12V, Cat5e+, >=18AWG to the 12V input)"
+  control:
+    R701: "Control the ROBOT with a roboRIO  <-- WILL CHANGE FOR SYSTEMCORE"
+    R702: "Communicate with the ROBOT with the specified radio (VH-109; OpenMesh at China events)"
+    R703: "Use specific Ethernet port for roboRIO  <-- WILL CHANGE"
+    R704: "Only use allowed ports and bandwidth (7.0 Mbps VH-109; Table 8-5 port list)"
+    R705: "Configure devices for your team number"
+    R706: "Don't bypass the ARENA network"
+    R707: "Limited wireless allowed (RFID/NFC within the ROBOT only)"
+    R708: "Wireless bridge must be visible"
+    R709: "ROBOTS must have a signal light (1-2 RSL)"
+    R710: "Only specified modifications to control system devices permitted"
+    R711: "Don't connect motor outputs to roboRIO  <-- WILL CHANGE"
+    R712: "Control PWM controllers from the roboRIO  <-- WILL CHANGE"
+    R713: "Only approved MXP devices can control actuators  <-- LIKELY OBSOLETE"
+    R714: "Control CAN motor controllers from the roboRIO (PWM or CAN, never both)"
+    R715: "Control PCM, PH, and Servo Hub from roboRIO"
+    R716: "Don't alter the CAN bus"
+    R717: "USB to CAN adapter permitted (CANivore)  <-- LIKELY REDUNDANT"
+  pneumatics:
+    R801: "Only use explicitly permitted pneumatic parts"
+    R802: "No custom pneumatics; >=125 psi rating (or >=70 psi downstream of the primary regulator)"
+    R803: "Don't modify pneumatics (tubing may be cut)"
+    R804: "Only use specific pneumatic devices (<=1/8in port solenoids, <=1/4in OD tubing)"
+    R805: "If using pneumatics, these parts are required (compressor, relief valve, pressure switch/sensor, vent plug, 2 gauges, primary regulator)"
+    R806: "Compressed air from ROBOT compressor only (<=1.1 cfm at 12 VDC)"
+    R807: "Air storage pressure limit (<=120.0 psi)"
+    R808: "Working air pressure limit (<=60.0 psi)"
+    R809: "Limited devices at high pressure"
+    R810: "Pressure gauges must be visible"
+    R811: "Relief valve requirements (calibrate to 125.0 psi)"
+    R812: "Pressure switch requirements"
+    R813: "Vent plug requirements"
+    R814: "Don't connect solenoid outputs together"
+  robot:
+    R502_note: "R502 is what makes a 4-motor swerve legal and an 8-motor tank illegal"
+
+# ---------------------------------------------------------------------------
+# LAUNCHER DECISION SUPPORT (all [S] -- BIOCORE scoring element is not public)
+# ---------------------------------------------------------------------------
+launchers:
+  label: S
+  scope_warning: "BIOCORE's scoring element name/specs are NOT public. Pollen / StarterBots /
+                  Skill Builders are FTC BIOBUZZ items and must never be attributed to BIOCORE.
+                  Nothing here predicts that BIOCORE rewards launching."
+  historical_base_rate:
+    label: H
+    projectile_seasons: [2026 REBUILT, 2024 CRESCENDO, 2022 RAPID REACT, "2020/21 INFINITE RECHARGE", 2017 STEAMWORKS, 2016 STRONGHOLD]
+    non_projectile_seasons: [2025 REEFSCAPE, 2023 CHARGED UP, 2019 DEEP SPACE]
+    summary: "~5-6 of the last 10 seasons rewarded a launcher. A coin flip, not a certainty."
+  physics:
+    stored_energy: "E = 0.5 * I * omega^2"
+    droop_per_shot: "delta_omega / omega = delta_E / (2 * E)"
+    recovery_time: "t ~= delta_E / P_available"
+    power_cap_note: "R621 Table 8-3 caps a motor-controller branch at a 40A breaker => ~480W electrical, ~330-380W mechanical"
+    inertia_rule_of_thumb: "flywheel stored energy should be 5-10x the per-shot energy transfer to keep droop under 10%"
+    gear_ratio_rule_of_thumb: "size the ratio so the flywheel runs at 60-80% of motor free speed at the shot setpoint"
+    surface_speed_4in_at_6000rpm_mps: 31.9
+    single_flywheel_ball_speed: "~1/2 wheel surface speed, with free backspin"
+    dual_flywheel_ball_speed: "~full wheel surface speed; spin proportional to (omega1 - omega2)"
+  architecture_recommendations:
+    small_team_default: "single flywheel + FIXED hood + variable RPM lookup table, one shooting spot"
+    upgrade_path: "variable hood only after the fixed-spot version already works and is being defended"
+    turret: "SKIP in weeks 1-4. Aim with the drivetrain. R623 permits COTS slip rings but a +/-200 deg wrap limit covers every real case."
+    feeder_gate: "gate the feeder on STABLE velocity, not on reached velocity - the single highest-value line of shooter code"
+  alternatives:
+    catapult: {energy: "elastic deformation, legal per R608-C", pro: "huge instantaneous power, no droop", con: "fixed range, slow re-cock, violent", fit: "big close forgiving goal"}
+    pneumatic_puncher: {energy: "compressed air, R608-A, <=60 psi working per R808", pro: "instant, repeatable", con: "air is a finite budget", fit: "<=10 shots per match"}
+    linear_launcher: {energy: motor, pro: "precise, variable energy", con: "low power density, long stroke, slow reset", fit: "rarely competitive in FRC"}
+    passive_lob: {energy: motor, pro: "trivially reliable", con: "contact range only", fit: "ALWAYS evaluate first"}
+  ev_model:
+    tool: tools/cycle-model.py
+    do_not_duplicate: true
+    commands:
+      - "python tools/cycle-model.py --game rebuilt"
+      - "python tools/cycle-model.py --game rebuilt --sweep"
+      - "python tools/cycle-model.py --game biocore.json"
+
+# ---------------------------------------------------------------------------
+known_limitations:
+  - "All rule quotations are from the 2026 REBUILT manual. The 2027 manual will rewrite every roboRIO reference."
+  - "Systemcore price, KoP distribution, and the radio question are unanswerable until 2026-11-12."
+  - "Kraken X60 and X44 both list at $217.99 educational / $399.99 MSRP; confirm the variant mapping at purchase."
+  - "Many prices are null/unverified: chargers, breaker/fuse assortments, wire, PDP/PDP 2.0/AMPD, CIM,
+     Talon SRX, Victor SPX, Koors40, Venom, navX2, beam breaks, limit switches, most pneumatic components,
+     and all launcher wheel SKUs. Marked unverified rather than estimated, per project accuracy policy."
+  - "REV Through Bore Encoder V1 (REV-11-1271) is listed DISCONTINUED; no successor SKU identified."
+  - "The 120A main breaker and the VH-109 radio both showed SOLD OUT on 2026-08-22 - lead time risk."
+  - "The entire launchers section is [S]. BIOCORE's scoring element is not public."
+  - "The baseline BOM assumes swerve; a tank drivetrain removes roughly $920."
+  - "Cycle-time and expected-value arithmetic lives in tools/cycle-model.py and is deliberately not duplicated."

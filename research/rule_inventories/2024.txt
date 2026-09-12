@@ -1,0 +1,213 @@
+# FRC 2024 CRESCENDO -- 212 rules (2024_CRESCENDO_GameManual.pdf)
+G101   p55   [TU-CHANGED] Humans, stay off the FIELD until green.
+G102   p55   [TU-CHANGED] Never step over the guardrail.
+G103   p55   [TU-CHANGED] Be careful what you interact with.
+G104   p55   [TU-CHANGED] Teams may not enable their ROBOTS on the FIELD.
+G201   p56   [TU-CHANGED] Be a good person.
+G202   p56   [TU-CHANGED] Don’t bang on the glass.
+G203   p56   [TU-CHANGED] Asking other teams to throw a MATCH – not cool.
+G204   p57   [TU-CHANGED] Letting someone coerce you into throwing a MATCH – also not cool.
+G205   p57   [TU-CHANGED] Throwing your own MATCH is bad.
+G206   p57   [TU-CHANGED] Don't violate rules for RPs.
+G207   p58   [TU-CHANGED] Don’t abuse ARENA access.
+G208   p58   [TU-CHANGED] Show up to your MATCHES.
+G209   p58   [TU-CHANGED] Enter only 1 ROBOT.
+G210   p59   [TU-CHANGED] Keep it together.
+G211   p59   [TU-CHANGED] Don’t expect to gain by doing others harm.
+G212   p59   [TU-CHANGED] Egregious or exceptional violations.
+G301   p60   [TU-CHANGED] Be prompt.
+G302   p62   [TU-CHANGED] You can’t bring/use anything you want.
+G303   p62   [TU-CHANGED] Start your ROBOTS.
+G401   p63   [TU-CHANGED] Behind the lines.
+G402   p63   [TU-CHANGED] Let the ROBOT do its thing.
+G403   p64   1 NOTE at a time.
+G404   p64   Only close shots in AUTO.
+G405   p64   Limited AUTO opponent interaction.
+G406   p65   [TU-CHANGED] ROBOTS: use GAME PIECES as directed.
+G407   p65   [TU-CHANGED] Keep NOTES in bounds.
+G408   p65   ROBOTS, no HIGH NOTES.
+G409   p65   1 NOTE at a time.
+G410   p65   Don’t abuse GAME PIECES.
+G411   p65   [TU-CHANGED] ROBOTS must be safe.
+G412   p66   [TU-CHANGED] Keep your BUMPERS low.
+G413   p66   Expansion limits.
+G414   p68   No full-court shots.
+G415   p68   Watch your ARENA interaction.
+G416   p68   Don’t choke up on the chain.
+G417   p69   [TU-CHANGED] Stay out of other ROBOTS.
+G418   p69   [TU-CHANGED] This isn’t combat robotics.
+G419   p70   [TU-CHANGED] Don’t tip or entangle.
+G420   p70   [TU-CHANGED] There’s a 5-count on PINS.
+G421   p71   [TU-CHANGED] Don’t collude with your partners to shut down major parts of game play.
+G422   p71   PODIUM protection.
+G423   p71   SOURCE/AMP ZONE protection.
+G424   p71   STAGE protection.
+G425   p72   [TU-CHANGED] No wandering.
+G426   p72   [TU-CHANGED] COACHES and other teams: hands off the controls.
+G427   p72   [TU-CHANGED] DRIVE TEAMS, watch your reach.
+G428   p72   [TU-CHANGED] Humans: use GAME PIECES as directed.
+G429   p73   [TU-CHANGED] NOTE delivery.
+G430   p73   HIGH NOTE delivery.
+G501   p73   [TU-CHANGED] Leave promptly.
+R101   p77   [TU-CHANGED] FRAME PERIMETER must be fixed.
+R102   p78   [TU-CHANGED] STARTING CONFIGURATION – no overhang.
+R103   p78   [TU-CHANGED] ROBOT weight limit.
+R104   p78   STARTING CONFIGURATION – max size.
+R105   p78   ROBOT extension limit.
+R106   p79   ROBOTS can’t choke up on chain.
+R201   p79   [TU-CHANGED] No digging into carpet.
+R202   p79   [TU-CHANGED] No exposed sharp edges.
+R203   p79   [TU-CHANGED] General safety.
+R204   p80   [TU-CHANGED] NOTES stay with the FIELD.
+R205   p80   [TU-CHANGED] Don’t contaminate the FIELD.
+R206   p80   [TU-CHANGED] Don’t damage NOTES.
+R301   p80   [TU-CHANGED] Individual item cost limit.
+R302   p82   [TU-CHANGED] Custom parts, generally from this year only.
+R303   p83   [TU-CHANGED] Create new designs and software, unless they’re public.
+R304   p84   [TU-CHANGED] During an event, only work during pit hours.
+R401   p85   [TU-CHANGED] BUMPERS all around.
+R402   p85   [TU-CHANGED] BUMPERS must stay low.
+R403   p85   [TU-CHANGED] BUMPERS shouldn’t move.
+R404   p85   [TU-CHANGED] BUMPERS must come off.
+R405   p85   [TU-CHANGED] BUMPERS indicate your ALLIANCE.
+R406   p86   [TU-CHANGED] Team number on BUMPERS.
+R407   p86   [TU-CHANGED] BUMPER weight limit.
+R408   p86   [TU-CHANGED] BUMPER construction.
+R409   p89   [TU-CHANGED] Fill BUMPER corners.
+R410   p89   [TU-CHANGED] BUMPERS must be supported.
+R501   p90   [TU-CHANGED] Allowable motors.
+R502   p92   [TU-CHANGED] Only 4 propulsion motors.
+R503   p92   [TU-CHANGED] Don’t modify motors (mostly).
+R504   p93   [TU-CHANGED] Power (most) actuators off of approved devices.
+R505   p93   [TU-CHANGED] Don’t overload controllers.
+R506   p94   [TU-CHANGED] Control servos safely.
+R601   p95   [TU-CHANGED] Battery limit – everyone has the same power.
+R602   p95   [TU-CHANGED] Other batteries for cameras or computers only.
+R603   p96   [TU-CHANGED] Charge batteries with safe connectors.
+R604   p96   [TU-CHANGED] Charge batteries at a safe rate.
+R605   p96   [TU-CHANGED] Batteries are not ballast.
+R606   p96   [TU-CHANGED] Secure the battery.
+R607   p96   [TU-CHANGED] Insulate battery connections.
+R608   p96   [TU-CHANGED] Limit non-battery energy.
+R609   p96   [TU-CHANGED] Connect main power safely.
+R610   p97   [TU-CHANGED] 1 breaker per circuit.
+R611   p97   [TU-CHANGED] The ROBOT frame is not a wire.
+R612   p97   [TU-CHANGED] Must be able to turn ROBOT on and off safely.
+R613   p98   [TU-CHANGED] Electrical system must be inspectable.
+R614   p98   [TU-CHANGED] No high voltage allowed.
+R615   p98   [TU-CHANGED] Power roboRIO as specified.
+R616   p99   [TU-CHANGED] Power radio as specified – Part 1.
+R617   p99   [TU-CHANGED] Power radio as specified – Part 2.
+R618   p100  [TU-CHANGED] Use PDP/PDH terminals as designed.
+R619   p100  [TU-CHANGED] Only use specified circuit breakers in PDP/PDH.
+R620   p100  [TU-CHANGED] Only use specified fuses in PDP/PDH.
+R621   p100  [TU-CHANGED] Protect circuits with appropriate circuit breakers.
+R622   p101  [TU-CHANGED] Use appropriately sized wire.
+R623   p102  [TU-CHANGED] Use only appropriate connectors.
+R624   p102  [TU-CHANGED] Use specified wire colors (mostly).
+R625   p103  [TU-CHANGED] Don’t modify critical power paths.
+R701   p103  [TU-CHANGED] Control the ROBOT with a roboRIO.
+R702   p103  [TU-CHANGED] Communicate with the ROBOT with the specified radio.
+R703   p103  [TU-CHANGED] Use specific Ethernet port for roboRIO.
+R704   p103  [TU-CHANGED] Only use allowed ports and bandwidth to communicate with the ROBOT.
+R705   p104  [TU-CHANGED] Configure devices for your team number.
+R706   p104  [TU-CHANGED] Don’t bypass the ARENA network.
+R707   p104  [TU-CHANGED] No other wireless allowed.
+R708   p104  [TU-CHANGED] Wireless bridge must be visible.
+R709   p104  [TU-CHANGED] ROBOTS must have a signal light.
+R710   p105  [TU-CHANGED] Only specified modifications to control system devices permitted.
+R711   p106  [TU-CHANGED] Don’t connect motor outputs to roboRIO.
+R712   p106  [TU-CHANGED] Control PWM controllers from the roboRIO.
+R713   p106  [TU-CHANGED] Only approved MXP devices can control actuators.
+R714   p107  [TU-CHANGED] Control CAN motor controllers from the roboRIO.
+R715   p107  [TU-CHANGED] Control PCM/PH(S) from roboRIO.
+R716   p107  [TU-CHANGED] Connect the PDP/PDH to the roboRIO CAN bus.
+R717   p107  [TU-CHANGED] Don’t alter the CAN bus.
+R718   p107  [TU-CHANGED] USB to CAN adapter permitted.
+R801   p107  [TU-CHANGED] Only use explicitly permitted pneumatic parts.
+R802   p107  [TU-CHANGED] No custom pneumatics and meet minimum pressure ratings.
+R803   p108  [TU-CHANGED] Don’t modify pneumatics.
+R804   p108  [TU-CHANGED] Only use specific pneumatic devices.
+R805   p109  [TU-CHANGED] If using pneumatics, these parts are required.
+R806   p109  [TU-CHANGED] Compressed air from ROBOT compressor only.
+R807   p110  [TU-CHANGED] Air storage pressure limit.
+R808   p110  [TU-CHANGED] Working air pressure limit.
+R809   p110  [TU-CHANGED] Limited devices at high pressure.
+R810   p110  [TU-CHANGED] Pressure gauges must be visible.
+R811   p110  [TU-CHANGED] Relief valve requirements.
+R812   p110  [TU-CHANGED] Pressure switch requirements.
+R813   p111  [TU-CHANGED] Vent plug requirements.
+R814   p111  [TU-CHANGED] Don’t connect solenoid outputs together.
+R901   p111  [TU-CHANGED] Use the specified Driver Station Software.
+R902   p111  [TU-CHANGED] The OPERATOR CONSOLE must have a visible display.
+R903   p111  [TU-CHANGED] Connect FMS Ethernet directly to the OPERATOR CONSOLE.
+R904   p111  [TU-CHANGED] OPERATOR CONSOLE physical requirements.
+R905   p112  [TU-CHANGED] FIELD wireless only.
+R906   p112  [TU-CHANGED] No unsafe OPERATOR CONSOLES.
+I101   p113  [TU-CHANGED] It’s your team’s ROBOT.
+I102   p114  [TU-CHANGED] Get inspected before playing a Qualification/Playoff MATCH.
+I103   p114  [TU-CHANGED] Bring it all to inspection.
+I104   p114  [TU-CHANGED] Unless the change is listed below, any change to a ROBOT must get re-inspected.
+I105   p115  [TU-CHANGED] Don’t exploit re-inspection.
+I106   p115  [TU-CHANGED] ROBOTS are off for inspection (mostly).
+I107   p116  [TU-CHANGED] No STUDENT, no inspection.
+T201   p118  [TU-CHANGED] Replays will be the same.
+T301   p118  [TU-CHANGED] Freeze, ROBOT.
+T601   p121  [TU-CHANGED] Send a STUDENT representative.
+T602   p121  [TU-CHANGED] Declining teams can’t be picked.
+T603   p125  [TU-CHANGED] No BACKUP TEAM for replayed MATCHES.
+T604   p125  [TU-CHANGED] No BACKUP TEAMS for 1st MATCH.
+T605   p125  [TU-CHANGED] BACKUP TEAMS play when called.
+T606   p125  [TU-CHANGED] BACKUP TEAMS due 2 minutes before the MATCH start time.
+T607   p125  [TU-CHANGED] Be there to be a BACKUP TEAM.
+T608   p125  [TU-CHANGED] Send a BACKUP TEAM Representative.
+T609   p126  [TU-CHANGED] LINEUPS due 2 minutes before the MATCH.
+T610   p126  [TU-CHANGED] For replays, no changing LINEUPS (mostly).
+C301   p137  [TU-CHANGED] Wear your buttons.
+E101   p139  [TU-CHANGED] Personal safety comes first.
+E102   p139  [TU-CHANGED] Be nice.
+E103   p140  [TU-CHANGED] Children with adults, please.
+E104   p140  [TU-CHANGED] Respect the venue.
+E105   p140  [TU-CHANGED] Teams must check in.
+E106   p140  [TU-CHANGED] Some event resources for event teams only.
+E107   p140  [TU-CHANGED] Practice only when/where permitted.
+E108   p141  [TU-CHANGED] Work in designated areas only.
+E109   p141  [TU-CHANGED] Some things don’t belong at events.
+E110   p141  [TU-CHANGED] Don’t arrange for additional utilities.
+E111   p141  [TU-CHANGED] Don’t sell stuff.
+E112   p141  [TU-CHANGED] Don’t give out food.
+E113   p141  [TU-CHANGED] Make FIRST loud, but with restrictions.
+E114   p141  [TU-CHANGED] Hang banners with care.
+E115   p141  [TU-CHANGED] Limit flag and flagpole size.
+E116   p142  [TU-CHANGED] No firearms.
+E117   p142  [TU-CHANGED] Inspection for Practice Fields.
+E201   p142  [TU-CHANGED] The ROBOT goes alone to off-site machine shops.
+E301   p142  [TU-CHANGED] No wireless communication.
+E302   p142  [TU-CHANGED] Don’t interfere with wireless networks.
+E303   p143  [TU-CHANGED] Tethered operation outside FIELDS/Practice Fields.
+E304   p143  [TU-CHANGED] Practice Field wireless via event radios only.
+E401   p143  [TU-CHANGED] Load in during Load-In.
+E402   p143  [TU-CHANGED] Load-In person limit is 5.
+E403   p143  [TU-CHANGED] Load-In to your pit only.
+E404   p143  [TU-CHANGED] Pit must be left in a safe state.
+E405   p143  [TU-CHANGED] Once done, head out.
+E501   p144  [TU-CHANGED] Pits are unavailable if closed.
+E502   p144  [TU-CHANGED] Stay in your pit.
+E503   p144  [TU-CHANGED] Keep aisles clear.
+E504   p144  [TU-CHANGED] No sparks.
+E505   p144  [TU-CHANGED] Nothing too big.
+E506   p144  [TU-CHANGED] No brazing or welding.
+E507   p144  [TU-CHANGED] Solder with specific tools only.
+E508   p144  [TU-CHANGED] Structures must be safe.
+E509   p145  [TU-CHANGED] Secure team identification assets.
+E601   p145  [TU-CHANGED] Carts must be safe and easy to use.
+E602   p145  [TU-CHANGED] Carts shouldn’t be too big.
+E603   p145  [TU-CHANGED] Carts can’t park anywhere.
+E604   p145  [TU-CHANGED] No noisy carts.
+E605   p145  [TU-CHANGED] No motor driven carts.
+E606   p145  [TU-CHANGED] Small ROBOT carts are allowed on the FIELD
+E701   p145  [TU-CHANGED] If in the pits during Ceremonies, shhhhhh.
+E702   p145  [TU-CHANGED] Pit person limit during Ceremonies is 5.
+E703   p146  [TU-CHANGED] Be respectful during anthems.
+E801   p146  [TU-CHANGED] No saving seats.
+E802   p146  [TU-CHANGED] Don’t throw items from the stands.

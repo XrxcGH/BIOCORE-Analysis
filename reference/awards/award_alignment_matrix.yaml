@@ -1,0 +1,1062 @@
+# award_alignment_matrix.yaml
+# Companion to reference/awards/AWARD-ALIGNMENT.md
+#
+# Award names are taken verbatim from reference/awards/awards.yaml, which is the only
+# authority in this project for award naming (see 00_AWARD_LIST_VERIFIED.md).
+# BIOCORE presented by Haas = FRC 2027, kickoff 2027-01-09 12:00 ET.
+# BIOBUZZ is the FTC sibling game and appears nowhere in this file.
+#
+# Evidence labels: C = confirmed in a primary source; H = historical pattern;
+#                  S = speculation / model estimate; UNVERIFIED = could not be checked.
+
+meta:
+  title: Award alignment matrix for BIOCORE presented by Haas (FRC 2027)
+  generated: 2026-08-22
+  season: 2026-27 BIOCORE
+  kickoff: 2027-01-09T12:00:00-05:00
+  team_profile: ~15 students, limited budget, experienced mentor
+  authority_for_award_names: reference/awards/awards.yaml
+  sources:
+    AV: reference/awards/00_AWARD_LIST_VERIFIED.md
+    AY: reference/awards/awards.yaml
+    AE: reference/awards/00_AWARD_LIST_EMPIRICAL_2026.md
+    AP: reference/awards/01_AWARD_WINNING_PATTERNS.md
+    AC: reference/03_ARCHETYPE_CORPUS.md
+    ACY: reference/archetype_corpus.yaml
+    CM: reference/02_TEAM_CAPACITY_MODEL.md
+    CMS: tools/capacity_model.py
+    PF: reference/04_PREDICTIVE_FACTORS.md
+    # REB, JM and WB are not in the repository, because FIRST's text is not redistributed.
+    # From the repository root, bash tools/rebuild-corpus.sh --fetch and then
+    # bash tools/rebuild-corpus.sh rebuild them locally.
+    REB: manuals/archive/frc/_txt/2026_REBUILT.txt
+    JM: reference/awards/pdfs/judge-manual.pdf
+    WB: reference/awards/pdfs/award-workbook.pdf
+  governing_rule:
+    quote: "Do not award the same team more than 1 judged award at a single event."
+    source: JM
+    evidence: C
+    consequence: >
+      The deliverable per archetype is exactly one PRIMARY and one SECONDARY lane,
+      not a wishlist. Preparing five lanes splits one pit conversation five ways.
+
+# ---------------------------------------------------------------------------
+# 1. AWARD COLUMNS
+# ---------------------------------------------------------------------------
+
+awards_robot_coupled:
+  # Awards whose PUBLISHED criteria reference the machine or in-match behavior.
+  # These are the only columns eligible for PRIMARY/SECONDARY extraction.
+  # pct_bottom_half_winners: AV section 7, TBA 2022-2026, n = 23,167 award rows. [C]
+  - code: AUT
+    name: Autonomous Award sponsored by Google.org
+    pct_bottom_half_winners: 4.9
+    median_winner_rank_pct: 9.0
+    distinct_winners: 536
+    district_points: 5
+    deciding_guideline: >
+      Consistent and reliable operation is weighted more heavily than the ability
+      to score maximum points during any specific autonomously managed actions.
+  - code: CRE
+    name: Creativity Award sponsored by Rockwell Automation
+    pct_bottom_half_winners: 28.1
+    median_winner_rank_pct: 31.8
+    distinct_winners: 706
+    district_points: 5
+    deciding_guideline: >
+      Since creativity may involve risk of failure, the team should be able to
+      describe how they mitigated that risk.
+  - code: EIE
+    name: Excellence in Engineering Award sponsored by Littelfuse
+    pct_bottom_half_winners: 11.4
+    median_winner_rank_pct: 15.5
+    distinct_winners: 572
+    district_points: 5
+    deciding_guideline: "Teams do not have to design a robot that solves all game challenges."
+  - code: IND
+    name: Industrial Design Award
+    pct_bottom_half_winners: 11.9
+    median_winner_rank_pct: 17.5
+    distinct_winners: 604
+    district_points: 5
+    deciding_guideline: >
+      The entire machine, and not just a single component, or the detailed process
+      used to develop the design, is worthy of this recognition.
+  - code: IIC
+    name: Innovation in Control Award sponsored by nVent
+    pct_bottom_half_winners: 10.4
+    median_winner_rank_pct: 17.6
+    distinct_winners: 612
+    district_points: 5
+    deciding_guideline: >
+      The innovation is practical; it addresses the game's challenge and is
+      reliable under the stress of competition.
+  - code: QUA
+    name: Quality Award
+    pct_bottom_half_winners: 12.2
+    median_winner_rank_pct: 18.2
+    distinct_winners: 649
+    district_points: 5
+    deciding_guideline: >
+      A team must be able to describe their quality plan i.e. how their design
+      ensures robustness throughout the entire competition.
+  - code: JUD
+    name: Judges Award
+    also_printed_as: Judges' Award
+    pct_bottom_half_winners: 49.6
+    median_winner_rank_pct: 50.0
+    distinct_winners: 787
+    district_points: 5
+    deciding_guideline: >
+      The team exemplifies a positive attribute or feature that is not addressed
+      in the criteria for other awards.
+    note: Structurally unpitchable; excluded from SECONDARY unless it scores 3.
+  - code: GP
+    name: Gracious Professionalism Award
+    pct_bottom_half_winners: 41.2
+    median_winner_rank_pct: 43.6
+    distinct_winners: 661
+    district_points: 5
+    deciding_guideline: >
+      If the team worked with another FIRST Robotics Competition team pre-season -
+      they can describe the following: How the collaboration was conducted ...
+      The financial impacts of working together vs working independently.
+  - code: IMG
+    name: Imagery Award in honor of Jack Kamen
+    pct_bottom_half_winners: 47.7
+    median_winner_rank_pct: 48.7
+    distinct_winners: 577
+    district_points: 5
+    deciding_guideline: >
+      The team must be able to describe its theme and its origins. The theme is
+      incorporated into all aspects of the team, i.e. uniforms, pits, machine, mascot, etc.
+    excluded_from_extraction: true
+    exclusion_reason: >
+      Coupled to team branding, not to the design archetype. Machine appearance is a
+      finish / wire-management decision (see nudges N05, N12, N14), identical for every archetype.
+
+awards_team_level:
+  # Archetype-independent. Run in parallel; scored once for the team, not per row.
+  - code: EI
+    name: Engineering Inspiration Award sponsored by SpaceX
+    score_all_archetypes: 1
+    district_points: 8
+    reason: Criteria measure outreach with performance indicators, over a sustained period.
+  - code: RAS
+    name: Rising All-Star Award
+    score_all_archetypes: 2
+    district_points: 5
+    pct_bottom_half_winners: 69.1
+    reason: Eligibility is team history ("recent turnover in membership"), not robot. Best odds available to this team.
+  - code: RKA
+    name: Rookie All-Star Award
+    score_all_archetypes: 0
+    district_points: 8
+    reason: 'Hard gate: rookie teams only, JM "team number 10,900 or higher". Not available.'
+  - code: SPI
+    name: Team Spirit Award
+    score_all_archetypes: 2
+    district_points: 5
+    reason: "\"Demonstrate spirit as a unified team\" - behavioral, not robot-driven."
+  - code: SUS
+    name: Team Sustainability Award sponsored by Dow
+    score_all_archetypes: 1
+    district_points: 5
+    reason: Answered by a written plan on People / Prosperity / Planet ("one or more").
+  - code: FIA
+    name: FIRST Impact Award
+    score_all_archetypes: 0
+    district_points: 10
+    reason: 77.7% of wins to repeat winners; 446 distinct teams in 5 seasons; criteria require a 3-year record. Structurally excluded.
+  - code: FLA
+    name: FIRST Leadership Award
+    score_all_archetypes: 2
+    district_points: 0
+    closes: 2027-02-04T15:00:00-05:00
+    reason: Judged on one student. Not a team judged award, so not blocked by the one-award rule.
+    note: Renamed from Dean's List mid-season 2026 (AV section 1.1). Never write "Dean's List".
+  - code: WFFA
+    name: Woodie Flowers Finalist Award
+    score_all_archetypes: 2
+    district_points: 0
+    closes: 2027-02-04T15:00:00-05:00
+    reason: External panel, pre-event, mentor-focused, student-written essay. Robot irrelevant.
+  - code: SAA
+    name: Safety Animation Award sponsored by UL Solutions
+    score_all_archetypes: 2
+    district_points: 0
+    window: "~2026-10-13 to ~2026-11-20 [H] - estimated from the 2026 season; UNVERIFIED for 2027"
+    reason: 40-second animation, no robot, cash prize. Closes before kickoff.
+  - code: DAA
+    name: Digital Animation Award sponsored by Worcester Polytechnic Institute (WPI)
+    score_all_archetypes: 1
+    district_points: 0
+    closes: "\"Coming Soon\" [C]; 2026 season closed 2026-01-12 23:59 ET [H]"
+    reason: External WPI panel; the only FRC award with a published numeric rubric.
+  - code: WIN
+    name: Winner
+    score_all_archetypes: null
+    reason: Match play. Reached through alliance selection - see district_points_argument.
+  - code: FIN
+    name: Finalist
+    score_all_archetypes: null
+    reason: Match play.
+  - code: OTHER
+    names: [Volunteer of the Year Award, Founder's Award, The Allaire Medal]
+    score_all_archetypes: 0
+    reason: Not team-competable.
+
+# ---------------------------------------------------------------------------
+# 2. FIT MATRIX
+# ---------------------------------------------------------------------------
+
+fit_rubric:
+  evidence: S
+  scale:
+    3: The award's decisive published guideline sentence describes this archetype almost verbatim, and the evidence is a byproduct of building it.
+    2: Strong fit; evidence exists but must be deliberately produced (a plot, a render, a log).
+    1: Arguable; the team must manufacture a story to connect robot to criteria.
+    0: No causal link, or a hard eligibility gate blocks it.
+  extraction_rule:
+    primary: highest-scoring eligible cell
+    secondary: next-highest eligible cell
+    tie_break_1: higher pct_bottom_half_winners
+    tie_break_2: lower marginal student-hours
+    exclusions:
+      - Columns marked excluded_from_extraction (IMG) and all awards_team_level entries.
+      - JUD may not be SECONDARY unless it scores 3 (it cannot be prepared for).
+
+fit_matrix:
+  - id: I1
+    archetype: Reliable high-volume single-task scorer
+    variant: simplified / fixed-position
+    scores: {AUT: 1, CRE: 2, EIE: 2, IND: 2, IIC: 2, QUA: 3, JUD: 2, GP: 1}
+    img_score: 2
+  - id: I2
+    archetype: Do-everything robot
+    reject_row: true
+    scores: {AUT: 1, CRE: 3, EIE: 2, IND: 2, IIC: 2, QUA: 1, JUD: 2, GP: 1}
+    img_score: 2
+  - id: I3
+    archetype: Defense specialist
+    scores: {AUT: 0, CRE: 1, EIE: 0, IND: 0, IIC: 0, QUA: 1, JUD: 3, GP: 3}
+    img_score: 1
+  - id: I4
+    archetype: Endgame specialist
+    scores: {AUT: 0, CRE: 2, EIE: 3, IND: 1, IIC: 2, QUA: 2, JUD: 2, GP: 1}
+    img_score: 2
+  - id: I5
+    archetype: AUTO specialist
+    scores: {AUT: 3, CRE: 2, EIE: 2, IND: 0, IIC: 3, QUA: 1, JUD: 2, GP: 1}
+    img_score: 1
+  - id: I6
+    archetype: Feeder / support robot
+    scores: {AUT: 0, CRE: 3, EIE: 1, IND: 2, IIC: 0, QUA: 2, JUD: 2, GP: 3}
+    img_score: 2
+  - id: I7
+    archetype: Deliberately-minimal flawless robot
+    scores: {AUT: 0, CRE: 1, EIE: 3, IND: 2, IIC: 0, QUA: 3, JUD: 2, GP: 1}
+    img_score: 2
+
+archetype_facts:
+  # From AC section 7 / archetype_corpus.yaml. All seven present in 5/5 seasons 2022-2026. [C]
+  I1: {mechanisms: 2, marginal_usd: 900, prog_difficulty: 3, small_team: "4/9 outright; 6/9 simplified variant; 0/4 full spec"}
+  I2: {mechanisms: 4, marginal_usd: 2200, prog_difficulty: 5, small_team: "0/5 = 0%"}
+  I3: {mechanisms: 1, marginal_usd: 150, prog_difficulty: 1, small_team: "3/4"}
+  I4: {mechanisms: 2, marginal_usd: 500, prog_difficulty: 3, small_team: "3/6; 3/3 low/mid tier; 0/3 top tier"}
+  I5: {mechanisms: 0, marginal_usd: 200, prog_difficulty: 5, small_team: "2/5; 5/5 scoped to 1-2 elements; 0/3 full scope"}
+  I6: {mechanisms: 1, marginal_usd: 400, prog_difficulty: 2, small_team: "5/5 = 100%"}
+  I7: {mechanisms: 1, marginal_usd: 350, prog_difficulty: 2, small_team: "5/5 = 100%"}
+
+# ---------------------------------------------------------------------------
+# 3. THE SEVEN PAIRINGS
+# ---------------------------------------------------------------------------
+
+pairings:
+
+  - id: I1
+    archetype: Reliable high-volume single-task scorer
+    primary:
+      code: QUA
+      award: Quality Award
+      checklist: quality
+      fit: 3
+      causal_justification: >
+        The simplified variant IS a quality plan expressed as hardware: one mechanism
+        chain of <=3, one setpoint, one distance, one failure mode, one spare. AC records
+        R2's failure profile as graceful. The guideline asks the team to "describe their
+        quality plan"; this robot is one.
+    secondary:
+      code: CRE
+      award: Creativity Award sponsored by Rockwell Automation
+      checklist: creativity
+      fit: 2
+      causal_justification: >
+        The creative act is the SCOPE decision, not the mechanism - surveying one firing
+        position and building the machine around one distance is a strategy-enhancing
+        concept "intentionally designed and not discovered", with a documented risk
+        mitigation (the shot chart).
+      tie_break: CRE 28.1% > IND 11.9% > EIE 11.4% > IIC 10.4%
+    disagrees_with_AC_7_2: "AC said Quality + Industrial Design; IND is 11.9% bottom-half and demands whole-machine finish this team cannot fund."
+
+  - id: I2
+    archetype: Do-everything robot
+    reject_row: true
+    warning: >
+      DO NOT BUILD FOR THIS ROW. AC records 0/5 small-team successes across five seasons;
+      CM caps this team at 2.00 novel mechanisms against I2's median of 4. This row exists
+      so the kickoff meeting has something explicit to reject.
+    primary:
+      code: CRE
+      award: Creativity Award sponsored by Rockwell Automation
+      checklist: creativity
+      fit: 3
+      causal_justification: The only FRC award whose criteria pay for ambition.
+    secondary:
+      code: IND
+      award: Industrial Design Award
+      checklist: industrial_design
+      fit: 2
+      causal_justification: '"The entire machine, and not just a single component" is the do-everything pitch verbatim.'
+      tie_break: IND 11.9% > EIE 11.4% > IIC 10.4%
+
+  - id: I3
+    archetype: Defense specialist
+    primary:
+      code: JUD
+      award: Judges Award
+      checklist: judges
+      fit: 3
+      causal_justification: >
+        A defense specialist has, by construction, no machine award to win - every
+        AUT/EIE/IND/IIC cell in its row is 0. That is the eligibility condition for the
+        guideline "a positive attribute or feature that is not addressed in the criteria
+        for other awards." Also the most accessible award in FRC: 787 distinct winners.
+      tie_break: JUD 49.6% > GP 41.2% at equal fit 3
+    secondary:
+      code: GP
+      award: Gracious Professionalism Award
+      checklist: gracious_professionalism
+      fit: 3
+      causal_justification: >
+        Defense is the one place on an FRC field where sportsmanship is directly
+        observable, and Match Observer reports reach the judging panel. Risk: AC records
+        I3's failure mode as "foul risk, not breakage" - a dirty defense robot inverts this lane.
+
+  - id: I4
+    archetype: Endgame specialist
+    primary:
+      code: EIE
+      award: Excellence in Engineering Award sponsored by Littelfuse
+      checklist: excellence_in_engineering
+      fit: 3
+      causal_justification: >
+        "Teams do not have to design a robot that solves all game challenges" legitimizes
+        exactly this object: one challenge, one 15-30 second window, one integrated
+        mechanism. AC's I4 lesson - find the RP threshold, buy the cheapest tier that
+        clears it - IS a documented trade study.
+      caveat: 62.5% of EIE winners were still qual top-8.
+    secondary:
+      code: CRE
+      award: Creativity Award sponsored by Rockwell Automation
+      checklist: creativity
+      fit: 2
+      causal_justification: >
+        The risk-mitigation clause is written for single-shot mechanisms. AC records I4's
+        profile as "single-shot. Miss the hook = 0. No partial credit." The mitigation story
+        (N attempts, M successes, backup geometry) is simultaneously the Quality answer.
+      tie_break: CRE 28.1% > QUA 12.2% > IIC 10.4%
+
+  - id: I5
+    archetype: AUTO specialist
+    primary:
+      code: IIC
+      award: Innovation in Control Award sponsored by nVent
+      checklist: innovation_in_control
+      fit: 3
+      causal_justification: >
+        A scoped AUTO specialist is 100% control system and 0% mechanism (AC median
+        mechanism count: 0), and the evidence is a telemetry log already recorded. IIC does
+        not require out-scoring the field - only "reliable under the stress of competition".
+      tie_break: IIC 10.4% > AUT 4.9% at equal fit 3
+    secondary:
+      code: AUT
+      award: Autonomous Award sponsored by Google.org
+      checklist: autonomous
+      fit: 3
+      opportunistic_only: true
+      causal_justification: >
+        Criteria fit perfectly on paper ("consistent and reliable operation is weighted more
+        heavily than the ability to score maximum points") but 80.4% of winners were qual
+        top-8 and only 4.9% came from the bottom half - the most performance-coupled judged
+        award in FRC. Spend the 6 marginal hours only after seeing your auto beside the field.
+    systemcore_risk:
+      evidence: H/S
+      note: >
+        AC section 9.4 applies +0.5 to +1.0 programming-difficulty penalty for the roboRIO ->
+        Systemcore transition; I5 is already difficulty 5. Scope the auto to 1-2 elements
+        (AC: 5/5 small-team success scoped, 0/3 at full scope). The 2027 logging API is UNVERIFIED.
+    disagrees_with_AC_7_2: "AC listed Autonomous first; IIC is 2.1x more open for an identical artifact set."
+
+  - id: I6
+    archetype: Feeder / support robot
+    primary:
+      code: GP
+      award: Gracious Professionalism Award
+      checklist: gracious_professionalism
+      fit: 3
+      causal_justification: >
+        The design thesis is "make my alliance partners better" - AC R3 measures +20-40%
+        partner throughput. The deciding guideline is the pre-season collaboration bullet,
+        which is a checklist the team can deliberately satisfy before January (nudge N13).
+      tie_break: GP 41.2% > CRE 28.1% at equal fit 3
+    secondary:
+      code: CRE
+      award: Creativity Award sponsored by Rockwell Automation
+      checklist: creativity
+      fit: 3
+      causal_justification: >
+        "an attribute that enhances strategy of play" - a robot that scores zero itself and
+        raises alliance throughput 20-40% is the purest instance. AC scores I6 at 5/5
+        small-team success, so the robot will work; the only question is articulation.
+    disagrees_with_AC_7_2: "AC said Industrial Design + Team Spirit; Team Spirit is archetype-independent - a support robot does not cause it."
+
+  - id: I7
+    archetype: Deliberately-minimal flawless robot
+    primary:
+      code: QUA
+      award: Quality Award
+      checklist: quality
+      fit: 3
+      causal_justification: >
+        "It never failed" IS the Quality Award thesis. AC records I7 as "two independent
+        simple systems; degrades gracefully", 5/5 small-team success. The distinguishing
+        evidence is a COUNT: matches played, failures, mean time to repair.
+      tie_break: QUA 12.2% > EIE 11.4% at equal fit 3
+    secondary:
+      code: EIE
+      award: Excellence in Engineering Award sponsored by Littelfuse
+      checklist: excellence_in_engineering
+      fit: 3
+      causal_justification: >
+        "Teams do not have to design a robot that solves all game challenges" is the only
+        sentence in FIRST's published criteria that legitimizes a deliberately minimal
+        robot. The pitch is a trade study anchored on CM's novel_mechanisms_max = 2.00.
+
+# ---------------------------------------------------------------------------
+# 4. MATERIALS CHECKLISTS  (hours = NOMINAL student-hours, [S])
+# ---------------------------------------------------------------------------
+
+materials_rules:
+  paper_is_a_leave_behind:
+    quote: >
+      Judges are encouraged to take team provided materials and review them as time allows.
+      ... There are no restrictions on page limits of documents but please be aware that
+      judges are not expected to review every piece of material handed to them during the
+      event and teams are encouraged to include the most relevant information in their interview.
+    source: JM
+    evidence: C
+  do_not_apply_fia_binder_norms:
+    note: >
+      JM's "no larger than one 2-inch 3-ring binder" guidance is in Chapter 5 and governs the
+      scheduled FIRST Impact Award interview, NOT pit machine-award judging. Applying it wastes 30+ hours.
+    evidence: C
+  invite_the_judges_to_touch:
+    quote: "Judges should not touch a team's robot unless directly invited by the team."
+    source: JM
+    evidence: C
+    consequence: 'Every checklist requires the rehearsed line "would you like to try it?" at the 3:00 beat.'
+
+materials_checklists:
+
+  quality:
+    award: Quality Award
+    thesis: Here is our quality plan, and here is the number that proves it worked.
+    total_student_hours: 28
+    total_with_habits: 18
+    items:
+      - {item: "Pit display: the FAILED first prototype, labelled with date + what it taught", h: 1, owner: MECH_LEAD, free_if: N02}
+      - {item: "Pit display: one spare of the primary mechanism, on the table, reachable", h: 2, owner: MECH_LEAD}
+      - {item: "Pit display: A3 reliability scoreboard, hand-updated between matches (matches / failures / MTTR)", h: 2, owner: PIT_LEAD}
+      - {item: "Technical binder (<=10 sheets): quality plan 1p, failure log, maintenance checklist, spares inventory, fastener standard", h: 5, owner: BUILD_LEAD, free_if: N06}
+      - {item: "One-page handout, double-sided: quality plan in 5 bullets + reliability number; back = annotated serviceability photo", h: 4, owner: AWARDS_LEAD}
+      - {item: "CAD render: exploded view of the primary mechanism showing service access", h: 3, owner: CAD_LEAD, free_if: N08}
+      - {item: "Test-data plot: cycles-to-failure / consecutive-successes bar chart, dated", h: 2, owner: AUTO_TELEM, free_if: N03+N07}
+      - {item: "Video: 45 s real-time teardown-to-reassembly of the serviceable module", h: 4, owner: MEDIA, optional: true}
+      - {item: "5-minute pitch: 3 x 1 h rehearsals with 3 students", h: 3, owner: AWARDS_LEAD}
+      - {item: "Judge-question prep, bank Q1-Q6", h: 2, owner: PIT_CREW}
+
+  creativity:
+    award: Creativity Award sponsored by Rockwell Automation
+    thesis: We designed this on purpose, it changes how the match is played, and here is how we handled the risk.
+    total_student_hours: 45
+    total_without_bench_rig: 33
+    total_with_habits: 22
+    items:
+      - {item: "Pit display: origin-story board - 4 dated photos (rejected concept -> sketch -> prototype -> final) with the decision sentence under each", h: 8, owner: AWARDS_LEAD, free_if: N01+N04}
+      - {item: "Pit display: bench demo rig - the mechanism running off-robot on a battery, guarded", h: 12, owner: MECH_LEAD, optional: true}
+      - {item: "Pit display: the rejected alternative, physically present", h: 1, owner: MECH_LEAD, free_if: N02}
+      - {item: "Technical binder: concept trade table (>=3 options scored), risk register with mitigations, one page 'what this changes about the match'", h: 5, owner: AWARDS_LEAD, free_if: N04}
+      - {item: "One-page handout: concept in one sentence, trade table, risk/mitigation pair, one photo", h: 4, owner: AWARDS_LEAD}
+      - {item: "CAD render: side-by-side of the rejected concept and the chosen one", h: 4, owner: CAD_LEAD}
+      - {item: "Test-data plot: before/after on the metric the concept was meant to move", h: 3, owner: AUTO_TELEM, free_if: N03}
+      - {item: "Video: 30 s of the mechanism working. No narration, no music", h: 3, owner: MEDIA}
+      - {item: "5-minute pitch", h: 3, owner: AWARDS_LEAD}
+      - {item: "Judge-question prep, bank Q1-Q4 + Q7-Q9", h: 2, owner: PIT_CREW}
+
+  industrial_design:
+    award: Industrial Design Award
+    thesis: The whole machine is one coherent object.
+    total_student_hours: 35
+    gate: Only chase if CAD_LEAD kept the assembly current all season (nudge N08).
+    items:
+      - {item: "Pit display: integration photo grid - 6 photos showing the same design language across subsystems", h: 5, owner: MEDIA, free_if: N01}
+      - {item: "Pit display: written design-language statement (colour, fastener standard, bend radius, wire routing rule)", h: 3, owner: CAD_LEAD}
+      - {item: "Robot with visible dressed wiring and labelled harness", h: 0, owner: ELECTRICAL, costed_as: N05}
+      - {item: "Technical binder: full-robot CAD screenshots, design-language statement, manufacturing plan", h: 4, owner: CAD_LEAD, free_if: N08}
+      - {item: "One-page handout: isometric render + 5 callouts naming the repeated design decision", h: 4, owner: CAD_LEAD}
+      - {item: "CAD renders: 1 isometric hero + 1 exploded full robot + 1 packaging/volume section", h: 8, owner: CAD_LEAD}
+      - {item: "Mass/volume budget table (substitutes for a test-data plot)", h: 2, owner: CAD_LEAD}
+      - {item: "Video: 30 s CAD turntable cutting to the same angle on the real robot", h: 4, owner: MEDIA}
+      - {item: "5-minute pitch", h: 3, owner: AWARDS_LEAD}
+      - {item: "Judge-question prep, bank Q10-Q13", h: 2, owner: PIT_CREW}
+
+  excellence_in_engineering:
+    award: Excellence in Engineering Award sponsored by Littelfuse
+    thesis: We chose not to solve every challenge, and here is the documented process that decided it.
+    total_student_hours: 30
+    total_with_habits: 18
+    gate: Do not attempt without a real, dated decision record (nudge N04).
+    items:
+      - {item: "Pit display: the decision record, printed - one dated line per decision, 'we chose X over Y because Z'", h: 2, owner: AWARDS_LEAD, free_if: N04, cold_cost_h: 12}
+      - {item: "Pit display: A3 RP-threshold trade table (which tier clears the threshold most cheaply)", h: 3, owner: STRATEGY, when: kickoff weekend}
+      - {item: "Technical binder: requirements -> constraints -> options -> decision, one page per subsystem, <=4 pages", h: 6, owner: CAD_LEAD}
+      - {item: "One-page handout: the trade study, the number that decided it, the capacity constraint (2.00 novel mechanisms)", h: 4, owner: AWARDS_LEAD}
+      - {item: "CAD render: integration view - how the endgame mechanism shares structure with the drivetrain", h: 4, owner: CAD_LEAD}
+      - {item: "Test-data plot: attempts vs successes over the season, dated, showing the learning curve", h: 3, owner: AUTO_TELEM, free_if: N07}
+      - {item: "Video: 40 s - the mechanism, then the same mechanism after the redesign", h: 3, owner: MEDIA}
+      - {item: "5-minute pitch", h: 3, owner: AWARDS_LEAD}
+      - {item: "Judge-question prep, bank Q7-Q9 + Q14-Q16", h: 2, owner: PIT_CREW}
+
+  innovation_in_control:
+    award: Innovation in Control Award sponsored by nVent
+    thesis: This control loop is practical, it addresses the game, it is reliable under stress - and here is the log.
+    total_student_hours: 40
+    total_without_bench_rig: 32
+    systemcore_risk_hours: 2
+    items:
+      - {item: "Pit display: a laptop showing the actual telemetry plot from the LAST match, updated between matches", h: 3, owner: AUTO_TELEM, free_if: N03}
+      - {item: "Pit display: sensor map - robot photo with every sensor circled and named", h: 2, owner: CONTROLS}
+      - {item: "Pit display: bench rig running the control loop with a knob to disturb it", h: 8, owner: CONTROLS, optional: true}
+      - {item: "Technical binder: control architecture diagram, sensor list w/ part numbers, dated tuning log, Systemcore port notes", h: 6, owner: CONTROLS}
+      - {item: "One-page handout: the loop as one block diagram, the sensor list, one plot", h: 4, owner: AUTO_TELEM}
+      - {item: "Control block diagram (substitutes for a CAD render)", h: 3, owner: CONTROLS}
+      - {item: "Test-data plots (>=2): setpoint vs actual over one match; success rate across N attempts", h: 4, owner: AUTO_TELEM, free_if: N03+N07}
+      - {item: "Video: 30 s split-screen, robot moving beside the live plot", h: 5, owner: MEDIA}
+      - {item: "5-minute pitch", h: 3, owner: CONTROLS}
+      - {item: "Judge-question prep, bank Q17-Q21", h: 2, owner: CONTROLS}
+
+  autonomous:
+    award: Autonomous Award sponsored by Google.org
+    thesis: It runs the same way every time.
+    total_student_hours: 6
+    note: Marginal cost only - 100% reuse of the innovation_in_control checklist. Opportunistic; spend only if the auto is visibly top-3 at the event.
+    items:
+      - {item: "All innovation_in_control artifacts", h: 0, owner: AUTO_TELEM}
+      - {item: "Test-data plot: auto success rate - N runs, M identical outcomes, plotted by date", h: 2, owner: AUTO_TELEM}
+      - {item: "One-page handout addendum: the auto path on a field diagram with the timing budget", h: 3, owner: AUTO_TELEM}
+      - {item: "Pitch delta: swap the 'innovation' paragraph for a 'repeatability' paragraph", h: 1, owner: AWARDS_LEAD}
+
+  judges:
+    award: Judges Award
+    thesis: There is no pitch. Be legible and memorable.
+    total_student_hours: 8
+    note: Best hours-to-odds ratio of any lane in this file. AP section 3.8 calls it "the one you cannot pitch".
+    items:
+      - {item: "Pit display: one honest object explaining the unusual choice - for I3, a printed denial heat map + opponent scoring-rate delta", h: 4, owner: STRATEGY}
+      - {item: "Pit display: nothing else. Clean pit, tools racked, robot visible", h: 0, owner: PIT_LEAD}
+      - {item: "Technical binder: DO NOT BUILD ONE", h: 0, owner: null}
+      - {item: "One-page handout: the strategic thesis in 5 sentences + the heat map", h: 3, owner: STRATEGY}
+      - {item: "CAD render / test plot / video: not applicable", h: 0, owner: null}
+      - {item: "5-minute pitch: the same 90-second opener every student can give", h: 0, owner: ALL, free_if: N11}
+      - {item: "Judge-question prep: rehearse 'why did you build it that way?'", h: 1, owner: PIT_CREW}
+
+  gracious_professionalism:
+    award: Gracious Professionalism Award
+    thesis: We are measurably better for the teams around us.
+    total_student_hours: 31
+    hours_before_kickoff: 8
+    items:
+      - {item: "Pre-season collaboration executed and documented: date, other team #, what was shared, hours, dollars saved both sides", h: 8, owner: MENTOR, when: 2026-10 to 2026-12, cannot_be_retrofitted: true}
+      - {item: "Pit display: collaboration one-pager + dated photo of the two teams together", h: 2, owner: MEDIA}
+      - {item: "Pit display: a visibly stocked lending shelf (spare battery, fasteners, tools) with a 'borrow this' sign", h: 2, owner: PIT_LEAD}
+      - {item: "2-page collaboration log with dates and named teams (substitutes for a technical binder)", h: 3, owner: AWARDS_LEAD}
+      - {item: "One-page handout: collaboration table + the alliance-throughput number (+20-40% partner effect for I6)", h: 4, owner: AWARDS_LEAD}
+      - {item: "Strategy diagram of the support role (substitutes for a CAD render)", h: 3, owner: STRATEGY}
+      - {item: "Test-data plot: partner scoring rate with vs without your support robot, from your own scouting", h: 4, owner: SCOUT}
+      - {item: "Video: skip", h: 0, owner: null}
+      - {item: "5-minute pitch", h: 3, owner: AWARDS_LEAD}
+      - {item: "Judge-question prep, bank Q22-Q25", h: 2, owner: PIT_CREW}
+
+shared_artifact_library:
+  # hours_cold = build it from nothing late in the season.
+  # hours_warm = the marginal cost when the section-4 habits are running.
+  totals: {hours_cold: 89, hours_warm: 21, ratio: 4.2}
+  artifacts:
+  - {artifact: Dated build/decision photos,        lanes: [QUA, CRE, IND, EIE, IIC, AUT, GP], hours_cold: 20, hours_warm: 0.0}
+  - {artifact: Failure / match log,                 lanes: [QUA, EIE, IIC, AUT],               hours_cold: 10, hours_warm: 0.0}
+  - {artifact: Design-decision record,              lanes: [CRE, IND, EIE, IIC, JUD],          hours_cold: 12, hours_warm: 2.5}
+  - {artifact: Full-robot CAD kept current,         lanes: [IND, EIE],                         hours_cold: 20, hours_warm: 8.0}
+  - {artifact: Origin-story board,                  lanes: [CRE, EIE, IIC],                    hours_cold: 12, hours_warm: 3.0}
+  - {artifact: The kept failed prototype,           lanes: [QUA, CRE, EIE],                    hours_cold: 1,  hours_warm: 0.25}
+  - {artifact: Telemetry plots,                     lanes: [QUA, CRE, EIE, IIC, AUT],          hours_cold: 8,  hours_warm: 2.0}
+  - {artifact: Attempt/success tally,               lanes: [QUA, CRE, EIE, IIC, AUT, GP],      hours_cold: 6,  hours_warm: 1.0}
+  - {artifact: Bench demo rig,                      lanes: [CRE, IIC],                         hours_cold: 12, hours_warm: 12.0}
+  - {artifact: Rehearsed 90-second opener,          lanes: [all],                              hours_cold: 3,  hours_warm: 3.0}
+
+pitch_outline_5min:
+  - {t: "0:00-0:30", beat: The one sentence, who: Student A, content: "Name the archetype, not the game. '15 students. We built one thing and we built it to work every match.'"}
+  - {t: "0:30-1:30", beat: The decision, who: Student B, content: "What we did NOT build and the number that decided it. Hand over the one-pager HERE, not at the end."}
+  - {t: "1:30-3:00", beat: Lane-specific middle, who: Student C, content: "QUA quality plan + reliability count | CRE origin story + risk mitigation | EIE trade study | IIC the plot on the laptop | GP the collaboration table"}
+  - {t: "3:00-3:30", beat: The invitation, who: Student C, content: "'Would you like to try it?' Hand them the spare or the bench rig. JM forbids them touching the robot uninvited."}
+  - {t: "3:30-4:30", beat: Their questions, who: anyone, content: "'I don't know, but she does' is a correct answer."}
+  - {t: "4:30-5:00", beat: The close, who: Student A, content: "One forward-looking sentence: what we would change, and the date we found that out."}
+
+judge_question_bank:
+  Q1:  {q: "What breaks most often?", lanes: [QUA, CRE], artifact: failure log}
+  Q2:  {q: "How long to swap it at an event?", lanes: [QUA], artifact: MTTR number + spare on the table}
+  Q3:  {q: "Show me your spares.", lanes: [QUA], artifact: spares inventory}
+  Q4:  {q: "What did you change after your first event?", lanes: [QUA, CRE, EIE], artifact: dated decision record}
+  Q5:  {q: "How do you know it is reliable?", lanes: [QUA, IIC, AUT], artifact: attempt/success tally}
+  Q6:  {q: "Who on the team knows how to fix this?", lanes: [QUA], artifact: name two students, both present}
+  Q7:  {q: "Was that intentional or did you discover it?", lanes: [CRE], artifact: origin-story board}
+  Q8:  {q: "What was the risk, and what did you do about it?", lanes: [CRE], artifact: risk register}
+  Q9:  {q: "What else did you consider?", lanes: [CRE, EIE], artifact: trade table + kept failed prototype}
+  Q10: {q: "Walk me around the whole robot.", lanes: [IND], artifact: integration photo grid}
+  Q11: {q: "Why is everything the same colour / fastener?", lanes: [IND], artifact: design-language statement}
+  Q12: {q: "Did you CAD it before you built it?", lanes: [IND, EIE], artifact: current assembly on a laptop}
+  Q13: {q: "How do you get to the battery?", lanes: [IND, QUA], artifact: live demo, timed}
+  Q14: {q: "What did you choose not to build?", lanes: [EIE], artifact: trade study + capacity number}
+  Q15: {q: "Why is that the right scope for your team?", lanes: [EIE], artifact: "'Two novel mechanisms is our measured ceiling'"}
+  Q16: {q: "How did you decide the endgame tier?", lanes: [EIE], artifact: RP-threshold table}
+  Q17: {q: "What sensors are on it?", lanes: [IIC], artifact: sensor map photo}
+  Q18: {q: "Show me the data.", lanes: [IIC, AUT], artifact: laptop plot from the LAST match}
+  Q19: {q: "What is different about Systemcore?", lanes: [IIC], artifact: port notes - a 2027-only differentiator}
+  Q20: {q: "What happens if the sensor fails?", lanes: [IIC], artifact: degradation path stated out loud}
+  Q21: {q: "How many times has the auto run identically?", lanes: [AUT], artifact: success-rate plot}
+  Q22: {q: "Who have you helped this season?", lanes: [GP], artifact: collaboration log with dates}
+  Q23: {q: "What did that cost you?", lanes: [GP], artifact: the financial-impact line the guideline asks for}
+  Q24: {q: "How does your robot help your partners?", lanes: [GP], artifact: partner-throughput plot}
+  Q25: {q: "Tell me about a time you lost.", lanes: [GP, JUD], artifact: unrehearsable - answer honestly and briefly}
+
+# ---------------------------------------------------------------------------
+# 5. DESIGN NUDGES, RANKED BY HOURS-TO-ODDS RATIO   [S]
+# ---------------------------------------------------------------------------
+
+design_nudges:
+  method: >
+    ratio = estimated odds lift / nominal student-hours. Odds lift is a judgement band,
+    not a measurement. The RANKING is the deliverable; the stars are not probabilities.
+  ranked:
+    - id: N01
+      rank: 1
+      nudge: Photograph every subsystem at every revision, dated, into one shared album
+      hours: 0.5
+      odds_lift: large
+      stars: 5
+      feeds: [QUA, CRE, IND, EIE, IIC, GP, IMG]
+      helps_performance: true
+      note: AP section 5.1 calls this the single highest-leverage habit. Decide it in week 1 of build, not week 6.
+    - id: N02
+      rank: 2
+      nudge: Keep the failed prototype. Label it with the date and one sentence
+      hours: 0.25
+      odds_lift: medium
+      stars: 5
+      feeds: [CRE, QUA, EIE]
+      helps_performance: false
+      note: The only artifact here that can never be reconstructed later.
+    - id: N03
+      rank: 3
+      nudge: Turn on on-robot logging for every enabled session
+      hours: 2
+      hours_systemcore_risk: 2
+      odds_lift: large
+      stars: 5
+      feeds: [IIC, AUT, QUA, EIE, CRE]
+      helps_performance: true
+      note: Converts the Innovation in Control lane from "build something" to "open the laptop". Halves debug time. 2027 logging API is UNVERIFIED - establish the habit on the 2026 robot.
+    - id: N04
+      rank: 4
+      nudge: "Write the design-decision record as you go: 15 min/week - date, decision, alternative, reason"
+      hours: 2.5
+      odds_lift: large
+      stars: 4
+      feeds: [EIE, CRE, IND, JUD]
+      helps_performance: true
+      note: Reconstructing it in week 9 costs 12 h and produces a worse, half-invented artifact.
+    - id: N07
+      rank: 5
+      nudge: "Number your reps: a wall tally of attempts vs successes for the primary mechanism"
+      hours: 1
+      odds_lift: medium-large
+      stars: 4
+      feeds: [QUA, CRE, EIE, IIC, AUT]
+      helps_performance: true
+      note: "'214 climbs attempted, 197 succeeded' is the most persuasive sentence available to a small team. PF weights drive practice at 90."
+    - id: N11
+      rank: 6
+      nudge: A rehearsed 90-second opener every student can give. Three 1-hour rehearsals
+      hours: 3
+      odds_lift: large
+      stars: 4
+      feeds: [all]
+      helps_performance: true
+    - id: N06
+      rank: 7
+      nudge: "One-row match/failure log: match #, what broke, minutes to fix"
+      hours: 3
+      odds_lift: medium
+      stars: 3
+      feeds: [QUA, EIE, IIC]
+      helps_performance: true
+    - id: N13
+      rank: 8
+      nudge: One documented pre-season collaboration with another FRC team, Oct-Dec 2026
+      hours: 8
+      odds_lift: large (for GP)
+      stars: 3
+      feeds: [GP, JUD]
+      helps_performance: true
+      window: 2026-10 to 2026-12
+      note: Directly satisfies the GP deciding guideline. Cannot be retrofitted in season.
+    - id: N05
+      rank: 9
+      nudge: Wire management + labelled harness (loom, service loops, labels at both ends)
+      hours: 6
+      odds_lift: medium
+      stars: 3
+      feeds: [IND, IMG, QUA]
+      helps_performance: true
+      note: The single largest cut to pit debug time.
+    - id: N09
+      rank: 10
+      nudge: One-page handout, one design, reused across lanes
+      hours: 4
+      odds_lift: medium
+      stars: 3
+      feeds: [all]
+      helps_performance: false
+    - id: N08
+      rank: 11
+      nudge: Keep the CAD assembly current with a clean feature history and named parts
+      hours: 8
+      odds_lift: medium
+      stars: 2
+      feeds: [IND, EIE]
+      helps_performance: true
+    - id: N12
+      rank: 12
+      nudge: Decide the theme in week 1 (name, two colours, one shape); apply to pit, shirts, robot panels
+      hours: 2
+      odds_lift: medium (for IMG)
+      stars: 2
+      feeds: [IMG, SPI]
+      helps_performance: false
+    - id: N10
+      rank: 13
+      nudge: Bench demo spare of the primary mechanism on a battery with a guard
+      hours: 12
+      odds_lift: large (for CRE, IIC)
+      stars: 2
+      feeds: [CRE, IIC]
+      helps_performance: true
+      note: It is also a real spare.
+    - id: N14
+      rank: 14
+      nudge: Paint / consistent finish on visible surfaces
+      hours: 8
+      odds_lift: small-medium
+      stars: 1
+      feeds: [IND, IMG]
+      helps_performance: false
+    - id: N15
+      rank: 15
+      nudge: A 60-90 s robot video cut from photos you already have
+      hours: 8
+      odds_lift: small
+      stars: 1
+      feeds: []
+      helps_performance: false
+      note: No pit-judged award requires a video. Ranked last for that reason.
+    - id: N16
+      rank: 16
+      nudge: Safety Animation Award entry (40 s animation, no robot, cash prize)
+      hours: 20
+      odds_lift: own lane
+      stars: 2
+      feeds: [SAA]
+      helps_performance: false
+      window: "~2026-10-13 to ~2026-11-20 [H] - UNVERIFIED for 2027; watch https://www.firstinspires.org/resources/library/safety weekly from 2026-09-01"
+      note: Costs zero build-season hours. Pays $500 winner / $250 each of two finalists against next season's registration.
+  deliberately_excluded:
+    - {item: A large technical binder, reason: "Judges are not expected to read it; FIA binder norms do not apply to pit judging."}
+    - {item: A robot video for its own sake, reason: No pit-judged award requires one.}
+    - {item: A separate award-materials sub-team, reason: CM section 4.1 - 15 students already cover 14+ functions with mandatory role sharing.}
+
+# ---------------------------------------------------------------------------
+# 6. ANTI-PATTERNS
+# ---------------------------------------------------------------------------
+
+anti_patterns:
+  - id: AP1
+    name: Chasing an award the robot does not support
+    instances:
+      - {case: Building for I2 because Creativity and Industrial Design have attractive criteria, evidence: "AC 0/5 small-team successes; CM novel_mechanisms_max = 2.00 vs I2 median 4"}
+      - {case: Chasing the Autonomous Award with a one-element auto, evidence: "80.4% of winners qual top-8; median winner at the 9.0th rank percentile"}
+      - {case: Chasing the FIRST Impact Award without a 3-year record, evidence: "77.7% repeat winners; 446 distinct teams in 5 seasons; 40+ hours that buy more elsewhere"}
+    test: Can you name the sentence in WEB-M / WEB-T that describes your robot? If not, the fit is 1, not 3.
+  - id: AP2
+    name: Retrofitting a story
+    cost: "4.2x - 89 cold hours vs 21 warm (see shared_artifact_library totals)"
+    detectability: >
+      Every retrofitted artifact lacks DATES, and the criteria repeatedly ask date questions:
+      "measurable success" (EI), "intentionally designed and not discovered" (CRE),
+      "pre-season" collaboration (GP).
+    rule: If an artifact cannot carry a truthful date, do not make it. Make a different one.
+  - id: AP3
+    name: Spreading thin
+    evidence: 'JM: "Do not award the same team more than 1 judged award at a single event." AP section 4: two prepared lanes plus the free Judges option is the efficient frontier.'
+    arithmetic: A prepared lane costs 28-45 h cold; the in-season budget is 46-73 nominal student-hours. Two fit. Three displace the drive practice PF weights at 90.
+  - id: AP4
+    name: Binder inflation
+    cost: 30+ student-hours
+    fix: "<=10 sheets, one bound unit, plus a one-pager you actually hand over."
+  - id: AP5
+    name: The untouched demo
+    cost: 8-12 h wasted
+    fix: 'Put "would you like to try it?" in the rehearsed script at the 3:00 beat.'
+  - id: AP6
+    name: Overclaiming
+    cost: Credibility. Match Observers verify (AP section 5.4).
+    fix: Claim the reliability number you measured, not the design intent.
+  - id: AP7
+    name: Printing sponsor suffixes early
+    evidence: A sponsor moved on at least one award in every season 2022-2026 (AV section 1.2).
+    fix: Print the unsponsored short name until the 2027 award pages re-issue (Oct-Dec 2026).
+
+# ---------------------------------------------------------------------------
+# 7. CAPACITY MAPPING
+# ---------------------------------------------------------------------------
+
+capacity_mapping:
+  source: tools/capacity_model.py, run 2026-08-22
+  note: >
+    [AUDIT 2026-08-22] CORRECTED. reference/team_capacity.yaml DOES exist on disk and is
+    the canonical source for every number in this block; the previous note claiming it was
+    missing was stale. Regenerate with `python tools/capacity_model.py --yaml`.
+    week4 effective_build_hours_veqh 853.7 rounds to 854 in team_capacity.yaml.
+  week1:
+    effective_build_hours_veqh: 599.1
+    awards_business_media_scouting_veqh: 44.9
+    slack_veqh: 0.0
+  week4:
+    effective_build_hours_veqh: 853.7
+    awards_business_media_scouting_veqh: 64.0
+  effective_nominal_multiplier: 0.352
+  novel_mechanisms_max: 2.00
+  blended_coefficient_for_award_work: 0.45
+  decomposition_week1_veqh:
+    awards_business_media_scouting: 44.9
+    less_scouting: -12.0
+    less_media: -6.0
+    less_business: -6.0
+    award_materials: 20.9
+  decomposition_week4_veqh:
+    awards_business_media_scouting: 64.0
+    less_scouting: -15.0
+    less_media: -8.0
+    less_business: -8.0
+    award_materials: 33.0
+  award_materials_student_hours_week1: 46
+  award_materials_student_hours_week4: 73
+  reconciliation_with_AP:
+    ap_figure_student_hours: 90
+    explanation: >
+      AP section 4's ~90 student-hours includes the SUBMITTED-award essays, which run
+      Oct 2026 - Feb 2027, outside the build-season budget. In-season the honest number is 46.
+
+how_many_awards_can_be_pursued:
+  answer: Six named lanes, of which at most ONE judged award can be won per event.
+  lanes:
+    - {n: 1, lane: PRIMARY robot award, when: Jan-Mar 2027, student_hours: "18-28 warm", blocked_by_one_award_rule: true}
+    - {n: 2, lane: SECONDARY robot award, when: Jan-Mar 2027, student_hours: "6-22 marginal (shared library)", blocked_by_one_award_rule: true}
+    - {n: 3, lane: Judges Award (standing free option), when: n/a, student_hours: 8, blocked_by_one_award_rule: true}
+    - {n: 4, lane: Rising All-Star Award, when: n/a, student_hours: 2, blocked_by_one_award_rule: true}
+    - {n: 5, lane: FIRST Leadership Award, when: Nov 2026 - 2027-02-04, student_hours: 10, blocked_by_one_award_rule: false}
+    - {n: 6, lane: Woodie Flowers Finalist Award, when: Nov 2026 - 2027-02-04, student_hours: 12, blocked_by_one_award_rule: false}
+    - {n: 7, lane: Safety Animation Award sponsored by UL Solutions, when: "Oct-Nov 2026 [H]", student_hours: 20, blocked_by_one_award_rule: false}
+  consequences:
+    - Choosing a Week 3-4 event over Week 1 adds 255 veq-h, ~19 of which land in the awards line - the difference between one cold lane and two warm ones. PF section 10 prices the competitive cost at under 2 rank percentile points.
+    - Do not add a fifth prepared lane.
+    - The autumn is free money - lanes 5-7 and nudges N13/N16 all run Sept-Dec 2026 when the build budget is zero.
+
+owner_map:
+  AWARDS_LEAD: {roster_slot: 9, build_primary: Business / awards lead, award_hours: "18-24", note: THE BINDING CONSTRAINT - protect this person's time or halve the plan}
+  MEDIA:       {roster_slot: "9 secondary + a first-year", build_primary: Media, award_hours: "6-10"}
+  CAD_LEAD:    {roster_slot: 3, build_primary: CAD lead / integration owner, award_hours: "4-8"}
+  MECH_LEAD:   {roster_slot: 1, build_primary: Primary mechanism lead, award_hours: "3-14"}
+  CONTROLS:    {roster_slot: 4, build_primary: Controls lead / Systemcore port, award_hours: "4-8 (I5 lane only)"}
+  AUTO_TELEM:  {roster_slot: 5, build_primary: Auto + telemetry + logging, award_hours: "4-9"}
+  BUILD_LEAD:  {roster_slot: 2, build_primary: Drivetrain / frame, award_hours: 5}
+  ELECTRICAL:  {roster_slot: 6, build_primary: Electrical + pneumatics, award_hours: "6 (nudge N05)"}
+  PIT_LEAD:    {roster_slot: 7, build_primary: Fabrication + safety captain, award_hours: 4}
+  STRATEGY:    {roster_slot: "3/5 shared", build_primary: Strategy & rule expertise, award_hours: "3-7"}
+  SCOUT:       {roster_slot: "5 + first-years", build_primary: Scouting, award_hours: 4}
+  MENTOR:      {roster_slot: mentor, build_primary: "-", award_hours: "10 (FLA essay, N13 collaboration)"}
+
+calendar_2027:
+  # hours are nominal student-hours [S]. The "Pre" row is excluded from the in-season total.
+  - {week: Pre, dates: 2026-09 to 2026-12, milestone: null, hours: 30,
+     work: "N13 pre-season collaboration; N16 Safety Animation (~Oct 13 - Nov 20 [H]); establish N01/N03 habits on the 2026 robot; open FLA + WFFA drafts (portal opens 2026-10-29 12:00 ET [C])",
+     owners: [MENTOR, AWARDS_LEAD, AUTO_TELEM]}
+  - {week: W1, dates: 2027-01-09 to 2027-01-15, milestone: "KICKOFF Sat Jan 9 12:00 ET", hours: 4,
+     work: "Run kickoff_award_check.sh. Choose the archetype - the pairing then follows automatically. Start the photo album (N01) and the decision record (N04). Fill the EIE RP-threshold table from the new manual",
+     owners: [STRATEGY, AWARDS_LEAD]}
+  - {week: W2, dates: 2027-01-16 to 2027-01-22, milestone: "Q&A opened Jan 13", hours: 4,
+     work: "N04 weekly entry. First origin-story photos. Enable logging (N03) the day the drivebase moves. Decide the theme (N12)",
+     owners: [AWARDS_LEAD, AUTO_TELEM, MEDIA]}
+  - {week: W3, dates: 2027-01-23 to 2027-01-29, milestone: null, hours: 6,
+     work: "N04. WFFA essay draft (student-led per WEB-S). Start the FLA nominations",
+     owners: [AWARDS_LEAD, MENTOR]}
+  - {week: W4, dates: 2027-01-30 to 2027-02-05, milestone: "FLA + WFFA close Thu 2027-02-04 15:00 ET [C]", hours: 6,
+     work: "SUBMIT BOTH - Wednesday, not Thursday. N04. Set up the attempt/success tally (N07)",
+     owners: [MENTOR, AWARDS_LEAD]}
+  - {week: W5, dates: 2027-02-06 to 2027-02-12, milestone: "FIRST Impact closes Thu 2027-02-11 - NOT chased", hours: 6,
+     work: "N04. Wire management pass (N05) as electrical finishes. First telemetry plot exported",
+     owners: [ELECTRICAL, AUTO_TELEM]}
+  - {week: W6, dates: 2027-02-13 to 2027-02-19, milestone: null, hours: 8,
+     work: "Draft the one-page handout (N09). CAD renders if the IND/EIE lane is live",
+     owners: [AWARDS_LEAD, CAD_LEAD]}
+  - {week: W7, dates: 2027-02-20 to 2027-02-26, milestone: "Week Zero 2027-02-20", hours: 8,
+     work: "Assemble the pit display: origin board, failed prototype, spare, reliability scoreboard. First full 5-minute pitch rehearsal with the actual robot",
+     owners: [AWARDS_LEAD]}
+  - {week: W8, dates: 2027-02-27 to 2027-03-05, milestone: "Week 1 events 2027-03-03", hours: 6,
+     work: "Print the handout (>=25 copies). Rehearsals 2 and 3 (N11). Update the reliability scoreboard between every match. Judges arrive day 1 morning",
+     owners: [PIT_CREW]}
+  - {week: W9, dates: 2027-03-06 to 2027-03-12, milestone: "Week 2 events 2027-03-10", hours: 3,
+     work: "Post-event: log every failure into N06. Refresh the one-pager with the REAL reliability number",
+     owners: [PIT_LEAD, AWARDS_LEAD]}
+  - {week: W10, dates: 2027-03-13 to 2027-03-19, milestone: "Week 3 events 2027-03-17", hours: 3,
+     work: "Switch lanes only if event 1 was won. 'Spread the wealth' applies within an event, not between (AV section 6.2) - repeating the same lane at event 2 is legal and correct",
+     owners: [AWARDS_LEAD]}
+  - {week: W11, dates: 2027-03-20 to 2027-03-26, milestone: "Week 4 events 2027-03-24", hours: 4,
+     work: "Second event, same two lanes. Add the Autonomous addendum ONLY if the auto is visibly top-3",
+     owners: [AWARDS_LEAD, AUTO_TELEM]}
+
+calendar_totals:
+  in_season_student_hours: 58
+  budget_week1: 46
+  budget_week4: 73
+  ratio_week1: 1.26
+  ratio_week4: 0.79
+  finding: The plan does not close at a Week 1 event. Move the first event to Week 3-4, or run the SECONDARY lane purely off the shared library.
+
+# ---------------------------------------------------------------------------
+# 8. THE DISTRICT-POINTS ARGUMENT
+# ---------------------------------------------------------------------------
+
+district_points_argument:
+  source: REB section 11.1, Table 11-1 / Table 11-3 / Table 11-4
+  evidence: C
+  applies_to: District-model teams only. Regional teams advance via the points-based Regional Pool (AV section 5.2); the arithmetic does not transfer.
+  table_11_1:
+    qualification_round_performance: "Normal distribution of points from 22 to 4 across the highest ranked team to the lowest"
+    alliance_captains: "17 minus the ALLIANCE CAPTAIN number (e.g. 14 points for ALLIANCE #3 Captain)"
+    draft_order_acceptance: "17 minus the Draft Order Acceptance Number (e.g. 12 points for the team that accepts the fifth draft position)"
+    playoff_advancement: {fourth_place: 7, third_place: 13, finalist: 20, winner: "20 + 5 per Finals win"}
+    team_judged_awards: {first_impact: 10, engineering_inspiration: 8, rookie_all_star: 8, all_other_team_judged: 5}
+    dcmp_multiplier: 3
+  what_five_points_is_worth:
+    one_other_team_judged_award: 5
+    climb_rank_30_to_20_at_40_team_event: 4
+    climb_rank_40_to_21_beating_half_the_field: 8
+    drafted_at_slot_5: 12
+    drafted_at_slot_5_plus_one_judged_award: 17
+    first_in_qualification: 22
+    entire_qualification_spread: 18
+    headline: >
+      One 5-point judged award is worth more than climbing ten qualification places.
+      Being picked fifth is worth more than out-qualifying 19 of 39 opponents.
+  scenarios:
+    evidence: S
+    note: Point VALUES are [C] verbatim from REB Table 11-1. The claim that section-4 nudges move a team from A to D is a judgement.
+    conclusion: Scenario D is 3.7x Scenario A on the same robot.
+    assumptions: Two District events, 40 teams each, identical robot in all four rows; only the award and pickability work differs.
+    rows:
+      - {id: A, description: "Field only, unpicked, no award, qual rank 28/40", qual: 9, alliance: 0, playoff: 0, award: 0, per_event: 9, two_events: 18}
+      - {id: B, description: "Same robot, picked 12th overall (legibility)", qual: 9, alliance: 5, playoff: 0, award: 0, per_event: 14, two_events: 28}
+      - {id: C, description: "B + one 5-point judged award", qual: 9, alliance: 5, playoff: 0, award: 5, per_event: 19, two_events: 38}
+      - {id: D, description: "Picked 5th + award + alliance loses in the semis", qual: 9, alliance: 12, playoff: 7, award: 5, per_event: 33, two_events: 66}
+  why_pickable_and_award_winning_are_the_same_investment:
+    quote: >
+      To be invited to join an ALLIANCE, a team's peers have decided that the team has
+      attributes that are desirable. ... These points also have the potential to recognize
+      teams employing a unique strategy with their ROBOT. Teams with unique or divergent
+      ROBOT capabilities that complement the strengths of other ALLIANCE members may be
+      selected to fill a strategic niche.
+    source: REB section 11.1.2
+    evidence: C
+    supporting_base_rates:
+      pct_2026_winning_alliances_with_below_median_opr_member: 78
+      median_deepest_pick_opr_percentile_2026: 90
+      source: AC section 1 (TBA, 765 event-winning alliances 2023-2026)
+    conclusion: >
+      The reliability tally (N07), failure log (N06), telemetry (N03) and rehearsed
+      90-second explanation (N11) are simultaneously the judging evidence and the scouting
+      pitch to alliance captains. One artifact set, two point streams, same currency.
+
+# ---------------------------------------------------------------------------
+# 9. VALIDATION
+# ---------------------------------------------------------------------------
+
+validation:
+  tests:
+  - id: V1
+    test: Re-derive pairings from fit_matrix using the extraction_rule and assert equality with `pairings`
+    script: AWARD-ALIGNMENT.md section 8.1
+    result_2026_08_22: All 7 rows OK
+  - id: V2
+    test: Every award name used in AWARD-ALIGNMENT.md exists in awards.yaml
+    script: AWARD-ALIGNMENT.md section 8.2
+    result_2026_08_22: "No award name in the matrix, pairings or checklists is absent from awards.yaml. Expected residue: generic phrases + the Judges/Judges' spelling variance."
+  - id: V3
+    test: In-season calendar hours vs the capacity-derived budget
+    script: AWARD-ALIGNMENT.md section 8.3
+    result_2026_08_22: "calendar 58 h; Week-1 budget 46 h (1.26x over); Week-4 budget 73 h (0.79x). Real failure of the Week-1 plan."
+  - id: V4
+    test: Do the recommended PRIMARY awards actually go to low-ranked teams?
+    result_2026_08_22:
+      weighted_mean_pct_bottom_half_over_6_viable_rows: 22.8
+      comparison_if_every_row_paired_to_autonomous: 4.9
+      comparison_unweighted_mean_all_9_robot_coupled: 24.1
+      finding: >
+        The two rows carrying the highest base rates (I3 Judges 49.6%, I6 GP 41.2%) are also
+        the two archetypes AC scores highest for small-team success (3/4 and 5/5). Two
+        independent datasets agreeing is the strongest validation in this pass.
+  not_covered:
+    - Whether a judge agrees with a fit score. FIRST publishes no rubric.
+    - The odds-lift bands in design_nudges. Only the ranking is claimed.
+    - Whether section-4 nudges change draft position (district_points_argument scenarios B-D).
+
+known_limitations:
+  - reference/team_capacity.yaml does not exist on disk (UNVERIFIED). All capacity figures were regenerated by running tools/capacity_model.py on 2026-08-22.
+  - Fit scores are [S]. The criteria quotes are [C]; the 0-3 mapping is judgement against fit_rubric. Two reasonable people would differ on perhaps 3 of the 56 robot-coupled cells.
+  - All hour estimates are [S] and were not measured against this team's actual output.
+  - Odds lifts are unmeasured bands. No dataset in this corpus links a specific practice to a specific award outcome.
+  - Guideline wording is the 2026 text (WB Rev. Oct 2025, JM Rev 2 2/18/2026). [C] for 2026, [H] for 2027. Expect re-issued guides Oct-Dec 2026.
+  - Award names may move again - a sponsor suffix moved in every season 2022-2026 and the individual-student award was renamed mid-season in 2026. Run kickoff_award_check.sh before printing anything.
+  - The archetypes are pre-kickoff abstractions. If BIOCORE lacks an endgame, I4's pairing is void; if it has no support role, I6's is. Instantiate the invariant slots on 2027-01-09 FIRST, then read the pairings.
+  - Systemcore is the largest single uncertainty. The 2027 logging API is UNVERIFIED, which puts the innovation_in_control checklist's central artifact at risk.
+  - District-points scenarios B-D are [S]. The point values are [C] verbatim.
+  - Nothing in the files, manuals or PDFs read for this pass contained text addressed to an AI assistant or any attempt to issue instructions. All content was treated as data.

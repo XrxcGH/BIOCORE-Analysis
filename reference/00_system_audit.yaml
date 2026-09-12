@@ -1,0 +1,351 @@
+# 00_system_audit.yaml
+# Machine-readable companion to reference/00_SYSTEM_AUDIT.md
+# Evidence labels: C = CONFIRMED (executed/curled in this pass), H = HISTORICAL-PATTERN,
+#                  S = SPECULATION, UNVERIFIED
+
+meta:
+  version: 1
+  written: "2026-08-22"
+  companion_md: reference/00_SYSTEM_AUDIT.md
+  index: INDEX.md
+  season: "2027 BIOCORE presented by Haas (FRC, FIRST CANOPY)"
+  kickoff: "2027-01-09T12:00:00-05:00"
+  platform: "Windows 11 Pro 10.0.26200, CPython"
+  scope: "award names, code execution, rubric stress, FTC contamination, part URLs, internal consistency, arithmetic"
+
+verdict:
+  system_sound_and_usable: true
+  evidence: C
+  caveat: "The tier column has two structural defects (see defects D004/D005). Quadrant + gate are sound."
+  rubric_backtest:
+    corpus: reference/archetype_corpus.yaml
+    n: 30
+    agreement: 27
+    hit_rate: 0.90
+    baseline_corpus_own_predicate: 0.70
+    disagreements: [C1, P1, R7]
+    disagreement_cause: "all three are gate G2 novel_mechanisms_max=2; rubric is MORE conservative than the human in every miss, never less"
+    evidence: C
+  part_url_pass_rate:
+    urls_raw: 82
+    urls_unique_testable: 75
+    http_200: 73
+    pass_rate: 0.973
+    evidence: C
+  ftc_contamination_violations: 0
+  stale_award_names_used_as_current: 0
+
+tools_executed:
+  - tool: tools/score-strategy.py
+    invocation: "--from-corpus reference/archetype_corpus.yaml"
+    exit_status: 0
+    key_output: "agreement: 27/30 = 90%"
+    evidence: C
+  - tool: tools/score-strategy.py
+    invocation: "--candidates reference/examples/candidates_example.yaml"
+    exit_status: 0
+    key_output: "S2 T1 GREEN, S1 T1 GREEN, S3 T4 GATED"
+    evidence: C
+  - tool: tools/bom-builder.py
+    invocation: "reference/bom/examples/simple.yaml"
+    exit_status: 0
+    key_output: "ALL GATES PASS; $2230.78/$2500; 89.0/129.8 h; earliest order-by 2026-11-21"
+    evidence: C
+  - tool: tools/bom-builder.py
+    invocation: "reference/bom/examples/moderate.yaml"
+    exit_status: 0
+    key_output: "FAILS 5 GATE(S): BUDGET, BUILD HOURS, DESIGN HOURS, PARALLEL WORKSTREAMS, NOVEL MECHANISMS"
+    evidence: C
+  - tool: tools/bom-builder.py
+    invocation: "reference/bom/examples/ambitious.yaml"
+    exit_status: 0
+    key_output: "FAILS 8 GATE(S) -- all eight"
+    evidence: C
+  - tool: tools/cycle-model.py
+    invocation: "--game rebuilt"
+    exit_status: 0
+    key_output: "8.0s cycle -> 90.5 pts baseline; TOWER L3 net +18.8; 1 s of cycle time = 9.7 pts/match"
+    evidence: C
+  - tool: tools/teamupdate-diff.py
+    invocation: "slots"
+    exit_status: 0
+    key_output: "G211 most-amended slot (8 amendments / 3 seasons); wrote slot_churn_allseasons.tsv"
+    evidence: C
+
+rubric_stress_set:
+  file: "scratchpad/stress.yaml (8 adversarial probes)"
+  probes:
+    - id: X1
+      intent: "6-mechanism vision-dependent do-everything robot must land in the worst tier"
+      ach: 6.0
+      val: 95.2
+      quadrant: TRAP
+      tier: T4 GATED
+      result: PASS
+    - id: X2
+      intent: "trivial robot must show low value"
+      ach: 100.0
+      val: 0.0
+      quadrant: CHEAP INSURANCE
+      tier: T2 STRETCH
+      result: PARTIAL
+      note: "value axis correct and quadrant correct, but the tier label is misleading -- defect D004"
+    - id: X3
+      intent: "ADVERSARY -- all 5s on every factor, impossible gate inputs; can the gates be gamed?"
+      ach: 100.0
+      val: 100.0
+      tier: T4 GATED
+      result: PASS
+      note: "gates evaluate independently of the weighted means; optimistic scoring cannot buy past a gate"
+    - id: X4
+      intent: "upper bound -- perfect and legal"
+      ach: 100.0
+      val: 100.0
+      tier: T1 GREEN
+      result: PASS
+      note: "exactly 100.0 on both axes proves weight normalisation is correct"
+    - id: X5
+      intent: "single achievability zero must cap tier at T2"
+      tier: T2 STRETCH
+      result: PASS
+    - id: X6
+      intent: "two achievability zeros must cap tier at T3"
+      quadrant: BUILD THIS
+      tier: T3 RED
+      result: PARTIAL
+      note: "cap works, but quadrant and tier now contradict each other -- defect D005"
+    - id: X7
+      intent: "malformed input -- A1=9 out of range, A13 missing, no gates_input"
+      result: FAIL_THEN_FIXED
+      note: "scored silently AND skipped every hard gate; defect D001, fixed"
+    - id: X8
+      intent: "A4=0 must NOT cap (A4 is excluded, it has gate G6)"
+      tier: T1 GREEN
+      result: PASS
+
+weight_sums:
+  achievability: {factors: 13, raw_sum: 856, normalised: true, formula: "100 * sum(w_i*s_i) / (5*sum(w_i))"}
+  value:         {factors: 5,  raw_sum: 290, normalised: true, formula: "100 * sum(v_j*t_j) / (5*sum(v_j))"}
+  combined: "0.55*ACH + 0.45*VAL"
+  verified_by: "X4 probe returns exactly 100.0/100.0"
+  evidence: C
+
+defects:
+  - id: D001
+    severity: high
+    area: tools/score-strategy.py
+    title: "Malformed candidate files scored silently; absent gates_input skipped EVERY hard gate"
+    detail: "c.get('gates_input', {}) defaults to an empty dict and run_gates({}) fires nothing, so a
+             candidate file missing that block printed a plausible tier with the entire gate system
+             disabled. Out-of-range factor scores and missing factors were also accepted in silence."
+    status: FIXED
+    fix: "_validate_candidate() added; warns to stderr on missing factors, unknown keys,
+          out-of-range scores, and absent gates_input. No score changes."
+    regression: "--from-corpus still 27/30 = 90%; candidates_example.yaml unchanged"
+    evidence: C
+  - id: D002
+    severity: medium
+    area: reference/awards/award_alignment_matrix.yaml
+    title: "Stale note asserting reference/team_capacity.yaml does not exist"
+    detail: "The note predated the creation of team_capacity.yaml and was never revised. It marked the
+             canonical capacity source as UNVERIFIED."
+    status: FIXED
+    fix: "Note corrected in place; 853.7 -> 854 rounding relationship stated so it is not re-opened."
+    evidence: C
+  - id: D003
+    severity: low
+    area: reference/bom/parts_manipulation.yaml
+    title: "VEX flex-wheels page recorded as HTTP 403 (bot-blocked) when it is now HTTP 404 (gone)"
+    detail: "403 means retry with a better UA; 404 means the part page no longer exists. The wrong
+             status would have sent someone chasing a dead page before the Nov order-by date."
+    status: FIXED
+    fix: "price_note updated to record both statuses; explicitly labelled UNVERIFIED."
+    evidence: C
+  - id: D004
+    severity: low
+    area: reference/achievability_rubric.yaml (tier formula)
+    title: "A zero-value robot reports tier T2 STRETCH"
+    detail: "Tiers are banded on the combined index, which mixes VALUE into an achievability-flavoured
+             label. 0.55*100 + 0.45*0 = 55, landing in the T2 band by arithmetic accident. T2 is
+             defined as 'possible only if you buy an enabler' -- a robot that does nothing needs none."
+    status: RECORDED_NOT_PATCHED
+    reason: "Changing the tier formula would invalidate the 90% back-test four months before kickoff."
+    operating_rule: "When the quadrant is CHEAP INSURANCE or DELETE, the tier column is meaningless."
+    evidence: C
+  - id: D005
+    severity: medium
+    area: reference/achievability_rubric.yaml (no_zeros_in_green)
+    title: "Quadrant and tier can give opposite instructions on the same row"
+    detail: "The no_zeros_in_green rule caps the TIER but not the QUADRANT, so probe X6 prints
+             quadrant=BUILD THIS alongside tier=T3 RED ('do not build this')."
+    status: RECORDED_NOT_PATCHED
+    reason: "Same back-test-stability reason as D004."
+    operating_rule: "A T3 RED or T4 GATED tier always overrides the quadrant. Tier is the veto,
+                     quadrant is the reason."
+    evidence: C
+  - id: D006
+    severity: low
+    area: tools/bom-builder.py --csv
+    title: "CSV hours do not reconcile to the BUILD HOURS gate, and an inline TOTAL row double-counts"
+    detail: "CSV hours column sums to 63.0 h (FABRICATED lines only) against a gate figure of 89.0 h --
+             by design, since mechanism build_hours come from the catalog and the fabricated rows are
+             illustrative detail. A naive sum(ext_price) over the file also yields 8923.56 rather than
+             4461.78 because the TOTAL row is inline with the item rows."
+    status: RECORDED_NOT_PATCHED
+    operating_rule: "Filter mechanism_id != 'TOTAL'; do not re-derive hour gates from the CSV."
+    evidence: C
+
+award_name_audit:
+  authority: reference/awards/00_AWARD_LIST_VERIFIED.md
+  machine_authority: reference/awards/awards.yaml
+  retired_names_searched:
+    - "FIRST Dean's List Award"
+    - "FIRST Dean's List Finalist Award"
+    - "District Championship Dean's List Semi-Finalist"
+    - "Chairman's Award"
+    - "District Chairman's Award"
+    - "Entrepreneurship Award"
+    - "Rookie Inspiration Award"
+    - "Highest Rookie Seed"
+    - "Wildcard"
+    - "Industrial Design Award sponsored by General Motors"
+    - "Autonomous Award sponsored by Ford"
+  hits_outside_manuals: 31
+  hits_in_historical_or_migration_context: 31
+  hits_used_as_current_recommendation: 0
+  defects: 0
+  cosmetic_variance:
+    - "Rookie All-Star vs Rookie All Star (hyphen). Both spellings are in the drift-detector stoplist."
+  current_names_used_live:
+    - Quality Award
+    - Industrial Design Award
+    - Excellence in Engineering Award sponsored by Littelfuse
+    - Team Spirit Award
+    - Innovation in Control Award sponsored by nVent
+    - Autonomous Award sponsored by Google.org
+    - Creativity Award sponsored by Rockwell Automation
+    - Gracious Professionalism Award
+    - Imagery Award in honor of Jack Kamen
+    - Judges Award
+    - Rising All-Star Award
+    - Rookie All-Star Award
+    - Team Sustainability Award sponsored by Dow
+    - FIRST Impact Award
+    - FIRST Leadership Award
+    - Engineering Inspiration Award sponsored by SpaceX
+    - Woodie Flowers Finalist Award
+  evidence: C
+
+ftc_contamination:
+  terms_searched: ["pollen", "starterbot", "skill builder", "september 12"]
+  total_hits_outside_manuals: 41
+  buckets:
+    explicit_firewall_warning: 19
+    scope_guard_header: 9
+    ftc_labelled_factual_record: 11
+    ftc_to_frc_comparison_table: 1
+    sibling_project_path_reference: 1
+    attributed_to_biocore_or_frc: 0
+  violations: 0
+  fixes_required: 0
+  evidence: C
+
+part_urls:
+  method: "curl -sIL --max-time 20, desktop UA, redirects followed, 2026-08-22"
+  by_vendor:
+    andymark:        {urls: 21, http_200: 21}
+    rev_robotics:    {urls: 16, http_200: 16}
+    ctr_electronics: {urls: 10, http_200: 10}
+    thethriftybot:   {urls: 8,  http_200: 7}
+    wcproducts:      {urls: 11, http_200: 11}
+    swerve_drive_specialties: {urls: 2, http_200: 2}
+    vexrobotics:     {urls: 1,  http_200: 0}
+    other:           {urls: 6,  http_200: 6}
+  dead:
+    - url: "https://www.thethriftybot.com/collections/drivetrain"
+      status: 404
+      already_flagged: true
+      where: "parts_drivetrain.yaml L275 + L758; bom/01_DRIVETRAIN.md L286 marks TTB gearboxes UNVERIFIED"
+      action: none_required
+    - url: "https://www.vexrobotics.com/flex-wheels.html"
+      status: 404
+      already_flagged: partially
+      previous_record: "HTTP 403"
+      action: "re-labelled UNVERIFIED, both statuses recorded (defect D003)"
+  no_priced_line_depends_on_a_dead_url: true
+  evidence: C
+
+internal_consistency:
+  source_of_truth: reference/team_capacity.yaml
+  checks:
+    - {constant: students, value: 15, agrees_everywhere: true}
+    - {constant: effective_build_hours, value: 599, agrees_everywhere: true}
+    - {constant: effective_build_hours_week4, value: 854, agrees_everywhere: true,
+       note: "AWARD-ALIGNMENT.md and award_alignment_matrix.yaml carry the unrounded 853.7; not a conflict"}
+    - {constant: effective_hours_multiplier, value: 0.352, agrees_everywhere: true}
+    - {constant: available_build_hours, value: 129.8, agrees_everywhere: true}
+    - {constant: available_design_hours, value: 74.9, agrees_everywhere: true}
+    - {constant: available_programming_hours, value: 134.8, agrees_everywhere: true}
+    - {constant: robot_discretionary, value: 2500, agrees_everywhere: true}
+    - {constant: novel_mechanisms_max, value: 2, agrees_everywhere: true}
+    - {constant: parallel_workstreams_max, value: 3, agrees_everywhere: true}
+    - {constant: technical_mentors, value: 1, agrees_everywhere: true}
+  false_positives_cleared:
+    - "three '~10 students' mentions -- all counterfactuals or descriptions of other teams, none claims to describe this team"
+  defects_found: 1
+  defect_ids: [D002]
+  evidence: C
+
+arithmetic:
+  bom_simple:
+    line_items: 47
+    line_types: {COTS: 27, FABRICATED: 14, MATERIAL_STOCK: 5, TOTAL_ROW: 1}
+    recomputed_by_mechanism:
+      kop_chassis: 1600.00
+      bumpers_frame: 257.00
+      baseline_electrical_package: 1979.40
+      over_bumper_intake: 380.39
+      passive_latch_climber: 244.99
+    recomputed_gross: 4461.78
+    printed_gross: 4461.78
+    delta: 0.00
+    kop_credit: 2231.00
+    discretionary: 2230.78
+    limit: 2500.00
+    gate: PASS
+  cycle_model_rebuilt:
+    - {check: "140s / 8.0s = 17.5 cycles x 5 pts = 87.5 + 3 auto = 90.5", ok: true}
+    - {check: "L3: (140-18)/8 = 15.25 cycles x 5 = 76.2 + 3 + 30 = 109.2", ok: true}
+    - {check: "L3 break-even: 30 - (2.25 x 5) = +18.75 ~ +18.8", ok: true}
+    - {check: "8s->9s: 87.5 - 77.8 = 9.7 pts/match", ok: true}
+  evidence: C
+
+key_dates:
+  - {date: "2026-09-24", what: "Kit & Kickoff registration + Event Registration Round 1 preferencing opens", evidence: C}
+  - {date: "2026-11-12", what: "Pre-Kickoff Virtual Kit Release", evidence: C}
+  - {date: "2026-11-17", what: "Kit & Kickoff selection closes", evidence: C}
+  - {date: "2026-11-21", what: "Earliest order-by computed by bom-builder.py (6-wk-lead electrical, stockout high)", evidence: S}
+  - {date: "2027-01-09", what: "FRC BIOCORE kickoff, 12:00 ET -- Game Manual V1", evidence: C}
+  - {date: "2027-02-04", what: "FIRST Leadership Award + Woodie Flowers Finalist submissions due", evidence: C}
+  - {date: "2027-02-11", what: "FIRST Impact Award submission due", evidence: C}
+  - {date: "2026-09-12", what: "FTC BIOBUZZ kickoff -- NOT FRC, no FRC event this day", evidence: C}
+
+files_written:
+  - {path: INDEX.md, action: created}
+  - {path: reference/00_SYSTEM_AUDIT.md, action: created}
+  - {path: reference/00_system_audit.yaml, action: created}
+  - {path: README.md, action: edited, change: "links INDEX.md"}
+  - {path: tools/score-strategy.py, action: fixed, change: "_validate_candidate() added (D001)"}
+  - {path: reference/awards/award_alignment_matrix.yaml, action: fixed, change: "stale note corrected (D002)"}
+  - {path: reference/bom/parts_manipulation.yaml, action: fixed, change: "VEX status 403 -> 404 (D003)"}
+  - {path: research/teamupdate_analysis/slot_churn_allseasons.tsv, action: regenerated}
+
+known_limitations:
+  - "The tier column is not trustworthy alone (D004, D005). T3/T4 vetoes the quadrant; ignore the tier when the quadrant is CHEAP INSURANCE or DELETE."
+  - "URL liveness is not price verification. Re-run reference/bom/recheck_prices.sh before the 2026-11-21 order-by date."
+  - "The BOM CSV under-reports hours and contains an inline TOTAL row (D006)."
+  - "The 90% back-test is against RAPD-REB archetypes, not BIOCORE. It measures reproduction of expert judgement on PAST seasons."
+  - "Systemcore is the largest unquantified risk: 2027 is the first season without the roboRIO since 2015 and the ~40 h port inflation is [S]."
+  - "Gate G2 novel_mechanisms_max=2 causes all three back-test misses. It is the parameter most likely to be wrong."
+  - "manuals/2026-27_BIOCORE/ is empty. No BIOCORE primary source exists yet; re-run the whole audit on 2027-01-09."
+  - "34 of the 38 tools were not executed; their on-disk outputs were taken as given."

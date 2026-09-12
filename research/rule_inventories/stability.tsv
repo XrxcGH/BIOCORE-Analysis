@@ -1,0 +1,92 @@
+rule_id	prefix	min_sim	mean_sim	first_last_sim	2022->2023	2023->2024	2024->2025	2025->2026	headline_2026
+R408	R	0.030	0.694	0.046	0.955	0.951	0.030	0.842	*Weight limit with BUMPERS. The total weight of the ROBOT (as described in R103) with BUMPERS
+R504	R	0.037	0.343	0.280	0.423	0.037	0.040	0.872	*Power (most) actuators off of approved devices. With the exception of servos, fans, or motors
+R303	R	0.040	0.570	0.042	0.040	0.882	0.544	0.811	*Create new designs and software, unless they're public. ROBOT software and designs created before
+R205	R	0.050	0.264	0.079	0.050	0.274	0.190	0.544	*Don't contaminate the FIELD. Liquids, gels, greases and fine particles must not contaminate the FIELD
+R906	R	0.052	0.685	0.033	0.962	0.727	0.052	1.000	*No unsafe OPERATOR CONSOLES. OPERATOR CONSOLES shall not be made using hazardous
+I105	I	0.065	0.593	0.079	0.319	0.065	1.000	0.989	*Don't exploit re-inspection. Teams may not use the re-inspection process in I104 to circumvent the
+R804	R	0.067	0.514	0.056	0.267	0.067	0.742	0.980	*Only use specific pneumatic devices. The only pneumatic system items permitted on ROBOTS include
+G202	G	0.077	0.612	0.161	0.748	0.077	1.000	0.621	*Don't bang on the glass. A team member may never strike or hit the DRIVER STATION plastic
+R611	R	0.086	0.333	0.034	0.106	0.209	0.086	0.933	connect to, and have power sourced solely by, a single protected connector pair of the PD. Circuits
+G204	G	0.086	0.764	0.085	1.000	0.086	0.985	0.984	*Letting someone coerce you into throwing a MATCH - also not cool. A team, as the result of
+R502	R	0.105	0.528	0.217	0.105	0.977	0.128	0.900	*Only 4 propulsion motors. A ROBOT may not have more than 4 propulsion motors. A propulsion motor
+G403	G	0.106	0.250	0.266	0.337	0.395	0.106	0.163	with a ROBOT or an OPERATOR CONSOLE unless for personal safety, OPERATOR CONSOLE safety, or
+R703	R	0.110	0.619	0.047	0.945	0.110	0.599	0.822	WCP-1538), that has been configured with the appropriate encryption key for your team number at each
+R505	R	0.114	0.551	0.157	1.000	0.114	0.440	0.650	*Don't overload controllers. Each power regulating device may control electrical loads per Table 8-2.
+G405	G	0.118	0.385	0.093	0.624	0.164	0.633	0.118	*Keep SCORING ELEMENTS in bounds. A ROBOT may not intentionally eject SCORING ELEMENTS
+R803	R	0.128	0.529	0.880	0.792	0.221	0.128	0.974	*Don't modify pneumatics. All pneumatic COMPONENTS must be used in their original, unaltered
+R602	R	0.136	0.547	0.332	0.222	0.136	0.854	0.977	*Other batteries for cameras or computers only. COTS USB battery packs with a capacity of 100Wh or
+G201	G	0.137	0.784	0.138	1.000	0.137	0.997	1.000	*Be a good person. All teams must be civil toward everyone and respectful of team and event
+R623	R	0.141	0.599	0.185	1.000	0.254	0.141	1.000	*Use only appropriate connectors. Branch circuits may include intermediate elements such as COTS
+I102	I	0.141	0.553	0.166	0.377	0.141	0.703	0.991	*Get inspected before playing a Qualification MATCH. A team is only permitted to participate in a
+G104	G	0.148	0.752	0.128	1.000	0.148	0.986	0.873	*Teams may not enable their ROBOTS on the FIELD. Teams may not tether to the ROBOT while on the
+R807	R	0.149	0.322	0.281	0.149	0.158	0.308	0.673	*Air storage pressure limit. Stored air pressure on the ROBOT must be no greater than 120.0psi (~827
+R618	R	0.152	0.568	0.131	1.000	0.450	0.152	0.668	be connected directly to a non-switched pair of protected output terminals of a PD with a 10A fuse or
+R402	R	0.157	0.597	0.089	1.000	0.335	0.157	0.897	*BUMPER construction. BUMPERS must consist of the following elements. With the exception of
+G208	G	0.158	0.559	0.263	0.158	0.176	0.984	0.921	*Show up to your Qualification MATCHES. If a ROBOT has passed initial, complete inspection, at least
+G302	G	0.164	0.468	0.200	0.306	0.164	0.989	0.414	*Limit what you use during a MATCH. Items used during a match must fit on your team's DRIVER
+G209	G	0.165	0.225	0.170	0.277	0.283	0.165	0.175	*Keep your ROBOT together. A ROBOT may not intentionally detach or leave a part on the FIELD.
+R905	R	0.166	0.467	0.223	0.375	0.365	0.166	0.960	*FIELD wireless only. Other than the system provided by the FIELD, no other form of wireless
+G205	G	0.166	0.703	0.197	0.657	0.166	0.990	1.000	*Throwing your own MATCH is bad. A team may not intentionally lose a MATCH or sacrifice Ranking
+R619	R	0.168	0.435	0.073	1.000	0.298	0.273	0.168	*Only use specified circuit breakers in a PD. The only circuit breakers permitted for use in the PD are:
+R403	R	0.169	0.548	0.318	1.000	0.169	0.252	0.771	*BUMPER extension limit. BUMPERS must not extend more than 4.0in (10.16cm) from the ROBOT
+R604	R	0.170	0.448	0.214	0.288	0.170	0.333	1.000	have the corresponding Anderson SB connector installed.
+R302	R	0.176	0.726	0.193	0.809	0.922	0.176	0.999	*MAJOR MECHANISM, from this year only. MAJOR MECHANISMS, as defined in I101, created before
+R406	R	0.180	0.563	0.300	0.952	0.322	0.180	0.798	*Fill BUMPER corners. Corner joints between BUMPERS must be filled with uncompressed padding
+R617	R	0.183	0.694	0.176	1.000	0.955	0.638	0.183	*Power radio as specified - Part 2. The device supplying power to the wireless bridge per R616 must
+G206	G	0.185	0.586	0.259	0.514	0.185	0.723	0.920	*Don't violate rules for RPs. A team or ALLIANCE may not collude with another team to each
+R712	R	0.193	0.248	0.345	0.193	0.270	0.263	0.266	outputs shall be directly connected to the roboRIO, with the exception of the designated 12VDC input.
+G301	G	0.194	0.780	0.196	0.970	0.194	0.988	0.967	*Be prompt. A DRIVE TEAM member may not cause significant delays to the start of their MATCH.
+G207	G	0.195	0.700	0.166	0.674	0.195	0.952	0.979	*Don't abuse ARENA access. A team member (except DRIVERS, HUMAN PLAYERS, and DRIVE
+R615	R	0.197	0.562	0.050	0.911	0.649	0.491	0.197	produce measurable voltages exceeding 24V with the exception of COTS Power-over-Ethernet (PoE)
+R610	R	0.197	0.434	0.309	0.317	0.223	0.197	1.000	*1 breaker/fuse per circuit. All circuits, with the exceptions of those listed in R615 and R617, must
+R903	R	0.200	0.647	0.112	0.403	0.200	1.000	0.983	COMPONENTS and MECHANISMS used by the DRIVERS and/or HUMAN PLAYERS to relay commands
+G203	G	0.202	0.769	0.290	0.940	0.202	0.981	0.953	*Asking other teams to throw a MATCH - not cool. A team may not encourage an ALLIANCE of which
+R707	R	0.203	0.642	0.105	0.203	0.745	0.770	0.852	Robotics Competition Control System documentation.
+R410	R	0.211	0.747	0.208	1.000	0.999	0.211	0.776	*BUMPERS must come off. BUMPERS must be designed for installation and removal to facilitate
+G401	G	0.216	0.734	0.188	0.771	0.216	0.949	1.000	*Behind the lines. In AUTO, each DRIVE TEAM member must remain in their staged areas. A DRIVE
+R204	R	0.218	0.446	0.212	0.297	0.268	0.218	1.000	*Leave SCORING ELEMENTS at the FIELD. ROBOTS must allow removal of SCORING ELEMENTS from
+R702	R	0.219	0.804	0.220	1.000	0.219	1.000	0.995	*Communicate with the ROBOT with the specified radio. 1 Vivid Hosting wireless bridge (P/N: VH-109,
+R624	R	0.222	0.600	0.236	1.000	0.222	0.343	0.838	*Use specified wire colors (mostly). All non-SIGNAL LEVEL wiring with a constant polarity (i.e., except
+G102	G	0.228	0.655	0.223	0.469	0.228	0.996	0.926	*Never step over the guardrail. A team member may only enter or exit the FIELD through open gates
+R606	R	0.232	0.447	0.255	0.268	0.232	0.289	1.000	*Secure the battery. The ROBOT battery must be secured such that it will not dislodge during vigorous
+R601	R	0.237	0.585	0.823	0.257	0.237	0.987	0.859	*Battery limit - everyone has the same power. The only legal source of electrical energy for the ROBOT
+R711	R	0.243	0.461	0.211	0.267	0.243	0.667	0.667	*Don't connect motor outputs to roboRIO. Neither 12VDC power nor relay module or motor controller
+G103	G	0.270	0.571	0.270	0.729	0.270	1.000	0.284	*Be careful what you interact with. A team member is prohibited from the following actions with
+G101	G	0.289	0.686	0.258	0.689	0.289	0.984	0.783	*Humans, remain outside the FIELD. A team member may not reach into the FIELD with any part of
+I104	I	0.289	0.794	0.223	0.934	0.289	0.984	0.968	*Unless the change is listed below, any change to a ROBOT must get re-inspected. A ROBOT may play
+R716	R	0.301	0.467	0.176	0.329	0.483	0.301	0.753	Hub (PH), and Servo Hub must be controlled with signal inputs sourced from the roboRIO and passed
+R103	R	0.304	0.514	0.198	1.000	0.304	0.377	0.375	*ROBOT weight limit. The ROBOT weight must not exceed 115.0lb (52.16kg). When determining
+R401	R	0.310	0.719	0.387	1.000	0.310	0.962	0.605	*BUMPERS almost all around. ROBOTS are required to use BUMPERS to protect the entire ROBOT
+R613	R	0.318	0.523	0.237	0.404	0.389	0.318	0.981	*Electrical system must be inspectable. The PD, associated wiring, and all circuit breakers must be
+G402	G	0.322	0.630	0.134	0.573	0.322	0.626	1.000	*Let the ROBOT do its thing. In AUTO, a DRIVE TEAM member may not directly or indirectly interact
+R810	R	0.333	0.667	1.000	1.000	0.333	0.333	1.000	*Pressure gauges must be visible. Pressure gauges must be placed in easily visible locations
+R102	R	0.342	0.748	0.181	1.000	0.649	0.342	1.000	*STARTING CONFIGURATION - no overhang. In the STARTING CONFIGURATION (the physical
+R701	R	0.353	0.835	0.353	1.000	0.353	0.995	0.993	*Control the ROBOT with a roboRIO. ROBOTS must be controlled via 1 programmable NI roboRIO or
+R202	R	0.355	0.739	0.227	1.000	0.355	0.956	0.647	*No exposed sharp edges. Protrusions from the ROBOT and exposed surfaces on the ROBOT shall not
+I106	I	0.357	0.809	0.222	0.918	0.357	0.981	0.980	*ROBOTS are off for inspection (mostly). For the safety of all those involved, ROBOTS must be
+R902	R	0.380	0.704	0.442	0.380	0.437	1.000	1.000	*The OPERATOR CONSOLE must have a visible display. The OPERATOR CONSOLE, the set of
+R705	R	0.380	0.624	0.440	0.380	0.965	0.575	0.575	*Configure devices for your team number. The roboRIO, Driver Station Software, and wireless bridge
+R503	R	0.402	0.658	0.377	0.402	0.759	0.532	0.938	*Don't modify motors (mostly). The integral mechanical and electrical system of any motor must not
+R709	R	0.409	0.842	0.398	0.409	1.000	0.969	0.988	*ROBOTS must have a signal light. ROBOTS must use at least 1, but no more than 2, diagnostic ROBOT
+R616	R	0.452	0.749	0.334	1.000	0.998	0.452	0.545	injector devices used with COTS Ethernet cables and COTS receiving devices (i.e. not a breakout or
+R501	R	0.461	0.743	0.472	0.896	0.888	0.461	0.726	*Allowable motors. The only motors and actuators permitted include the following (in any quantity):
+R805	R	0.508	0.805	0.376	0.970	0.508	0.769	0.973	*If using pneumatics, these parts are required. If pneumatic COMPONENTS are used, the following
+R621	R	0.514	0.820	0.441	0.992	0.918	0.514	0.858	*Protect circuits with appropriate circuit breakers. Each branch circuit must be protected by 1 and only
+I107	I	0.531	0.811	0.489	0.808	0.531	0.955	0.950	*No STUDENT, no inspection. At least 1 STUDENT team member must accompany the ROBOT for any
+R203	R	0.535	0.765	0.502	0.898	0.743	0.535	0.882	*General safety. ROBOT parts shall not be made from hazardous materials, be unsafe, cause an unsafe
+R901	R	0.537	0.810	0.802	0.706	0.537	0.998	0.998	*Use the specified Driver Station Software. The Driver Station Software provided by National
+R806	R	0.575	0.841	0.423	1.000	0.575	0.828	0.962	*Compressed air from ROBOT compressor only. Throughout an event, compressed air on the ROBOT
+R812	R	0.576	0.776	0.953	0.971	0.576	0.576	0.981	*Pressure switch requirements. The pressure switch must be connected to the high-pressure side of
+I101	I	0.607	0.870	0.536	0.916	0.607	0.982	0.977	*It's your team's ROBOT. The ROBOT and its MAJOR MECHANISMS must be built by the FIRST
+R201	R	0.660	0.915	0.660	1.000	0.660	1.000	1.000	*No digging into carpet. Traction devices must not have surface features that could damage the
+R625	R	0.678	0.865	0.769	1.000	0.678	0.828	0.954	B. black or blue for the common or negative side (-) of the connections
+R622	R	0.680	0.825	0.640	0.915	0.801	0.680	0.904	*Use appropriately sized wire. All circuits shall be wired with appropriately sized insulated copper wire
+R104	R	0.712	0.862	0.556	0.999	0.932	0.712	0.806	A. ROBOT BUMPERS,
+R704	R	0.712	0.876	0.542	0.909	0.712	0.921	0.961	*Only use allowed ports and bandwidth to communicate with the ROBOT. Communication between the
+R802	R	0.722	0.847	0.922	1.000	0.722	0.724	0.941	*No custom pneumatics and meet minimum pressure ratings. All pneumatic items must be COTS
+R301	R	0.817	0.929	0.910	0.939	0.966	0.817	0.992	*Individual item cost limit. No individual, non-KOP item or software shall have a Fair Market Value
+R813	R	0.837	0.943	0.837	1.000	0.837	0.969	0.969	*Vent plug requirements. Any pressure vent plug must be:
+R710	R	0.893	0.945	0.908	0.926	0.893	0.983	0.979	*Only specified modifications to control system devices permitted. The Driver Station Software,
+R101	R	0.932	0.976	0.946	1.000	1.000	0.932	0.973	*ROBOT PERIMETER must be fixed. The ROBOT (excluding BUMPERS) must have a ROBOT
+R801	R	1.000	1.000	1.000	1.000	1.000	1.000	1.000	*Only use explicitly permitted pneumatic parts. To satisfy multiple constraints associated with safety,

@@ -1,0 +1,138 @@
+rule_id	prefix	num	page	chars	starred	sha1	headline
+G1	G	1	1	466	0	00174d901c59	ROBOTS whose operation or design is dangerous or unsafe are not permitted
+G2	G	2	1	150	0	002e933b1c51	DRIVE TEAMS may only enter the FIELD if the PLAYER STATION LED strings are green, unless explicitly instructed
+G3	G	3	1	182	0	8a90405b2db5	DRIVE TEAMS may not climb over or step on game elements or the STEP
+G4	G	4	1	427	0	70f12c26698b	DRIVE TEAMS may not extend any body part into the FIELD during the MATCH
+G5	G	5	1	792	0	107c952900d7	Only one ALLIANCE member may be in each HUMAN PLAYER ZONE (i
+G6	G	6	1	592	0	f5e60988404f	A single ALLIANCE member may not be in contact with both a TOTE and the CHUTE DOOR simultaneously, directly or
+G7	G	7	1	767	0	398412dd0916	When placed on the FIELD for a MATCH, each ROBOT must be:
+G8	G	8	1	137	0	a2c02a5d170a	DRIVE TEAMS may not leave items other than their ROBOT on the FIELD
+G9	G	9	1	298	0	08dbebe6fa0d	DRIVE TEAMS may only bring hand tools, including battery-operated hand tools, onto the FIELD to configure or d
+G10	G	10	1	1092	0	2199b04b2027	DRIVE TEAMS may not cause significant or repeated delays to the start of a MATCH
+G11	G	11	1	642	0	58e9ca0e75b4	DRIVE TEAMS may not cause significant or repeated delays to FIELD reset at the conclusion of the MATCH
+G12	G	12	1	170	0	b7131ea3661d	DRIVE TEAMS must be in the ALLIANCE STATION and behind the STARTING LINE prior to the start of the MATCH
+G13	G	13	1	225	0	46dcb4ddabb6	DRIVE TEAMS may not rearrange TOTES or LITTER prior to the start of the MATCH, with the exception of Yellow TO
+G14	G	14	1	410	0	9f6acd9eb083	ROBOTS will not be re-enabled after the conclusion of the MATCH, nor will Teams be permitted to tether to the
+G15	G	15	1	360	0	07349042c7c3	All Teams must be civil towards their own Team members, other Teams, competition personnel, FIELD staff, and e
+G16	G	16	1	1217	0	4e51a47d195b	The following actions are prohibited with regards to interaction with FIELD elements (items A-D exclude TOTES,
+G17	G	17	1	245	0	415c4e93a76c	ROBOTS may not push or react against the white horizontal surface of the STEP
+G18	G	18	1	1277	0	3837a6a29c72	ROBOTS may not contact any portion of an object where that portion is beyond the STEP
+G19	G	19	1	212	0	8a518e243f97	During AUTO, DRIVE TEAMS must remain behind the STARTING LINE and may not contact the OPERATOR CONSOLE, unless
+G20	G	20	1	146	0	78c1b9a09353	During AUTO, any control devices worn or held by the DRIVERS and/or HUMAN PLAYERS must be disconnected from th
+G21	G	21	1	548	0	3e51dc170804	During AUTO, DRIVE TEAMS must not directly or indirectly interact with ROBOTS or OPERATOR CONSOLES
+G22	G	22	1	564	0	8b07d3208f9e	ROBOT height must not exceed 6 ft
+G23	G	23	1	285	0	7b29dd62dda7	ROBOTS may not cause TOTES, RECYCLING CONTAINERS, and/or LITTER to completely leave the FIELD
+G24	G	24	1	276	0	30599696243e	ROBOTS may not cause TOTES, RECYCLING CONTAINERS, and/or LITTER to completely transfer from their side of the
+G25	G	25	1	239	0	6617b5591b9f	ROBOTS may not intentionally detach or leave parts on the FIELD
+G26	G	26	1	183	0	7e1fe8a848ef	Strategies aimed at the destruction or inhibition of ROBOTS via attachment, damage, tipping, or entanglements
+G27	G	27	1	328	0	f4522e039667	ROBOTS and anything they control (except for LITTER in the LITTER CHUTE and TOTES in the TOTE CHUTE), may not
+G28	G	28	1	377	0	ac3ac67f7ee0	DRIVE TEAMS must wear their designated buttons in a clearly visible location at all times while in the ARENA
+G29	G	29	1	229	0	96b830e87edc	Only the DRIVE TEAMS for the current MATCH are allowed in their respective ALLIANCE STATIONS
+G30	G	30	1	360	0	2e43bb232e7b	DRIVE TEAM members must remain fully within the ALLIANCE STATION for the duration of the MATCH, unless for per
+G31	G	31	1	83	0	8a652b6ff455	COACHES may not touch TOTES or LITTER, unless for personal safety
+G32	G	32	1	272	0	4de163fa6121	During a MATCH, the ROBOT shall be operated solely by the DRIVERS and/or HUMAN PLAYERS of that Team
+G33	G	33	1	228	0	6ce0af1756ec	LITTER may be introduced onto the FIELD only during TELEOP and only in the following ways:
+G34	G	34	1	11636	0	ba1b3de861a3	TOTES may only be introduced to the FIELD through the TOTE CHUTE
+R1	R	1	1	520	0	b7e1cc25a1e2	A Team must submit their ROBOT for Inspection
+R2	R	2	1	1057	0	4169b44d0b00	Team numbers must be displayed on the ROBOT and meet                                Figure 4-1: Team number di
+R3	R	3	1	1164	0	cbdecc7fca99	The ROBOT must satisfy the following size constraints:
+R4	R	4	1	613	0	de0d180efba7	The ROBOT weight may not exceed 120 lbs
+R5	R	5	1	295	0	44d30aa23465	Traction devices may not have surface features such as metal, sandpaper, hard plastic studs, cleats, hook-loop
+R6	R	6	1	345	0	ca1d2b365a85	ROBOTS must allow removal of LITTER, RECYCLING CONTAINERS, and TOTES from the ROBOT and the ROBOT from FIELD
+R7	R	7	1	551	0	a6019045d1b1	Protrusions from the ROBOT and exposed surfaces on the ROBOT shall not pose hazards to the ARENA elements (inc
+R8	R	8	1	1403	0	55988244083f	ROBOT parts shall not be made from hazardous materials, be unsafe, cause an unsafe condition, or interfere wit
+R9	R	9	1	887	0	bbc8aa4ccce0	The total cost of all items on the ROBOT shall not exceed $4000 USD
+R10	R	10	1	2112	0	9b25915acc6e	No individual, non-KOP item shall have a value that exceeds $400 USD
+R11	R	11	1	2453	0	c7af65c19d6c	The BOM cost of each non-KOP item must be calculated based on the unit fair market value for the material and/
+R12	R	12	1	1530	0	25467856d889	Physical ROBOT elements created before Kickoff are not permitted
+R13	R	13	1	2198	0	8228cdb6a12f	Software and mechanical/electrical designs created before Kickoff are only permitted if the source files (comp
+R14	R	14	1	382	0	5e9d6df0cc83	All ROBOT elements, with the exception of the WITHHOLDING ALLOWANCE per R17 and COTS items, (including items
+R15	R	15	1	990	0	3c91470daac5	"Teams must stay ""hands-off"" their bagged ROBOT elements during the following time periods:"
+R16	R	16	1	122	0	0c989a51364c	Lubricants may be used only to reduce friction within the ROBOT
+R17	R	17	1	2328	0	40a966a9ef75	At an Event, Teams may have access to a static set of FABRICATED ITEMS, not bagged per R14, known as the WITHH
+R18	R	18	1	2177	0	335aa056e192	The only motors and actuators permitted on 2015 FRC ROBOTS include the following:
+R19	R	19	1	1230	0	39756e77218c	The integral mechanical and electrical system of any motor may not be modified
+R20	R	20	1	1588	0	ce7f8cfdac6b	The only legal source of electrical energy for the ROBOT during the competition, the ROBOT battery, must be a
+R21	R	21	1	219	0	ab4200b1aeca	No batteries other than those allowed per R20 are allowed on the ROBOT, whether or not they are being used to
+R22	R	22	1	136	0	407a6c0b1970	The ROBOT battery must be secured such that it will not dislodge should the ROBOT be turned over or placed in
+R23	R	23	1	164	0	6a5e0a50fc10	Each electrical terminal on the ROBOT battery, main breaker, and their connection (lugs, stripped wire ends, e
+R24	R	24	1	544	0	c6820416dafa	Non-electrical sources of energy used by the ROBOT, (i
+R25	R	25	1	732	0	4d2f08daa31b	The one (1) ROBOT battery, single pair of Anderson Power Products (or APP) 2-pole SB type connectors, the one
+R26	R	26	1	234	0	a3cddfade1f4	All circuits, with the exceptions of those listed in R31 and R33, must connect to, and have power sourced sole
+R27	R	27	1	475	0	deb6afaa55a6	is checked by observing a >10k resistance between either the (+) or (-) post within the APP connector that is
+R28	R	28	1	290	0	ee2c9627c1da	The 120A circuit breaker must be quickly accessible from the exterior of the ROBOT
+R29	R	29	1	71	0	591b9ab47a20	The PDP and all circuit breakers must be easily visible for Inspection
+R30	R	30	1	263	0	95aeac280620	Any active electrical item not explicitly listed in R18 or R55 is considered a CUSTOM CIRCUIT
+R31	R	31	1	207	0	5d187f40c30c	The roboRIO power input must be connected to the dedicated supply terminals on the PDP shown in Figure 4-3
+R32	R	32	1	251	0	37a6dac2129e	"The Wireless Bridge power must be supplied by the 5V 2A (""Radio"") output of a Cross the Road Electronics Volta"
+R33	R	33	1	514	0	d5ecb966b16e	The VRM supplying power to the Wireless Bridge per R32 must be connected to the designated supply terminals at
+R34	R	34	1	456	0	624b434f9580	Only one wire may be connected to each WAGO connector on the PDP
+R35	R	35	1	130	0	e9bb26171e22	The only circuit breakers permitted for use in the PDP are:
+R36	R	36	1	151	0	9b197082d980	The fuses in the PDP may only be replaced with functionally identical fuses (mini automotive blade fuses with
+R37	R	37	1	558	0	c63d4fddbd09	Each branch circuit must be protected by one and only one circuit breaker on the PDP per Table 4-2
+R38	R	38	1	1088	0	2df28e9a0926	All circuits shall be wired with appropriately sized insulated wire:                              Minimum Wire
+R39	R	39	1	229	0	e949ddb1d283	Branch circuits may include intermediate elements such as COTS connectors, splices, COTS flexible/rolling/slid
+R40	R	40	1	537	0	3139aa3ed61f	All non-SIGNAL LEVEL wiring with a constant polarity (i
+R41	R	41	1	807	0	308aeda8545d	With the exception of fans or hard drive motors permitted in R18, each actuator must be controlled by a power
+R42	R	42	1	968	0	e2eb42c96793	Each power regulating device may control electrical loads per Table 4-4
+R43	R	43	1	167	0	6e771b19ef5a	Servos must be directly connected to the PWM ports on the roboRIO, or through an approved MXP per R58
+R44	R	44	1	611	0	33bc23dbf8e1	CUSTOM CIRCUITS shall not directly alter the power pathways between the ROBOT battery, PDP, motor controllers,
+R45	R	45	1	371	0	68c2c39c6808	ROBOTS must be controlled via one (1) programmable National Instruments roboRIO (P/N: am3000), with image vers
+R46	R	46	1	326	0	e55782663fee	One (1) D-Link Wireless Bridge (P/N: DAP-1522), hardware revision B, that has been configured with the appropr
+R47	R	47	1	125	0	a59d7ada2a8c	The DAP-1522 Wireless Bridge must be connected to the roboRIO Ethernet port (either directly or via a CAT5 Eth
+R48	R	48	1	235	0	3556ecdbc011	Ethernet-connected COTS devices or CUSTOM CIRCUITS may connect to any remaining Ethernet port on the DAP-1522
+R49	R	49	1	1271	0	9cd547744cf0	Communication between the ROBOT and the OPERATOR CONSOLE is restricted as follows:
+R50	R	50	1	193	0	55ec8aad7c66	The roboRIO, Driver Station software, and Wireless Bridge must be configured to correspond to the correct Team
+R51	R	51	1	116	0	a30cfc12f6f4	All signals must originate from the OPERATOR CONSOLE and be transmitted to the ROBOT via the ARENA Ethernet ne
+R52	R	52	1	119	0	cdb1b5d1f7e6	No form of wireless communication shall be used to communicate to, from, or within the ROBOT, except those req
+R53	R	53	1	233	0	fad2a42f4ab8	The Wireless Bridge must be mounted on the ROBOT such that the diagnostic lights are visible to ARENA personne
+R54	R	54	1	539	0	f8ff4e8151d7	ROBOTS must use at least one (1), but no more than two (2) diagnostic ROBOT Signal Lights (RSL) (P/N: 855PB-B1
+R55	R	55	1	2112	0	eade4b3e4b93	The Driver Station software, roboRIO, Power Distribution Panel, Pneumatics Control Modules, Voltage Regulator
+R56	R	56	1	270	0	0a3332572824	Neither 12VDC power nor relay module or motor controller outputs may be directly connected to the roboRIO (wit
+R57	R	57	1	278	0	97efe37425e4	Every relay module, servo, and PWM motor controller shall be connected to a corresponding port (relays to Rela
+R58	R	58	1	601	0	cb5272d0ceb0	If a motor or servo is controlled via the MXP, it (or its power regulating device) must be connected by one of
+R59	R	59	1	814	0	4d21aa94edc6	Each Jaguar or Talon SRX must be controlled with signal inputs sourced from the roboRIO and passed via either
+R60	R	60	1	254	0	b162cf3fc979	Each PCM must be controlled with signal inputs sourced from the roboRIO and passed via a CAN-bus connection fr
+R61	R	61	1	306	0	fed18218739c	The PDP CAN interface must be connected to the CAN-bus on the roboRIO (either directly or daisy-chained via an
+R62	R	62	1	1220	0	272fe57d0972	The CAN-bus must be connected to the roboRIO CAN port
+R63	R	63	1	226	0	84ec3a6705ed	To satisfy multiple constraints associated with safety, consistency, Inspection, and constructive innovation,
+R64	R	64	1	150	0	0bd16b6f97ac	All pneumatic items must be COTS pneumatic devices rated by their manufacturers for working pressure of at lea
+R65	R	65	1	729	0	af33f759824f	All pneumatic COMPONENTS must be used in their original, unaltered condition
+R66	R	66	1	1571	0	24cd3a85f683	The only pneumatic system items permitted on 2015 FRC ROBOTS include the items listed below
+R67	R	67	1	551	0	be15165621c3	If pneumatic COMPONENTS are used, the following items are required as part of the pneumatic circuit and must b
+R68	R	68	1	152	0	baf8902d6029	Compressed air on the ROBOT must be provided by one and only one compressor
+R69	R	69	1	528	0	174262cd3118	The compressor (permitted per R68) may be located off-board, however the compressor must still be controlled a
+R70	R	70	1	149	0	dabc557347a8	"""Stored"" air pressure on the ROBOT must be no greater than 120 psi"
+R71	R	71	1	226	0	171506be9839	"""Working"" air pressure on the ROBOT must be no greater than 60 psi and must be provided through one primary ad"
+R72	R	72	1	249	0	98cf98e1b168	Only the compressor, relief valve (P/N: 16-004-011), pressure switch, pressure vent plug, pressure gauge, stor
+R73	R	73	1	261	0	8c2ace5e1a8b	Pressure gauges must be placed in easily visible locations upstream and downstream of the regulator to display
+R74	R	74	1	365	0	900d0ac4ae13	"If the compressor is not included on the ROBOT (under the provisions of Rule R68), the ""Working"" Pressure Regu"
+R75	R	75	1	326	0	124de35f402e	"If the regulator is kept off-board the ROBOT with the compressor, then only low-pressure (60 psi or less) ""wor"
+R76	R	76	1	534	0	11503dfc3be6	The relief valve must be attached directly to the compressor or attached by legal hard fittings (e
+R77	R	77	1	633	0	2a15897c8af4	The pressure switch requirements are:
+R78	R	78	1	475	0	ab873374848a	Any pressure vent plug must be:
+R79	R	79	1	83	0	7584d53246ab	The outputs from multiple valves may not be plumbed together
+R80	R	80	1	473	0	e32a0c798a89	The Driver Station software provided on the National Instruments website is the only application permitted to
+R81	R	81	1	236	0	84875fbee002	The OPERATOR CONSOLE must include a graphic display to present the Driver Station diagnostic information
+R82	R	82	1	743	0	5bbbca4a2e40	Devices hosting the Driver Station software may only interface with the Field Management System (FMS) via the
+R83	R	83	1	382	0	54c398cc19c5	The OPERATOR CONSOLE must not exceed 60 in
+R84	R	84	1	21505	0	a5ae51c9bbda	Other than the system provided by the ARENA, no other form of wireless communications shall be used to communi
+T1	T	1	1	359	0	21a66389f054	Safety is paramount at all times during the Tournament
+T3	T	3	1	369	0	3923876d4d66	the FIELD or Practice Field
+T5	T	5	1	769	0	2bf632ab37ba	No Team or Team member shall interfere or attempt to interfere with any other Team's or FIRST's wireless commu
+T6	T	6	1	2478	0	4d51e22da48f	While transferring the ROBOT throughout the event (e
+T7	T	7	1	344	0	b4887e0ee6ce	Each registered FRC team may enter only one (1) ROBOT (or `Robot', which to a reasonably astute observer, is a
+T8	T	8	1	772	0	bb819515be28	A Team is only permitted to participate in a Qualification or Playoff MATCH and receive Match Points if their
+T9	T	9	1	554	0	b39bf3c48912	At the time of Inspection, the ROBOT must be presented with all MECHANISMS (including all COMPONENTS of each
+T10	T	10	1	2524	0	e91d3a27a055	If a ROBOT is modified after it has passed its most recent Inspection, other than modifications listed in A th
+T11	T	11	1	402	0	93a39196dbf5	The ROBOT Bill of Materials (BOM), listing all items on the ROBOT except those listed in R9-A and -B, and thei
+T12	T	12	1	274	0	0437462af948	During the event, from load-in on the first day to load-out on the final day, Teams may only produce FABRICATE
+T13	T	13	1	1213	0	8c78e7e8e3ef	For the safety of all those involved, Inspections must take place with the ROBOT powered off, pneumatics unpre
+T14	T	14	1	3497	0	f8b381069a57	If a DRIVE TEAM needs clarification on a ruling or score, one (1) pre-college student from that DRIVE TEAM sho
+T15	T	15	1	1590	0	9822461dd35e	"If, in the judgment of the Head REFEREE, an ""ARENA fault"" occurs that affects the outcome of the MATCH and any"
+T16	T	16	1	330	0	af2f3de31fe4	If an ALLIANCE wishes to call a TIMEOUT, they must submit their TIMEOUT coupon to the Head REFEREE within two
+T17	T	17	1	338	0	b0332e21b2f7	There are no cascading TIMEOUTS
+T18	T	18	1	259	0	88de8f53370c	TIMEOUTS are not transferable between ALLIANCES
+T19	T	19	1	1196	0	5e62188d75a4	If during a TIMEOUT an ALLIANCE CAPTAIN determines that they need to call up a BACKUP TEAM, they must submit t
+T20	T	20	1	814	0	34c45b9230d6	An ALLIANCE may request neither a TIMEOUT nor a BACKUP TEAM after a Playoff MATCH is stopped by the Head REFER
+T21	T	21	1	21031	0	cdb578c5b7cf	The only equipment, provided it does not jam or interfere with the remote sensing capabilities of another Team

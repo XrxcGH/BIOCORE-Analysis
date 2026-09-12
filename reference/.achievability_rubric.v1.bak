@@ -1,0 +1,519 @@
+# achievability_rubric.yaml
+# Machine-readable companion to reference/ACHIEVABILITY-RUBRIC.md
+#
+# The scoring instrument. Consumed by tools/score-strategy.py.
+#
+# Two axes, never collapsed:
+#   ACHIEVABILITY  -- can THIS team build it (13 factors, 0-5 each, weighted)
+#   VALUE          -- is it worth building (5 factors, 0-5 each, weighted)
+# The QUADRANT is the output. The combined index only orders rows inside it.
+#
+# Written 2026-08-22 for BIOCORE presented by Haas (FRC 2027, FIRST CANOPY),
+# kickoff 2027-01-09 12:00 ET. NO GAME-SPECIFIC BIOCORE CLAIM APPEARS IN THIS FILE.
+# BIOCORE's rules and scoring element are not public as of 2026-08-22; see
+# research/00_PREMISE_CORRECTION.md.
+#
+# evidence: C = confirmed in a primary source in this corpus
+#           H = historical pattern across prior FRC seasons, not stated for BIOCORE
+#           S = speculation / model calibration
+#           U = unverified
+
+meta:
+  version: 1
+  written: 2026-08-22
+  companion_md: reference/ACHIEVABILITY-RUBRIC.md
+  scorer: tools/score-strategy.py
+  value_axis_upstream: tools/cycle-model.py     # points/match is IMPORTED, not reimplemented
+  inputs:
+    capacity: reference/02_TEAM_CAPACITY_MODEL.md      # sec 8 constants
+    archetypes: reference/archetype_corpus.yaml        # calibration + back-test set
+    predictive: reference/04_predictive_factors.yaml   # every weight traces here
+  team_profile: "~15 students, 1 experienced technical mentor, COTS path, $2,500 robot discretionary"
+
+# =========================================================== team constants
+# Copied verbatim from reference/02_TEAM_CAPACITY_MODEL.md sec 8. DO NOT EDIT HERE.
+# Edit tools/capacity_model.py and re-derive. (Note: reference/team_capacity.yaml
+# is referenced by that document but is NOT present on disk as of 2026-08-22 --
+# these values are transcribed from its sec 8 table instead. See limitations.)
+team_constants:
+  evidence: S                      # model, calibrated; calendar inputs are C
+  effective_build_hours: 599       # kickoff -> Week 1 event
+  effective_build_hours_week4: 854
+  effective_hours_multiplier: 0.352
+  parallel_workstreams_max: 3      # incl. drivetrain and software
+  novel_mechanisms_max: 2          # beyond the drivetrain
+  novel_mechanisms_recommended: 1
+  mechanism_hours_pool: 205        # CAD 75 + fabrication 130, the only pool a
+                                   # new mechanism can be paid out of
+  hours_per_novel_mechanism: 90    # capacity model route B, deliberately generous
+  programming_hours: 135
+  drive_practice_hours: 55         # ~9 h of real driver seat time before event 1
+  real_driver_seat_hours: 9
+  mentor_unblock_minutes_per_week: 204        # 3.4 h/wk
+  budget_usd_robot_discretionary: 2500
+  slack_hours: 0                   # capacity model sec 3.3 -- the plan closes at zero
+  owned_manufacturing:             # what the shop actually has
+    - hand
+    - bandsaw+drill
+    - 3dprint
+  outsourced_2d_account: false     # set true once a SendCutSend-class account exists
+                                   # and one test order has shipped (capacity sec 7.5)
+  in_house_cnc: false
+
+# ============================================================ ACHIEVABILITY
+# 13 factors. 5 = EASIEST for this team. 0 = hardest / impossible.
+# Every weight's `from` field names the number in 04_predictive_factors.yaml or
+# 02_TEAM_CAPACITY_MODEL.md it is derived from. Weights are raw 0-100 and are
+# normalised by their own sum at scoring time (sum = 856).
+achievability:
+  scale: {min: 0, max: 5, direction: "higher = more achievable"}
+  weight_sum: 856
+  factors:
+
+  - id: A1
+    name: build_hours_fit
+    weight: 85
+    from: "PF scope_discipline = 85. Hours are the currency scope is spent in; capacity constraint #3 (599 h, 205 h of it available to mechanisms)."
+    measures: "Total CAD + fabrication + integration hours the design needs, against the 205 h mechanism pool."
+    anchors:
+      5: "<=60 h. A published/COTS design bolted on. Fabrication hours only, no design hours. Fits inside one mechanism slot with room for a second."
+      3: "<=160 h. One novel mechanism at the model's generous 90 h plus its share of integration. Fits, but consumes most of the 205 h pool."
+      1: "<=300 h. Exceeds the pool by up to 50%. Only buildable by cannibalising drive practice or the awards line."
+      0: ">300 h. More than the entire CAD+fabrication budget. Not a scope question, an arithmetic one."
+    tie_break: "If two scorers disagree, both write an hour estimate and average them; the band, not the point estimate, is the output."
+
+  - id: A2
+    name: parallel_workstream_demand
+    weight: 85
+    from: "PF scope_discipline = 85. Capacity constraint #2 (5 unsupervised leads); parallel_workstreams_max = 3, quadruply derived (capacity sec 5.2 routes A/B/C + sec 6.3 mentor route D)."
+    measures: "How many concurrent development threads the design adds ON TOP of the three mandatory ones (drivetrain, primary mechanism, software)."
+    anchors:
+      5: "0 new streams. Software-only, or a variation inside an existing stream (a different hood angle, a second auto path)."
+      3: "1 new stream. This IS the primary scoring mechanism -- the second of the three mandatory streams. Normal, not free."
+      1: "2 new streams. A scoring mechanism AND an endgame mechanism, or a mechanism plus a first-year swerve adoption (capacity sec 5.6)."
+      0: ">=3 new streams, i.e. 4+ total. Over parallel_workstreams_max. GATE G2 fires."
+    tie_break: "A stream needs all five of: its own design decision, its own prototype loop, its own fab-queue slot, its own unsupervised student lead, its own integration failure mode. 'Add a limelight' is not a stream. 'Add a second scoring mechanism' is."
+
+  - id: A3
+    name: mentor_supervision_load
+    weight: 80
+    from: "Capacity constraint #1 -- the top of the hierarchy, 204 unblock-minutes/week. No PF analogue exists (PF measures outcomes, not inputs), so it is set just under scope_discipline's 85."
+    measures: "Mentor unblock minutes per week the design will consume, against the 204 available."
+    anchors:
+      5: "<=50 min/wk (<=25%). Pre-solved design, no machine supervision, students can proceed unsupervised for a week at a time."
+      3: "<=150 min/wk (<=75%). One mechanism needing a weekly design review plus occasional saw supervision. The normal load for the primary mechanism."
+      1: "<=300 min/wk (<=150%). Needs the mentor present for most of the work, or needs mill/lathe supervision every session. Starves the other two streams."
+      0: ">300 min/wk. The mentor becomes the mechanism (capacity sec 6.5). GATE G5 fires."
+    tie_break: "Count only unblock and supervision minutes, not teaching. Teaching is a separate 4.1 h/wk line."
+
+  - id: A4
+    name: drive_practice_sensitivity
+    weight: 90
+    from: "PF drive_practice = 90, verbatim -- the highest weight in the measured corpus. Capacity sec 3.4 funds only ~9 h of real driver seat time before a Week 1 event."
+    measures: "How much of the design's value is unlocked only by driver hours this team does not have."
+    anchors:
+      5: "None. Value is banked by software or by a single scripted action. An AUTO routine or a stationary scorer."
+      3: "Moderate. A driver learns the one repeated path in 2-3 hours; the rest is marginal gain."
+      1: "High. Needs a driver who has run the cycle hundreds of times -- a full-field volume cycler, or a single-shot endgame under time pressure."
+      0: "Extreme. The ENTIRE value is driver skill: defense, denial, contact play. Also fires the SOFT GATE downgrade at <20 available drive hours."
+    tie_break: "Ask: if we gave this robot to a driver with 9 hours of seat time, what fraction of its ceiling do we get? >=80% -> 5; ~50% -> 3; ~25% -> 1; <15% -> 0."
+
+  - id: A5
+    name: reliability_exposure
+    weight: 88
+    from: "PF reliability = 88, verbatim [C]. One DQ halves pick probability (62-65% -> 22-42%) and moves median rank percentile from ~49 to 75-86."
+    measures: "Serial-chain reliability. Every element that must work for the robot to score at all multiplies."
+    anchors:
+      5: ">=0.90 expected chain reliability. 0-1 elements in the critical chain (e.g. 0.93^1)."
+      3: "0.80-0.85. Three elements in series, or two elements plus a sensing dependency."
+      1: "0.65-0.72. Five elements in series. Fails in roughly one match in three."
+      0: "<0.65. Six or more serial elements, or a known jam-prone path with no bypass."
+    tie_break: "Use 0.93 per element for a small team's first-season mechanism; count sensing/vision as one extra element. State the element list, then compute -- do not eyeball."
+
+  - id: A6
+    name: graceful_degradation
+    weight: 66
+    from: "0.75 x PF reliability (88). It is the partial-credit half of the SAME evidence, so it is discounted rather than double-counted at full weight."
+    measures: "When it breaks mid-match, what is left."
+    anchors:
+      5: "Rate drops, scoring continues. Or a second independent system keeps producing (plow keeps herding after the climber dies)."
+      3: "The primary action is lost but the robot is still a legal, mobile, useful alliance partner (can play defense, can feed)."
+      1: "The primary action is lost and the robot becomes a spectator, but is not a liability."
+      0: "Total, and the failure state is a hazard or a foul source -- stuck extended, immobilised in a protected zone, entangling."
+    tie_break: "Score the WORST single failure, not the average one."
+
+  - id: A7
+    name: programming_complexity
+    weight: 70
+    from: "No PF weight exists for programming. Derived from capacity sec 3.1-3.2: programming is the LARGEST single line in the 599 h budget (135 h, 22.5%) and runs at 79% programmer utilisation before a bug exists. Placed between scope_discipline (85) and cots_leverage (55)."
+    measures: "Software difficulty AFTER the archetype_corpus systemcore_adjustment is applied."
+    systemcore_note: "[C] 2027 replaces the roboRIO with SystemCore and WPILib 2027 is SystemCore-only. Add +0.0 to open-loop teleop, +0.5 to a single closed-loop mechanism, +1.0 to odometry/path-following, +1.0 to vision+pose fusion (and treat vision as UNAVAILABLE in build weeks 1-3)."
+    anchors:
+      5: "Adjusted difficulty <=1. Teleop button mapping. A first-year can write it."
+      3: "Adjusted difficulty ~3. One closed-loop velocity or position controller with tuning, plus a one-element auto."
+      1: "Adjusted difficulty ~5. Closed-loop control + odometry + a multi-step auto. Consumes both programmers for a month."
+      0: "Adjusted difficulty >5. Vision-fused pose estimation driving a turret. In 2027 this is a research project, not a plan."
+    tie_break: "Take programming_difficulty from archetype_corpus.yaml if the design matches an archetype; otherwise use its 1-5 scale definition, then add the SystemCore delta before banding."
+
+  - id: A8
+    name: sensing_vision_dependence
+    weight: 30
+    from: "PF vision_localization = 30, verbatim. Deliberately low on its own: it is a force multiplier on mechanisms that must already work."
+    measures: "How much of the design stops working if the camera/coprocessor stack is not ready."
+    anchors:
+      5: "None or encoders only. Nothing to stop working."
+      3: "Gyro + encoders. Field-oriented drive and dead-reckoning auto; degrades to open-loop."
+      1: "Vision-assisted aiming or alignment. Works without it, but at a much lower rate."
+      0: "Full pose fusion is load-bearing -- the design does not function without AprilTag localisation."
+    tie_break: "Ask: if the coprocessor never boots at the event, does the robot still score? Yes, at full rate -> 5. Yes, slower -> 3-1. No -> 0."
+
+  - id: A9
+    name: manufacturing_floor
+    weight: 45
+    from: "PF custom_fabrication = 25 is the value-side weight. Promoted to 45 because capacity sec 5.2 route C (the single-machine shop queue) binds novel_mechanisms_max on its own and is the ONE route insensitive to headcount. 45 matches PF drivetrain_choice, likewise a 'matters through what it consumes' factor."
+    measures: "The most capable machine any part of the design requires."
+    anchors:
+      5: "Hand tools, hardware-store stock, 3D print. No queue contention."
+      3: "Bandsaw + drill press on stock tube/plate. Owned, but one of each -- queue contention with the drivetrain stream."
+      1: "Router / waterjet / laser-cut sheet. NOT owned. Buildable only via an outsourced 2D account with a 1-2 week lead time. GATE G1 fires unless outsourced_2d_account is true."
+      0: "In-house CNC mill or lathe for a load-bearing part. Not owned, not outsourceable at this budget. GATE G1 fires."
+    tie_break: "Score the single hardest part, then check how MANY parts need that floor -- one router part is a purchase order, eight is a fabrication programme (this is the archetype_corpus fix for the G1/F4 mislabels)."
+
+  - id: A10
+    name: cots_availability
+    weight: 55
+    from: "PF cots_leverage = 55, verbatim [C]. 441 True Everybots in 2026, 100 alliance captains, 21 event wins, 22% captaincy against a 21.8% base rate."
+    measures: "How much of the design can be bought, or copied from a released open design, instead of invented."
+    anchors:
+      5: "A released, documented, pre-solved design exists (Everybot/KitBot/vendor kit) and the team can copy it. Costs fabrication hours, near-zero design hours."
+      3: "Core motion is COTS (gearbox, rollers, linear stage) but the geometry around it is bespoke."
+      1: "Only fasteners and motors are COTS. Every functional surface is designed here."
+      0: "Nothing exists to buy or copy; the concept itself has to be invented and validated."
+    tie_break: "'A team posted a CAD of theirs on Chief Delphi' counts as 3, not 5 -- unreleased CAD without a build guide still costs design hours."
+
+  - id: A11
+    name: iteration_count
+    weight: 60
+    from: "0.7 x PF scope_discipline (85) = 60. Iteration is the mechanism BY WHICH scope discipline bites; capacity sec 3.3 shows SLACK = 0.0, so every unplanned prototype->revise loop is unfunded."
+    measures: "Expected number of prototype -> test -> revise loops before the design is competition-ready."
+    anchors:
+      5: "<=1. Build it once from a known design; tune, do not redesign."
+      3: "~3. Normal for a first-of-its-kind mechanism on a small team: a foamboard proof, a rough version, a final."
+      1: "~5. Compliant-material handling, high-speed launching, or anything where the failure mode is only visible under match conditions."
+      0: ">5, or the loop length is unknown because nobody on the team has built anything like it."
+    tie_break: "Count loops that require re-fabricating a part, not software rebuilds."
+
+  - id: A12
+    name: marginal_cost
+    weight: 40
+    from: "Capacity sec 7.2: on the COTS path money binds LAST, #5 of 5, at $2,500 discretionary. Set BELOW cots_leverage (55) on purpose -- whether a part EXISTS to buy matters more than what it costs."
+    measures: "Dollars beyond a base drivetrain + control system, using the HIGH end of the cost band."
+    anchors:
+      5: "<=$300. Hardware store, printed parts, spare motors already owned."
+      3: "<=$1,200. One mechanism's worth of vendor parts. Roughly half the discretionary budget."
+      1: "<=$2,500. Consumes the entire discretionary budget and leaves nothing for spares. GATE G3 is at the boundary."
+      0: ">$2,500. Over budget. GATE G3 fires."
+    tie_break: "Use the HIGH end of the band and add 40% -- archetype_corpus states its cost bands are +/-40%. Exclude drivetrain and control system; those are committed elsewhere."
+
+  - id: A13
+    name: schedule_critical_path_risk
+    weight: 62
+    from: "0.72 x PF scope_discipline (85) = 62. Capacity sec 3.3 (SLACK = 0.0 h) and sec 9.4 (losing ONE unsupervised lead halves novel_mechanisms_max) make serialisation the team's largest uninsured risk."
+    measures: "How much of the work must happen in a fixed order, and how exposed that order is to one late delivery or one absent student."
+    anchors:
+      5: "Fully parallel or software-only. Can be finished in the last two weeks if everything else slips."
+      3: "One serial dependency with a known lead time (a vendor part, a print). Slippable by a week without consequence."
+      1: "A chain of 3+ serial dependencies, or it must be mounted before the electrical board can be finished."
+      0: "Depends on something with an unknown ship date (2027: SystemCore hardware itself), or on one specific student being present."
+    tie_break: "Draw the dependency chain. Count the longest path in weeks. <=1 week -> 5; ~3 weeks -> 3; ~5 weeks -> 1; unknown -> 0."
+
+# =================================================================== VALUE
+# 5 factors. 5 = most valuable. Separate axis; NEVER summed with achievability.
+value:
+  scale: {min: 0, max: 5, direction: "higher = more competitively valuable"}
+  weight_sum: 290
+  upstream: "V1 consumes tools/cycle-model.py model() output. Do not recompute points/match here."
+  factors:
+
+  - id: V1
+    name: points_per_match_share
+    weight: 80
+    from: "PF scoring_output = 80, verbatim [C]. 'Avg Match' separates picked from unpicked better than qual rank, Ranking Score or Avg Auto in all four scraped seasons (AUC 0.80-0.87)."
+    measures: "Expected points/match from tools/cycle-model.py, as a share of the season's MEDIAN alliance score. One robot of three is 0.33 = parity."
+    anchors:
+      5: ">=0.45 of median alliance score. Carries an alliance."
+      3: "0.18-0.29. Below parity but a real contribution; the contested middle of the field."
+      1: "0.05-0.09. Token scoring."
+      0: "<0.05 direct AND no credited indirect effect."
+    indirect_points_equivalent:
+      evidence: S
+      note: "Support and defense archetypes score 0 directly. Convert their effect to a point equivalent before banding. Defaults below are midpoints of the bands archetype_corpus.yaml itself states."
+      defense_specialist: 45      # from 'denies 30-60 opponent points'
+      feeder_support: 35          # from '+20-40% partner throughput'
+    tie_break: "Run cycle-model.py at YOUR cycle time, not a good team's. Paste the TOTAL row."
+
+  - id: V2
+    name: rp_contribution
+    weight: 55
+    from: "Derived, not verbatim. PF measures Ranking Score as a WORSE predictor of being picked (AUC 0.777-0.821) than avg match points (0.801-0.872), so RP value is weighted BELOW scoring_output. Above defense because RP thresholds are the cheapest lever the corpus finds (archetype_corpus I4)."
+    measures: "How much this design contributes toward a bonus/ranking point, especially one an alliance cannot reach without it."
+    anchors:
+      5: "Single-handedly clears, or nearly clears, an RP threshold that partners typically cannot (archetype_corpus I4: REBUILT TRAVERSAL 50 from one L3 + one L2)."
+      3: "Contributes a meaningful, countable share of a threshold that the alliance reaches together."
+      1: "Contributes incidentally; the RP would usually happen anyway."
+      0: "No RP relevance."
+    tie_break: "Read the RP table before scoring this factor. Buy the CHEAPEST tier that clears the threshold -- the threshold is almost never set at the top tier."
+
+  - id: V3
+    name: alliance_selection_appeal
+    weight: 75
+    from: "The terminal outcome the whole PF corpus predicts (pct_picked_no_DQ 61.7-64.7). Discounted BELOW scoring_output (80) because AUC 0.80-0.87 means avg-match points already explain most of it -- scoring both at full weight would double-count."
+    measures: "Would a captain, watching one qualification match and reading the TBA page, want this robot."
+    anchors:
+      5: "Captain-tier / first-pick. The robot other teams build their alliance around."
+      3: "Second pick. A specialist a captain deliberately shops for -- the endgame, the feeder, the defender."
+      1: "Third pick / backup. Taken to fill a slot."
+      0: "Unpicked. Nothing legible on the TBA page a captain values."
+    tie_break: "The corpus outcome field is the anchor: event-winning/captain-tier -> 5, first-pick -> 4, second-pick -> 3, third-pick -> 2, unpicked -> 0."
+    base_rate_note: "[C] 64-78% of event-WINNING alliances carried a below-median-OPR robot (78% in 2026). The second-pick slot is the statistically normal path, not a consolation prize."
+
+  - id: V4
+    name: defense_resistance
+    weight: 35
+    from: "PF defense_capability = 35, verbatim, used as the price of the defense INTERACTION. Game-conditional deltas in 04_predictive_factors.yaml (protected zones -8/zone, one-defender -15, pin count >=5 +10, foul cost +/-) apply to this weight on kickoff day."
+    measures: "How much of this design's output survives a competent defender assigned to it."
+    anchors:
+      5: "Immune. Scores during AUTO (no defense by rule), or in the last seconds when defenders are elsewhere, or IS the defense."
+      3: "Degraded but functional. Multiple approach angles, or a cycle short enough to complete between contacts."
+      1: "Heavily suppressed. One approach path, or a long stationary dwell to score."
+      0: "Neutralised. Requires a single surveyed position a defender can simply park on."
+    tie_break: "Count how many distinct field positions the robot can score from. >=4 -> 5; 2-3 -> 3; 1 -> 1-0."
+
+  - id: V5
+    name: ceiling
+    weight: 45
+    from: "Set at PF drivetrain_choice's 45. Rationale: ceiling is what a BETTER version of this team would get, and PF's evidence (P90/P50 EPA ratio 1.38 -> 2.35) shows headroom accrues to teams this one is not. Weighted as a tiebreaker, not a driver."
+    measures: "If everything goes right and the team gets 3 more weeks, how much better does this get."
+    anchors:
+      5: "Event-winning ceiling. More practice and more tuning keep paying, linearly, all season."
+      3: "First/second-pick ceiling. Gets better for ~3 weeks then plateaus."
+      1: "Hard-capped by the concept itself. A LEVEL-1 climb is 10 points forever."
+      0: "No ceiling above its floor; the first working version is the last version."
+    tie_break: "Ask what the SAME design looks like at a Week 6 event. If the answer is 'identical', score 1."
+
+# ================================================================== GATES
+# Hard disqualifiers, evaluated BEFORE scoring and independent of it.
+# A gated design is capped at T4 GATED no matter how well it scores.
+gates:
+  policy: "A gate is not a penalty term. It is a statement that the design cannot be built by this team as specified. The correct response is ALWAYS to descope to a named variant and re-score, never to argue with the gate."
+  checks:
+
+  - id: G1
+    name: MACHINE
+    fires_when: "the design's manufacturing floor is not in team_constants.owned_manufacturing"
+    exception: "floor == 'router' passes if outsourced_2d_account == true AND the part list is <=2 parts AND there are >=2 weeks of lead time left"
+    hard: true
+    from: "Capacity sec 5.2 route C / sec 7.1 constraint #4."
+    descope_prompt: "Can the same function be made from tube + plate on the bandsaw, or 3D printed? If yes, that is a different candidate -- score it."
+
+  - id: G2
+    name: WORKSTREAMS
+    fires_when: "new_workstreams + 3 mandatory > parallel_workstreams_max (3), i.e. any new stream beyond the primary mechanism; OR novel_mechanisms > novel_mechanisms_max (2)"
+    hard: true
+    from: "Capacity sec 5.2, quadruply derived (routes A/B/C + mentor route D at sec 6.3)."
+    note: "2027 deductions apply BEFORE this check: vision-based pose estimation OR a first-year swerve adoption each reduce novel_mechanisms_max from 2 to 1 (capacity sec 5.6). Both together reduce it to 0."
+    descope_prompt: "Which of the two mechanisms produces more points per hour? Build that one, and buy or copy the other."
+
+  - id: G3
+    name: BUDGET
+    fires_when: "marginal_cost_high_usd > budget_usd_robot_discretionary (2500)"
+    hard: true
+    from: "Capacity sec 8.1. Uses the HIGH end of the band; archetype_corpus states bands are +/-40%."
+    note: "Registration ($6,500) and travel do NOT trade against design decisions and are excluded by construction."
+    descope_prompt: "Which single line item is >30% of the total? Is there a COTS substitute or a used-market equivalent?"
+
+  - id: G4
+    name: HOURS
+    fires_when: "estimated_mechanism_hours > mechanism_hours_pool (205)"
+    hard: true
+    from: "Capacity sec 3.1 (CAD 75 + fabrication 130) and sec 3.3 (SLACK = 0.0)."
+    descope_prompt: "Moving from a Week 1 to a Week 4 event buys +255 effective hours for free (capacity sec 7.4). Have you actually chosen your event yet? Round 1 preferencing opens 2026-09-24."
+
+  - id: G5
+    name: MENTOR
+    fires_when: "estimated mentor unblock demand > mentor_unblock_minutes_per_week (204)"
+    hard: true
+    from: "Capacity sec 6.2-6.3. THE #1 constraint in the hierarchy."
+    descope_prompt: "Recruiting one more technical mentor doubles this to 408 min/wk and is worth more than five more students (capacity sec 6.4). Deadline 2026-11-17."
+
+  - id: G6
+    name: DRIVE_HOURS
+    fires_when: "drive_practice_sensitivity anchor score == 0 (extreme) AND real_driver_seat_hours < 20"
+    hard: false                    # SOFT: one-tier downgrade, not a disqualification
+    from: "archetype_corpus.yaml verdict_predicate.overriding_term_required, and PF drive_practice = 90."
+    effect: "downgrade one tier (T1->T2, T2->T3)"
+    descope_prompt: "This design's entire cost is driver hours. Either commit to a Week 3-4 event and a fall driving programme, or pick a design whose value is banked in software."
+
+# ============================================================== AGGREGATION
+aggregation:
+  achievability_index: "100 * sum(w_i * s_i) / (5 * sum(w_i))     # 0-100"
+  value_index: "100 * sum(v_j * t_j) / (5 * sum(v_j))             # 0-100"
+  combined_index: "0.55 * achievability_index + 0.45 * value_index"
+  combined_weighting_rationale: >
+    Achievability is weighted higher than value on purpose. The failure mode this
+    corpus actually measures for a 15-student team is SCOPE, not insufficient
+    ambition: archetype_corpus invariant I2 (do-everything robot) has a 0/5
+    small-team success rate across five seasons, while I6 (feeder/support) and I7
+    (minimal flawless) are 5/5. The 55/45 split encodes that asymmetry without
+    letting achievability alone decide -- a perfectly achievable robot that scores
+    nothing still lands in CHEAP INSURANCE, not in BUILD THIS.
+  no_zeros_in_green:
+    rule: "ONE achievability factor scoring 0 caps the tier at T2 STRETCH; TWO OR MORE cap it at T3 RED."
+    excludes: [A4]
+    why: >
+      A weighted mean can hide a single anchor written as impossible. A4 is excluded
+      because it has its own dedicated gate (G6) and double-penalising it would drop
+      every defense archetype archetype_corpus labels YES. This rule moved back-test
+      agreement from 21/30 to 24/30, fixing exactly the AUTO-scope family (C5, P5, F5)
+      that archetype_corpus predicted its own predicate would miss.
+    order: "applied after the index bands, before the G6 soft downgrade."
+  binding_constraint: >
+    The first gate that fires, if any. Otherwise the achievability factor with the
+    largest weighted deficit, w_i * (5 - s_i). This is the single thing to fix, and
+    it is reported for every candidate whether it is gated or not.
+
+# ================================================================ QUADRANTS
+# The real output. Thresholds are the axis midpoints, nudged so that the corpus's
+# hand-labelled YES archetypes land right of the achievability line.
+quadrants:
+  achievability_threshold: 60
+  value_threshold: 55
+  cells:
+  - id: Q1
+    name: BUILD THIS
+    condition: "A >= 60 and V >= 55"
+    decision_rule: >
+      Commit on kickoff weekend. Assign an unsupervised lead by day 3 and CAD-freeze
+      by day 10. If more than ONE candidate lands here, build the one with the lower
+      A1 (build_hours_fit) deficit first and hold the other as the second mechanism
+      only if novel_mechanisms_max still has room after the 2027 deductions.
+  - id: Q2
+    name: CHEAP INSURANCE
+    condition: "A >= 60 and V < 55"
+    decision_rule: >
+      Do NOT lead with this, and do not skip it either. This is the second mechanism,
+      the fallback, and the thing that keeps you a legal, useful alliance partner when
+      the primary mechanism is in pieces. Build it AFTER the Q1 design passes its first
+      reliability test, from spare hours, with a first-year pair leading it. It is also
+      the Quality Award thesis (archetype_corpus I7 award_pairing).
+  - id: Q3
+    name: TRAP
+    condition: "A < 60 and V >= 55"
+    decision_rule: >
+      The season-killer quadrant. Everything here is genuinely worth a lot of points
+      and genuinely out of reach, which is exactly why teams pick it on kickoff day.
+      The response is NEVER 'work harder'. It is: enumerate the descoped VARIANTS
+      (fixed-position instead of turreted; one auto element instead of four; L1 climb
+      instead of L3) and re-score each as its own candidate. archetype_corpus proves
+      the variant, not the family, is what a small team should score -- invariant I1
+      is 0/4 at full spec and 6/9 restricted to the fixed-range variant.
+  - id: Q4
+    name: DELETE
+    condition: "A < 60 and V < 55"
+    decision_rule: >
+      Say it out loud in the strategy meeting and cross it off the whiteboard. Do not
+      keep it as a 'maybe'. A live maybe consumes the scarcest resource in the model --
+      mentor decision attention, 204 min/wk -- every week it stays on the board.
+
+# ==================================================================== TIERS
+tiers:
+- id: T1
+  name: GREEN
+  range: "combined_index >= 62, no hard gate"
+  plain_english: >
+    Build it. This is inside your team's real capacity with enough margin that one bad
+    week does not kill it. You will still have to protect the drive-practice and
+    reliability hours -- being in GREEN means the design is not the thing that will
+    beat you.
+- id: T2
+  name: STRETCH
+  range: "48 <= combined_index < 62, no hard gate"
+  plain_english: >
+    Possible, and only possible, if you spend a specific named thing to buy it: a Week
+    3-4 event instead of Week 1 (+255 effective hours, free), a second technical
+    mentor, an outsourced-fabrication account, or a third programmer trained in the
+    fall. Write down WHICH one before you start. A STRETCH design attempted without
+    buying its enabler is how a season ends with an unfinished robot.
+- id: T3
+  name: RED
+  range: "combined_index < 48, no hard gate"
+  plain_english: >
+    Do not build this. Not 'try and see' -- the combined index is low because several
+    independent factors are all bad at once, and each one you fix reveals the next.
+    If the VALUE axis is high, go read the TRAP quadrant rule and descope it into a
+    different candidate.
+- id: T4
+  name: GATED
+  range: "any hard gate fired, at any index"
+  plain_english: >
+    The design as specified cannot be built here. Not 'hard' -- it needs a machine you
+    do not own, or more concurrent workstreams than you have leads for, or more money
+    than exists. The index is printed for information only and MUST NOT be used to
+    argue past the gate. Descope and re-score.
+
+# =============================================== corpus -> factor auto-mapping
+# Deterministic rules that let tools/score-strategy.py score archetype_corpus.yaml
+# records directly, which is how the rubric is back-tested. Hand-authored candidate
+# YAML should set factor scores EXPLICITLY; these mappings are a fallback so that a
+# 30-record regression test exists at all. Every mapping is [S].
+auto_score_from_corpus:
+  evidence: S
+  A1_hours_estimate: "90 * mechanism_count * mfg_multiplier + 15 * programming_difficulty; mfg_multiplier = {hand: 0.6, bandsaw+drill: 0.8, router: 1.1, CNC: 1.4}"
+  A1_bands: [60, 110, 160, 205, 300]        # -> 5,4,3,2,1 ; else 0
+  A2_from_mechanism_count: {0: 5, 1: 4, 2: 3, 3: 1, 4: 0}
+  A3_minutes: "40 * mechanism_count + 30 if mfg_floor in {router, CNC}"
+  A3_bands_ratio: [0.25, 0.5, 0.75, 1.0, 1.5]
+  A4_from_sensitivity: {low: 5, med: 3, high: 2, extreme: 0}
+  A5_chain: "0.93 ** (mechanism_count + 1 if sensing in {vision-assist, full-pose} else mechanism_count)"
+  A5_bands: [0.90, 0.85, 0.80, 0.72, 0.65]
+  A6_from_reliability_profile: "GRACEFUL or PARTIAL -> 5 ; TOTAL -> 1 ; neither keyword -> 3"
+  A7_systemcore_delta: {none: 0.0, encoders: 0.0, "gyro+encoders": 0.5, "vision-assist": 1.0, "full-pose": 1.0}
+  A7_bands: [1, 2, 3, 4, 5]
+  A8_from_sensing: {none: 5, encoders: 5, "gyro+encoders": 4, "vision-assist": 2, "full-pose": 1}
+  A9_from_mfg_floor: {hand: 5, "bandsaw+drill": 4, router: 2, CNC: 0}
+  A10_proxy: "{hand: 4, bandsaw+drill: 4, router: 3, CNC: 1} + 1 if mechanism_count <= 1, capped at 5"
+  A10_caveat: "archetype_corpus has NO cots field. This is a proxy and the weakest mapping in the file."
+  A11_iterations: "1 + 0.5*mechanism_count + (1 if programming_difficulty >= 4) + (1 if sensing in {vision-assist, full-pose})"
+  A11_bands: [1, 2, 3, 4, 5]
+  A12_bands_usd: [300, 700, 1200, 1800, 2500]
+  A13_serial: "mechanism_count + (1 if mfg_floor in {router, CNC}) + (1 if sensing in {vision-assist, full-pose})"
+  A13_bands: [1, 2, 3, 4, 5]
+  V1_points: "points_per_cycle * est_cycles_per_match, or indirect_points_equivalent by invariant"
+  V1_bands_share: [0.45, 0.30, 0.18, 0.10, 0.05]
+  V2_by_invariant: {I1: 4, I2: 5, I3: 1, I4: 4, I5: 3, I6: 1, I7: 1}
+  V3_from_outcome: {event-winning: 5, captain-tier: 5, first-pick: 4, second-pick: 3, third-pick: 2, unpicked: 0}
+  V4_by_invariant: {I1: 2, I2: 2, I3: 5, I4: 4, I5: 5, I6: 4, I7: 4}
+  V4_fixed_position_penalty: -1     # scoring_actions mentions ONE/fixed/surveyed position
+  V5_from_outcome: {event-winning: 5, captain-tier: 4, first-pick: 4, second-pick: 2, third-pick: 1, unpicked: 0}
+
+# ======================================================= kickoff-day hooks
+# Filled on 2027-01-09 from the BIOCORE manual, before the rubric is run in anger.
+biocore_kickoff_inputs:
+  status: "ALL NULL by design. BIOCORE is not public as of 2026-08-22."
+  median_alliance_score_estimate: null    # seed from a comparable season until real data exists
+  scoring_table_rows: null                # >= 8 -> scope_discipline +10 (PF game_conditional)
+  auto_gated_ranking_point: null          # true -> V2 weight +25 (PF game_conditional)
+  protected_zone_rule_count: null         # V4 weight -8 per zone
+  one_defender_at_a_time: null            # true -> V4 weight -15
+  pin_count_seconds: null                 # >= 5 -> V4 weight +10
+  foul_values_minor_major: null           # major >= 10% of typical score -> V4 -10, else +5
+  systemcore_shipping: null               # false at kickoff -> A13 floor of 1 for anything needing it
+
+limitations:
+- "reference/team_capacity.yaml does not exist on disk as of 2026-08-22 although 02_TEAM_CAPACITY_MODEL.md sec 8 and 'Files written by this pass' both name it. team_constants above is transcribed by hand from that document's sec 8 table. Regenerate with `python tools/capacity_model.py --yaml` and diff before trusting it."
+- "Every achievability weight is a DERIVATION from 04_predictive_factors.yaml, not a measurement. Four of the thirteen (A3, A7, A11, A13) have no PF analogue at all and are anchored to capacity-model constraint ranks instead. Their `from` fields say so explicitly."
+- "The anchors are calibrated for inter-rater agreement, not for accuracy. Two people scoring the same design should land within 1 point; both can still be wrong about the design."
+- "auto_score_from_corpus exists so the rubric has a 30-record regression test. It is NOT how you should score a real kickoff-day candidate -- score the factors by hand against the anchors, using the corpus only to check yourself."
+- "A10 (cots_availability) has no source field in archetype_corpus.yaml and is proxied from mfg_floor. It is the weakest mapping here and it is worth 55/856 of the achievability index."
+- "The quadrant thresholds (60 / 55) were set so the corpus's hand-labelled YES records fall right of the achievability line. That is calibration to 30 expert labels, not validation against outcomes."
+- "No factor in this file, and no threshold, is derived from any BIOCORE rule. The game is not public. biocore_kickoff_inputs is the list of things that must be filled before the rubric produces a BIOCORE answer rather than a general one."

@@ -1,0 +1,9 @@
+G428	GAMESPEC	CAGE protection.
+G429	EVERGREEN	*No wandering.
+G430	EVERGREEN	*COACHES and other teams: hands off the controls.
+G431	EVERGREEN	*DRIVE TEAMS, watch your reach.
+G432	EVERGREEN	*Humans: use SCORING ELEMENTS as directed.
+G433	EVERGREEN	*SCORING ELEMENT delivery.
+G434	EVERGREEN	*COACHES, SCORING ELEMENTS are off limits.
+G435	GAMESPEC	The PROCESSOR AREA has a storage limit.
+R304	EVERGREEN	*During an event, only work during pit hours.

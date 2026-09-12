@@ -1,0 +1,225 @@
+rule_id,prefix,class,qa_2024_26,tu_2024_26,recent3_moved,recent3_rewritten,score,headline
+R402,R,GAME-SPECIFIC,28,7,1,0,6.1667,BUMPER construction.
+G416,G,GAME-SPECIFIC,23,11,0,0,5.7976,This isn’t combat robotics.
+G415,G,ANCHORED-CONCEPT,17,12,2,1,5.7214,Stay out of other ROBOTS.
+G211,G,ANCHORED,26,8,3,0,5.619,Egregious or exceptional violations.
+R401,R,ANCHORED-CONCEPT,22,3,2,1,4.7571,BUMPERS almost all around.
+G413,G,GAME-SPECIFIC,22,5,0,0,4.6905,Expansion limits.
+G419,G,ANCHORED-CONCEPT,14,4,3,1,4.5667,Don’t collude with your partners to shut down major parts of game play.
+G409,G,ANCHORED,20,8,2,0,4.4762,ROBOTS must be safe.
+R404,R,GAME-SPECIFIC,19,2,1,0,4.369,BUMPERS must be soft.
+G403,G,ANCHORED-CONCEPT,11,7,2,2,4.2452,Limited AUTO opponent interaction.
+G425,G,GAME-SPECIFIC,12,5,1,1,4.119,SCORING ELEMENT delivery.
+G210,G,EVERGREEN-CONCEPT,12,5,3,3,4.069,Don’t expect to gain by doing others harm.
+R408,R,GAME-SPECIFIC,16,2,1,0,4.0476,Weight limit with BUMPERS.
+G420,G,ANCHORED-CONCEPT,10,6,2,2,3.9714,TOWER protection.
+R501,R,EVERGREEN-CONCEPT,9,6,3,0,3.9143,Allowable motors.
+G424,G,ANCHORED-CONCEPT,6,4,3,3,3.7095,Humans: use SCORING ELEMENTS as directed.
+R405,R,EVERGREEN-CONCEPT,19,1,2,2,3.6524,BUMPERS interact with BUMPERS.
+R105,R,ANCHORED-CONCEPT,7,3,3,1,3.65,ROBOT horizontal extension limit.
+R106,R,GAME-SPECIFIC,12,5,0,0,3.619,Horizontal extension – one direction at a time.
+G418,G,EVERGREEN-CONCEPT,12,2,3,1,3.569,There’s a 3-count on PINS.
+G406,G,EVERGREEN-CONCEPT,15,3,2,1,3.5571,Don’t abuse SCORING ELEMENTS.
+G402,G,ANCHORED-CONCEPT,7,2,3,0,3.4833,Let the ROBOT do its thing.
+R621,R,EVERGREEN-CONCEPT,8,4,3,0,3.4738,Protect circuits with appropriate circuit breakers.
+R409,R,GAME-SPECIFIC,12,4,0,0,3.4524,BUMPERS should be passive.
+G405,G,EVERGREEN-CONCEPT,6,5,3,3,3.4262,Keep SCORING ELEMENTS in bounds.
+G411,G,EVERGREEN-CONCEPT,12,4,2,2,3.4024,Don’t damage the FIELD
+R406,R,EVERGREEN-CONCEPT,7,4,3,2,3.3667,Fill BUMPER corners.
+G410,G,EVERGREEN-CONCEPT,5,5,3,3,3.319,Keep your BUMPERS low
+R504,R,EVERGREEN-CONCEPT,5,5,3,0,3.319,Power (most) actuators off of approved devices.
+G404,G,ANCHORED-CONCEPT,6,1,3,2,3.2095,ROBOTS: use SCORING ELEMENTS as directed.
+G407,G,GAME-SPECIFIC,8,5,0,0,3.1905,Only score while in your ALLIANCE ZONE.
+G427,G,GAME-SPECIFIC,6,3,1,1,3.1429,The OUTPOST has a storage limit.
+R407,R,GAME-SPECIFIC,9,1,1,0,3.131,BUMPERS shouldn’t be wedges.
+G206,G,ANCHORED-CONCEPT,2,3,3,2,3.1143,Don't violate rules for RPs.
+G412,G,EVERGREEN-CONCEPT,9,4,2,2,3.081,Watch your FIELD interaction.
+G302,G,GAME-SPECIFIC,10,3,0,0,3.0714,Limit what you use during a MATCH
+R101,R,EVERGREEN-CONCEPT,15,3,1,0,3.0571,ROBOT PERIMETER must be fixed.
+G303,G,ANCHORED-CONCEPT,4,4,2,1,2.9952,Start your ROBOTS.
+G212,G,GAME-SPECIFIC,9,3,0,0,2.9643,All teams can play.
+G408,G,GAME-SPECIFIC,7,4,0,0,2.9167,Don’t catch FUEL
+G414,G,GAME-SPECIFIC,8,3,0,0,2.8571,Don’t Climb on each other.
+R412,R,EVERGREEN-CONCEPT,5,2,3,0,2.819,Team number on BUMPERS.
+R703,R,EVERGREEN-CONCEPT,5,5,2,2,2.819,Use specific Ethernet port for roboRIO.
+R617,R,GAME-SPECIFIC,6,4,0,0,2.8095,Power radio as specified – Part 2.
+R904,R,ANCHORED-CONCEPT,2,4,2,1,2.781,OPERATOR CONSOLE physical requirements.
+R505,R,EVERGREEN-CONCEPT,3,3,3,1,2.7714,Don’t overload controllers.
+R411,R,EVERGREEN-CONCEPT,9,2,2,0,2.7476,BUMPERS indicate your ALLIANCE.
+R622,R,EVERGREEN-CONCEPT,4,2,3,0,2.7119,Use appropriately sized wire.
+R616,R,EVERGREEN-CONCEPT,2,3,3,1,2.6643,Power radio as specified – Part 1.
+G101,G,ANCHORED-CONCEPT,4,2,2,2,2.6619,"Humans, remain outside the FIELD."
+R203,R,EVERGREEN,12,2,2,0,2.619,General safety.
+G401,G,ANCHORED,10,3,2,0,2.5714,Behind the lines.
+T301,T,ANCHORED-CONCEPT,0,1,3,1,2.5667,"Measurement, not practice."
+R403,R,GAME-SPECIFIC,5,0,1,1,2.5357,BUMPER extension limit.
+G421,G,EVERGREEN-CONCEPT,7,2,2,1,2.5333,No wandering.
+G102,G,ANCHORED-CONCEPT,2,2,2,0,2.4476,Never step over the guardrail.
+G417,G,EVERGREEN-CONCEPT,3,4,2,0,2.4381,Don’t tip or entangle.
+R615,R,GAME-SPECIFIC,4,3,0,0,2.4286,Power roboRIO as specified.
+R702,R,EVERGREEN-CONCEPT,1,2,3,1,2.3905,Communicate with the ROBOT with the specified radio.
+E117,E,GAME-SPECIFIC,2,4,0,0,2.381,Do not record anyone at the event without their consent.
+R609,R,EVERGREEN-CONCEPT,4,3,2,1,2.3786,Connect main power safely.
+G423,G,ANCHORED-CONCEPT,1,2,2,2,2.3405,"DRIVE TEAMS, watch your reach."
+G426,G,GAME-SPECIFIC,0,2,1,0,2.3333,"DRIVE COACHES, SCORING ELEMENTS are off limits."
+G301,G,ANCHORED,3,6,2,0,2.3214,Be prompt.
+R107,R,GAME-SPECIFIC,3,3,0,0,2.3214,ROBOT vertical extension limit.
+T605,T,GAME-SPECIFIC,3,3,0,0,2.3214,Picks are time limited.
+G208,G,EVERGREEN-CONCEPT,0,5,2,0,2.2833,Show up to your Qualification MATCHES.
+R104,R,EVERGREEN-CONCEPT,3,0,3,0,2.2714,STARTING CONFIGURATION – max size.
+R601,R,ANCHORED,7,3,2,0,2.25,Battery limit – everyone has the same power.
+E403,E,ANCHORED-CONCEPT,0,2,2,1,2.2333,Load-In Restrictions.
+G103,G,ANCHORED-CONCEPT,0,2,2,2,2.2333,Be careful what you interact with.
+R704,R,EVERGREEN-CONCEPT,1,1,3,0,2.2238,Only use allowed ports and bandwidth to communicate with the ROBOT.
+R602,R,ANCHORED,8,2,2,0,2.1905,Other batteries for cameras or computers only.
+E606,E,GAME-SPECIFIC,0,1,1,0,2.1667,Be safe.
+R710,R,EVERGREEN,6,3,2,0,2.1429,Only specified modifications to control system devices permitted.
+Q101,Q,EVERGREEN-CONCEPT,0,1,3,2,2.1167,Head REFEREE Interactions.
+E603,E,GAME-SPECIFIC,0,0,1,0,2.0,TEST/PRACTICE AREA attendance is limited.
+E604,E,GAME-SPECIFIC,0,0,1,0,2.0,Give ROBOTS space.
+R620,R,EVERGREEN-CONCEPT,2,2,2,0,1.9976,Only use specified fuses in PD.
+R202,R,EVERGREEN-CONCEPT,0,0,3,1,1.95,No exposed sharp edges.
+E401,E,ANCHORED-CONCEPT,0,3,1,1,1.9,Load in during Load-In.
+R619,R,EVERGREEN-CONCEPT,1,2,2,0,1.8905,Only use specified circuit breakers in a PD.
+R701,R,EVERGREEN-CONCEPT,2,4,1,0,1.831,Control the ROBOT with a roboRIO.
+G209,G,EVERGREEN-CONCEPT,0,2,2,0,1.7833,Keep your ROBOT together.
+R626,R,GAME-SPECIFIC,1,1,0,0,1.7738,VH-109 PoE passthrough.
+G202,G,ANCHORED-CONCEPT,0,2,1,1,1.7333,Don’t bang on the glass.
+E102,E,EVERGREEN-CONCEPT,1,1,2,1,1.7238,Be nice.
+R610,R,EVERGREEN-CONCEPT,1,1,2,1,1.7238,1 breaker/fuse per circuit.
+T602,T,GAME-SPECIFIC,2,0,0,0,1.7143,STUDENTS must outnumber adults.
+E116,E,GAME-SPECIFIC,0,1,0,0,1.6667,Only COTS batteries allowed.
+E510,E,GAME-SPECIFIC,0,1,0,0,1.6667,No automated tools overnight
+E511,E,GAME-SPECIFIC,0,1,0,0,1.6667,Pit Power Limit.
+E605,E,GAME-SPECIFIC,0,1,0,0,1.6667,Be ready to DISABLE.
+R907,R,GAME-SPECIFIC,0,1,0,0,1.6667,No AC inverters.
+R205,R,EVERGREEN-CONCEPT,5,1,1,1,1.6524,Don’t contaminate the FIELD.
+R108,R,GAME-SPECIFIC,1,0,0,0,1.6071,ROBOT extension floor interaction
+T604,T,GAME-SPECIFIC,1,0,0,0,1.6071,Only the ALLIANCE CAPTAIN may invite an ALLIANCE.
+G203,G,EVERGREEN-CONCEPT,3,2,1,0,1.6048,Asking other teams to throw a MATCH – not cool.
+R103,R,EVERGREEN-CONCEPT,3,2,1,0,1.6048,ROBOT weight limit.
+E107,E,ANCHORED-CONCEPT,0,1,1,1,1.5667,Work in designated areas only.
+R302,R,ANCHORED-CONCEPT,0,1,1,1,1.5667,"MAJOR MECHANISM, from this year only."
+R204,R,EVERGREEN-CONCEPT,1,0,2,0,1.5571,Leave SCORING ELEMENTS at the FIELD.
+G422,G,EVERGREEN-CONCEPT,4,1,1,1,1.5452,DRIVE COACHES and other teams: hands off the controls.
+R506,R,EVERGREEN-CONCEPT,4,1,1,0,1.5452,Control servos safely.
+Q102,Q,GAME-SPECIFIC,0,0,0,0,1.5,Conversations must be civil.
+T601,T,GAME-SPECIFIC,0,0,0,0,1.5,Send your STUDENT representatives.
+T603,T,GAME-SPECIFIC,0,0,0,0,1.5,Only STUDENTS may use the mic.
+G204,G,EVERGREEN-CONCEPT,2,2,1,0,1.4976,Letting someone coerce you into throwing a MATCH – also not cool.
+R618,R,EVERGREEN-CONCEPT,5,0,1,0,1.4857,Use PD terminals as designed.
+R802,R,EVERGREEN-CONCEPT,0,0,2,0,1.45,No custom pneumatics and meet minimum pressure ratings.
+R811,R,EVERGREEN-CONCEPT,0,0,2,0,1.45,Relief valve requirements.
+G207,G,ANCHORED-CONCEPT,2,2,0,0,1.4476,Don’t abuse ARENA access.
+C301,C,ANCHORED-CONCEPT,0,0,1,1,1.4,Wear your buttons.
+E114,E,ANCHORED-CONCEPT,0,0,1,1,1.4,Limit flag and flagpole size.
+E502,E,ANCHORED-CONCEPT,0,0,1,1,1.4,Stay in your pit.
+T612,T,ANCHORED-CONCEPT,0,0,1,1,1.4,Send a BACKUP TEAM Representative.
+T614,T,ANCHORED-CONCEPT,0,0,1,1,1.4,"For replays, no changing LINEUPS (mostly)."
+G104,G,EVERGREEN-CONCEPT,1,2,1,0,1.3905,Teams may not enable their ROBOTS on the FIELD.
+R625,R,EVERGREEN-CONCEPT,5,2,0,0,1.319,Don’t modify critical power paths.
+G201,G,EVERGREEN-CONCEPT,0,2,1,0,1.2833,Be a good person.
+R206,R,ANCHORED,1,1,2,0,1.2738,Don’t damage SCORING ELEMENTS.
+R712,R,EVERGREEN,1,1,2,0,1.2738,Control PWM controllers from the roboRIO.
+R715,R,EVERGREEN,1,1,2,0,1.2738,"Control PCM, PH, and Servo Hub from roboRIO."
+R808,R,EVERGREEN,1,1,2,0,1.2738,Working air pressure limit.
+T606,T,ANCHORED,1,1,2,0,1.2738,Declining teams can’t be picked.
+I103,I,EVERGREEN-CONCEPT,3,0,1,0,1.2714,Bring it all to inspection.
+R614,R,EVERGREEN-CONCEPT,1,1,1,1,1.2238,No high voltage allowed.
+R709,R,ANCHORED,2,0,2,0,1.2143,ROBOTS must have a signal light.
+I102,I,EVERGREEN-CONCEPT,0,1,1,1,1.1167,Get inspected before playing a Qualification MATCH.
+R810,R,EVERGREEN-CONCEPT,0,1,1,0,1.1167,Pressure gauges must be visible.
+R814,R,EVERGREEN-CONCEPT,0,1,1,1,1.1167,Don’t connect solenoid outputs together.
+R301,R,ANCHORED-CONCEPT,2,0,0,0,1.1143,Individual item cost limit.
+E118,E,EVERGREEN-CONCEPT,1,0,1,0,1.0571,Enter only 1 ROBOT.
+R612,R,EVERGREEN-CONCEPT,1,0,1,0,1.0571,Must be able to turn ROBOT on and off safely.
+R805,R,EVERGREEN-CONCEPT,1,0,1,0,1.0571,"If using pneumatics, these parts are required."
+R806,R,EVERGREEN-CONCEPT,1,0,1,0,1.0571,Compressed air from ROBOT compressor only.
+G205,G,ANCHORED,2,2,1,0,1.0476,Throwing your own MATCH is bad.
+T610,T,ANCHORED,0,0,2,0,1.0,BACKUP TEAMS due 2 minutes before the MATCH start time.
+G501,G,ANCHORED,3,1,1,0,0.9881,Leave promptly.
+R707,R,EVERGREEN,3,1,1,0,0.9881,Limited wireless allowed.
+R613,R,EVERGREEN-CONCEPT,0,0,1,0,0.95,Electrical system must be inspectable.
+R804,R,EVERGREEN-CONCEPT,0,0,1,0,0.95,Only use specific pneumatic devices.
+R809,R,EVERGREEN-CONCEPT,0,0,1,0,0.95,Limited devices at high pressure.
+R410,R,EVERGREEN,4,0,1,0,0.9286,BUMPERS must come off.
+R102,R,EVERGREEN-CONCEPT,4,0,0,0,0.8786,STARTING CONFIGURATION – no overhang.
+R502,R,ANCHORED,0,2,1,0,0.8333,Only 4 propulsion motors.
+R503,R,ANCHORED,0,2,1,0,0.8333,Don’t modify motors (mostly).
+T611,T,ANCHORED,0,2,1,0,0.8333,Be there to be a BACKUP TEAM.
+R713,R,EVERGREEN-CONCEPT,0,2,0,0,0.7833,Only approved MXP devices can control actuators.
+E402,E,ANCHORED,1,1,1,0,0.7738,Load-In person limit is 6.
+E601,E,ANCHORED,0,1,1,0,0.6667,Inspection for TEST & PRACTICE AREAS.
+I104,I,ANCHORED,0,1,1,0,0.6667,"Unless the change is listed below, any change to a ROBOT must get re-inspected."
+R604,R,EVERGREEN,0,1,1,0,0.6667,Charge batteries at a safe rate.
+R901,R,EVERGREEN,0,4,0,0,0.6667,Use the specified Driver Station Software.
+T201,T,ANCHORED,0,1,1,0,0.6667,Replays will be the same.
+R716,R,EVERGREEN-CONCEPT,0,1,0,0,0.6167,Don’t alter the CAN bus.
+E108,E,ANCHORED,1,0,1,0,0.6071,Some things don’t belong at events.
+E303,E,ANCHORED,1,0,1,0,0.6071,Tethered operation outside FIELDS/PRACTICE AREAS.
+E702,E,ANCHORED,1,0,1,0,0.6071,Carts shouldn’t be too big.
+R706,R,EVERGREEN-CONCEPT,1,0,0,0,0.5571,Don’t bypass the ARENA network.
+R714,R,EVERGREEN-CONCEPT,1,0,0,0,0.5571,Control CAN motor controllers from the roboRIO.
+R813,R,EVERGREEN-CONCEPT,1,0,0,0,0.5571,Vent plug requirements.
+R623,R,EVERGREEN,5,0,0,0,0.5357,Use only appropriate connectors.
+E106,E,ANCHORED,0,0,1,0,0.5,Some event resources for event teams only.
+E405,E,ANCHORED,0,0,1,0,0.5,"Once done, head out."
+E706,E,ANCHORED,0,0,1,0,0.5,Small ROBOT carts are allowed on the FIELD
+R807,R,EVERGREEN,0,0,1,0,0.5,Air storage pressure limit.
+I106,I,EVERGREEN-CONCEPT,0,0,0,0,0.45,ROBOTS are off for inspection (mostly).
+I107,I,EVERGREEN-CONCEPT,0,0,0,0,0.45,"No STUDENT, no inspection."
+R624,R,EVERGREEN-CONCEPT,0,0,0,0,0.45,Use specified wire colors (mostly).
+R705,R,EVERGREEN-CONCEPT,0,0,0,0,0.45,Configure devices for your team number.
+R711,R,EVERGREEN-CONCEPT,0,0,0,0,0.45,Don’t connect motor outputs to roboRIO.
+R812,R,EVERGREEN-CONCEPT,0,0,0,0,0.45,Pressure switch requirements.
+R902,R,EVERGREEN-CONCEPT,0,0,0,0,0.45,The OPERATOR CONSOLE must have a visible display.
+R611,R,EVERGREEN,4,0,0,0,0.4286,The ROBOT frame is not a wire.
+E301,E,ANCHORED,2,1,0,0,0.381,No wireless communication.
+R201,R,EVERGREEN,2,1,0,0,0.381,No digging into carpet.
+I101,I,ANCHORED,2,0,0,0,0.2143,It’s your team’s ROBOT.
+R608,R,EVERGREEN,2,0,0,0,0.2143,Limit non-battery energy.
+R905,R,EVERGREEN,2,0,0,0,0.2143,FIELD wireless only.
+E115,E,ANCHORED,0,1,0,0,0.1667,No firearms.
+E602,E,ANCHORED,0,1,0,0,0.1667,Practice only when/where permitted.
+E103,E,ANCHORED,1,0,0,0,0.1071,"Children with adults, please."
+E109,E,ANCHORED,1,0,0,0,0.1071,Don’t arrange for additional utilities.
+E503,E,ANCHORED,1,0,0,0,0.1071,Keep aisles clear.
+R303,R,ANCHORED,1,0,0,0,0.1071,"Create new designs and software, unless they’re public."
+R606,R,EVERGREEN,1,0,0,0,0.1071,Secure the battery.
+E101,E,ANCHORED,0,0,0,0,0.0,Personal safety comes first.
+E104,E,ANCHORED,0,0,0,0,0.0,Respect the venue.
+E105,E,ANCHORED,0,0,0,0,0.0,Teams must check in.
+E110,E,ANCHORED,0,0,0,0,0.0,Don’t sell stuff.
+E111,E,ANCHORED,0,0,0,0,0.0,Don’t give out food.
+E112,E,ANCHORED,0,0,0,0,0.0,"Make FIRST loud, but with restrictions."
+E113,E,ANCHORED,0,0,0,0,0.0,Hang banners with care.
+E201,E,ANCHORED,0,0,0,0,0.0,The ROBOT goes alone to off-site machine shops.
+E302,E,ANCHORED,0,0,0,0,0.0,Don’t interfere with wireless networks.
+E404,E,ANCHORED,0,0,0,0,0.0,Pit must be left in a safe state.
+E501,E,ANCHORED,0,0,0,0,0.0,Pits are unavailable if closed.
+E504,E,ANCHORED,0,0,0,0,0.0,No sparks or flames.
+E505,E,ANCHORED,0,0,0,0,0.0,Nothing too big.
+E506,E,ANCHORED,0,0,0,0,0.0,No brazing or welding.
+E507,E,ANCHORED,0,0,0,0,0.0,Solder with specific tools only.
+E508,E,ANCHORED,0,0,0,0,0.0,Structures must be safe.
+E509,E,ANCHORED,0,0,0,0,0.0,Secure team identification assets.
+E701,E,ANCHORED,0,0,0,0,0.0,Carts must be safe and easy to use.
+E703,E,ANCHORED,0,0,0,0,0.0,Carts can’t park anywhere.
+E704,E,ANCHORED,0,0,0,0,0.0,No noisy carts.
+E705,E,ANCHORED,0,0,0,0,0.0,No motor driven carts.
+E801,E,ANCHORED,0,0,0,0,0.0,"If in the pits during Ceremonies, shhhhhh."
+E802,E,ANCHORED,0,0,0,0,0.0,Pit person limit during Ceremonies is 5.
+E803,E,ANCHORED,0,0,0,0,0.0,Be respectful during anthems.
+E901,E,ANCHORED,0,0,0,0,0.0,No saving seats.
+E902,E,ANCHORED,0,0,0,0,0.0,Don’t throw items from the stands.
+I105,I,ANCHORED,0,0,0,0,0.0,Don’t exploit re-inspection.
+R603,R,EVERGREEN,0,0,0,0,0.0,Charge batteries with safe connectors.
+R605,R,EVERGREEN,0,0,0,0,0.0,Batteries are not ballast.
+R607,R,EVERGREEN,0,0,0,0,0.0,Insulate battery connections.
+R708,R,EVERGREEN,0,0,0,0,0.0,Wireless bridge must be visible.
+R717,R,ANCHORED,0,0,0,0,0.0,USB to CAN adapter permitted.
+R801,R,EVERGREEN,0,0,0,0,0.0,Only use explicitly permitted pneumatic parts
+R803,R,EVERGREEN,0,0,0,0,0.0,Don’t modify pneumatics.
+R903,R,EVERGREEN,0,0,0,0,0.0,Connect FMS Ethernet directly to the OPERATOR CONSOLE.
+R906,R,ANCHORED,0,0,0,0,0.0,No unsafe OPERATOR CONSOLES.
+T613,T,ANCHORED,0,0,0,0,0.0,LINEUPS due 2 minutes before the MATCH.

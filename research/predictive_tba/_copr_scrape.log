@@ -1,0 +1,46 @@
+[2023] 185 events
+  25/185  18s  copr=881 resid=881
+  50/185  31s  copr=1800 resid=1800
+  75/185  44s  copr=2741 resid=2741
+  100/185  61s  copr=3673 resid=3673
+  125/185  76s  copr=4629 resid=4629
+  150/185  92s  copr=5608 resid=5608
+  175/185  108s  copr=6589 resid=6589
+[2023] wrote research/predictive_tba/tba_copr_2023.csv (7208 rows)
+[2023] wrote research/predictive_tba/tba_resid_2023.csv (7208 rows)
+[2023] wrote research/predictive_tba/tba_matches_2023.csv (13564 rows)
+[2024] 190 events
+  25/190  20s  copr=996 resid=996
+  50/190  29s  copr=1947 resid=1947
+  75/190  43s  copr=2834 resid=2834
+  100/190  102s  copr=3785 resid=3785
+  125/190  102s  copr=4807 resid=4807
+  150/190  102s  copr=5735 resid=5735
+  175/190  110s  copr=6765 resid=6765
+[2024] wrote research/predictive_tba/tba_copr_2024.csv (7606 rows)
+[2024] wrote research/predictive_tba/tba_resid_2024.csv (7606 rows)
+[2024] wrote research/predictive_tba/tba_matches_2024.csv (14129 rows)
+[2025] 203 events
+  25/203  16s  copr=956 resid=956
+  50/203  82s  copr=1934 resid=1934
+  75/203  82s  copr=2903 resid=2903
+  100/203  82s  copr=3760 resid=3760
+  125/203  84s  copr=4709 resid=4709
+  150/203  98s  copr=5685 resid=5685
+  175/203  113s  copr=6760 resid=6760
+  200/203  134s  copr=7863 resid=7863
+[2025] wrote research/predictive_tba/tba_copr_2025.csv (8013 rows)
+[2025] wrote research/predictive_tba/tba_resid_2025.csv (8013 rows)
+[2025] wrote research/predictive_tba/tba_matches_2025.csv (14826 rows)
+[2026] 215 events
+  25/215  24s  copr=885 resid=885
+  50/215  43s  copr=1836 resid=1836
+  75/215  58s  copr=2705 resid=2705
+  100/215  69s  copr=3525 resid=3525
+  125/215  82s  copr=4472 resid=4472
+  150/215  99s  copr=5369 resid=5369
+  175/215  117s  copr=6382 resid=6382
+  200/215  135s  copr=7402 resid=7402
+[2026] wrote research/predictive_tba/tba_copr_2026.csv (8160 rows)
+[2026] wrote research/predictive_tba/tba_resid_2026.csv (8160 rows)
+[2026] wrote research/predictive_tba/tba_matches_2026.csv (15176 rows)

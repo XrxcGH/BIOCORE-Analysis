@@ -1,0 +1,122 @@
+# known_awards_2026.txt -- every FRC award string that already existed in the 2022-2026
+# seasons, in the exact "<Name> Award" form that a `grep -oE "[A-Z][A-Za-z' ]{3,40} Award"`
+# pass over a Game Manual emits. Safe to use directly as a `grep -vxF -f` pattern file:
+# '#' header lines are inert under whole-line fixed matching.
+#
+# PURPOSE: on 2027-01-09, subtract this list from the BIOCORE manual's award mentions.
+# Whatever survives is either (a) a genuinely new 2027 award, or (b) a sponsor rename.
+# Both are things you must know before you pick an award lane.
+#
+# TIER 0 -- BARE CEREMONY TOKENS. These are the exact comma-separated strings that appear
+# on the manual's "15-minute awards break:" lines (Game Manual Sec.10 playoff schedule /
+# Judge Manual Appendix D). Step 3 of the Sec.0 workflow diffs the 2027 break lines against
+# these; anything that survives is a new or renamed award.
+Imagery
+Gracious Professionalism
+Team Spirit
+Rising All Star
+Rising All-Star
+Autonomous
+Creativity
+Quality
+Industrial Design
+Innovation in Control
+Excellence in Engineering
+Team Sustainability
+Judges
+Rookie All Star
+Rookie All-Star
+FIRST Leadership Award
+Dean's List
+Engineering Inspiration
+Remaining awards
+Finalists
+Winners
+FIRST Impact Award
+#
+# TIER 1 -- the 13 judged awards on the 2026 slate (Judge Manual Ch.4, Award Workbook)
+Autonomous Award
+Creativity Award
+Excellence in Engineering Award
+Industrial Design Award
+Innovation in Control Award
+Quality Award
+Engineering Inspiration Award
+Gracious Professionalism Award
+Imagery Award
+Judges Award
+Rising All-Star Award
+Rookie All-Star Award
+Rookie All Star Award
+Team Spirit Award
+Team Sustainability Award
+FIRST Impact Award
+Impact Award
+#
+# TIER 2 -- non-judged / submitted / special-panel awards that still appear in manual text
+FIRST Leadership Award
+Leadership Award
+Woodie Flowers Finalist Award
+Woodie Flowers Award
+Volunteer of the Year Award
+Digital Animation Award
+Safety Animation Award
+#
+# TIER 3 -- retired names that still appear in 2022-2024 documents. If one of these shows up
+# in the 2027 manual it is a REVIVAL, which is news.
+Chairman's Award
+Rookie Inspiration Award
+Entrepreneurship Award
+FIRST Dean's List Award
+Dean's List Award
+Industrial Safety Award
+Safety Award
+Media and Technology Innovation Award
+Media and Technology Award
+Innovation Award
+Programming Award
+Most Improved Team Award
+Highest Rookie Seed Award
+Wildcard Award
+#
+# TIER 4 -- sponsor-suffixed forms seen verbatim in The Blue Alliance award strings,
+# 2022-2026. Sponsors churn; the head noun does not.
+Autonomous Award sponsored by Ford
+Industrial Design Award sponsored by General Motors
+Creativity Award sponsored by Rockwell Automation
+Imagery Award in honor of Jack Kamen
+Team Sustainability Award sponsored by Dow
+Innovation in Control Award sponsored by nVent
+Excellence in Engineering Award sponsored by Littelfuse
+Engineering Inspiration Award sponsored by SpaceX
+#
+# TIER 5 -- generic strings the regex picks up that are not award names
+The Award
+This Award
+An Award
+Judged Award
+Team Judged Award
+Cultural Award
+Machine Award
+#
+# TIER 6 -- level-prefixed and pluralised forms emitted by the Sec.0 manual regex. Added
+# 2026-08-22 after a dry run against the 2026 REBUILT manual left exactly these residuals.
+District FIRST Impact Award
+District Championship FIRST Impact Award
+District Engineering Inspiration Award
+District Championship Engineering Inspiration Award
+Regional FIRST Impact Award
+Regional Engineering Inspiration Award
+District FIRST Leadership Award
+FIRST Leadership Award Finalist
+District Championship FIRST Leadership Award Semi-Finalist
+FIRST Dean's List Finalist Award
+Star Award
+All Star Award
+All-Star Award
+Rookie All Star Awards
+Engineering Inspiration Awards
+FIRST Impact Awards
+# line-wrap fragments -- 'Engineering Inspiration Award' broken across a PDF line break.
+# Safe to suppress: any genuinely new '<Word> Inspiration Award' still surfaces in full.
+Inspiration Award

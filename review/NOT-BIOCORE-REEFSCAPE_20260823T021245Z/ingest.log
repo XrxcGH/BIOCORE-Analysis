@@ -1,0 +1,179 @@
+!! WARNING: '2025_REEFSCAPE_GameManual.pdf' does not look like a BIOCORE manual.
+   Copying as NOT-BIOCORE_2025_REEFSCAPE_GameManual.pdf instead of BIOCORE_GameManual_NOT-BIOCORE-REEFSCAPE.pdf.
+   The BIOCORE_GameManual_*.pdf slot is reserved for the real 2027 manual.
+BIOCORE ingest  label=NOT-BIOCORE-REEFSCAPE  stamp=20260823T021245Z
+  manual   : manuals/2026-27_BIOCORE/NOT-BIOCORE_2025_REEFSCAPE_GameManual.pdf
+  baseline : manuals/archive/frc/2026_REBUILT_GameManual.pdf
+  workdir  : manuals/2026-27_BIOCORE/ingest_NOT-BIOCORE-REEFSCAPE_20260823T021245Z
+
+== 1. Extract text (pymupdf authoritative; pdftotext for tables) ==
+   pages=164  lines=4995  rules=229  glossary=88  violations=87  toc=137
+   class:    EVERGREEN=210  GAMESPEC=19
+   prefixes: C=1  E=52  G=55  I=7  Q=1  R=97  T=16
+   full_layout.txt  (TABLES ONLY -- never parse rules from this)
+   full_raw.txt     (reflowed reading order, for phrase greps)
+   full_lines.txt   4995 lines  <- authoritative body text
+
+== 2. Baseline extraction (cached) ==
+   cache hit: manuals/archive/frc/_spans/2026_REBUILT_GameManual
+
+== 3. Rule inventory, baseline diff, glossary diff, undefined ALL-CAPS ==
+   rules: new=229 base=227  ADDED=9  REMOVED=7  CHANGED=153  identical=67
+   class: gamespec=19  evergreen=210
+   glossary: new=88 base=100  ADDED=18  REMOVED=30  CHANGED=60
+   undefined ALL-CAPS: 49 distinct tokens, 15 distinct phrases
+   --- rule ids by prefix (G game, R robot, I inspection, T tournament, C champs, E event, Q question box) ---
+   C=1     E=52     G=55     I=7     Q=1     R=97     T=16  
+   --- ADDED rule ids (did not exist in the baseline) ---
+   G428 G429 G430 G431 G432 G433 G434 G435 R304    --- REMOVED rule ids (existed in the baseline, gone now) ---
+   E118 E510 E511 Q102 R106 R107 R108    --- GAME-SPECIFIC rules (blue headline) = THIS IS THE NEW GAME, read every one ---
+   G403	Limited AUTO opponent interaction.
+   G404	No throwing in AUTO.
+   G405	No opponents CAGES in AUTO.
+   G409	1 of each at a time.
+   G410	No de-scoring.
+   G411	Don’t put ALGAE on their REEF.
+   G412	Only throw CORAL if in your REEF ZONE.
+   G415	Expansion limits.
+   G416	Don’t damage the FIELD
+   G417	Watch your FIELD interaction.
+   G418	An Opponent’s CAGES are off-limits in TELEOP.
+   G419	ANCHORS are off-limits.
+   G420	NET and contents are off-limits.
+   G421	1 defender at a time.
+   G427	ZONE protection.
+   G428	CAGE protection.
+   G435	The PROCESSOR AREA has a storage limit.
+   R104	STARTING CONFIGURATION – max size.
+   R105	ROBOT extension limit.
+
+== 4. Scoring / timing / dimension / penalty harvest ==
+   scoring=61  timing=47  dimension=198  penalty=165
+   Violation: clauses=87 (rule-attributed)   raw grep hits=87   scored-when candidates=46
+   --- penalty vocabulary census ---
+   MINOR FOUL       27
+   MAJOR FOUL       51
+   TECH FOUL        0
+   YELLOW CARD      40
+   RED CARD         47
+   VERBAL WARNING   28
+   DISABLED         16
+   DISQUALIFIED     10
+
+== 5. Glossary + undefined ALL-CAPS terms ==
+   defined terms: 88   new vs baseline: 18
+   --- NEW defined terms (these nouns ARE the game) ---
+   ALGAE ANCHOR BARGE BARGE ZONE BRANCH CAGE COACH CORAL CORAL MARK CORAL STATION CORAL STATION AREA 
+   LEAVE NET PARK PROCESSOR PROCESSOR AREA REEF REEF ZONE    --- ALL-CAPS used in the body but NOT defined in the glossary (loophole signal) ---
+       s1.6 promises ALL CAPS == defined term. Anything here is a typo, an acronym,
+       or a load-bearing undefined term. The third kind is where arguments get won.
+   REEFSCAPE              x31   p6
+   BLDC                   x5    p90
+   PINNING                x4    p61
+   DISABLE                x3    p30
+   B12ME522               x3    p105
+   DIVE                   x2    p8
+   PARKING                x2    p41
+   QUALIFICATION          x2    p43
+   PLAYOFF                x2    p43
+   LEAVING                x2    p47
+   CONTROLLED             x2    p65
+   REPEATEDLY             x2    p67
+   PINNED                 x2    p71
+   DMC                    x2    p92
+   ALL                    x1    p10
+   CAPS                   x1    p10
+   DISQUALIFICATION       x1    p52
+   B-G                    x1    p64
+   III                    x1    p64
+   PDV                    x1    p75
+   MSC                    x1    p77
+   EVA                    x1    p84
+   VDC                    x1    p91
+   LIDAR                  x1    p91
+   MDL-BDC                x1    p92
+   MAX                    x1    p92
+   FXS                    x1    p92
+   SPIKE-RELAY-H          x1    p93
+   SLA                    x1    p94
+   USB-PD                 x1    p95
+   CMOS                   x1    p95
+   RTC                    x1    p95
+   SBS                    x1    p96
+   WAGO                   x1    p96
+   ATC                    x1    p100
+   DIP                    x1    p104
+   RFID                   x1    p105
+   NFC                    x1    p105
+   RCAL                   x1    p107
+   HUSKIE                 x1    p107
+   --- undefined ALL-CAPS phrases ---
+   REEFSCAPE ARENA                            x2    p19
+   PINNING ROBOT                              x2    p71
+   REEFSCAPE ROBOT                            x2    p75
+   ALL CAPS                                   x1    p10
+   REEFSCAPE FIELD                            x1    p19
+   MATCH PARKING                              x1    p41
+   PLAYOFF MATCHES                            x1    p43
+   PLAYOFF MATCH                              x1    p53
+   SCORING ELEMENT CONTROLLED                 x1    p65
+   BUMPER ZONE REPEATEDLY                     x1    p67
+   REEFSCAPE KOP                              x1    p77
+   RCAL MXP                                   x1    p107
+   QUALIFICATION MATCHES                      x1    p123
+   ALLIANCE CAPTIAN                           x1    p129
+   ALLIANCE SELECTION                         x1    p131
+
+== 6. Section map ==
+   137 headings -> SECTION_MAP.tsv
+   p5    1 Introduction
+   p13   2 FIRST Season Overview
+   p15   3 Game Sponsor Recognition
+   p17   4 Game Overview
+   p19   5 ARENA
+   p41   6 Game Details
+   p57   7 Game Rules (G)
+   p75   8 ROBOT Construction Rules (R)
+   p115  9 Inspection & Eligibility (I)
+   p119  10 Tournaments (T)
+   p133  11 District Tournaments
+   p143  12 Regional Tournaments
+   p147  13 FIRST Championship Tournament (C)
+   p149  14 Event Rules (E)
+   p159  15 Glossary
+
+== 7. Loophole tripwires ==
+   tripwire hits: 446
+   unresolved placeholders: 0
+
+== 8. Summary ==
+BIOCORE ingest  label=NOT-BIOCORE-REEFSCAPE  stamp=20260823T021245Z
+manual   : manuals/2026-27_BIOCORE/NOT-BIOCORE_2025_REEFSCAPE_GameManual.pdf
+baseline : manuals/archive/frc/2026_REBUILT_GameManual.pdf
+pages    : 164
+rules    : 229   added=9  removed=7  changed=153
+gamespec : 19   evergreen=210
+glossary : 88   added=18  removed=30
+undefined: 49 caps tokens, 15 phrases
+violations: 87
+
+==========================================================
+ INGEST COMPLETE -> manuals/2026-27_BIOCORE/ingest_NOT-BIOCORE-REEFSCAPE_20260823T021245Z
+==========================================================
+ Hand these to the review, in this order:
+
+   1. rules_GAMESPECIFIC.tsv     blue-headline rules -- this IS the new game
+   2. rules_ADDED.txt            rule ids that did not exist in the baseline
+   3. rules_CHANGED.tsv          evergreen rules FIRST quietly edited (+ _DETAIL for diffs)
+   4. rules_REMOVED.txt          rules that vanished -- ask what replaced them
+   5. glossary_ADDED.txt         the new game's defined nouns
+   6. UNDEFINED_CAPS.tsv         ALL-CAPS used but never defined  <- loophole signal
+   7. violations.tsv             every enforcement clause, attached to its rule
+   8. SCORED_WHEN.txt            scored-live vs scored-at-the-buzzer evidence
+   9. scoring/timing/dimension/penalty_mentions.txt
+  10. TRIPWIRES.txt              ambiguity, discretion hooks, carve-outs
+  11. SECTION_MAP.tsv            where everything lives
+  12. spans/rules.json           every rule with body text, class, colour, page
+
+ full_lines.txt is the authoritative body text. full_layout.txt is TABLES ONLY.
+ Log: logs/ingest_NOT-BIOCORE-REEFSCAPE_20260823T021245Z.log

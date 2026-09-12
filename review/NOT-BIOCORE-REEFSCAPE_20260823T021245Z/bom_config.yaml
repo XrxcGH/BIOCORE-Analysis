@@ -1,0 +1,24 @@
+# bom_config.yaml -- the mechanisms the chosen strategy implies.
+# Valid ids:  python tools/bom-builder.py --list      (they are deliberately not copied here;
+#                                                      run it, the catalog moves)
+# Start from reference/bom/examples/simple.yaml and add only what the game forces.
+#
+# WORKSTREAM ABSORPTION: the builder decides on its own that a mechanism with 0 motors and
+# roughly <=12 build hours is not a separate workstream. That heuristic is the difference
+# between FAILS 3 GATES and ALL GATES PASS, and it is invisible until you read the output.
+# Read the workstream line in results/bom.md and sanity-check it before believing a verdict.
+#
+# NO GEOMETRIC FEASIBILITY IS CHECKED. The builder validates dollars, hours, workstreams and
+# motors. It has NO concept of whether the mechanism can physically reach the scoring target.
+# Find the scoring aperture height in the manual FIRST (reference/03_ARCHETYPE_CORPUS.md
+# section 2.4 item 4) and answer it below in one sentence.
+name: "FILL_ME chosen design"
+notes: >
+  FILL_ME one paragraph: the design thesis, which workstream is the novel one, and
+  HOW THIS DESIGN PHYSICALLY REACHES THE SCORING TARGET -- state the aperture height from
+  the manual and the delivery height of the mechanism. No tool checks this. If you cannot
+  answer it in one sentence, the BOM is costing a robot that cannot score.
+mechanisms:
+  - kop_chassis
+  - bumpers_frame
+  - baseline_electrical_package

@@ -1,0 +1,16 @@
+award,category,district_points,regional_points,n_wins_2022_2026,pct_events_awarded,pct_winner_qual_top8,pct_winner_top25pct,pct_winner_bottom_half,pct_winner_bottom_quartile,median_winner_rank_pct,pct_winner_also_field_award,unique_winning_teams,pct_wins_by_repeat_winners,median_winner_team_number
+Engineering Inspiration Award,cultural,8,28,887,85.3,39.8,41.0,30.6,11.7,32.5,40.2,555,61.4,3641
+FIRST Impact Award,cultural,10,45,842,81.1,43.6,46.9,27.2,11.8,28.0,40.6,444,73.8,3414
+Creativity Award,machine,5,5,936,91.3,36.2,41.3,28.1,10.8,31.8,26.1,704,42.6,4144
+Quality Award,machine,5,5,945,92.2,57.6,62.4,12.2,3.1,18.2,40.2,648,52.3,3494
+Industrial Design Award,machine,5,5,936,91.3,60.8,64.6,11.9,3.6,17.5,40.7,603,56.2,3602
+Excellence in Engineering Award,machine,5,5,939,91.6,62.7,67.6,11.3,3.1,15.4,49.9,568,60.3,3419
+Innovation in Control Award,machine,5,5,941,91.8,58.4,64.5,10.4,2.7,17.6,45.3,611,55.6,3476
+Autonomous Award,machine,5,5,938,91.5,80.4,83.9,4.9,1.4,9.0,61.7,535,64.3,3255
+Rising All-Star Award,team,5,5,777,75.8,8.8,10.1,69.1,38.7,67.5,21.9,612,38.0,9159
+Rookie All-Star Award,team,8,8,608,59.3,7.4,9.0,68.3,37.3,66.7,29.9,573,11.5,9697
+Team Spirit Award,team,5,5,941,91.8,15.8,17.0,52.0,23.9,53.6,17.3,675,46.5,4855
+Judges' Award,team,5,5,958,93.5,22.9,27.6,49.6,23.5,50.0,18.1,789,31.7,5011
+Imagery Award,team,5,5,935,91.2,18.2,21.6,47.7,19.9,48.7,18.1,576,59.0,4956
+Team Sustainability Award,team,5,5,773,75.4,22.6,25.0,44.1,20.4,44.0,26.3,542,51.4,3881
+Gracious Professionalism Award,team,5,5,946,92.3,25.5,26.8,41.3,18.1,43.6,24.0,659,49.7,4061

@@ -1,0 +1,3 @@
+# `reference/awards/_text/`: text of the FIRST award documents
+
+This directory holds plain-text extractions of the FIRST award and judging PDFs in `../pdfs/`: the judge manual, the award workbook, the FIRST Impact Award and FIRST Leadership Award guides and judging guidelines, and the shorter judging guides. They are not in the repository because the PDFs are FIRST's copyrighted documents, and a full-text extraction is a copy of them. To fill this directory, run `bash tools/rebuild-corpus.sh --fetch` from the repository root to download the PDFs, then `bash tools/rebuild-corpus.sh` to regenerate the text.

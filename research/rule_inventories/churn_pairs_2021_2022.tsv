@@ -1,0 +1,163 @@
+2022_id	2021_ancestor	sim	2022_headline
+T901	I8	0.253	Wear your buttons
+R303	I2	0.298	Create new designs and software, unless they’re public.ROBOT software and designs created before Kickoff are o
+G405	G6	0.301	Don’t catch CARGO
+R501	R27	0.326	Allowable motors.The only motors and actuators permitted include the following (in any quantity): Table 9-1 Mo
+H505	G12	0.347	Opponent CARGO is off limits
+H310	H2	0.399	Know your DRIVETEAM positions
+G108	G20	0.416	Not too high
+R304	R16	0.417	During an event, only work during pit hours
+R620	R51	0.425	Only use specified fuses in PDP/PDH.The only fuses permitted for use in the PDP/PDH are mini automotive blade 
+G210	G3	0.439	During AUTO, no defense
+T401	T1	0.440	Freeze, ROBOT.During the period when the ARENA is open for measurement, ROBOTS can be enabled, but may neither
+H108	G26	0.462	Be careful what you interact with
+H312	S5	0.462	No CARGO shots after the MATCH
+T702	T2	0.466	No coupons if MATCH stopped prematurely.An ALLIANCE may not request a TIMEOUT or a BACKUP TEAM after a Playoff
+G404	G18	0.467	Don’t hoard opposing CARGO
+G109	G18	0.469	Avoid the PURPLE PLANE
+G103	G16	0.473	Keep your BUMPERS low
+G205	G25	0.481	This isn’t combat robotics
+H506	G3	0.504	Only feed your ALLIANCE ROBOTS
+G208	G12	0.506	Let them climb
+H311	H3	0.509	Leave the CARGO alone
+G302	S6	0.517	LOWER EXITS are off limits
+R701	R57	0.518	Control the ROBOT with a roboRIO
+G106	G17	0.523	Tall ROBOTS in HANGAR ZONE only
+R717	R73	0.527	Don’t alter the CAN bus
+G206	G23	0.530	Don’t tip or entangle
+H402	H2	0.539	Disconnect or set down controllers
+R504	R30	0.552	Don’t overload controllers
+H507	H16	0.553	DRIVE TEAMS, watch your reach
+G207	G14	0.554	Let them shoot
+R704	R60	0.569	Only use allowed ports and bandwidth to communicate with the ROBOT
+H404	H6	0.575	AUTO CARGO delivery
+R621	R52	0.601	Protect circuits with appropriate circuit breakers.Each branch circuit must be protected by 1 and only 1 circu
+G209	G13	0.603	Don’t climb on each other
+R718	R31	0.606	USB to CAN adapter permitted.Additional CAN bus connections may be added to the roboRIO using the CTR Electron
+R615	R46	0.608	Power roboRIO as specified
+R617	R48	0.624	Power radio as specified – Part 2
+H504	H6	0.624	TELEOP CARGO delivery
+G401	G7	0.624	Keep CARGO in bounds
+R622	R53	0.627	Use appropriately sized wire
+G203	G22	0.628	Don’t collude with your partners to shut down major parts of game play.2 or more ROBOTS that appear to a REFER
+R618	R49	0.630	Use PDP/PDH terminals as designed.Only 1 wire shall be connected to each terminal on the PDP/PDH.
+H101	C2	0.649	Be a good person
+G204	G24	0.662	Stay out of other ROBOTS
+R906	R93	0.672	No unsafe OPERATOR CONSOLES.OPERATOR CONSOLES shall not be made using hazardous materials, be unsafe, cause an
+R405	R21	0.683	BUMPERS indicate your ALLIANCE
+R616	R47	0.687	Power radio as specified – Part 1
+G402	G8	0.706	CARGO: use as directed.ROBOTS may neither deliberately use CARGO in an attempt to ease or amplify the challeng
+H401	G4	0.708	Behind the lines
+R805	R78	0.726	If using pneumatics, these parts are required.If pneumatic COMPONENTS are used, the following items are requir
+R619	R50	0.731	Only use specified circuit breakers in PDP/PDH.The only circuit breakers permitted for use in the PDP/PDH are:
+H503	H7	0.733	COACHES, CARGO is off limits
+H309	G1	0.743	Know your ROBOT setup
+R611	R42	0.745	The ROBOT frame is not a wire
+R302	R16	0.752	Custom parts, generally from this year only.FABRICATED ITEMS created before Kickoff are not permitted
+R810	R83	0.753	Pressure gauges must be visible.Pressure gauges must be placed in easily visible locations upstream and downst
+R705	R61	0.760	Configure devices for your team number.The roboRIO, Driver Station Software, and wireless bridge must be confi
+H103	S2	0.767	Humans, stay off the FIELD until green
+R105	R4	0.771	ROBOT extension limit
+H202	C9	0.779	1 STUDENT, 1 Head Referee
+R708	R64	0.784	Wireless bridge must be visible.The wireless bridge must be mounted on the ROBOT such that the diagnostic ligh
+T701	T3	0.788	There’s a window for TIMEOUT coupons.If an ALLIANCE wishes to use their TIMEOUT, the ALLIANCE CAPTAIN must sub
+R706	R62	0.790	Don’t bypass the ARENA network.All signals must originate from the OPERATOR CONSOLE and be transmitted to the 
+R613	R44	0.794	Electrical system must be inspectable
+R703	R59	0.796	Use specific Ethernet port for roboRIO
+G403	G6	0.797	2 CARGO max
+R609	R40	0.798	Connect main power safely
+I107	I8	0.801	No STUDENT, no inspection
+R812	R85	0.802	Pressure switch requirements.The pressure switch must be connected to the high-pressure side of the pneumatic 
+R814	R87	0.807	Don’t connect solenoid outputs together.The outputs from multiple solenoid valves must not be plumbed together
+G102	S4	0.808	ROBOTS, stay on the FIELD during the MATCH
+R716	R72	0.822	Connect the PDP/PDH to the roboRIO CAN bus.The PDP/PDH CAN interface must be connected to the built-in CAN bus
+I105	I5	0.826	Don’t exploit re-inspection.Teams may not use the re-inspection process in I104 to circumvent the weight limit
+H403	G5	0.834	Let the ROBOT do its thing
+R301	R12	0.841	Individual item cost limit
+R204	R9	0.843	CARGO stays with the FIELD
+R715	R71	0.844	Control PCM/PH(S) and Servo Hubs from roboRIO.Each PCM/PH must be controlled with signal inputs sourced from t
+R403	R19	0.846	BUMPERS shouldn’t move
+R603	R34	0.853	Charge batteries with safe connectors
+G301	G26	0.854	Be careful what you interact with
+R802	R75	0.856	No custom pneumatics and meet minimum pressure ratings.All pneumatic items must be COTS pneumatic devices and 
+R904	R91	0.860	OPERATOR CONSOLE physical requirements
+R203	R8	0.860	General safety
+R104	R3	0.861	STARTING CONFIGURATION – max size
+G107	G18	0.861	Don’t overextend yourself
+R409	R25	0.863	Fill BUMPER corners
+H502	H5	0.865	No wandering.DRIVERS, COACHES, and HUMAN PLAYERS may not contact anything outside the area in which they start
+R713	R69	0.868	Only approved MXP devices can control actuators.If a motor is controlled via the MXP, its power regulating dev
+G104	G20	0.870	Keep your BUMPERS together
+R404	R20	0.871	BUMPERS must come off
+R612	R43	0.871	Must be able to turn ROBOT on and off safely
+R610	R41	0.873	1 breaker per circuit
+R604	R35	0.876	Charge batteries at a safe rate
+H304	H11	0.882	By invitation only
+R202	R7	0.885	No sharp edges
+R903	R90	0.887	Connect FMS Ethernet directly to the OPERATOR CONSOLE
+R711	R67	0.889	Don’t connect motor outputs to roboRIO
+H104	S3	0.891	Never step over the guardrail
+R710	R66	0.893	Only specified modifications to control system devices permitted.The Driver Station Software, roboRIO, PDP/PDH
+R806	R79	0.895	Compressed air from ROBOT compressor only.Throughout an event, compressed air on the ROBOT must be provided by
+R801	R74	0.899	Only use explicitly permitted pneumatic parts.To satisfy multiple constraints associated with safety, consiste
+R901	R88	0.905	Use the specified Driver Station Software.The Driver Station Software provided by National Instruments (instal
+R702	R58	0.907	Communicate with the ROBOT with the specified radio
+R605	R36	0.911	Batteries are not ballast.No batteries other than those allowed per R601 and R602 are allowed on the ROBOT, wh
+R607	R38	0.915	Insulate battery connections
+I101	I1	0.916	It’s your team’s ROBOT
+R205	R10	0.916	Don’t contaminate the FIELD
+H306	H12	0.918	Identify yourself.DRIVE TEAMS must wear proper identification while in the ARENA
+R807	R80	0.919	Air storage pressure limit.Stored air pressure on the ROBOT must be no greater than 120 psi (~827 kPa)
+G202	G21	0.919	There’s a 5-count on PINS
+R714	R70	0.920	Control CAN motor controllers from the roboRIO
+R902	R89	0.921	The OPERATOR CONSOLE must have a visible display.The OPERATOR CONSOLE, the set of COMPONENTS and MECHANISMS us
+R101	R1	0.925	FRAME PERIMETER must be fixed
+H302	G2	0.925	Teams may not enable their ROBOTS on the FIELD.Teams may not tether to the ROBOT while on the FIELD except in 
+R401	R17	0.925	BUMPERS should protect all corners
+R407	R23	0.927	BUMPER weight limit
+R602	R33	0.929	Other batteries for cameras or computers only
+R402	R18	0.932	BUMPERS must stay low
+R608	R39	0.932	Limit non-battery energy.Non-electrical sources of energy used by the ROBOT (i.e., stored at the start of a MA
+R809	R82	0.933	Limited devices at high pressure.Only the compressor, relief valve, pressure switch, pressure vent plug, press
+R623	R54	0.933	Use only appropriate connectors
+R808	R81	0.935	Working air pressure limit.Working air pressure (air pressure used to actuate devices) on the ROBOT must be no
+R905	R92	0.938	FIELD wireless only.Other than the system provided by the FIELD, no other form of wireless communications shal
+R707	R63	0.938	No other wireless allowed.No form of wireless communication shall be used to communicate to, from, or within t
+R406	R22	0.943	Team number on BUMPERS
+R102	R2	0.943	STARTING CONFIGURATION – no overhang.In the STARTING CONFIGURATION (the physical configuration in which a ROBO
+H107	H13	0.944	Don’t abuse ARENA access
+R614	R45	0.944	No high voltage allowed
+R410	R26	0.945	BUMPERS must be supported
+H201	C1	0.946	Egregious or exceptional violations
+H307	C10	0.947	Plug in to/be in your DRIVER STATION
+R606	R37	0.949	Secure the battery
+R503	R29	0.951	Power (most) actuators offof approved devices.With the exception of servos, fans, or motors integral to sensor
+H305	C6	0.953	Show up to your MATCHES
+R601	R32	0.953	Battery limit – everyone has the same power
+R709	R65	0.953	ROBOTS must have a signal light
+R103	R5	0.956	ROBOT weight limit
+H308	H15	0.958	Don’t bang on the glass.Team members may never strike or hit the DRIVER STATION plastic windows.
+R813	R86	0.958	Vent plug requirements.Any pressure vent plug must be: A.connected to the pneumatic circuit such that, when ma
+R505	R31	0.958	Control servos safely
+R712	R68	0.958	Control PWM controllers from the roboRIO.Every relay module (per R503-B), servo controller, and PWM motor cont
+R625	R56	0.961	Don’t modify critical power paths
+R804	R77	0.962	Only use specific pneumatic devices
+R811	R84	0.962	Relief valve requirements.The relief valve must be attached directly to the compressor or attached by legal ha
+R502	R28	0.963	Don’t modify motors (mostly)
+R201	R6	0.965	No digging into carpet
+R408	R24	0.965	BUMPER construction
+I104	I4	0.968	Unless the change is listed below, any change to a ROBOT must get re-inspected
+R624	R55	0.972	Use specified wire colors (mostly)
+I102	I2	0.972	Get inspected before playing a Qualification/Playoff MATCH
+H106	C4	0.973	Letting someone coerce you in to throwing a MATCH – also not cool
+H301	C7	0.973	Be prompt/safe when coming to and going from the FIELD
+R803	R76	0.974	Don’t modify pneumatics.All pneumatic COMPONENTS must be used in their original, unaltered condition
+H102	C5	0.981	Enter only 1 ROBOT.Each registered FIRST Robotics Competition team may enter only 1 ROBOT (or “robot,” a ROBOT
+I103	I3	0.993	Bring it all to inspection
+H303	H1	0.994	You can’t bring/use anything you want
+G101	S1	1.000	Dangerous ROBOTS: not allowed
+G105	G19	1.000	Keep it together
+G201	C8	1.000	Don’t expect to gain by doing others harm
+H105	C3	1.000	Asking other teams to throw a MATCH – not cool
+H501	H4	1.000	COACHES and other teams: hands off the controls
+I106	I7	1.000	ROBOTS are off for inspection (mostly)

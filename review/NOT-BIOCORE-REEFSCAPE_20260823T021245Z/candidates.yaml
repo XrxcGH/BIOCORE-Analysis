@@ -1,0 +1,69 @@
+# candidates.yaml -- the strategies BIOCORE actually permits.
+#
+# Enumerate EXHAUSTIVELY before scoring: by scoring action, by field zone, by match phase,
+# by alliance role, by RP path, by opponent denial. Include the ones a student never proposes:
+# pure defense, pure auto, feeder/support, deliberately-simple-and-flawless.
+# See STRATEGY-RANKING-SYSTEM.md section 2 -- its 2.7 checklist is what produces those rows.
+#
+# Score achievability BY HAND against the anchors in reference/ACHIEVABILITY-RUBRIC.md section 2.
+# A1-A13 and V2-V5 are 0-5. V1 is IMPORTED from cycle-model.py -- do not set it. Nothing
+# validates that you did not; if you set it, the cycle_model block silently overwrites it.
+#
+# EVERY ROW MUST CARRY corpus_archetype. reference/03_ARCHETYPE_CORPUS.md scores 30 archetypes
+# against five real seasons. A row that contradicts its archetype verdict is not automatically
+# wrong, but it must be defended by name in REVIEW.md section 3.
+
+team_overrides:
+  outsourced_2d_account: false     # true ONLY once a SendCutSend-class account EXISTS and one
+                                   # test order has SHIPPED. Never set it aspirationally.
+
+candidates:
+- id: FILL_ME_S1
+  name: FILL_ME
+  corpus_archetype: FILL_ME        # e.g. "R2 -- highest-value small-team play in REBUILT".
+                                   # The closest row in reference/03_ARCHETYPE_CORPUS.md
+                                   # section 2, plus its verdict in one clause. "none" is a
+                                   # legal answer meaning genuinely novel -- say so out loud.
+  achievability: {A1: 0, A2: 0, A3: 0, A4: 0, A5: 0, A6: 0, A7: 0,
+                  A8: 0, A9: 0, A10: 0, A11: 0, A12: 0, A13: 0}
+  value:         {V2: 0, V3: 0, V4: 0, V5: 0}
+  gates_input:
+    # mfg_floor -- LEGAL TOKENS, exactly one of:
+    #     hand | bandsaw+drill | 3dprint | router | CNC
+    # These team_capacity.yaml / bom-builder.py spellings are also accepted and aliased:
+    #     hand_tools -> hand       bandsaw_drillpress -> bandsaw+drill
+    #     router_cnc -> router     outsourced -> router        mill_lathe -> CNC
+    # ANY OTHER STRING IS A HARD SCHEMA ERROR; score-strategy.py refuses to run and says so.
+    # It used to fire gate G1 instead, silently deleting the row from the ranking.
+    mfg_floor: bandsaw+drill
+    # new_workstreams -- streams ON TOP OF the three mandatory ones (drivetrain, electrical,
+    # software), per rubric A2 and gate G2. A KOP chassis plus one intake is 1, NOT 4.
+    # bom-builder.py prints an "N effective" workstream count on a DIFFERENT convention: it
+    # counts the mandatory three as well, and absorbs mechanisms under roughly 12 h / 0 motors.
+    # The two numbers are expected to differ by about three. Never copy one into the other.
+    new_workstreams: 1
+    # novel_mechanisms -- mechanisms this team has never built before. bom-builder.py DERIVES
+    # its own count from the mechanism list. If they disagree, the builder count is the one to
+    # trust and this field is the one to fix; reconcile them before writing REVIEW.md.
+    novel_mechanisms: 1
+    marginal_cost_high_usd: 0      # high end of the cost range in USD, above the KOP baseline
+    mechanism_hours: 0             # build hours for the mechanisms only, not the whole robot
+    mentor_minutes_per_week: 0     # mentor UNBLOCK time this design demands, minutes/week
+    # drive_practice_sensitivity -- LEGAL TOKENS, exactly one of: low | med | high | extreme
+    # Only "extreme" fires anything (soft gate G6). Rubric A4 maps low:5 med:3 high:2 extreme:0.
+    drive_practice_sensitivity: med
+  cycle_model:
+    # game -- path to game_def.json, resolved RELATIVE TO THE DIRECTORY THE COMMAND RUNS FROM
+    # (the repo root, for the autorun). The bare filename "game_def.json" works because phase 2
+    # passes the review dir explicitly. When in doubt give the full path.
+    game: FILL_ME_path_to_game_def.json
+    # cycle -- seconds for one full scoring round trip. For a NON-SCORING candidate (pure
+    # defense, feeder, endgame-only) there is no cycle: use 999 as the sentinel and hand-score
+    # V1 to 0 or 1. Never use a small number just so it computes.
+    cycle: 10
+    auto_scored: 0                 # units this design scores during AUTO
+    # median_alliance_score -- DO NOT GUESS. Derive it from the TBA CSVs already on disk:
+    #   research/predictive_tba/tba_matches_*.csv   (2026 median alliance score = 147)
+    # It feeds V1 and therefore moves every value score in the ranking. A guessed 120 against
+    # a real 147 was a graded error in the 2026-08 rehearsal.
+    median_alliance_score: 0

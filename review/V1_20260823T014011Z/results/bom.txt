@@ -1,0 +1,168 @@
+wrote CSV: review/V1_20260823T014011Z/results/bom.csv
+==============================================================================
+BOM BUILDER -- REHEARSAL -- S6/S10 hybrid: simple FUEL scorer + reliable TOWER L2 climber
+catalog: reference/bom/mechanism_catalog.yaml   capacity: reference/team_capacity.yaml
+notes: KOP chassis, an under-bumper roller intake feeding a hopper that dumps FUEL into the HUB from a surveyed ALLIANCE ZONE position, plus a winch climber for TOWER L2. The novel workstream is the climber, because TRAVERSAL RP has a flat 50-point threshold at every event tier while ENERGIZED escalates 3.6x from District to Championship -- the climb is the only RP path that does not get harder at DCMP. FUEL scoring is deliberately COTS-shaped and fixed-position so it costs close to zero drive-practice hours the team does not have. novel_mechanisms_max is 2; this spends one.
+
+==============================================================================
+
+### KOP chassis (AndyMark AM14U-series)  [drivetrain / drivetrain]
+    id=kop_chassis  tooling=hand_tools  motors=4  lead=0wk  stockout=low  evidence=C
+------------------------------------------------------------------------------
+  COTS
+    VENDOR                     ITEM                               SKU              QTY       UNIT        EXT V
+    AndyMark                   AM14U6 6-Wheel Drop Center Robot D AM-14U6            1     940.00     940.00 v
+        https://www.andymark.com/products/am14u6-6-wheel-drop-center-robot-drive-base-2025-frc-kit-of-parts-drive-base
+    REV Robotics               NEO Brushless Motor V1.1           REV-21-1650        4      42.50     170.00 v
+        https://www.revrobotics.com/rev-21-1650/
+    REV Robotics               SPARK MAX Motor Controller         REV-11-2158        4     100.00     400.00 v
+        https://www.revrobotics.com/rev-11-2158/
+  FABRICATED
+    PART                             MATERIAL                       PROCESS            MACHINE              QTY  HOURS
+    Belly pan / electronics board    1/8 in polycarbonate           cut + drill        hand_tools             1    3.0
+    Superstructure mounting rails    1x1 6061 tube                  cut + drill        bandsaw_drillpress     4    4.0
+  SUBTOTAL  cots $  1510.00  material $    90.00  total $  1600.00
+  HOURS     build  12.0  design   4.0  programming  10.0  (fab-detail  7.0)
+  ORDER BY  2027-01-02   (kickoff 2027-01-09 minus 0 wk lead + 1 wk margin)
+
+### Bumpers + frame perimeter package  [drivetrain / drivetrain]
+    id=bumpers_frame  tooling=bandsaw_drillpress  motors=0  lead=2wk  stockout=low  evidence=H
+------------------------------------------------------------------------------
+  COTS
+    VENDOR                     ITEM                               SKU              QTY       UNIT        EXT V
+    UNVERIFIED                 Pool noodle, 2-1/2 in nominal, per -                  8      ~4.00      32.00 U
+    UNVERIFIED                 1000 denier Cordura, red and blue  -                  2     ~60.00     120.00 U
+    UNVERIFIED                 Bumper mounting hardware / bracket -                  1     ~45.00      45.00 U
+  FABRICATED
+    PART                             MATERIAL                       PROCESS            MACHINE              QTY  HOURS
+    Bumper backing                   3/4 in plywood                 cut + drill        bandsaw_drillpress     8    8.0
+    Bumper fabric sewing / stapling  Cordura                        sew + staple       hand_tools             2    8.0
+    Team number panels               vinyl or sewn numerals         cut + apply        hand_tools             2    3.0
+  SUBTOTAL  cots $   197.00  material $    60.00  total $   257.00
+  HOURS     build  19.0  design   4.0  programming   0.0  (fab-detail 19.0)
+  ORDER BY  2026-12-19   (kickoff 2027-01-09 minus 2 wk lead + 1 wk margin)
+
+### Baseline electrical package (Systemcore era)  [support / software]
+    id=baseline_electrical_package  tooling=bandsaw_drillpress  motors=0  lead=6wk  stockout=high  evidence=C
+------------------------------------------------------------------------------
+  COTS
+    VENDOR                     ITEM                               SKU              QTY       UNIT        EXT V
+    FIRST / TBD                Systemcore control system          -                  1    ~450.00     450.00 U
+    REV Robotics               Power Distribution Hub (PDH)       REV-11-1850        1     250.00     250.00 v
+        https://www.revrobotics.com/rev-11-1850/
+    AndyMark                   Robot Signal Light (RSL)           am-3583            1      70.00      70.00 v
+        https://andymark.com/products/robot-signal-light
+    AndyMark                   Vivid-Hosting VH-109 FRC Radio V1. am-5583a           1     201.00     201.00 v
+        https://andymark.com/products/vivid-hosting-vh-109-frc-radio-v1-5
+    REV Robotics               Radio Power Module (RPM)           REV-11-1856        1      34.00      34.00 v
+        https://www.revrobotics.com/rev-11-1856/
+    AndyMark                   MK ES17-12 12V SLA Battery (Set of -                  3     116.00     348.00 v
+        https://andymark.com/products/mk-es17-12-12v-sla-battery-set-of-2
+    AndyMark                   Anderson SB50 Connector with Conta -                  4       6.60      26.40 v
+        https://andymark.com/products/sb50-anderson-powerpole-connector-with-contacts
+    UNVERIFIED                 120A main breaker (CB285-120)      -                  2     ~25.00      50.00 U
+    UNVERIFIED                 Battery charger, <=6A, SB connecto -                  2     ~90.00     180.00 U
+    UNVERIFIED                 6 AWG / 12 AWG / 18 AWG wire + fer -                  1    ~160.00     160.00 U
+    UNVERIFIED                 Snap-action breaker assortment     -                  1     ~60.00      60.00 U
+    UNVERIFIED                 CAN wire 50 ft + Cat6 + consumable -                  1     ~85.00      85.00 U
+  FABRICATED
+    PART                             MATERIAL                       PROCESS            MACHINE              QTY  HOURS
+    Electronics board                1/4 in polycarbonate or 1/8 in cut + drill        bandsaw_drillpress     1    4.0
+    Battery retention mount          1/8 in 6061 + strap            cut + drill        bandsaw_drillpress     1    3.0
+    Wire loom routing + labelling    split loom + labels            assemble           hand_tools             1    8.0
+  SUBTOTAL  cots $  1914.40  material $    65.00  total $  1979.40
+  HOURS     build  30.0  design   8.0  programming  40.0  (fab-detail 15.0)
+  ORDER BY  2026-11-21   (kickoff 2027-01-09 minus 6 wk lead + 1 wk margin)
+
+### Under-bumper intake  [intake / scoring]
+    id=under_bumper_intake  tooling=bandsaw_drillpress  motors=1  lead=2wk  stockout=low  evidence=H
+------------------------------------------------------------------------------
+  COTS
+    VENDOR                     ITEM                               SKU              QTY       UNIT        EXT V
+    AndyMark                   Compliant Wheels, 2 in.            -                  8       6.20      49.60 v
+        https://andymark.com/products/compliant-wheels
+    The Thrifty Bot            Thrifty Live Axle Tube Roller Kit  -                  2      15.00      30.00 v
+        https://www.thethriftybot.com/collections/elevator-kits
+    REV Robotics               NEO 550 Brushless Motor            REV-21-1651        1      30.00      30.00 v
+        https://www.revrobotics.com/rev-21-1651/
+    REV Robotics               SPARK MAX Motor Controller         REV-11-2158        1     100.00     100.00 v
+        https://www.revrobotics.com/rev-11-2158/
+    The Thrifty Bot            QTY 10 - .50in OD x .25in ID Radia -                  1      20.00      20.00 v
+        https://www.thethriftybot.com/collections/elevator-kits
+  FABRICATED
+    PART                             MATERIAL                       PROCESS            MACHINE              QTY  HOURS
+    Bumper cutout reinforcement      3/4 in plywood + 1/8 in alumin cut + drill        bandsaw_drillpress     2    5.0
+    Ramp / funnel plate              0.060 in polycarbonate         cut + bend         hand_tools             1    4.0
+    Roller mounts                    1/8 in 6061 sheet              cut + drill        bandsaw_drillpress     2    4.0
+  SUBTOTAL  cots $   229.60  material $    75.00  total $   304.60
+  HOURS     build  18.0  design  10.0  programming   4.0  (fab-detail 13.0)
+  ORDER BY  2026-12-19   (kickoff 2027-01-09 minus 2 wk lead + 1 wk margin)
+
+### Passive latch / hook climber (no dedicated actuator)  [climber / endgame]
+    id=passive_latch_climber  tooling=bandsaw_drillpress  motors=0  lead=1wk  stockout=low  evidence=H
+------------------------------------------------------------------------------
+  COTS
+    VENDOR                     ITEM                               SKU              QTY       UNIT        EXT V
+    UNVERIFIED                 Spring-loaded latch hardware / gas -                  2     ~40.00      80.00 U
+    The Thrifty Bot            Constant Force Spring Kit          -                  1      49.99      49.99 v
+        https://www.thethriftybot.com/products/constant-force-spring-kit
+    UNVERIFIED                 1/4 in aluminum plate stock for ho -                  1     ~55.00      55.00 U
+  FABRICATED
+    PART                             MATERIAL                       PROCESS            MACHINE              QTY  HOURS
+    Passive hooks                    1/4 in 6061 plate              profile + deburr   bandsaw_drillpress     2    5.0
+    Latch pivot + spring mount       1/8 in 6061 sheet              cut + drill        bandsaw_drillpress     2    4.0
+    Frame reinforcement              2x1 6061 tube                  cut + drill        bandsaw_drillpress     2    3.0
+  SUBTOTAL  cots $   184.99  material $    60.00  total $   244.99
+  HOURS     build  12.0  design  10.0  programming   2.0  (fab-detail 12.0)
+  ORDER BY  2026-12-26   (kickoff 2027-01-09 minus 1 wk lead + 1 wk margin)
+
+==============================================================================
+ROLLUP
+==============================================================================
+  COTS subtotal                 $  4035.99
+  Material / raw stock          $   350.00
+  GRAND TOTAL (gross)           $  4385.99
+  less KOP-supplied credit      $ -2231.00
+  DISCRETIONARY SPEND           $  2154.99   <-- the number the budget gate uses
+      of which price-verified   $  2718.99   (15 COTS lines)
+      of which ESTIMATED        $  1317.00   (11 COTS lines, marked ~ and U)
+
+  Build hours         91.0      Design hours     36.0      Programming hours   56.0
+  Motors                 5      Controllers         5      Pneumatics            no
+  Mechanisms             5      Novel               2      Workstreams            4 (eff 3)
+  Highest tooling floor required: bandsaw_drillpress
+
+==============================================================================
+GATE CHECKS  (vs reference/team_capacity.yaml)
+==============================================================================
+  [PASS] BUDGET               $2154.99 discretionary (gross $4385.99 - KOP credit $2231.00) limit $2500.00        
+         robot_discretionary is the number design trades score against (02_TEAM_CAPACITY_MODEL sec 8.1)
+  [PASS] TOOLING FLOOR        bandsaw_drillpress           limit bandsaw_drillpress
+         every mechanism is within shop capability
+  [PASS] BUILD HOURS          91.0 h                       limit 129.8 h         
+         fabrication_assembly line, kickoff -> Week 1 (02_TEAM_CAPACITY_MODEL sec 3.1)
+  [PASS] DESIGN HOURS         36.0 h                       limit 74.9 h          
+         cad_design line
+  [PASS] PROGRAMMING HOURS    56.0 h                       limit 134.8 h         
+         2027 is a Systemcore port year -- this line is already inflated ~40 h
+  [PASS] PARALLEL WORKSTREAMS 3 effective (5 mechanisms)   limit 3               
+         effective: drivetrain, scoring, software; absorbed (0 motors, <=12 build h): passive_latch_climber
+  [PASS] NOVEL MECHANISMS     2                            limit 2               
+         novel = under_bumper_intake, passive_latch_climber
+  [PASS] MOTOR COUNT          5 motors / 5 controllers     limit 12              
+         propulsion cap is separately 4 (2026 R502; 2027 UNVERIFIED)
+
+  VERDICT: ALL GATES PASS
+
+==============================================================================
+ORDER SCHEDULE  (counted back from kickoff 2027-01-09)
+==============================================================================
+  2026-11-21   baseline_electrical_package     6 wk lead   stockout=high
+  2026-12-19   bumpers_frame                   2 wk lead   stockout=low
+  2026-12-19   under_bumper_intake             2 wk lead   stockout=low
+  2026-12-26   passive_latch_climber           1 wk lead   stockout=low
+  2027-01-02   kop_chassis                     0 wk lead   stockout=low
+
+  EARLIEST ORDER-BY: 2026-11-21  -- anything high-stockout must be on a PO by this date.
+  Note: no bag day since 2020, so build continues to the event; these dates protect
+  the kickoff-to-Week-1 window, not a bag deadline.

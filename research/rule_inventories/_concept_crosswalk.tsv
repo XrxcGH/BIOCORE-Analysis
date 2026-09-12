@@ -1,0 +1,225 @@
+rule_id	prefix	headline	id2022	h2022	id2023	h2023	id2024	h2024	id2025	h2025
+C301	C	Wear your buttons.	T901	1.0	T901	1.0	C301	1.0	C301	1.0
+E101	E	Personal safety comes first.		0.333		0.333	E101	1.0	E101	1.0
+E102	E	Be nice.		0.333		0.5	E102	1.0	E102	1.0
+E103	E	Children with adults, please.		0.222		0.222	E103	1.0	E103	1.0
+E104	E	Respect the venue.		0.333		0.333	E104	1.0	E104	1.0
+E105	E	Teams must check in.		0.25		0.25	E105	1.0	E105	1.0
+E106	E	Some event resources for event teams only.		0.286		0.286	E106	1.0	E106	1.0
+E107	E	Work in designated areas only.		0.364		0.25	E108	1.0	E107	1.0
+E108	E	Some things don’t belong at events.		0.222		0.222	E109	1.0	E108	1.0
+E109	E	Don’t arrange for additional utilities.		0.25		0.25	E110	1.0	E109	1.0
+E110	E	Don’t sell stuff.		0.333		0.333	E111	1.0	E110	1.0
+E111	E	Don’t give out food.		0.286		0.286	E112	1.0	E111	1.0
+E112	E	Make FIRST loud, but with restrictions.		0.182		0.182	E113	1.0	E112	1.0
+E113	E	Hang banners with care.		0.222		0.222	E114	1.0	E113	1.0
+E114	E	Limit flag and flagpole size.		0.25		0.25	E115	1.0	E114	1.0
+E115	E	No firearms.		0.5		0.5	E116	1.0	E115	1.0
+E116	E	Only COTS batteries allowed.		0.286		0.286		0.286	E116	1.0
+E117	E	Do not record anyone at the event without their consent.		0.211		0.211		0.211		0.25
+E118	E	Enter only 1 ROBOT.	H102	1.0	H102	1.0	G209	1.0	E117	1.0
+E201	E	The ROBOT goes alone to off-site machine shops.		0.308		0.286	E201	1.0	E201	1.0
+E301	E	No wireless communication.		0.571		0.571	E301	1.0	E301	1.0
+E302	E	Don’t interfere with wireless networks.		0.25		0.4	E302	1.0	E302	1.0
+E303	E	Tethered operation outside FIELDS/PRACTICE AREAS.		0.0		0.0	E303	0.833	E303	0.833
+E401	E	Load in during Load-In.		0.308		0.308	E401	1.0	E401	1.0
+E402	E	Load-In person limit is 6.		0.222		0.222	E402	0.833	E402	0.833
+E403	E	Load-In Restrictions.		0.286		0.25		0.5	E403	1.0
+E404	E	Pit must be left in a safe state.		0.333		0.333	E404	1.0	E404	1.0
+E405	E	Once done, head out.		0.222		0.222	E405	1.0	E405	1.0
+E501	E	Pits are unavailable if closed.		0.222		0.222	E501	1.0	E501	1.0
+E502	E	Stay in your pit.		0.333		0.4	E502	1.0	E502	1.0
+E503	E	Keep aisles clear.		0.333		0.333	E503	1.0	E503	1.0
+E504	E	No sparks or flames.		0.333		0.333	E504	0.667	E504	0.667
+E505	E	Nothing too big.		0.333		0.0	E505	1.0	E505	1.0
+E506	E	No brazing or welding.		0.333		0.333	E506	1.0	E506	1.0
+E507	E	Solder with specific tools only.		0.25		0.25	E507	1.0	E507	1.0
+E508	E	Structures must be safe.		0.5		0.5	E508	1.0	E508	1.0
+E509	E	Secure team identification assets.		0.286		0.286	E509	1.0	E509	1.0
+E510	E	No automated tools overnight		0.333		0.333		0.333		0.333
+E511	E	Pit Power Limit.		0.333		0.333		0.4		0.4
+E601	E	Inspection for TEST & PRACTICE AREAS.		0.222		0.222	E117	0.667	E601	0.667
+E602	E	Practice only when/where permitted.		0.364		0.364	E107	1.0	E602	1.0
+E603	E	TEST/PRACTICE AREA attendance is limited.		0.182		0.182		0.2	E603	0.727
+E604	E	Give ROBOTS space.		0.286		0.286		0.333	E604	1.0
+E605	E	Be ready to DISABLE.		0.286		0.364		0.364	E605	1.0
+E606	E	Be safe.		0.333		0.5	E508	0.667	E606	1.0
+E701	E	Carts must be safe and easy to use.		0.333		0.333	E601	1.0	E701	1.0
+E702	E	Carts shouldn’t be too big.		0.25		0.286	E602	1.0	E702	1.0
+E703	E	Carts can’t park anywhere.		0.182		0.222	E603	1.0	E703	1.0
+E704	E	No noisy carts.		0.4		0.4	E604	1.0	E704	1.0
+E705	E	No motor driven carts.		0.333		0.333	E605	1.0	E705	1.0
+E706	E	Small ROBOT carts are allowed on the FIELD		0.375		0.375	E606	1.0	E706	1.0
+E801	E	If in the pits during Ceremonies, shhhhhh.		0.267		0.267	E701	1.0	E801	1.0
+E802	E	Pit person limit during Ceremonies is 5.		0.2		0.2	E702	1.0	E802	1.0
+E803	E	Be respectful during anthems.		0.25		0.333	E703	1.0	E803	1.0
+E901	E	No saving seats.		0.4		0.4	E801	1.0	E901	1.0
+E902	E	Don’t throw items from the stands.		0.4		0.4	E802	1.0	E902	1.0
+G101	G	Humans, remain outside the FIELD.		0.5		0.5		0.5		0.5
+G102	G	Never step over the guardrail.	H104	1.0	H104	1.0	G102	1.0	G102	1.0
+G103	G	Be careful what you interact with.	G301	1.0	G301	1.0	G103	1.0	G103	1.0
+G104	G	Teams may not enable their ROBOTS on the FIELD.	H302	1.0	H302	1.0	G104	1.0	G104	1.0
+G201	G	Be a good person.	H101	1.0	H101	1.0	G201	1.0	G201	1.0
+G202	G	Don’t bang on the glass.	H308	1.0	H308	1.0	G202	1.0	G202	1.0
+G203	G	Asking other teams to throw a MATCH – not cool.	H105	1.0	H105	1.0	G203	1.0	G203	1.0
+G204	G	Letting someone coerce you into throwing a MATCH – also not cool.	H106	0.87	H106	0.87	G204	1.0	G204	1.0
+G205	G	Throwing your own MATCH is bad.		0.222	H107	1.0	G205	1.0	G205	1.0
+G206	G	Don't violate rules for RPs.		0.167	H111	0.769	G206	1.0	G206	1.0
+G207	G	Don’t abuse ARENA access.	H107	1.0	H108	1.0	G207	1.0	G207	1.0
+G208	G	Show up to your Qualification MATCHES.	H305	0.909	H305	0.909	G208	0.909	G208	0.909
+G209	G	Keep your ROBOT together.	G104	0.75	G104	0.75		0.571	G209	1.0
+G210	G	Don’t expect to gain by doing others harm.	G201	1.0	G201	1.0	G211	1.0	G210	1.0
+G211	G	Egregious or exceptional violations.	H201	1.0	H201	1.0	G212	1.0	G211	1.0
+G212	G	All teams can play.		0.25		0.444		0.444	G212	1.0
+G301	G	Be prompt.		0.333	H301	1.0	G301	1.0	G301	1.0
+G302	G	Limit what you use during a MATCH		0.316		0.316		0.333		0.333
+G303	G	Start your ROBOTS.		0.5		0.333	G303	1.0	G303	1.0
+G401	G	Behind the lines.	H401	1.0	H401	1.0	G401	1.0	G401	1.0
+G402	G	Let the ROBOT do its thing.	H403	1.0	H403	1.0	G402	1.0	G402	1.0
+G403	G	Limited AUTO opponent interaction.		0.286		0.222	G405	1.0	G403	1.0
+G404	G	ROBOTS: use SCORING ELEMENTS as directed.	G402	0.6		0.545	G406	0.667	G406	1.0
+G405	G	Keep SCORING ELEMENTS in bounds.	G401	0.667	G401	0.6	G407	0.667	G407	1.0
+G406	G	Don’t abuse SCORING ELEMENTS.		0.5		0.5		0.5	G408	1.0
+G407	G	Only score while in your ALLIANCE ZONE.		0.5		0.364		0.364		0.533
+G408	G	Don’t catch FUEL	G405	0.667		0.333		0.333		0.333
+G409	G	ROBOTS must be safe.		0.5		0.5	G411	1.0	G413	1.0
+G410	G	Keep your BUMPERS low	G103	1.0	G103	1.0	G412	1.0	G414	1.0
+G411	G	Don’t damage the FIELD	R205	0.75	R205	0.75	R205	0.75	G416	1.0
+G412	G	Watch your FIELD interaction.		0.444		0.444	G415	0.75	G417	1.0
+G413	G	Expansion limits.		0.286		0.25	G413	1.0	G415	1.0
+G414	G	Don’t Climb on each other.	G209	1.0	G208	0.714		0.4		0.4
+G415	G	Stay out of other ROBOTS.	G204	1.0	G204	1.0	G417	1.0	G422	1.0
+G416	G	This isn’t combat robotics.	G205	1.0	G205	1.0	G418	1.0	G423	1.0
+G417	G	Don’t tip or entangle.	G206	1.0	G206	1.0	G419	1.0	G424	1.0
+G418	G	There’s a 3-count on PINS.	G202	0.833	G202	0.833	G420	0.833	G425	1.0
+G419	G	Don’t collude with your partners to shut down major parts of game play.	G203	1.0	G203	1.0	G421	1.0	G426	1.0
+G420	G	TOWER protection.		0.0		0.0		0.5		0.5
+G421	G	No wandering.	H502	1.0	H502	1.0	G425	1.0	G429	1.0
+G422	G	DRIVE COACHES and other teams: hands off the controls.	H501	0.941	H501	0.941	G426	0.941	G430	0.941
+G423	G	DRIVE TEAMS, watch your reach.	H507	1.0	H505	1.0	G427	1.0	G431	1.0
+G424	G	Humans: use SCORING ELEMENTS as directed.	G402	0.6		0.545	G428	0.667	G432	1.0
+G425	G	SCORING ELEMENT delivery.		0.333		0.0		0.4	G433	1.0
+G426	G	DRIVE COACHES, SCORING ELEMENTS are off limits.		0.5	H503	0.615		0.308	G434	0.923
+G427	G	The OUTPOST has a storage limit.		0.4		0.4		0.4	G435	0.769
+G501	G	Leave promptly.		0.333	H312	1.0	G501	1.0	G501	1.0
+I101	I	It’s your team’s ROBOT.	I101	1.0	I101	1.0	I101	1.0	I101	1.0
+I102	I	Get inspected before playing a Qualification MATCH.	I102	0.933	I102	0.933	I102	0.933	I102	0.933
+I103	I	Bring it all to inspection.	I103	1.0	I103	1.0	I103	1.0	I103	1.0
+I104	I	Unless the change is listed below, any change to a ROBOT must get re-inspected.	I104	1.0	I104	1.0	I104	1.0	I104	1.0
+I105	I	Don’t exploit re-inspection.	I105	1.0	I105	1.0	I105	1.0	I105	1.0
+I106	I	ROBOTS are off for inspection (mostly).	I106	1.0	I106	1.0	I106	1.0	I106	1.0
+I107	I	No STUDENT, no inspection.	I107	1.0	I107	1.0	I107	1.0	I107	1.0
+Q101	Q	Head REFEREE Interactions.		0.5		0.5		0.5		0.5
+Q102	Q	Conversations must be civil.		0.5		0.5		0.5		0.5
+R101	R	ROBOT PERIMETER must be fixed.	R101	0.8	R101	0.8	R101	0.8	R101	1.0
+R102	R	STARTING CONFIGURATION – no overhang.	R102	1.0	R102	1.0	R102	1.0	R102	1.0
+R103	R	ROBOT weight limit.	R103	1.0	R103	1.0	R103	1.0	R103	1.0
+R104	R	STARTING CONFIGURATION – max size.	R104	1.0	R104	1.0	R104	1.0	R104	1.0
+R105	R	ROBOT horizontal extension limit.	R105	0.857	R105	0.857	R105	0.857	R105	0.857
+R106	R	Horizontal extension – one direction at a time.		0.308		0.316		0.5		0.5
+R107	R	ROBOT vertical extension limit.	R105	0.857	R105	0.857	R105	0.857	R105	0.857
+R108	R	ROBOT extension floor interaction		0.571		0.571		0.571		0.571
+R201	R	No digging into carpet.	R201	1.0	R201	1.0	R201	1.0	R201	1.0
+R202	R	No exposed sharp edges.	R202	0.857	R202	1.0	R202	1.0	R202	1.0
+R203	R	General safety.	R203	1.0	R203	1.0	R203	1.0	R203	1.0
+R204	R	Leave SCORING ELEMENTS at the FIELD.		0.4		0.4		0.4	R204	1.0
+R205	R	Don’t contaminate the FIELD.	R205	1.0	R205	1.0	R205	1.0	R205	1.0
+R206	R	Don’t damage SCORING ELEMENTS.		0.286		0.5		0.571	R206	1.0
+R301	R	Individual item cost limit.	R301	1.0	R301	1.0	R301	1.0	R301	1.0
+R302	R	MAJOR MECHANISM, from this year only.	R302	0.615	R302	0.615	R302	0.615	R302	1.0
+R303	R	Create new designs and software, unless they’re public.	R303	1.0	R303	1.0	R303	1.0	R303	1.0
+R401	R	BUMPERS almost all around.		0.444		0.444	R401	0.857	R401	0.857
+R402	R	BUMPER construction.	R408	1.0	R408	1.0	R408	1.0	R402	1.0
+R403	R	BUMPER extension limit.	R105	0.667	R105	0.667	R105	0.667	R403	1.0
+R404	R	BUMPERS must be soft.	R410	0.75	R410	0.75	R410	0.75	R404	1.0
+R405	R	BUMPERS interact with BUMPERS.		0.4		0.4		0.4	R405	1.0
+R406	R	Fill BUMPER corners.	R409	1.0	R409	1.0	R409	1.0	R406	1.0
+R407	R	BUMPERS shouldn’t be wedges.		0.571		0.571		0.571	R407	1.0
+R408	R	Weight limit with BUMPERS.		0.571		0.571		0.571	R408	1.0
+R409	R	BUMPERS should be passive.		0.5		0.5		0.5		0.5
+R410	R	BUMPERS must come off.	R404	1.0	R404	1.0	R404	1.0	R410	1.0
+R411	R	BUMPERS indicate your ALLIANCE.	R405	1.0	R405	1.0	R405	1.0	R411	1.0
+R412	R	Team number on BUMPERS.	R406	1.0	R406	1.0	R406	1.0	R412	1.0
+R501	R	Allowable motors.	R501	1.0	R501	1.0	R501	1.0	R501	1.0
+R502	R	Only 4 propulsion motors.		0.333		0.333	R502	1.0	R502	1.0
+R503	R	Don’t modify motors (mostly).	R502	1.0	R502	1.0	R503	1.0	R503	1.0
+R504	R	Power (most) actuators off of approved devices.	R503	0.769	R503	0.769	R504	1.0	R504	1.0
+R505	R	Don’t overload controllers.	R504	1.0	R504	1.0	R505	1.0	R505	1.0
+R506	R	Control servos safely.	R505	1.0	R505	1.0	R506	1.0	R506	1.0
+R601	R	Battery limit – everyone has the same power.	R601	1.0	R601	1.0	R601	1.0	R601	1.0
+R602	R	Other batteries for cameras or computers only.	R602	1.0	R602	1.0	R602	1.0	R602	1.0
+R603	R	Charge batteries with safe connectors.	R603	1.0	R603	1.0	R603	1.0	R603	1.0
+R604	R	Charge batteries at a safe rate.	R604	1.0	R604	1.0	R604	1.0	R604	1.0
+R605	R	Batteries are not ballast.	R605	1.0	R605	1.0	R605	1.0	R605	1.0
+R606	R	Secure the battery.	R606	1.0	R606	1.0	R606	1.0	R606	1.0
+R607	R	Insulate battery connections.	R607	1.0	R607	1.0	R607	1.0	R607	1.0
+R608	R	Limit non-battery energy.	R608	1.0	R608	1.0	R608	1.0	R608	1.0
+R609	R	Connect main power safely.	R609	1.0	R609	1.0	R609	1.0	R609	1.0
+R610	R	1 breaker/fuse per circuit.	R610	0.889	R610	0.889	R610	0.889	R610	1.0
+R611	R	The ROBOT frame is not a wire.	R611	1.0	R611	1.0	R611	1.0	R611	1.0
+R612	R	Must be able to turn ROBOT on and off safely.	R612	1.0	R612	1.0	R612	1.0	R612	1.0
+R613	R	Electrical system must be inspectable.	R613	1.0	R613	1.0	R613	1.0	R613	1.0
+R614	R	No high voltage allowed.	R614	1.0	R614	1.0	R614	1.0	R614	1.0
+R615	R	Power roboRIO as specified.	R615	1.0	R615	1.0	R615	1.0	R615	1.0
+R616	R	Power radio as specified – Part 1.	R616	1.0	R616	1.0	R616	1.0	R616	1.0
+R617	R	Power radio as specified – Part 2.	R617	1.0	R617	1.0	R617	1.0	R617	1.0
+R618	R	Use PD terminals as designed.	R618	0.727	R618	0.727	R618	0.727	R618	0.615
+R619	R	Only use specified circuit breakers in a PD.	R619	0.75	R619	0.75	R619	0.75	R619	0.667
+R620	R	Only use specified fuses in PD.	R620	0.769	R620	0.769	R620	0.769	R620	0.667
+R621	R	Protect circuits with appropriate circuit breakers.	R621	1.0	R621	1.0	R621	1.0	R621	1.0
+R622	R	Use appropriately sized wire.	R622	1.0	R622	1.0	R622	1.0	R622	1.0
+R623	R	Use only appropriate connectors.	R623	1.0	R623	1.0	R623	1.0	R623	1.0
+R624	R	Use specified wire colors (mostly).	R624	1.0	R624	1.0	R624	1.0	R624	1.0
+R625	R	Don’t modify critical power paths.	R625	1.0	R625	1.0	R625	1.0	R625	1.0
+R626	R	VH-109 PoE passthrough.		0.0		0.0		0.0	R626	1.0
+R701	R	Control the ROBOT with a roboRIO.	R701	1.0	R701	1.0	R701	1.0	R701	1.0
+R702	R	Communicate with the ROBOT with the specified radio.	R702	1.0	R702	1.0	R702	1.0	R702	1.0
+R703	R	Use specific Ethernet port for roboRIO.	R703	1.0	R703	1.0	R703	1.0	R703	1.0
+R704	R	Only use allowed ports and bandwidth to communicate with the ROBOT.	R704	1.0	R704	1.0	R704	1.0	R704	1.0
+R705	R	Configure devices for your team number.	R705	1.0	R705	1.0	R705	1.0	R705	1.0
+R706	R	Don’t bypass the ARENA network.	R706	1.0	R706	1.0	R706	1.0	R706	1.0
+R707	R	Limited wireless allowed.		0.571		0.571		0.571	R707	1.0
+R708	R	Wireless bridge must be visible.	R708	1.0	R708	1.0	R708	1.0	R708	1.0
+R709	R	ROBOTS must have a signal light.	R709	1.0	R709	1.0	R709	1.0	R709	1.0
+R710	R	Only specified modifications to control system devices permitted.	R710	1.0	R710	1.0	R710	1.0	R710	1.0
+R711	R	Don’t connect motor outputs to roboRIO.	R711	1.0	R711	1.0	R711	1.0	R711	1.0
+R712	R	Control PWM controllers from the roboRIO.	R712	1.0	R712	1.0	R712	1.0	R712	1.0
+R713	R	Only approved MXP devices can control actuators.	R713	1.0	R713	1.0	R713	1.0	R713	1.0
+R714	R	Control CAN motor controllers from the roboRIO.	R714	1.0	R714	1.0	R714	1.0	R714	1.0
+R715	R	Control PCM, PH, and Servo Hub from roboRIO.	R715	0.824	R715	0.714	R715	0.714	R715	1.0
+R716	R	Don’t alter the CAN bus.	R717	1.0	R717	1.0	R717	1.0	R716	1.0
+R717	R	USB to CAN adapter permitted.	R718	1.0	R718	1.0	R718	1.0	R717	1.0
+R801	R	Only use explicitly permitted pneumatic parts	R801	1.0	R801	1.0	R801	1.0	R801	1.0
+R802	R	No custom pneumatics and meet minimum pressure ratings.	R802	1.0	R802	1.0	R802	1.0	R802	1.0
+R803	R	Don’t modify pneumatics.	R803	1.0	R803	1.0	R803	1.0	R803	1.0
+R804	R	Only use specific pneumatic devices.	R804	1.0	R804	1.0	R804	1.0	R804	1.0
+R805	R	If using pneumatics, these parts are required.	R805	1.0	R805	1.0	R805	1.0	R805	1.0
+R806	R	Compressed air from ROBOT compressor only.	R806	1.0	R806	1.0	R806	1.0	R806	1.0
+R807	R	Air storage pressure limit.	R807	1.0	R807	1.0	R807	1.0	R807	1.0
+R808	R	Working air pressure limit.	R808	1.0	R808	1.0	R808	1.0	R808	1.0
+R809	R	Limited devices at high pressure.	R809	1.0	R809	1.0	R809	1.0	R809	1.0
+R810	R	Pressure gauges must be visible.	R810	1.0	R810	1.0	R810	1.0	R810	1.0
+R811	R	Relief valve requirements.	R811	1.0	R811	1.0	R811	1.0	R811	1.0
+R812	R	Pressure switch requirements.	R812	1.0	R812	1.0	R812	1.0	R812	1.0
+R813	R	Vent plug requirements.	R813	1.0	R813	1.0	R813	1.0	R813	1.0
+R814	R	Don’t connect solenoid outputs together.	R814	1.0	R814	1.0	R814	1.0	R814	1.0
+R901	R	Use the specified Driver Station Software.	R901	1.0	R901	1.0	R901	1.0	R901	1.0
+R902	R	The OPERATOR CONSOLE must have a visible display.	R902	1.0	R902	1.0	R902	1.0	R902	1.0
+R903	R	Connect FMS Ethernet directly to the OPERATOR CONSOLE.	R903	1.0	R903	1.0	R903	1.0	R903	1.0
+R904	R	OPERATOR CONSOLE physical requirements.	R904	1.0	R904	1.0	R904	1.0	R904	1.0
+R905	R	FIELD wireless only.	R905	1.0	R905	1.0	R905	1.0	R905	1.0
+R906	R	No unsafe OPERATOR CONSOLES.	R906	1.0	R906	1.0	R906	1.0	R906	1.0
+R907	R	No AC inverters.		0.4		0.4		0.4	R907	1.0
+T201	T	Replays will be the same.		0.333	T301	1.0	T201	1.0	T201	1.0
+T301	T	Measurement, not practice.		0.333		0.286		0.286	T301	1.0
+T601	T	Send your STUDENT representatives.		0.286		0.5		0.5	T601	1.0
+T602	T	STUDENTS must outnumber adults.		0.25		0.25		0.25	T602	1.0
+T603	T	Only STUDENTS may use the mic.		0.364		0.364		0.364	T603	1.0
+T604	T	Only the ALLIANCE CAPTAIN may invite an ALLIANCE.		0.308		0.235		0.211	T604	1.0
+T605	T	Picks are time limited.		0.25		0.25		0.25	T605	1.0
+T606	T	Declining teams can’t be picked.		0.222	T702	1.0	T602	1.0	T606	1.0
+T610	T	BACKUP TEAMS due 2 minutes before the MATCH start time.		0.25	T706	1.0	T606	1.0	T610	1.0
+T611	T	Be there to be a BACKUP TEAM.		0.364	T707	1.0	T607	1.0	T611	1.0
+T612	T	Send a BACKUP TEAM Representative.		0.222	T708	1.0	T608	1.0	T612	1.0
+T613	T	LINEUPS due 2 minutes before the MATCH.		0.308	T709	1.0	T609	1.0	T613	1.0
+T614	T	For replays, no changing LINEUPS (mostly).		0.333	T710	1.0	T610	1.0	T614	1.0

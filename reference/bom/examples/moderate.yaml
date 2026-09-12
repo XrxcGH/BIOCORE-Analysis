@@ -1,0 +1,19 @@
+# moderate.yaml -- the "two real mechanisms" configuration.
+# Swerve is the expensive choice; it is bought here, not built.
+name: "MODERATE -- swerve + intake + continuous elevator + winch climb"
+notes: >
+  Four novel mechanisms (intake, elevator, gripper, winch climber) on a bought swerve. This is
+  what most teams actually put on the whiteboard. It fails five of the eight gates -- run it to see
+  exactly which five, and note that programming and motor count are NOT among them.
+mechanisms:
+  - swerve_drivetrain
+  - bumpers_frame
+  - baseline_electrical_package
+  - id: over_bumper_intake
+    note: "floor acquisition"
+  - id: continuous_elevator
+    note: "single-stage, one motor, one ratio -- the small-team elevation default"
+  - id: gripper_end_effector
+    note: "roller-style jaw on the carriage"
+  - id: winch_climber
+    note: "ratchet-held so the climb survives disable at T=0"

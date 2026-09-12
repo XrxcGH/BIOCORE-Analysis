@@ -1,0 +1,110 @@
+# team_capacity.yaml
+# Machine-readable companion to reference/02_TEAM_CAPACITY_MODEL.md
+# Consumed by tools/bom-builder.py for GATE CHECKS.
+#
+# Evidence labels: C = CONFIRMED, H = HISTORICAL-PATTERN, S = SPECULATION, UNVERIFIED
+# Every [S] here is a *model output* from 02_TEAM_CAPACITY_MODEL.md, not a guess.
+
+meta:
+  version: 1
+  written: 2026-08-22
+  companion_md: reference/02_TEAM_CAPACITY_MODEL.md
+  season: 2027 BIOCORE presented by Haas (FRC, FIRST CANOPY)
+  kickoff: "2027-01-09T12:00:00-05:00"
+  profile: "15 students, 15 scheduled h/wk, one experienced technical mentor, COTS path, Week 1 event"
+
+roster:
+  students: 15
+  scheduled_hours_per_week: 15
+  technical_mentors: 1
+  mentor_unblock_hours_per_week: 3.4        # S, 02_TEAM_CAPACITY_MODEL.md sec 6.2
+
+hours:
+  effective_build_hours: 599                # S, sec 2.5  (kickoff -> Week 1 event)
+  effective_build_hours_week4: 854          # S, sec 2.6
+  effective_hours_multiplier: 0.352         # S, sec 2.6
+  # The eight mandatory lines (sec 3.1). A BOM's build/design/programming hours
+  # must fit inside fabrication + cad + programming, NOT inside the 599 total.
+  allocation:
+    strategy_rules: 25.0
+    cad_design: 74.9
+    fabrication_assembly: 129.8
+    electrical_pneumatics: 49.9
+    programming: 134.8
+    integration_debug: 84.9
+    drive_practice: 54.9
+    awards_business: 44.9
+  # Budgets the BOM is actually allowed to spend against:
+  available_build_hours: 129.8              # fabrication_assembly
+  available_design_hours: 74.9              # cad_design
+  available_programming_hours: 134.8        # programming
+  # Electrical is separately budgeted; the baseline electrical package draws on it.
+  available_electrical_hours: 49.9
+
+workstreams:
+  parallel_workstreams_max: 3               # S, sec 5.2 + 6.3, triple-derived
+  novel_mechanisms_max: 2                   # S, sec 5.2 BINDING
+  novel_mechanisms_recommended: 1           # S, sec 5.3
+  mandatory_workstreams:
+    - drivetrain_frame_bumpers_electrical
+    - primary_scoring_mechanism
+    - software_controls_systemcore
+
+budget_usd:
+  season_registration: 6500                 # C, FIRST Cost & Registration
+  robot_discretionary: 2500                 # S, sec 8.1 planning target -- THE number design trades score against
+  robot_bom_floor: 1500                     # C, Everybot 2026 all-in (PF sec 5.1)
+  season_total_planning: 11500              # S, sec 8.1 composite
+  spares_consumables: 500                   # S, midpoint of 400-600
+  sales_tax_rate: 0.07                      # S on rate; C that tax practice changed for 2026-27
+  # Custom-fabrication path is 13000-17000 (C, district-mentor account). Out of reach; named
+  # so it is never accidentally assumed.
+  custom_fab_path_low: 13000
+  custom_fab_path_high: 17000
+
+tooling:
+  # Ordered floor. `level` is what the shop actually has.
+  level: bandsaw_drillpress                 # S for this team profile; adjust per shop
+  ranks:
+    hand_tools: 1
+    bandsaw_drillpress: 2
+    router_cnc: 3
+    mill_lathe: 4
+    outsourced: 5
+  owned:
+    - hand_tools
+    - bandsaw_drillpress
+  inventory:
+    bandsaw: 1
+    drill_press: 1
+    fdm_3d_printer: 1
+    mill: 0                                  # mentor-supervised access only, not in-house
+    cnc_router: 0
+    lathe: 0
+  outsourcing_available: true                # sponsor / community shop / SendCutSend-class vendor
+  outsourcing_budget_usd: 400                # S
+  outsourcing_lead_time_weeks: 2             # S
+
+motors:
+  # R502-class limit as of 2026 REBUILT: propulsion capped at 4 motors (C for 2026).
+  # 2027 motor rules are UNVERIFIED until the BIOCORE manual releases.
+  propulsion_motor_cap: 4                    # C for 2026, H for 2027
+  total_motor_budget: 12                     # S -- practical wiring/CAN/current limit for this team
+  practical_can_devices: 30                  # S
+
+lead_time:
+  kickoff_date: "2027-01-09"
+  # Weeks of slack you must leave before kickoff+build for a part to arrive in time to be used.
+  order_by_safety_margin_weeks: 1            # S
+  bag_free_era: true                         # C -- no bag day since 2020; build continues to event
+
+gates:
+  # bom-builder.py fails a BOM if any of these trips.
+  budget_cap_usd: 2500
+  build_hours_cap: 129.8
+  design_hours_cap: 74.9
+  programming_hours_cap: 134.8
+  parallel_mechanisms_cap: 3
+  novel_mechanisms_cap: 2
+  motor_cap: 12
+  tooling_level: bandsaw_drillpress

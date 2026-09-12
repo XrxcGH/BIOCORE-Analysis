@@ -1,0 +1,125 @@
+rule_id	prefix	num	page	stmt_chars	viol_chars	inset_chars	stmt_sha1	headline
+G1	G	1	34	312	159	0	0672d7ea0338	ROBOTS whose operation or design is dangerous or unsafe are not permitted
+G2	G	2	34	125	22	0	99444aa5a246	DRIVE TEAMS may only enter the FIELD if the TOWER LED strings are green, unless explicitly instructed by a REFEREE or an
+G3	G	3	34	276	43	0	aa2cc6e4bead	ROBOTS and anything they control, e
+G4	G	4	34	412	170	0	4dcaaae37349	DRIVE TEAMS may not extend any body part into the FIELD during the MATCH
+G5	G	5	34	206	22	0	2420044b18d4	DRIVE TEAMS may not climb over, step over, or walk over/across DEFENSES or PLATFORMS, with the exception that teams may 
+G6	G	6	34	64	22	0	09cb50089cdb	DRIVE TEAMS may only enter or exit the FIELD through open gates
+G7	G	7	35	863	221	0	09c0bfc8434b	When placed on the FIELD for a MATCH, each ROBOT must be: A
+G8	G	8	35	798	116	0	8767200a3a49	DRIVE TEAMS may not cause significant or repeated delays to the start of a MATCH and/or to the FIELD reset at the conclu
+G9	G	9	35	811	87	0	ca8adc180a10	DRIVE TEAMS must be in their CASTLE and behind the STARTING LINE prior to the start of the MATCH, with the exception of 
+G11	G	11	36	2957	667	0	d552d5d758ca	Strategies aimed solely at forcing the opposing ALLIANCE to violate a rule are not in the spirit of
+G13	G	13	37	63	282	0	950083704543	During AUTO, ROBOTS may not enter the volume above the MIDLINE
+G14	G	14	37	413	47	0	a26766aaeafd	During AUTO, DRIVE TEAMS may not directly or indirectly interact with ROBOTS or OPERATOR
+G16	G	16	38	146	15	0	f64ac2113ab6	Any control devices worn or held by the DRIVERS and/or HUMAN PLAYERS during AUTO must be
+G17	G	17	38	1180	128	0	593792be91a9	ROBOT height, as measured when it’s resting normally on a flat floor, may not exceed 4 ft
+G19	G	19	39	348	126	0	e49c3e7da32b	ROBOTS may not intentionally detach or leave parts on the FIELD
+G20	G	20	39	240	39	0	1fbf97d3ec62	ROBOTS may only enter or exit their opponent’s SECRET PASSAGE from/to the opponent’s
+G21	G	21	39	1251	147	0	3fedfdbf1109	A ROBOT contacting carpet in the opponent’s SECRET PASSAGE may not contact opposing
+G23	G	23	40	361	44	0	0ed56a40803f	Fallen (i
+G24	G	24	40	321	103	0	2f2c7f317cda	Strategies aimed at the destruction or inhibition of ROBOTS via attachment, damage, tipping,
+G25	G	25	41	873	39	0	0253cb650db3	A ROBOT may not attempt to stop or impede the flow of the MATCH in any of the following ways:
+G26	G	26	41	94	94	0	96f55dc545f5	At any given time, only one (1) ROBOT may contact the carpet or BATTER inside their
+G27	G	27	41	89	32	0	8c50999ba5ea	A ROBOT may not transfer BOULDERS from the NEUTRAL ZONE to the opponent’s SECRET
+G28	G	28	41	521	110	0	afb547618b3f	During the final twenty (20) seconds of TELEOP, ROBOTS in their COURTYARD may not contact
+G29	G	29	41	190	22	0	5733847f2fad	During a MATCH, DRIVE TEAMS may not use electronic devices which have the capability of
+G30	G	30	41	438	247	0	0a91ed1c637f	Only DRIVE TEAMS for the current MATCH are allowed in their respective CASTLES
+G32	G	32	42	257	36	0	ace1d4985246	Teams may not interfere with any automated scoring hardware
+G33	G	33	42	155	27	0	f774f82c17c9	BOULDERS may only be introduced to the FIELD
+G34	G	34	42	657	34	0	5f2cc4370ec4	No more than six (6) BOULDERS may remain in a CASTLE during TELEOP
+G35	G	35	42	256	43	0	ab66ed4afb79	A ROBOT shall be operated solely by the DRIVERS and/or HUMAN PLAYERS of that Team, and/or
+G36	G	36	42	58	15	0	1ded89891e32	COACHES may not touch BOULDERS unless for safety purposes
+G37	G	37	42	182	40	0	94bdb97b2acb	DRIVE TEAM members may not contact anything outside the zone in which they started the
+G38	G	38	43	1040	33	0	b9672866d027	ROBOTS may not control more than one (1) BOULDER at any time
+G39	G	39	43	2234	142	0	2778b690813b	ROBOTS are prohibited from launching BOULDERS unless they are in contact with the opponent’s
+G42	G	42	45	109	35	0	6260386e1bd7	ROBOTS may not intentionally eject BOULDERS from the FIELD other than through the GOALS
+G43	G	43	45	696	89	0	0fadfc73d078	ROBOTS on the same half of the FIELD as their ALLIANCE TOWER may not interfere with
+G44	G	44	45	557	31	0	e908201c6aad	A ROBOT may not use the SHIELD(S) to circumvent a DEFENSE
+G45	G	45	45	10449	31	0	93be96b9a440	A ROBOT may not pass completely over the Low Bar
+R1	R	1	50	872	0	0	2e6ecfc387c1	A Team must submit their ROBOT for Inspection
+R2	R	2	50	745	0	0	0572824a800f	The ROBOT (excluding BUMPERS) must have a FRAME PERIMETER, contained within the BUMPER ZONE, that is comprised of fixed,
+R3	R	3	50	1054	0	0	e43b0b34de4f	The ROBOT must satisfy the following size constraints: A
+R4	R	4	52	507	0	0	dc636425c7b7	In the STARTING CONFIGURATION (the physical configuration in which a ROBOT starts a MATCH), no part of the ROBOT shall e
+R5	R	5	52	533	0	0	e7520ab22471	The ROBOT weight must not exceed 120 lbs
+R6	R	6	52	324	0	0	057c86c776b1	Traction devices must not have surface features such as metal, sandpaper, hard plastic studs, cleats, hook-loop fastener
+R7	R	7	52	486	0	0	930415c88058	ROBOTS must allow removal of BOULDERS from the ROBOT and the ROBOT from FIELD elements while DISABLED and powered off
+R8	R	8	52	2031	0	0	c9f92b18c7a5	Protrusions from the ROBOT and exposed surfaces on the ROBOT shall not pose hazards to the ARENA elements (including the
+R10	R	10	53	754	0	0	1397739fa227	The total cost of all items on the ROBOT shall not exceed $4000 USD
+R11	R	11	54	4344	0	0	352614c6ba67	No individual, non-KOP item shall have a value that exceeds $400 USD
+R13	R	13	56	1619	0	0	16b565a02307	Physical ROBOT elements created before Kickoff are not permitted
+R14	R	14	56	2122	0	0	64ff73f1c59f	Software and mechanical/electrical designs created before Kickoff are only permitted if the source
+R15	R	15	57	363	0	0	76344def8519	All ROBOT elements (including items intended for use during the competition in alternative
+R16	R	16	57	881	0	0	68568e97a189	Teams must stay “hands-off” their bagged ROBOT elements during the following time periods:
+R17	R	17	58	123	0	0	8e654f976497	Lubricants may be used only to reduce friction within the ROBOT
+R18	R	18	58	2403	0	0	dd21310babda	At an Event, Teams may have access to a WITHHOLDING ALLOWANCE of FABRICATED ITEMS,
+R19	R	19	59	1046	0	0	560f3bede243	ROBOTS are required to use BUMPERS to protect all outside corners of the FRAME PERIMETER
+R21	R	21	60	3153	0	0	4b377b7f9dba	BUMPERS must be constructed as follows (see Figure 4-7):
+R22	R	22	62	870	0	0	90fd2490b1ac	BUMPERS must be located entirely within the BUMPER ZONE, which is the volume contained
+R23	R	23	62	66	0	0	8dcd68e12999	BUMPERS must not be articulated (relative to the FRAME PERIMETER)
+R24	R	24	62	164	0	0	d25109edd00f	Corner joints between BUMPERS must be filled with pool noodle material
+R25	R	25	63	263	0	0	43155b67bbdf	BUMPERS (the entire BUMPER, not just the cover) must be designed for quick and easy
+R26	R	26	63	361	0	0	74da43b04109	BUMPERS must be supported by the structure/frame of the ROBOT (see Figure 4-9)
+R27	R	27	63	934	0	0	55c49964c581	Each ROBOT must be able to display Red or Blue BUMPERS to match their ALLIANCE color, as
+R29	R	29	65	2120	0	0	f4db6ea72e8c	The only motors and actuators permitted on 2016 FIRST Robotics Competition ROBOTS include
+R30	R	30	66	1300	0	0	2d701882731e	The integral mechanical and electrical system of any motor must not be modified
+R31	R	31	66	1588	0	0	78c674333cff	The only legal source of electrical energy for the ROBOT during the competition, the ROBOT
+R32	R	32	67	219	0	0	5ad927b439ad	No batteries other than those allowed per R31 are allowed on the ROBOT, whether or not they are
+R33	R	33	67	136	0	0	407a6c0b1970	The ROBOT battery must be secured such that it will not dislodge should the ROBOT be turned
+R34	R	34	67	165	0	0	1e76eccedc3d	Each electrical terminal on the ROBOT battery, main breaker, and their connections (lugs, stripped
+R35	R	35	67	383	0	0	62819d6772d7	Non-electrical sources of energy used by the ROBOT, (i
+R36	R	36	68	783	0	0	29f311fa862d	The one (1) ROBOT battery, a single pair of Anderson Power Products (or APP) 2-pole SB type
+R37	R	37	68	808	0	0	c0843d1f2a3f	All circuits, with the exceptions of those listed in R42 and R44, must connect to, and have power
+R39	R	39	69	299	0	0	b055c1596df7	The 120A circuit breaker must be quickly accessible from the exterior of the ROBOT
+R40	R	40	69	71	0	0	591b9ab47a20	The PDP and all circuit breakers must be easily visible for Inspection
+R41	R	41	69	206	0	0	7df08726e36b	Any active electrical item that is not an actuator (specified in R29) or core Control System item
+R42	R	42	69	211	0	0	2903e124858b	The roboRIO power input must be connected to the dedicated supply terminals on the PDP shown
+R43	R	43	69	688	0	0	80c15edeca48	The Wireless Bridge power must be supplied directly by the 12V 2A output of a Cross the Road
+R44	R	44	70	882	0	0	729bfb4658a1	The VRM supplying power to the Wireless Bridge per R43 must be connected to the designated
+R46	R	46	71	130	0	0	7a9054e1e50b	The only circuit breakers permitted for use in the PDP are:
+R47	R	47	71	153	0	0	b1eab2eee1a0	The fuses in the PDP shall only be replaced with functionally identical fuses (mini automotive blade
+R48	R	48	71	1541	0	0	34b9bf3f004f	Each branch circuit must be protected by one and only one circuit breaker on the PDP per Table
+R50	R	50	72	229	0	0	e949ddb1d283	Branch circuits may include intermediate elements such as COTS connectors, splices, COTS
+R51	R	51	72	535	0	0	0dadf58db712	All non-SIGNAL LEVEL wiring with a constant polarity (i
+R52	R	52	72	1109	0	0	a06844cc3158	With the exception of servos, fans, or hard drive motors permitted in R29, each actuator must be
+R53	R	53	73	965	0	0	c228ddf76c7d	Each power regulating device may control electrical loads per Table 4-4
+R54	R	54	73	210	0	0	311d5cc45e0f	Servos must be connected only to the PWM ports on the roboRIO, either directly or through the
+R55	R	55	73	984	0	0	2d92a85c87b5	CUSTOM CIRCUITS shall not directly alter the power pathways between the ROBOT battery,
+R56	R	56	74	391	0	0	9a10771327dc	ROBOTS must be controlled via one (1) programmable National Instruments roboRIO (P/N:
+R57	R	57	74	384	0	0	c5807aaa3dbd	One (1) OpenMesh Wireless Bridge (P/N: OM5P-AN), that has been configured with the appropriate
+R58	R	58	74	116	0	0	58ffc137d228	The Wireless Bridge must be connected to the roboRIO Ethernet port (either directly or via a CAT5
+R59	R	59	74	226	0	0	5b61c92ba057	Ethernet-connected COTS devices or CUSTOM CIRCUITS may connect to any remaining Ethernet
+R60	R	60	74	1460	0	0	2dbee64268fa	Communication between the ROBOT and the OPERATOR CONSOLE is restricted as follows:
+R62	R	62	75	116	0	0	a30cfc12f6f4	All signals must originate from the OPERATOR CONSOLE and be transmitted to the ROBOT via
+R63	R	63	75	545	0	0	076f6d4c599f	No form of wireless communication shall be used to communicate to, from, or within the ROBOT,
+R64	R	64	75	233	0	0	fad2a42f4ab8	The Wireless Bridge must be mounted on the ROBOT such that the diagnostic lights are visible to
+R65	R	65	75	519	0	0	b3babd844427	ROBOTS must use at least one (1), but no more than two (2) diagnostic ROBOT Signal Lights (RSL)
+R66	R	66	75	2144	0	0	07c573432f49	The Driver Station software, roboRIO, Power Distribution Panel, Pneumatics Control Modules,
+R67	R	67	76	159	0	0	6e9ee56b0849	Neither 12VDC power nor relay module or motor controller outputs shall be directly connected to
+R68	R	68	76	334	0	0	fa0df6a775b8	Every relay module, servo, and PWM motor controller shall be connected to a corresponding port
+R69	R	69	76	962	0	0	3343cd593c6d	If a motor is controlled via the MXP, its power regulating device must be connected by one of the
+R70	R	70	77	839	0	0	00d7a1aacb02	Each Jaguar or Talon SRX must be controlled with signal inputs sourced from the roboRIO and
+R71	R	71	77	255	0	0	b162cf3fc979	Each PCM must be controlled with signal inputs sourced from the roboRIO and passed via a CAN-
+R72	R	72	77	306	0	0	c46930cac420	The PDP CAN interface must be connected to the CAN-bus on the roboRIO (either directly or
+R73	R	73	77	561	0	0	6c9a1b7f2a89	The CAN-bus must be connected to the roboRIO CAN port
+R74	R	74	78	227	0	0	df3ef1af6a52	To satisfy multiple constraints associated with safety, consistency, Inspection, and constructive
+R75	R	75	78	150	0	0	70556c3b5402	All pneumatic items must be COTS pneumatic devices rated by their manufacturers for working
+R76	R	76	78	729	0	0	af33f759824f	All pneumatic COMPONENTS must be used in their original, unaltered condition
+R77	R	77	78	1718	0	0	79e714b6f43c	The only pneumatic system items permitted on 2016 FIRST Robotics Competition ROBOTS include
+R78	R	78	79	586	0	0	f03077280999	If pneumatic COMPONENTS are used, the following items are required as part of the pneumatic
+R79	R	79	79	154	0	0	c5bbfcf94e46	Compressed air on the ROBOT must be provided by one and only one compressor
+R80	R	80	79	515	0	0	62877d6906db	The compressor (permitted per R79) may be located off-board, however the compressor must still
+R81	R	81	80	149	0	0	dabc557347a8	“Stored” air pressure on the ROBOT must be no greater than 120 psi
+R82	R	82	80	231	0	0	de1073d6d7f1	“Working” air pressure on the ROBOT must be no greater than 60 psi and must be provided
+R83	R	83	80	250	0	0	98cf98e1b168	Only the compressor, relief valve (P/N: 16-004-011), pressure switch, pressure vent plug, pressure
+R84	R	84	80	148	0	0	c42e0f8e58fe	Pressure gauges must be placed in easily visible locations upstream and downstream of the
+R85	R	85	80	573	0	0	d4962b374053	If the compressor is not included on the ROBOT (under the provisions of R80) the ”Stored”
+R87	R	87	81	421	0	0	d1ee5b9dbca9	The relief valve must be attached directly to the compressor or attached by legal hard fittings (e
+R88	R	88	81	636	0	0	ea52836b609c	The pressure switch requirements are:
+R89	R	89	81	475	0	0	b77920096cfb	Any pressure vent plug must be:
+R90	R	90	81	62	0	0	6bac65b65b29	The outputs from multiple valves must not be plumbed together
+R91	R	91	82	471	0	0	292035bafe71	The Driver Station software provided on the National Instruments website is the only application
+R92	R	92	82	346	0	0	14da89d83374	The OPERATOR CONSOLE, the set of COMPONENTS and MECHANISMS used by the DRIVERS
+R93	R	93	82	744	0	0	93d545d6cd17	Devices hosting the Driver Station software must only interface with the Field Management System
+R94	R	94	82	441	0	0	41f721946a86	The OPERATOR CONSOLE must not exceed 60 in
+R95	R	95	82	437	0	0	d77e14c3e64e	Other than the system provided by the ARENA, no other form of wireless communications shall be
+R96	R	96	82	67809	1908	12	f05e1afa66ed	OPERATOR CONSOLES shall not be made using hazardous materials, be unsafe, cause an unsafe

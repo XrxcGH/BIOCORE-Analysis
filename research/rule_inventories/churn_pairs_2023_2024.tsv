@@ -1,0 +1,213 @@
+2024_id	2023_ancestor	sim	2024_headline
+E117	T708	0.223	Inspection for Practice Fields
+E606	R406	0.227	Small ROBOT carts are allowed on the FIELD
+E101	H306	0.233	Personal safety comes first
+E108	H302	0.263	Work in designated areas only
+E114	H302	0.271	Hang banners with care
+E304	R401	0.279	Practice Field wireless via event radios only
+E405	R304	0.284	Once done, head out
+E109	R803	0.285	Some things don’t belong at events
+E106	G402	0.299	Some event resources for event teams only
+E507	H202	0.302	Solder with specific tools only
+E509	H201	0.307	Secure team identification assets
+E703	H201	0.307	Be respectful during anthems
+E116	G108	0.312	No firearms
+E506	G101	0.327	No brazing or welding
+E701	H401	0.327	If in the pits during Ceremonies, shhhhhh
+E110	G402	0.339	Don’t arrange for additional utilities
+E702	R807	0.341	Pit person limit during Ceremonies is 5
+E103	G103	0.357	Children with adults, please
+E111	I105	0.358	Don’t sell stuff
+E401	G104	0.362	Load in during Load-In
+E604	T703	0.362	No noisy carts
+E505	G101	0.365	Nothing too big
+E802	T901	0.366	Don’t throw items from the stands
+E402	H107	0.366	Load-In person limit is 5
+E113	H107	0.373	Make FIRST loud, but with restrictions
+G404	G403	0.373	G404Only close shots in AUTO
+R401	G204	0.377	R401*BUMPERS all around
+E302	R707	0.379	Don’t interfere with wireless networks
+G408	R202	0.379	G408ROBOTS, no HIGH NOTES
+E605	G206	0.381	No motor driven carts
+E504	G101	0.382	No sparks
+E801	T704	0.385	No saving seats
+E115	I105	0.389	Limit flag and flagpole size
+R502	H102	0.392	R502*Only 4 propulsion motors
+R106	G303	0.393	R106ROBOTS can’t choke up on chain
+E404	H501	0.394	Pit must be left in a safe state
+E105	H305	0.394	Teams must check in
+E601	R404	0.397	Carts must be safe and easy to use
+E502	H302	0.401	Stay in your pit
+G405	G207	0.401	G405Limited AUTO opponent interaction
+G411	G104	0.403	G411*ROBOTS must be safe
+E508	R604	0.403	Structures must be safe
+E107	H304	0.404	Practice only when/where permitted
+E403	H311	0.409	Load-In to your pit only
+E503	G103	0.413	Keep aisles clear
+G409	G403	0.415	G4091 NOTE at a time
+E602	R403	0.415	Carts shouldn’t be too big
+G303	H309	0.415	G303*Start your ROBOTS
+E104	I105	0.418	Respect the venue
+E501	G305	0.441	Pits are unavailable if closed
+G410	G404	0.441	G410Don’t abuse GAME PIECES
+G413	G106	0.450	G413Expansion limits
+E112	H110	0.452	Don’t give out food
+E303	H501	0.457	Tethered operation outside FIELDS/Practice Fields
+E201	H311	0.467	The ROBOT goes alone to off-site machine shops
+E603	G103	0.467	Carts can’t park anywhere
+G430	H504	0.468	G430HIGH NOTE delivery
+E301	I105	0.471	No wireless communication
+G424	G209	0.477	G424STAGE protection
+E102	H101	0.509	Be nice
+C301	G405	0.511	C301*Wear your buttons
+G422	G209	0.516	G422PODIUM protection
+G423	G209	0.526	G423SOURCE/AMP ZONE protection
+G429	H504	0.536	G429*NOTE delivery
+G415	G301	0.554	G415Watch your ARENA interaction
+G414	G207	0.568	G414No full-court shots
+G427	H505	0.580	G427*DRIVE TEAMS, watch your reach
+G425	H502	0.588	G425*No wandering
+G416	G203	0.627	G416Don’t choke up on the chain
+G103	H109	0.629	G103*Be careful what you interact with
+G420	G202	0.631	G420*There’s a 5-count on PINS
+G421	G203	0.631	G421*Don’t collude with your partners to shut down major parts of game play
+G403	G403	0.705	G4031 NOTE at a time
+G101	H103	0.758	G101*Humans, stay off the FIELD until green
+G401	H401	0.760	G401*Behind the lines
+G426	H501	0.764	G426*COACHES and other teams: hands off the controls
+G417	G204	0.769	G417*Stay out of other ROBOTS
+G407	G401	0.800	G407*Keep NOTES in bounds
+R808	R808	0.825	R808*Working air pressure limit
+G418	G205	0.827	G418*This isn’t combat robotics
+I107	I107	0.831	No STUDENT, no inspection
+R105	R105	0.839	R105ROBOT extension limit
+G428	G402	0.841	G428*Humans: use GAME PIECES as directed
+G208	H305	0.841	G208*Show up to your MATCHES
+G412	G103	0.852	G412*Keep your BUMPERS low
+T602	T702	0.857	T602*Declining teams can’t be picked
+G212	H201	0.867	G212*Egregious or exceptional violations
+R206	R206	0.871	R206*Don’t damage NOTES
+R406	R406	0.885	R406*Team number on BUMPERS
+R814	R814	0.885	R814*Don’t connect solenoid outputs together
+R906	R906	0.887	R906*No unsafe OPERATOR CONSOLES
+G402	H403	0.890	G402*Let the ROBOT do its thing
+G206	H111	0.892	G206*Don't violate rules for RPs
+R304	R304	0.893	R304*During an event, only work during pit hours
+G406	G402	0.893	G406*ROBOTS: use GAME PIECES as directed
+R904	R904	0.898	R904*OPERATOR CONSOLE physical requirements
+G501	H506	0.902	G501*Leave promptly
+R501	R501	0.911	R501*Allowable motors
+R204	R204	0.913	R204*NOTES stay with the FIELD
+R615	R615	0.915	R615*Power roboRIO as specified
+R408	R408	0.915	R408*BUMPER construction
+R702	R702	0.917	R702*Communicate with the ROBOT with the specified radio
+R616	R616	0.918	R616*Power radio as specified – Part 1
+R621	R621	0.923	R621*Protect circuits with appropriate circuit breakers
+R504	R503	0.925	R504*Power (most) actuators off of approved devices
+G210	G105	0.929	G210*Keep it together
+I104	I104	0.930	Unless the change is listed below, any change to a ROBOT must get re-inspected
+R622	R622	0.931	R622*Use appropriately sized wire
+T610	T710	0.939	T610*For replays, no changing LINEUPS (mostly)
+R709	R709	0.943	R709*ROBOTS must have a signal light
+R202	R202	0.944	R202*No exposed sharp edges
+R602	R602	0.944	R602*Other batteries for cameras or computers only
+R410	R410	0.948	R410*BUMPERS must be supported
+R604	R604	0.950	R604*Charge batteries at a safe rate
+G102	H104	0.954	G102*Never step over the guardrail
+G202	H308	0.954	G202*Don’t bang on the glass
+R703	R703	0.959	R703*Use specific Ethernet port for roboRIO
+R104	R104	0.961	R104STARTING CONFIGURATION – max size
+T606	T706	0.962	T606*BACKUP TEAMS due 2 minutes before the MATCH start time
+R201	R201	0.962	R201*No digging into carpet
+R807	R807	0.963	R807*Air storage pressure limit
+R802	R802	0.965	R802*No custom pneumatics and meet minimum pressure ratings
+R704	R704	0.966	R704*Only use allowed ports and bandwidth to communicate with the ROBOT
+R403	R403	0.966	R403*BUMPERS shouldn’t move
+R810	R810	0.967	R810*Pressure gauges must be visible
+G104	H302	0.968	G104*Teams may not enable their ROBOTS on the FIELD
+T301	T401	0.969	T301*Freeze, ROBOT
+R618	R618	0.970	R618*Use PDP/PDH terminals as designed
+G211	G201	0.971	G211*Don’t expect to gain by doing others harm
+T604	T704	0.973	T604*No BACKUP TEAMS for 1st MATCH
+G302	H303	0.976	G302*You can’t bring/use anything you want
+R613	R613	0.976	R613*Electrical system must be inspectable
+G419	G206	0.977	G419*Don’t tip or entangle
+R404	R404	0.977	R404*BUMPERS must come off
+R505	R504	0.978	R505*Don’t overload controllers
+R811	R811	0.978	R811*Relief valve requirements
+T605	T705	0.978	T605*BACKUP TEAMS play when called
+R701	R701	0.978	R701*Control the ROBOT with a roboRIO
+G301	H301	0.978	G301*Be prompt
+T607	T707	0.978	T607*Be there to be a BACKUP TEAM
+R708	R708	0.979	R708*Wireless bridge must be visible
+R503	R502	0.979	R503*Don’t modify motors (mostly)
+R710	R710	0.979	R710*Only specified modifications to control system devices permitted
+G201	H101	0.979	G201*Be a good person
+R706	R706	0.980	R706*Don’t bypass the ARENA network
+R407	R407	0.980	R407*BUMPER weight limit
+R603	R603	0.980	R603*Charge batteries with safe connectors
+R205	R205	0.980	R205*Don’t contaminate the FIELD
+R203	R203	0.981	R203*General safety
+R605	R605	0.981	R605*Batteries are not ballast
+I101	I101	0.982	It’s your team’s ROBOT
+R905	R905	0.983	R905*FIELD wireless only
+R611	R611	0.983	R611*The ROBOT frame is not a wire
+R409	R409	0.983	R409*Fill BUMPER corners
+G205	H107	0.984	G205*Throwing your own MATCH is bad
+T609	T709	0.984	T609*LINEUPS due 2 minutes before the MATCH
+R716	R716	0.984	R716*Connect the PDP/PDH to the roboRIO CAN bus
+R607	R607	0.984	R607*Insulate battery connections
+R717	R717	0.984	R717*Don’t alter the CAN bus
+R606	R606	0.985	R606*Secure the battery
+R711	R711	0.985	R711*Don’t connect motor outputs to roboRIO
+R612	R612	0.985	R612*Must be able to turn ROBOT on and off safely
+G209	H102	0.985	G209*Enter only 1 ROBOT
+R901	R901	0.985	R901*Use the specified Driver Station Software
+R405	R405	0.985	R405*BUMPERS indicate your ALLIANCE
+R718	R718	0.986	R718*USB to CAN adapter permitted
+R707	R707	0.987	R707*No other wireless allowed
+G207	H108	0.987	G207*Don’t abuse ARENA access
+R614	R614	0.987	R614*No high voltage allowed
+R303	R303	0.987	R303*Create new designs and software, unless they’re public
+R715	R715	0.988	R715*Control PCM/PH(S) from roboRIO
+R806	R806	0.988	R806*Compressed air from ROBOT compressor only
+T603	T703	0.988	T603*No BACKUP TEAM for replayed MATCHES
+R705	R705	0.988	R705*Configure devices for your team number
+R801	R801	0.988	R801*Only use explicitly permitted pneumatic parts
+R506	R505	0.988	R506*Control servos safely
+R804	R804	0.988	R804*Only use specific pneumatic devices
+R623	R623	0.988	R623*Use only appropriate connectors
+R301	R301	0.989	R301*Individual item cost limit
+R809	R809	0.989	R809*Limited devices at high pressure
+R610	R610	0.989	R610*1 breaker per circuit
+R813	R813	0.990	R813*Vent plug requirements
+G204	H106	0.990	G204*Letting someone coerce you into throwing a MATCH – also not cool
+R402	R402	0.990	R402*BUMPERS must stay low
+R619	R619	0.990	R619*Only use specified circuit breakers in PDP/PDH
+G203	H105	0.990	G203*Asking other teams to throw a MATCH – not cool
+R714	R714	0.991	R714*Control CAN motor controllers from the roboRIO
+R102	R102	0.991	R102*STARTING CONFIGURATION – no overhang
+R620	R620	0.991	R620*Only use specified fuses in PDP/PDH
+R625	R625	0.992	R625*Don’t modify critical power paths
+T608	T708	0.992	T608*Send a BACKUP TEAM Representative
+R101	R101	0.993	R101*FRAME PERIMETER must be fixed
+R902	R902	0.993	R902*The OPERATOR CONSOLE must have a visible display
+T201	T301	0.993	T201*Replays will be the same
+R608	R608	0.993	R608*Limit non-battery energy
+R713	R713	0.994	R713*Only approved MXP devices can control actuators
+R103	R103	0.994	R103*ROBOT weight limit
+R712	R712	0.994	R712*Control PWM controllers from the roboRIO
+R903	R903	0.994	R903*Connect FMS Ethernet directly to the OPERATOR CONSOLE
+R803	R803	0.995	R803*Don’t modify pneumatics
+R601	R601	0.995	R601*Battery limit – everyone has the same power
+R624	R624	0.995	R624*Use specified wire colors (mostly)
+T601	T701	0.995	T601*Send a STUDENT representative
+R805	R805	0.996	R805*If using pneumatics, these parts are required
+R609	R609	0.996	R609*Connect main power safely
+R617	R617	0.996	R617*Power radio as specified – Part 2
+R812	R812	0.996	R812*Pressure switch requirements
+R302	R302	0.997	R302*Custom parts, generally from this year only
+I102	I102	1.000	Get inspected before playing a Qualification/Playoff MATCH
+I103	I103	1.000	Bring it all to inspection
+I105	I105	1.000	Don’t exploit re-inspection
+I106	I106	1.000	ROBOTS are off for inspection (mostly)

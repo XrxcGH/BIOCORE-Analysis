@@ -1,0 +1,3 @@
+# `reference/awards/pdfs/`: FIRST award PDFs
+
+This directory holds the award and judging PDFs that FIRST links from its Robotics Competition awards pages, as downloaded by `../fetch_award_pdfs.py`. The PDFs are not in the repository because they are FIRST's copyrighted documents; only `MANIFEST.csv` (file, source URL, bytes, SHA-256, fetch date) and its previous copy `MANIFEST.prev.csv` are tracked. To fill this directory, run `bash tools/rebuild-corpus.sh --fetch` from the repository root. The fetcher rewrites `MANIFEST.csv`, so `git diff` on that file then shows whether your downloads match the versions this analysis used: a changed `sha256` value means FIRST has revised that document since 2026-08-22 (the `fetched` date changes on every run).

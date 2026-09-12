@@ -1,0 +1,52 @@
+{
+  "_comment": "2019 DESTINATION: DEEP SPACE. Filled from the manual for the end-to-end beta test.",
+  "_units": "every *_s field is SECONDS (int); every points field is POINTS (int).",
+  "name": "DESTINATION: DEEP SPACE (2019) -- beta test",
+
+  "auto_s": 15,
+  "auto_s_source": "manual s5.2 p41: 'The SANDSTORM PERIOD is a fifteen (15) second period at the start of each MATCH (T-minus 150s ...)'",
+  "teleop_s": 135,
+  "teleop_s_source": "derived: 150 s match minus the 15 s SANDSTORM PERIOD (manual s5.2 p41)",
+  "endgame_s": 30,
+  "endgame_s_source": "INFORMATIONAL. 2019 had no separately-defined endgame phase; HAB climbs conventionally occur in the closing ~30 s. Enters no arithmetic.",
+
+  "_cycle_actions_note": "DEEP SPACE has TWO repeatable scoring actions -- CARGO (3) and HATCH PANEL (2). Only cycle_actions[0] is modelled. CARGO is the dominant one by value, so it is modelled here; the HATCH half is combined by hand in REVIEW.md s2. Note a HATCH must be present before CARGO counts in a BAY, so a pure-CARGO robot is not actually viable alone -- a real constraint this schema cannot express.",
+  "cycle_actions": [
+    {
+      "name": "CARGO into a BAY",
+      "points_auto": 3,
+      "points_teleop": 3,
+      "points_auto_source": "manual Table 5-1 p42 (CARGO = 3, no AUTO/TELEOP distinction)",
+      "points_teleop_source": "manual Table 5-1 p42",
+      "per_cycle": 1,
+      "per_cycle_source": "ASSUMPTION -- a DEEP SPACE round trip delivered one game piece. Not a manual fact."
+    }
+  ],
+
+  "fixed_actions": [
+    { "name": "SANDSTORM cross from Level 1", "points": 3, "time_s": 3, "phase": "auto",
+      "points_source": "manual Table 5-1 p42 SANDSTORM Bonus 1",
+      "time_s_source": "ASSUMPTION -- drive-forward duration estimate" },
+    { "name": "SANDSTORM cross from Level 2", "points": 6, "time_s": 4, "phase": "auto",
+      "points_source": "manual Table 5-1 p42 SANDSTORM Bonus 2",
+      "time_s_source": "ASSUMPTION" },
+    { "name": "HAB Climb Level 1", "points": 3, "time_s": 5, "phase": "endgame",
+      "points_source": "manual Table 5-1 p42 HAB Climb Bonus: Level 1",
+      "time_s_source": "ASSUMPTION -- climb duration estimate" },
+    { "name": "HAB Climb Level 2", "points": 6, "time_s": 12, "phase": "endgame",
+      "points_source": "manual Table 5-1 p42 HAB Climb Bonus: Level 2",
+      "time_s_source": "ASSUMPTION" },
+    { "name": "HAB Climb Level 3", "points": 12, "time_s": 25, "phase": "endgame",
+      "points_source": "manual Table 5-1 p42 HAB Climb Bonus: Level 3",
+      "time_s_source": "ASSUMPTION -- L3 was slow and failure-prone in practice" }
+  ],
+
+  "rp": [
+    { "name": "HAB Docking", "metric": "HAB Climb Bonus points", "basis": "fixed", "threshold": 15,
+      "threshold_source": "manual Table 5-1 p42: 'earning at least fifteen (15) HAB Climb Bonus points' = 1 RP",
+      "note": "Alliance-wide. 15 pts = three L1 climbs (9) is NOT enough; needs e.g. L3+L2 (18) or L2x2+L1 (15)." },
+    { "name": "Complete ROCKET", "metric": "CARGO into a BAY", "basis": "cycle", "threshold": 12,
+      "threshold_source": "manual Table 5-1 p42: 'completing at least one (1) ROCKET with six (6) scored HATCH PANELS and six (6) scored CARGO' = 1 RP",
+      "note": "12 = 6 HATCH + 6 CARGO on ONE rocket. The threshold is a co-ordination requirement, not a volume one -- the model treats it as 12 cycle units, which OVERSTATES how reachable it is." }
+  ]
+}

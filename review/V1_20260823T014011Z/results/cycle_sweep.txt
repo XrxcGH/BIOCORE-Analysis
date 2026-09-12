@@ -1,0 +1,19 @@
+
+--- Cycle-time sweep: REBUILT (2026) -- REHEARSAL stand-in for BIOCORE (AUTO units = 3.0) ---
+
+ cycle s     no endgame  TOWER L1 (TEL  TOWER L2 (TEL  TOWER L3 (TEL       No climb
+-----------------------------------------------------------------------------------
+       4          283.0          277.0          273.0          263.0          283.0
+       5          227.0          224.2          223.0          217.0          227.0
+       6          189.7          189.0          189.7          186.3          189.7
+       7          163.0          163.9          165.9          164.4          163.0
+       8          143.0          145.0          148.0          148.0          143.0
+      10          115.0          118.6          123.0          125.0          115.0
+      12           96.3          101.0          106.3          109.7           96.3
+      15           77.7           83.4           89.7           94.3           77.7
+      20           59.0           65.8           73.0           79.0           59.0
+
+Read down a column to see how sensitive a strategy is to cycle time.
+A strategy whose column is flat is cycle-insensitive -- that is a SMALL-TEAM strategy:
+it pays the same whether your drivers are elite or average.
+

@@ -1,0 +1,5 @@
+year,n_events,median_spearman_rank_vs_avgmatch,median_spearman_rank_vs_avgauto,median_spearman_rank_vs_nonauto,median_partial_auto_given_total,median_auto_share_of_score_pct
+2023,179,0.893,0.747,0.864,0.044,27.6
+2024,185,0.873,0.719,0.848,-0.044,37.3
+2025,198,0.838,0.724,0.808,0.259,19.6
+2026,208,0.882,0.719,0.875,0.061,20.6

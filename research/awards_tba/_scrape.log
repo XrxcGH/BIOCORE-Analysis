@@ -1,0 +1,71 @@
+2022: 288 events
+  25/288 events, 388 rows
+  50/288 events, 797 rows
+  75/288 events, 1219 rows
+  100/288 events, 1528 rows
+  125/288 events, 1927 rows
+  150/288 events, 2303 rows
+  175/288 events, 2649 rows
+  200/288 events, 2993 rows
+  225/288 events, 3300 rows
+  250/288 events, 3659 rows
+  275/288 events, 3954 rows
+2022: wrote 4063 rows -> research/awards_tba/tba_awards_2022.csv
+2023: 309 events
+  25/309 events, 356 rows
+  50/309 events, 778 rows
+  75/309 events, 1178 rows
+  100/309 events, 1587 rows
+  125/309 events, 1950 rows
+  150/309 events, 2398 rows
+  175/309 events, 2765 rows
+  200/309 events, 3028 rows
+  225/309 events, 3422 rows
+  250/309 events, 3799 rows
+  275/309 events, 4181 rows
+  300/309 events, 4510 rows
+2023: wrote 4533 rows -> research/awards_tba/tba_awards_2023.csv
+2024: 324 events
+  25/324 events, 280 rows
+  50/324 events, 734 rows
+  75/324 events, 1230 rows
+  100/324 events, 1533 rows
+  125/324 events, 1900 rows
+  150/324 events, 2304 rows
+  175/324 events, 2650 rows
+  200/324 events, 2934 rows
+  225/324 events, 3233 rows
+  250/324 events, 3652 rows
+  275/324 events, 4032 rows
+  300/324 events, 4412 rows
+2024: wrote 4624 rows -> research/awards_tba/tba_awards_2024.csv
+2025: 350 events
+  25/350 events, 320 rows
+  50/350 events, 735 rows
+  75/350 events, 1132 rows
+  100/350 events, 1499 rows
+  125/350 events, 1848 rows
+  150/350 events, 2261 rows
+  175/350 events, 2549 rows
+  200/350 events, 2960 rows
+  225/350 events, 3286 rows
+  250/350 events, 3689 rows
+  275/350 events, 4017 rows
+  300/350 events, 4323 rows
+  325/350 events, 4709 rows
+  350/350 events, 4949 rows
+2025: wrote 4949 rows -> research/awards_tba/tba_awards_2025.csv
+2026: 310 events
+  25/310 events, 252 rows
+  50/310 events, 677 rows
+  75/310 events, 1175 rows
+  100/310 events, 1468 rows
+  125/310 events, 1948 rows
+  150/310 events, 2406 rows
+  175/310 events, 2873 rows
+  200/310 events, 3294 rows
+  225/310 events, 3674 rows
+  250/310 events, 4057 rows
+  275/310 events, 4525 rows
+  300/310 events, 4916 rows
+2026: wrote 4993 rows -> research/awards_tba/tba_awards_2026.csv

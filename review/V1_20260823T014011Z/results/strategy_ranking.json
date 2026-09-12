@@ -1,0 +1,574 @@
+[
+  {
+    "id": "S5",
+    "name": "Feeder / support -- herd NEUTRAL ZONE FUEL to the CHUTE, raise a partner rate",
+    "A": 93.10747663551402,
+    "V": 38.96551724137931,
+    "C": 68.7435949081534,
+    "quadrant": "CHEAP INSURANCE",
+    "tier": "T1 GREEN",
+    "binding": "A4 drive_practice_sensitivity = 3/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "achievability": {
+      "A1": 5,
+      "A2": 5,
+      "A3": 5,
+      "A4": 3,
+      "A5": 5,
+      "A6": 5,
+      "A7": 5,
+      "A8": 5,
+      "A9": 5,
+      "A10": 4,
+      "A11": 4,
+      "A12": 5,
+      "A13": 5
+    },
+    "value": {
+      "V2": 2,
+      "V3": 3,
+      "V4": 4,
+      "V5": 2
+    },
+    "extra": {}
+  },
+  {
+    "id": "S6",
+    "name": "Deliberately simple and flawless -- KOP chassis + hopper dump + passive L1 latch",
+    "A": 90.07009345794393,
+    "V": 40.3448275862069,
+    "C": 67.69372381566227,
+    "quadrant": "CHEAP INSURANCE",
+    "tier": "T1 GREEN",
+    "binding": "A4 drive_practice_sensitivity = 4/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "achievability": {
+      "A1": 5,
+      "A2": 4,
+      "A3": 4,
+      "A4": 4,
+      "A5": 5,
+      "A6": 5,
+      "A7": 4,
+      "A8": 5,
+      "A9": 5,
+      "A10": 5,
+      "A11": 4,
+      "A12": 4,
+      "A13": 5
+    },
+    "value": {
+      "V2": 3,
+      "V3": 3,
+      "V4": 3,
+      "V5": 2
+    },
+    "extra": {}
+  },
+  {
+    "id": "S7",
+    "name": "ENDGAME anchor, LOW tier -- TOWER L1 only, passive latch",
+    "A": 88.27102803738318,
+    "V": 34.48275862068966,
+    "C": 64.0663067998711,
+    "quadrant": "CHEAP INSURANCE",
+    "tier": "T1 GREEN",
+    "binding": "A6 graceful_degradation = 3/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "achievability": {
+      "A1": 5,
+      "A2": 4,
+      "A3": 4,
+      "A4": 4,
+      "A5": 5,
+      "A6": 3,
+      "A7": 5,
+      "A8": 5,
+      "A9": 5,
+      "A10": 4,
+      "A11": 4,
+      "A12": 5,
+      "A13": 5
+    },
+    "value": {
+      "V2": 3,
+      "V3": 2,
+      "V4": 4,
+      "V5": 1
+    },
+    "extra": {}
+  },
+  {
+    "id": "S10",
+    "name": "TRAVERSAL RP specialist -- reliable L2 climb + coach partners to 50 TOWER pts",
+    "A": 67.71028037383178,
+    "V": 58.62068965517241,
+    "C": 63.61996455043507,
+    "quadrant": "BUILD THIS",
+    "tier": "T1 GREEN",
+    "binding": "A5 reliability_exposure = 3/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "achievability": {
+      "A1": 3,
+      "A2": 3,
+      "A3": 3,
+      "A4": 4,
+      "A5": 3,
+      "A6": 3,
+      "A7": 4,
+      "A8": 4,
+      "A9": 4,
+      "A10": 4,
+      "A11": 3,
+      "A12": 4,
+      "A13": 3
+    },
+    "value": {
+      "V2": 5,
+      "V3": 4,
+      "V4": 4,
+      "V5": 3
+    },
+    "extra": {}
+  },
+  {
+    "id": "S14",
+    "name": "Uncontested-window scorer -- score only while own HUB is active, stage otherwise",
+    "A": 73.43457943925233,
+    "V": 42.758620689655174,
+    "C": 59.630398001933614,
+    "quadrant": "CHEAP INSURANCE",
+    "tier": "T2 STRETCH",
+    "binding": "A2 parallel_workstream_demand = 3/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "achievability": {
+      "A1": 4,
+      "A2": 3,
+      "A3": 4,
+      "A4": 4,
+      "A5": 4,
+      "A6": 3,
+      "A7": 3,
+      "A8": 4,
+      "A9": 4,
+      "A10": 4,
+      "A11": 3,
+      "A12": 4,
+      "A13": 4
+    },
+    "value": {
+      "V2": 3,
+      "V3": 3,
+      "V4": 4,
+      "V5": 2
+    },
+    "extra": {}
+  },
+  {
+    "id": "S4",
+    "name": "Pure defense -- zero scoring mechanisms, deny the active HUB",
+    "A": 86.40186915887851,
+    "V": 25.517241379310345,
+    "C": 59.00378665807284,
+    "quadrant": "CHEAP INSURANCE",
+    "tier": "T2 STRETCH",
+    "binding": "A4 drive_practice_sensitivity = 0/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "achievability": {
+      "A1": 5,
+      "A2": 5,
+      "A3": 5,
+      "A4": 0,
+      "A5": 5,
+      "A6": 3,
+      "A7": 5,
+      "A8": 5,
+      "A9": 5,
+      "A10": 5,
+      "A11": 5,
+      "A12": 5,
+      "A13": 5
+    },
+    "value": {
+      "V2": 0,
+      "V3": 2,
+      "V4": 5,
+      "V5": 1
+    },
+    "extra": {}
+  },
+  {
+    "id": "S12",
+    "name": "Choke-point denial -- speed-only, no mechanism, owns the TRENCH lane",
+    "A": 85.46728971962617,
+    "V": 25.517241379310345,
+    "C": 58.48976796648405,
+    "quadrant": "CHEAP INSURANCE",
+    "tier": "T2 STRETCH",
+    "binding": "A4 drive_practice_sensitivity = 0/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "achievability": {
+      "A1": 5,
+      "A2": 5,
+      "A3": 5,
+      "A4": 0,
+      "A5": 5,
+      "A6": 3,
+      "A7": 5,
+      "A8": 5,
+      "A9": 5,
+      "A10": 5,
+      "A11": 5,
+      "A12": 4,
+      "A13": 5
+    },
+    "value": {
+      "V2": 0,
+      "V3": 2,
+      "V4": 5,
+      "V5": 1
+    },
+    "extra": {}
+  },
+  {
+    "id": "S8",
+    "name": "ENDGAME anchor, MID tier -- TOWER L2 winch climber",
+    "A": 65.60747663551402,
+    "V": 49.6551724137931,
+    "C": 58.42893973573961,
+    "quadrant": "CHEAP INSURANCE",
+    "tier": "T2 STRETCH",
+    "binding": "A4 drive_practice_sensitivity = 3/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "achievability": {
+      "A1": 3,
+      "A2": 3,
+      "A3": 3,
+      "A4": 3,
+      "A5": 3,
+      "A6": 3,
+      "A7": 4,
+      "A8": 4,
+      "A9": 4,
+      "A10": 4,
+      "A11": 3,
+      "A12": 4,
+      "A13": 3
+    },
+    "value": {
+      "V2": 4,
+      "V3": 3,
+      "V4": 4,
+      "V5": 3
+    },
+    "extra": {}
+  },
+  {
+    "id": "S3",
+    "name": "AUTO-only specialist -- FUEL preload dump + TOWER L1 in AUTO, idle after",
+    "A": 78.17757009345794,
+    "V": 33.10344827586207,
+    "C": 57.89421527553981,
+    "quadrant": "CHEAP INSURANCE",
+    "tier": "T2 STRETCH",
+    "binding": "A6 graceful_degradation = 1/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "achievability": {
+      "A1": 5,
+      "A2": 4,
+      "A3": 4,
+      "A4": 5,
+      "A5": 4,
+      "A6": 1,
+      "A7": 2,
+      "A8": 4,
+      "A9": 5,
+      "A10": 4,
+      "A11": 4,
+      "A12": 5,
+      "A13": 4
+    },
+    "value": {
+      "V2": 2,
+      "V3": 2,
+      "V4": 5,
+      "V5": 1
+    },
+    "extra": {}
+  },
+  {
+    "id": "S2",
+    "name": "Fixed-position FUEL scorer -- one surveyed spot in the ALLIANCE ZONE",
+    "A": 73.20093457943925,
+    "V": 35.51724137931034,
+    "C": 56.243272639381246,
+    "quadrant": "CHEAP INSURANCE",
+    "tier": "T2 STRETCH",
+    "binding": "A2 parallel_workstream_demand = 3/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "achievability": {
+      "A1": 4,
+      "A2": 3,
+      "A3": 3,
+      "A4": 4,
+      "A5": 4,
+      "A6": 3,
+      "A7": 4,
+      "A8": 4,
+      "A9": 4,
+      "A10": 4,
+      "A11": 3,
+      "A12": 4,
+      "A13": 4
+    },
+    "value": {
+      "V2": 3,
+      "V3": 3,
+      "V4": 1,
+      "V5": 2
+    },
+    "extra": {}
+  },
+  {
+    "id": "S11",
+    "name": "ENERGIZED RP chaser -- FUEL volume tuned to the 100 threshold, ignores climb",
+    "A": 57.546728971962615,
+    "V": 41.724137931034484,
+    "C": 50.426563003544956,
+    "quadrant": "DELETE",
+    "tier": "T2 STRETCH",
+    "binding": "A4 drive_practice_sensitivity = 2/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "achievability": {
+      "A1": 3,
+      "A2": 3,
+      "A3": 3,
+      "A4": 2,
+      "A5": 3,
+      "A6": 3,
+      "A7": 3,
+      "A8": 3,
+      "A9": 4,
+      "A10": 3,
+      "A11": 2,
+      "A12": 3,
+      "A13": 3
+    },
+    "value": {
+      "V2": 4,
+      "V3": 3,
+      "V4": 2,
+      "V5": 2
+    },
+    "extra": {}
+  },
+  {
+    "id": "S9",
+    "name": "ENDGAME anchor, TOP tier -- TOWER L3 telescoping climber",
+    "A": 39.626168224299064,
+    "V": 57.93103448275862,
+    "C": 47.86335804060587,
+    "quadrant": "TRAP",
+    "tier": "T4 GATED",
+    "binding": "GATE G1 MACHINE: needs 'CNC'; shop has ['3dprint', 'bandsaw+drill', 'hand']",
+    "gates": [
+      [
+        "G1",
+        "MACHINE",
+        "needs 'CNC'; shop has ['3dprint', 'bandsaw+drill', 'hand']"
+      ],
+      [
+        "G2",
+        "WORKSTREAMS",
+        "2 new streams exceeds parallel_workstreams_max 3"
+      ],
+      [
+        "G5",
+        "MENTOR",
+        "210 min/wk > 204 min/wk"
+      ]
+    ],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [
+      "A9"
+    ],
+    "achievability": {
+      "A1": 2,
+      "A2": 1,
+      "A3": 2,
+      "A4": 2,
+      "A5": 2,
+      "A6": 1,
+      "A7": 3,
+      "A8": 4,
+      "A9": 0,
+      "A10": 3,
+      "A11": 2,
+      "A12": 3,
+      "A13": 2
+    },
+    "value": {
+      "V2": 4,
+      "V3": 4,
+      "V4": 4,
+      "V5": 4
+    },
+    "extra": {}
+  },
+  {
+    "id": "S1",
+    "name": "Full-field FUEL volume cycler (variable range shooter)",
+    "A": 31.6588785046729,
+    "V": 53.10344827586207,
+    "C": 41.30893490170803,
+    "quadrant": "DELETE",
+    "tier": "T4 GATED",
+    "binding": "GATE G2 WORKSTREAMS: 2 new streams exceeds parallel_workstreams_max 3",
+    "gates": [
+      [
+        "G2",
+        "WORKSTREAMS",
+        "2 new streams exceeds parallel_workstreams_max 3"
+      ]
+    ],
+    "soft_gate": true,
+    "soft_gates": [
+      [
+        "G1",
+        "MACHINE",
+        "'router' floor: outsourceable as a service, not owned -> one tier down"
+      ]
+    ],
+    "zeros": [],
+    "achievability": {
+      "A1": 1,
+      "A2": 1,
+      "A3": 2,
+      "A4": 1,
+      "A5": 1,
+      "A6": 3,
+      "A7": 1,
+      "A8": 2,
+      "A9": 2,
+      "A10": 3,
+      "A11": 1,
+      "A12": 2,
+      "A13": 2
+    },
+    "value": {
+      "V2": 4,
+      "V3": 4,
+      "V4": 2,
+      "V5": 4
+    },
+    "extra": {}
+  },
+  {
+    "id": "S13",
+    "name": "DO-EVERYTHING (recorded so it can be rejected) -- swerve + turret + L3",
+    "A": 4.929906542056075,
+    "V": 70.0,
+    "C": 34.21144859813084,
+    "quadrant": "TRAP",
+    "tier": "T4 GATED",
+    "binding": "GATE G2 WORKSTREAMS: 4 novel mechanisms > novel_mechanisms_max 2",
+    "gates": [
+      [
+        "G2",
+        "WORKSTREAMS",
+        "4 novel mechanisms > novel_mechanisms_max 2"
+      ],
+      [
+        "G3",
+        "BUDGET",
+        "$4,200 > $2,500"
+      ],
+      [
+        "G4",
+        "HOURS",
+        "420 h > 256 h (pool 205 x 1.25)"
+      ],
+      [
+        "G5",
+        "MENTOR",
+        "420 min/wk > 204 min/wk"
+      ]
+    ],
+    "soft_gate": true,
+    "soft_gates": [
+      [
+        "G1",
+        "MACHINE",
+        "'router' floor: outsourceable as a service, not owned -> one tier down"
+      ]
+    ],
+    "zeros": [
+      "A1",
+      "A2",
+      "A3",
+      "A5",
+      "A7",
+      "A8",
+      "A9",
+      "A11",
+      "A12",
+      "A13"
+    ],
+    "achievability": {
+      "A1": 0,
+      "A2": 0,
+      "A3": 0,
+      "A4": 1,
+      "A5": 0,
+      "A6": 1,
+      "A7": 0,
+      "A8": 0,
+      "A9": 0,
+      "A10": 1,
+      "A11": 0,
+      "A12": 0,
+      "A13": 0
+    },
+    "value": {
+      "V2": 5,
+      "V3": 5,
+      "V4": 4,
+      "V5": 5
+    },
+    "extra": {}
+  }
+]

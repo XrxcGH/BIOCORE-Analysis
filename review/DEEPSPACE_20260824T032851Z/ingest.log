@@ -1,0 +1,225 @@
+!! WARNING: 'DEEPSPACE.pdf' does not look like a BIOCORE manual.
+   Copying as NOT-BIOCORE_DEEPSPACE.pdf instead of BIOCORE_GameManual_DEEPSPACE.pdf.
+   The BIOCORE_GameManual_*.pdf slot is reserved for the real 2027 manual.
+BIOCORE ingest  label=DEEPSPACE  stamp=20260824T032851Z
+  manual   : manuals/2026-27_BIOCORE/NOT-BIOCORE_DEEPSPACE.pdf
+  baseline : manuals/archive/frc/2018_POWERUP_GameManual.pdf
+  workdir  : manuals/2026-27_BIOCORE/ingest_DEEPSPACE_20260824T032851Z
+
+== 1. Extract text (pymupdf authoritative; pdftotext for tables) ==
+   pages=133  lines=3723  rules=169  glossary=77  violations=61  toc=104
+   class:    UNKNOWN=169
+   [!] NO EVERGREEN/GAMESPEC COLOUR ENCODING in this manual (pre-2023 era).
+       Every rule is reported UNKNOWN. The 'which rules are new this season'
+       split is UNAVAILABLE here -- derive it from the rule-id diff instead.
+   prefixes: C=11  G=24  H=16  I=7  R=100  S=6  T=5
+   full_layout.txt  (TABLES ONLY -- never parse rules from this)
+   full_raw.txt     (reflowed reading order, for phrase greps)
+   full_lines.txt   3723 lines  <- authoritative body text
+
+== 2. Baseline extraction (cached) ==
+   cache hit: manuals/archive/frc/_spans/2018_POWERUP_GameManual
+
+== 3. Rule inventory, baseline diff, glossary diff, undefined ALL-CAPS ==
+   rules: new=169 base=186  ADDED=57  REMOVED=74  CHANGED=112  identical=0
+   class: gamespec=169  evergreen=0
+   glossary: new=77 base=0  ADDED=77  REMOVED=0  CHANGED=0
+   undefined ALL-CAPS: 45 distinct tokens, 10 distinct phrases
+   --- rule ids by prefix (G game, R robot, I inspection, T tournament, C champs, E event, Q question box) ---
+   C=11     G=24     H=16     I=7     R=100     S=6     T=5  
+   --- ADDED rule ids (did not exist in the baseline) ---
+   C1 C11 C2 C3 C4 C5 C6 C7 C8 C9 G1 G2 G3 G4 G5 G6 G7 G8 G9 H1 H15 H16 H2 H3 H4 H5 H6 H7 H8 H9 I1 I2 
+   I3 I4 I5 I6 I7 R1 R2 R3 R4 R5 R6 R7 R8 R9 S1 S2 S3 S4 S5 S6 T1 T2 T3 T4 T5    --- REMOVED rule ids (existed in the baseline, gone now) ---
+   C01 C02 C03 C04 C05 C06 C07 C08 C09 G01 G02 G03 G04 G05 G06 G07 G08 G09 G25 H01 H02 H03 H04 H05 H06 
+   H07 H08 H09 I01 I02 I03 I04 I05 I06 I07 R01 R02 R03 R04 R05 R06 R07 R08 R09 R101 R102 S01 S02 S03 
+   S04 S05 S06 T01 T02 T03 T04 T05 T06 T07 T08 T09 T10 T11 T12 T13 T14 T15 T16 T17 T18 T19 T20 T21 T22    --- GAME-SPECIFIC rules (blue headline) = THIS IS THE NEW GAME, read every one ---
+   S1	Dangerous ROBOTS: not allowed.
+   S2	Wait for the green lights.
+   S3	Never step/jump over the guardrail.
+   S4	Humans, stay off the FIELD during the MATCH.
+   S5	ROBOTS, stay on the FIELD during the MATCH.
+   S6	Stay out of the Chutes.
+   C1	Egregious or exceptional violations.
+   C2	Be a good person.
+   C3	Asking other teams to throw a MATCH – not cool.
+   C4	Letting someone coerce you in to throwing a MATCH – also not cool.
+   C5	Compete with only one (1) ROBOT.
+   C6	Show up to your MATCHES.
+   C7	Be prompt/safe when coming to and going from the FIELD.
+   C8	Don’t expect to gain by doing others harm.
+   C9	One student, one Head REFEREE
+   C10	Plug in to/be in your PLAYER STATION
+   C11	Work in designated areas only.
+   G1	Know your ROBOT setup.
+   G2	ROBOTS must be removed from the FIELD by hand (i.e. no enabling, power, etc.).
+   G3	No defense.
+   G4	One GAME PIECE at a time.
+   G5	Don’t mess with opponents’ scored GAME PIECES
+   G6	No throwing HATCH PANELS
+   G7	Keep GAME PIECES in bounds.
+   G8	GAME PIECES: use as directed.
+   G9	One (1) defender at a time.
+   G10	On defense, rein it in.
+   G11	No throwing CARGO on defense.
+   G12	Duck in the HAB ZONES.
+   G13	Opponents in their HAB ZONE are off-limits.
+   G14	Don’t climb on each other unless in the HAB ZONE.
+   G15	Be careful about what you interact with.
+   G16	Don’t touch opponents’ ROCKETS at the end of the MATCH.
+   G17	If an opponent’s down, back off.
+   G18	There’s a 5-count on pins.
+   G19	Don’t tear others down to lift yourself up.
+   G20	Stay out of other ROBOTS.
+   G21	Keep it together.
+   G22	Keep your BUMPERS together.
+   G23	Keep your BUMPERS low.
+   G24	Don’t overextend yourself.
+   H1	You can’t bring/use anything you want.
+   H2	Know your DRIVE TEAM positions.
+   H3	Leave the GAME PIECES alone
+   H4	COACHES and other teams: hands off the controls.
+   H5	Wireless devices not allowed.
+   H6	No wandering.
+   H7	GAME PIECES through LOADING STATIONS only.
+   H8	COACHES, no GAME PIECES.
+   H9	Between the (STARTING) LINES.
+   H10	No peeking.
+   H11	By invitation only.
+   H12	Identify yourself.
+   H13	Don’t abuse ARENA access.
+   H14	Don’t mess with GAME PIECES.
+   H15	No throwing HATCH PANELS.
+   H16	Don’t bang on the glass.
+   R1	BUMPER ZONE and established in the ROBOT’S STARTING CONFIGURATION, that is
+   R2	MATCH), no part of the ROBOT shall extend outside the vertical projection of the FRAME
+   R3	in. (~304 cm) and may not be more than 4 ft. (~121 cm) tall.
+
+== 4. Scoring / timing / dimension / penalty harvest ==
+   scoring=32  timing=5  dimension=216  penalty=129
+   Violation: clauses=61 (rule-attributed)   raw grep hits=62   scored-when candidates=27
+   --- penalty vocabulary census ---
+   MINOR FOUL       0
+   MAJOR FOUL       0
+   TECH FOUL        12
+   YELLOW CARD      36
+   RED CARD         48
+   VERBAL WARNING   6
+   DISABLED         14
+   DISQUALIFIED     9
+
+== 5. Glossary + undefined ALL-CAPS terms ==
+   defined terms: 77   new vs baseline: 77
+   --- NEW defined terms (these nouns ARE the game) ---
+   ACTIVE DEVICE ALIGNMENT LINE ALLIANCE ALLIANCE CAPTAIN ALLIANCE STATION ALLIANCE WALL ALLOWANCE 
+   ARENA ARENA FAULT BACKUP TEAM BAY BOM BUMPER BUMPER ZONE BYPASSED CARGO CARGO SHIP CARGO SHIP LINE 
+   CENTER LINE COACH COMPONENT CONFIGURATION COTS CUSTOM CIRCUIT DEPOT DISABLED DISQUALIFIED DRIVE 
+   TEAM DRIVER FABRICATED ITEM FIELD FIELD STAFF FMS FOUL FRAME PERIMETER FTA GAME PIECES HAB LINE HAB 
+   PLATFORM HAB ZONE HATCH HATCH PANEL HUMAN PLAYER KOP LINEUP LOADING STATION LRI MATCH MECHANISM 
+   MIDLINE MXP OPERATOR CONSOLE PASSIVE CONDUCTORS PCM PDP PLAYER STATION PORT RED CARD REFEREE ROBOT 
+   ROCKET RP RS RSL SANDSTORM SANDSTORM PERIOD SIGNAL LEVEL STARTING STARTING LINE SURROGATE TECH FOUL 
+   TECHNICIAN TIMEOUT VENDOR VRM WITHHOLDING YELLOW CARD    --- ALL-CAPS used in the body but NOT defined in the glossary (loophole signal) ---
+       s1.6 promises ALL CAPS == defined term. Anything here is a typo, an acronym,
+       or a load-bearing undefined term. The third kind is where arguments get won.
+   DESTINATION            x27   p5
+   DEEP                   x27   p5
+   SPACE                  x27   p5
+   BLDC                   x5    p83
+   WAGO                   x4    p87
+   WITHOLDING             x3    p76
+   DISQUALIFICATION       x3    p106
+   PLAYOFF                x2    p39
+   NOTE                   x2    p49
+   ABC                    x2    p70
+   UTC                    x2    p73
+   DMC                    x2    p84
+   CLIMB                  x2    p110
+   BONUS                  x2    p110
+   ALL                    x1    p8
+   CAPS                   x1    p8
+   III                    x1    p15
+   GUARDRAIL              x1    p23
+   IFR                    x1    p28
+   C35PH                  x1    p32
+   SKU                    x1    p32
+   OPERATING              x1    p51
+   CLIMBED                x1    p56
+   A-D                    x1    p56
+   B-G                    x1    p61
+   PDV                    x1    p65
+   NOT                    x1    p65
+   MSC                    x1    p66
+   MSD                    x1    p70
+   XYZ                    x1    p70
+   VDC                    x1    p83
+   LIDAR                  x1    p83
+   MDL-BDC                x1    p84
+   MAX                    x1    p84
+   SPIKE-RELAY-H          x1    p84
+   SLA                    x1    p85
+   SBS                    x1    p87
+   B12ME522               x1    p92
+   RMA                    x1    p94
+   RCAL                   x1    p94
+   --- undefined ALL-CAPS phrases ---
+   DEEP SPACE                                 x24   p5
+   WITHOLDING ALLOWANCE                       x3    p76
+   DEEP SPACE FIELD                           x2    p14
+   PLAYOFF MATCH                              x2    p39
+   HAB CLIMB                                  x2    p110
+   SANDSTORM BONUS                            x2    p110
+   ALL CAPS                                   x1    p8
+   SPACE ARENA                                x1    p14
+   OPERATING CONSOLES                         x1    p51
+   RCAL MXP                                   x1    p94
+
+== 6. Section map ==
+   104 headings -> SECTION_MAP.tsv
+   p5    1 Introduction
+   p11   2 2019 Game Overview
+   p13   3 Season Sponsor Recognition
+   p14   4 ARENA
+   p39   5 MATCH Play
+   p47   6 Safety Rules
+   p49   7 Conduct Rules
+   p53   8 Game Rules: ROBOTS
+   p61   9 Game Rules: Humans
+   p65   10 ROBOT Construction Rules
+   p101  11 Inspection & Eligibility Rules
+   p105  12 Tournaments
+   p129  13 Glossary
+
+== 7. Loophole tripwires ==
+   tripwire hits: 360
+   unresolved placeholders: 0
+
+== 8. Summary ==
+BIOCORE ingest  label=DEEPSPACE  stamp=20260824T032851Z
+manual   : manuals/2026-27_BIOCORE/NOT-BIOCORE_DEEPSPACE.pdf
+baseline : manuals/archive/frc/2018_POWERUP_GameManual.pdf
+pages    : 133
+rules    : 169   added=57  removed=74  changed=112
+gamespec : 169   evergreen=0
+glossary : 77   added=77  removed=0
+undefined: 45 caps tokens, 10 phrases
+violations: 61
+
+==========================================================
+ INGEST COMPLETE -> manuals/2026-27_BIOCORE/ingest_DEEPSPACE_20260824T032851Z
+==========================================================
+ Hand these to the review, in this order:
+
+   1. rules_GAMESPECIFIC.tsv     blue-headline rules -- this IS the new game
+   2. rules_ADDED.txt            rule ids that did not exist in the baseline
+   3. rules_CHANGED.tsv          evergreen rules FIRST quietly edited (+ _DETAIL for diffs)
+   4. rules_REMOVED.txt          rules that vanished -- ask what replaced them
+   5. glossary_ADDED.txt         the new game's defined nouns
+   6. UNDEFINED_CAPS.tsv         ALL-CAPS used but never defined  <- loophole signal
+   7. violations.tsv             every enforcement clause, attached to its rule
+   8. SCORED_WHEN.txt            scored-live vs scored-at-the-buzzer evidence
+   9. scoring/timing/dimension/penalty_mentions.txt
+  10. TRIPWIRES.txt              ambiguity, discretion hooks, carve-outs
+  11. SECTION_MAP.tsv            where everything lives
+  12. spans/rules.json           every rule with body text, class, colour, page
+
+ full_lines.txt is the authoritative body text. full_layout.txt is TABLES ONLY.
+ Log: logs/ingest_DEEPSPACE_20260824T032851Z.log

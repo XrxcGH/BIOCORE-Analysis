@@ -1,0 +1,50 @@
+mechanism_id,mechanism_name,line_type,vendor_or_material,item_or_part,sku_or_process,machine,qty,unit_price,ext_price,hours,verified,url,order_by
+kop_chassis,KOP chassis (AndyMark AM14U-series),COTS,AndyMark,AM14U6 6-Wheel Drop Center Robot Drive Base,AM-14U6,,1,940.00,940.00,,yes,https://www.andymark.com/products/am14u6-6-wheel-drop-center-robot-drive-base-2025-frc-kit-of-parts-drive-base,2027-01-02
+kop_chassis,KOP chassis (AndyMark AM14U-series),COTS,REV Robotics,NEO Brushless Motor V1.1,REV-21-1650,,4,42.50,170.00,,yes,https://www.revrobotics.com/rev-21-1650/,2027-01-02
+kop_chassis,KOP chassis (AndyMark AM14U-series),COTS,REV Robotics,SPARK MAX Motor Controller,REV-11-2158,,4,100.00,400.00,,yes,https://www.revrobotics.com/rev-11-2158/,2027-01-02
+kop_chassis,KOP chassis (AndyMark AM14U-series),FABRICATED,1/8 in polycarbonate,Belly pan / electronics board,cut + drill,hand_tools,1,,,3.0,n/a,,2027-01-02
+kop_chassis,KOP chassis (AndyMark AM14U-series),FABRICATED,1x1 6061 tube,Superstructure mounting rails,cut + drill,bandsaw_drillpress,4,,,4.0,n/a,,2027-01-02
+kop_chassis,KOP chassis (AndyMark AM14U-series),MATERIAL_STOCK,raw stock allowance,,,,1,90.00,90.00,,estimate,,2027-01-02
+bumpers_frame,Bumpers + frame perimeter package,COTS,UNVERIFIED,"Pool noodle, 2-1/2 in nominal, per bumper segment",-,,8,4.00,32.00,,UNVERIFIED,-,2026-12-19
+bumpers_frame,Bumpers + frame perimeter package,COTS,UNVERIFIED,"1000 denier Cordura, red and blue sets",-,,2,60.00,120.00,,UNVERIFIED,-,2026-12-19
+bumpers_frame,Bumpers + frame perimeter package,COTS,UNVERIFIED,Bumper mounting hardware / brackets,-,,1,45.00,45.00,,UNVERIFIED,-,2026-12-19
+bumpers_frame,Bumpers + frame perimeter package,FABRICATED,3/4 in plywood,Bumper backing,cut + drill,bandsaw_drillpress,8,,,8.0,n/a,,2026-12-19
+bumpers_frame,Bumpers + frame perimeter package,FABRICATED,Cordura,Bumper fabric sewing / stapling,sew + staple,hand_tools,2,,,8.0,n/a,,2026-12-19
+bumpers_frame,Bumpers + frame perimeter package,FABRICATED,vinyl or sewn numerals,Team number panels,cut + apply,hand_tools,2,,,3.0,n/a,,2026-12-19
+bumpers_frame,Bumpers + frame perimeter package,MATERIAL_STOCK,raw stock allowance,,,,1,60.00,60.00,,estimate,,2026-12-19
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,FIRST / TBD,Systemcore control system,-,,1,450.00,450.00,,UNVERIFIED,-,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,REV Robotics,Power Distribution Hub (PDH),REV-11-1850,,1,250.00,250.00,,yes,https://www.revrobotics.com/rev-11-1850/,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,AndyMark,Robot Signal Light (RSL),am-3583,,1,70.00,70.00,,yes,https://andymark.com/products/robot-signal-light,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,AndyMark,Vivid-Hosting VH-109 FRC Radio V1.5,am-5583a,,1,201.00,201.00,,yes,https://andymark.com/products/vivid-hosting-vh-109-frc-radio-v1-5,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,REV Robotics,Radio Power Module (RPM),REV-11-1856,,1,34.00,34.00,,yes,https://www.revrobotics.com/rev-11-1856/,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,AndyMark,MK ES17-12 12V SLA Battery (Set of 2),-,,3,116.00,348.00,,yes,https://andymark.com/products/mk-es17-12-12v-sla-battery-set-of-2,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,AndyMark,Anderson SB50 Connector with Contacts,-,,4,6.60,26.40,,yes,https://andymark.com/products/sb50-anderson-powerpole-connector-with-contacts,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,UNVERIFIED,120A main breaker (CB285-120),-,,2,25.00,50.00,,UNVERIFIED,-,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,UNVERIFIED,"Battery charger, <=6A, SB connector",-,,2,90.00,180.00,,UNVERIFIED,-,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,UNVERIFIED,6 AWG / 12 AWG / 18 AWG wire + ferrules + lugs,-,,1,160.00,160.00,,UNVERIFIED,-,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,UNVERIFIED,Snap-action breaker assortment,-,,1,60.00,60.00,,UNVERIFIED,-,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),COTS,UNVERIFIED,CAN wire 50 ft + Cat6 + consumables,-,,1,85.00,85.00,,UNVERIFIED,-,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),FABRICATED,1/4 in polycarbonate or 1/8 in plywood,Electronics board,cut + drill,bandsaw_drillpress,1,,,4.0,n/a,,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),FABRICATED,1/8 in 6061 + strap,Battery retention mount,cut + drill,bandsaw_drillpress,1,,,3.0,n/a,,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),FABRICATED,split loom + labels,Wire loom routing + labelling,assemble,hand_tools,1,,,8.0,n/a,,2026-11-21
+baseline_electrical_package,Baseline electrical package (Systemcore era),MATERIAL_STOCK,raw stock allowance,,,,1,65.00,65.00,,estimate,,2026-11-21
+under_bumper_intake,Under-bumper intake,COTS,AndyMark,"Compliant Wheels, 2 in.",-,,8,6.20,49.60,,yes,https://andymark.com/products/compliant-wheels,2026-12-19
+under_bumper_intake,Under-bumper intake,COTS,The Thrifty Bot,Thrifty Live Axle Tube Roller Kit,-,,2,15.00,30.00,,yes,https://www.thethriftybot.com/collections/elevator-kits,2026-12-19
+under_bumper_intake,Under-bumper intake,COTS,REV Robotics,NEO 550 Brushless Motor,REV-21-1651,,1,30.00,30.00,,yes,https://www.revrobotics.com/rev-21-1651/,2026-12-19
+under_bumper_intake,Under-bumper intake,COTS,REV Robotics,SPARK MAX Motor Controller,REV-11-2158,,1,100.00,100.00,,yes,https://www.revrobotics.com/rev-11-2158/,2026-12-19
+under_bumper_intake,Under-bumper intake,COTS,The Thrifty Bot,QTY 10 - .50in OD x .25in ID Radial Bearing,-,,1,20.00,20.00,,yes,https://www.thethriftybot.com/collections/elevator-kits,2026-12-19
+under_bumper_intake,Under-bumper intake,FABRICATED,3/4 in plywood + 1/8 in aluminum strap,Bumper cutout reinforcement,cut + drill,bandsaw_drillpress,2,,,5.0,n/a,,2026-12-19
+under_bumper_intake,Under-bumper intake,FABRICATED,0.060 in polycarbonate,Ramp / funnel plate,cut + bend,hand_tools,1,,,4.0,n/a,,2026-12-19
+under_bumper_intake,Under-bumper intake,FABRICATED,1/8 in 6061 sheet,Roller mounts,cut + drill,bandsaw_drillpress,2,,,4.0,n/a,,2026-12-19
+under_bumper_intake,Under-bumper intake,MATERIAL_STOCK,raw stock allowance,,,,1,75.00,75.00,,estimate,,2026-12-19
+telescoping_arm,Telescoping arm (linear extension on a pivot or fixed angle),COTS,The Thrifty Bot,Thrifty Telescoping Tube Kit -- Base + 2nd Stage (2in to 1.5in to 1in),-,,1,220.00,220.00,,yes,https://www.thethriftybot.com/products/thrifty-telescoping-tube-kit,2026-12-12
+telescoping_arm,Telescoping arm (linear extension on a pivot or fixed angle),COTS,The Thrifty Bot,Elevator Dyneema Pulley Kit,-,,1,59.99,59.99,,yes,https://www.thethriftybot.com/collections/elevator-kits,2026-12-12
+telescoping_arm,Telescoping arm (linear extension on a pivot or fixed angle),COTS,REV Robotics,NEO Brushless Motor V1.1,REV-21-1650,,1,42.50,42.50,,yes,https://www.revrobotics.com/rev-21-1650/,2026-12-12
+telescoping_arm,Telescoping arm (linear extension on a pivot or fixed angle),COTS,REV Robotics,SPARK MAX Motor Controller,REV-11-2158,,1,100.00,100.00,,yes,https://www.revrobotics.com/rev-11-2158/,2026-12-12
+telescoping_arm,Telescoping arm (linear extension on a pivot or fixed angle),COTS,REV Robotics,MAXPlanetary System Kit,REV-25-2109,,2,36.00,72.00,,yes,https://www.revrobotics.com/rev-21-2100/,2026-12-12
+telescoping_arm,Telescoping arm (linear extension on a pivot or fixed angle),FABRICATED,1/4 in 6061 plate,Base tube mount,drill + tap,bandsaw_drillpress,2,,,4.0,n/a,,2026-12-12
+telescoping_arm,Telescoping arm (linear extension on a pivot or fixed angle),FABRICATED,1/8 in 6061 sheet,End effector interface plate,cut + drill,bandsaw_drillpress,1,,,3.0,n/a,,2026-12-12
+telescoping_arm,Telescoping arm (linear extension on a pivot or fixed angle),FABRICATED,UHMW / Delrin stock,Slide pads,cut + drill,hand_tools,8,,,3.0,n/a,,2026-12-12
+telescoping_arm,Telescoping arm (linear extension on a pivot or fixed angle),MATERIAL_STOCK,raw stock allowance,,,,1,90.00,90.00,,estimate,,2026-12-12
+
+TOTAL,,,,,,,,,4725.49,99.0,,,

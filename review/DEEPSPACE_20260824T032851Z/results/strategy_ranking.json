@@ -1,0 +1,451 @@
+[
+  {
+    "id": "D8",
+    "name": "Minimal-and-flawless (hatch only, zero breakdowns)",
+    "A": 100.0,
+    "V": 68.62068965517241,
+    "C": 85.87931034482759,
+    "quadrant": "BUILD THIS",
+    "tier": "T1 GREEN",
+    "binding": "A1 build_hours_fit = 5/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "conflict": "",
+    "achievability": {
+      "A1": 5,
+      "A2": 5,
+      "A3": 5,
+      "A4": 5,
+      "A5": 5,
+      "A6": 5,
+      "A7": 5,
+      "A8": 5,
+      "A9": 5,
+      "A10": 5,
+      "A11": 5,
+      "A12": 5,
+      "A13": 5
+    },
+    "value": {
+      "V2": 3,
+      "V3": 3,
+      "V4": 2,
+      "V5": 3,
+      "V1": 5
+    },
+    "extra": {
+      "points_per_match": 52.0,
+      "share": 0.8666666666666667,
+      "v1_source": "tools/cycle-model.py"
+    }
+  },
+  {
+    "id": "D6",
+    "name": "Defender / denial (block LOADING STATION and rocket faces)",
+    "A": 98.3644859813084,
+    "V": 67.58620689655173,
+    "C": 84.5142603931679,
+    "quadrant": "BUILD THIS",
+    "tier": "T1 GREEN",
+    "binding": "A7 programming_complexity = 4/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "conflict": "",
+    "achievability": {
+      "A1": 5,
+      "A2": 5,
+      "A3": 5,
+      "A4": 5,
+      "A5": 5,
+      "A6": 5,
+      "A7": 4,
+      "A8": 5,
+      "A9": 5,
+      "A10": 5,
+      "A11": 5,
+      "A12": 5,
+      "A13": 5
+    },
+    "value": {
+      "V2": 3,
+      "V3": 2,
+      "V4": 5,
+      "V5": 2,
+      "V1": 5
+    },
+    "extra": {
+      "points_per_match": 36.0,
+      "share": 0.6,
+      "v1_source": "tools/cycle-model.py"
+    }
+  },
+  {
+    "id": "D7",
+    "name": "HATCH PANEL feeder / support",
+    "A": 100.0,
+    "V": 56.55172413793103,
+    "C": 80.44827586206897,
+    "quadrant": "BUILD THIS",
+    "tier": "T1 GREEN",
+    "binding": "A1 build_hours_fit = 5/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "conflict": "",
+    "achievability": {
+      "A1": 5,
+      "A2": 5,
+      "A3": 5,
+      "A4": 5,
+      "A5": 5,
+      "A6": 5,
+      "A7": 5,
+      "A8": 5,
+      "A9": 5,
+      "A10": 5,
+      "A11": 5,
+      "A12": 5,
+      "A13": 5
+    },
+    "value": {
+      "V2": 2,
+      "V3": 2,
+      "V4": 2,
+      "V5": 2,
+      "V1": 5
+    },
+    "extra": {
+      "points_per_match": 47.66666666666667,
+      "share": 0.7944444444444445,
+      "v1_source": "tools/cycle-model.py"
+    }
+  },
+  {
+    "id": "D1",
+    "name": "Cargo ship bulk scorer (hatch + cargo, low height only)",
+    "A": 81.54205607476635,
+    "V": 77.93103448275862,
+    "C": 79.91709635836287,
+    "quadrant": "BUILD THIS",
+    "tier": "T1 GREEN",
+    "binding": "A4 drive_practice_sensitivity = 4/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "conflict": "",
+    "achievability": {
+      "A1": 4,
+      "A2": 4,
+      "A3": 4,
+      "A4": 4,
+      "A5": 4,
+      "A6": 5,
+      "A7": 4,
+      "A8": 4,
+      "A9": 4,
+      "A10": 4,
+      "A11": 4,
+      "A12": 4,
+      "A13": 4
+    },
+    "value": {
+      "V2": 4,
+      "V3": 3,
+      "V4": 3,
+      "V5": 4,
+      "V1": 5
+    },
+    "extra": {
+      "points_per_match": 60.33333333333333,
+      "share": 1.0055555555555555,
+      "v1_source": "tools/cycle-model.py"
+    }
+  },
+  {
+    "id": "D2",
+    "name": "Rocket level-1 specialist (Complete ROCKET RP path)",
+    "A": 63.52803738317757,
+    "V": 86.89655172413794,
+    "C": 74.04386883660973,
+    "quadrant": "BUILD THIS",
+    "tier": "T4 GATED",
+    "binding": "GATE G2 WORKSTREAMS: 2 new streams exceeds parallel_workstreams_max 3",
+    "gates": [
+      [
+        "G2",
+        "WORKSTREAMS",
+        "2 new streams exceeds parallel_workstreams_max 3"
+      ]
+    ],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "conflict": "",
+    "achievability": {
+      "A1": 3,
+      "A2": 3,
+      "A3": 3,
+      "A4": 3,
+      "A5": 3,
+      "A6": 4,
+      "A7": 3,
+      "A8": 4,
+      "A9": 3,
+      "A10": 4,
+      "A11": 3,
+      "A12": 3,
+      "A13": 3
+    },
+    "value": {
+      "V2": 5,
+      "V3": 4,
+      "V4": 3,
+      "V5": 4,
+      "V1": 5
+    },
+    "extra": {
+      "points_per_match": 55.846153846153854,
+      "share": 0.9307692307692309,
+      "v1_source": "tools/cycle-model.py"
+    }
+  },
+  {
+    "id": "D5",
+    "name": "SANDSTORM / auto specialist",
+    "A": 75.58411214953271,
+    "V": 58.96551724137931,
+    "C": 68.10574444086369,
+    "quadrant": "BUILD THIS",
+    "tier": "T1 GREEN",
+    "binding": "A5 reliability_exposure = 3/5",
+    "gates": [],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "conflict": "",
+    "achievability": {
+      "A1": 4,
+      "A2": 4,
+      "A3": 4,
+      "A4": 4,
+      "A5": 3,
+      "A6": 3,
+      "A7": 5,
+      "A8": 4,
+      "A9": 3,
+      "A10": 4,
+      "A11": 3,
+      "A12": 4,
+      "A13": 4
+    },
+    "value": {
+      "V2": 2,
+      "V3": 2,
+      "V4": 3,
+      "V5": 2,
+      "V1": 5
+    },
+    "extra": {
+      "points_per_match": 54.0,
+      "share": 0.9,
+      "v1_source": "tools/cycle-model.py"
+    }
+  },
+  {
+    "id": "D3",
+    "name": "Full-rocket robot (levels 1-3, elevator)",
+    "A": 33.925233644859816,
+    "V": 95.17241379310344,
+    "C": 61.48646471156945,
+    "quadrant": "TRAP",
+    "tier": "T4 GATED",
+    "binding": "GATE G2 WORKSTREAMS: 3 novel mechanisms > novel_mechanisms_max 2",
+    "gates": [
+      [
+        "G2",
+        "WORKSTREAMS",
+        "3 novel mechanisms > novel_mechanisms_max 2"
+      ],
+      [
+        "G3",
+        "BUDGET",
+        "$2,800 > $2,500"
+      ],
+      [
+        "G4",
+        "HOURS",
+        "300 h > 256 h (pool 205 x 1.25)"
+      ],
+      [
+        "G5",
+        "MENTOR",
+        "300 min/wk > 204 min/wk"
+      ]
+    ],
+    "soft_gate": true,
+    "soft_gates": [
+      [
+        "G1",
+        "MACHINE",
+        "'router' floor: outsourceable as a service, not owned -> one tier down"
+      ]
+    ],
+    "zeros": [],
+    "conflict": "",
+    "achievability": {
+      "A1": 1,
+      "A2": 1,
+      "A3": 2,
+      "A4": 1,
+      "A5": 2,
+      "A6": 2,
+      "A7": 2,
+      "A8": 3,
+      "A9": 1,
+      "A10": 3,
+      "A11": 2,
+      "A12": 1,
+      "A13": 2
+    },
+    "value": {
+      "V2": 5,
+      "V3": 5,
+      "V4": 3,
+      "V5": 5,
+      "V1": 5
+    },
+    "extra": {
+      "points_per_match": 66.63636363636363,
+      "share": 1.1106060606060604,
+      "v1_source": "tools/cycle-model.py"
+    }
+  },
+  {
+    "id": "D9",
+    "name": "Do-everything (full rocket + L3 climb + full sandstorm)",
+    "A": 21.985981308411215,
+    "V": 97.58620689655173,
+    "C": 56.00608282307445,
+    "quadrant": "TRAP",
+    "tier": "T4 GATED",
+    "binding": "GATE G1 MACHINE: needs 'CNC'; shop has ['3dprint', 'bandsaw+drill', 'hand']",
+    "gates": [
+      [
+        "G1",
+        "MACHINE",
+        "needs 'CNC'; shop has ['3dprint', 'bandsaw+drill', 'hand']"
+      ],
+      [
+        "G2",
+        "WORKSTREAMS",
+        "4 novel mechanisms > novel_mechanisms_max 2"
+      ],
+      [
+        "G3",
+        "BUDGET",
+        "$4,500 > $2,500"
+      ],
+      [
+        "G4",
+        "HOURS",
+        "420 h > 256 h (pool 205 x 1.25)"
+      ],
+      [
+        "G5",
+        "MENTOR",
+        "420 min/wk > 204 min/wk"
+      ]
+    ],
+    "soft_gate": false,
+    "soft_gates": [],
+    "zeros": [],
+    "conflict": "",
+    "achievability": {
+      "A1": 1,
+      "A2": 1,
+      "A3": 1,
+      "A4": 1,
+      "A5": 1,
+      "A6": 1,
+      "A7": 1,
+      "A8": 2,
+      "A9": 1,
+      "A10": 2,
+      "A11": 1,
+      "A12": 1,
+      "A13": 1
+    },
+    "value": {
+      "V2": 5,
+      "V3": 5,
+      "V4": 4,
+      "V5": 5,
+      "V1": 5
+    },
+    "extra": {
+      "points_per_match": 74.0,
+      "share": 1.2333333333333334,
+      "v1_source": "tools/cycle-model.py"
+    }
+  },
+  {
+    "id": "D4",
+    "name": "HAB Level 3 climb specialist (HAB Docking RP)",
+    "A": 45.16355140186916,
+    "V": 63.44827586206897,
+    "C": 53.39167740895907,
+    "quadrant": "TRAP",
+    "tier": "T4 GATED",
+    "binding": "GATE G2 WORKSTREAMS: 2 new streams exceeds parallel_workstreams_max 3",
+    "gates": [
+      [
+        "G2",
+        "WORKSTREAMS",
+        "2 new streams exceeds parallel_workstreams_max 3"
+      ]
+    ],
+    "soft_gate": true,
+    "soft_gates": [
+      [
+        "G1",
+        "MACHINE",
+        "'router' floor: outsourceable as a service, not owned -> one tier down"
+      ]
+    ],
+    "zeros": [],
+    "conflict": "",
+    "achievability": {
+      "A1": 2,
+      "A2": 2,
+      "A3": 2,
+      "A4": 2,
+      "A5": 2,
+      "A6": 3,
+      "A7": 3,
+      "A8": 3,
+      "A9": 2,
+      "A10": 3,
+      "A11": 2,
+      "A12": 2,
+      "A13": 2
+    },
+    "value": {
+      "V2": 3,
+      "V3": 2,
+      "V4": 2,
+      "V5": 3,
+      "V1": 5
+    },
+    "extra": {
+      "points_per_match": 45.75,
+      "share": 0.7625,
+      "v1_source": "tools/cycle-model.py"
+    }
+  }
+]

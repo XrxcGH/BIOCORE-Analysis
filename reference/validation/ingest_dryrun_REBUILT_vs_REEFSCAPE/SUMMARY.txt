@@ -1,0 +1,9 @@
+BIOCORE ingest  label=DRYRUN  stamp=20260822T094325Z
+manual   : manuals/2026-27_BIOCORE/BIOCORE_GameManual_DRYRUN.pdf
+baseline : manuals/archive/frc/2025_REEFSCAPE_GameManual.pdf
+pages    : 166
+rules    : 227   added=7  removed=9  changed=153
+gamespec : 12   evergreen=215
+glossary : 100   added=30  removed=18
+undefined: 52 caps tokens, 25 phrases
+violations: 80

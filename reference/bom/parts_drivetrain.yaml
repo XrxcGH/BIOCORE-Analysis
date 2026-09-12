@@ -1,0 +1,775 @@
+# parts_drivetrain.yaml
+# Machine-readable companion to reference/bom/01_DRIVETRAIN.md
+#
+# Every price was fetched from a LIVE vendor product page on 2026-08-22.
+# Nothing here is estimated. If a page did not load, the entry carries
+# evidence: U and unit_usd: null -- it is NOT filled with a guess.
+#
+# evidence: C = confirmed against a live vendor page or primary FRC document (2026-08-22)
+#           H = historical pattern across prior FRC seasons in this corpus
+#           S = speculation / planning estimate
+#           U = UNVERIFIED (page 404/403, or the number was not exposed as text)
+
+meta:
+  version: 1
+  written: 2026-08-22
+  prices_fetched: 2026-08-22
+  currency: USD
+  game: BIOCORE presented by Haas (FRC, 2027 season, FIRST CANOPY)
+  kickoff: 2027-01-09T12:00:00-05:00
+  team_profile: ~15 students, experienced mentor, below-median funding, no in-house CNC
+  control_system_2027: Systemcore (replaces roboRIO); WPILib 2027 is Systemcore-only
+  upstream:
+    - ../04_PREDICTIVE_FACTORS.md          # sec 3 swerve-vs-tank weight 45; sec 5.1 cost ladder
+    - ../team-ops/03_programming_stack.md  # Systemcore hardware + removed features
+    - ../../research/00_PREMISE_CORRECTION.md
+    - ../../research/rule_inventories/2026_rules_full.txt   # R103/R104/R402-R408
+  price_volatility_warning: >
+    FRC vendor prices moved mid-season in 2026. Re-run recheck_prices.sh before
+    any purchase order. Treat every figure as +/-10% until re-verified.
+
+# =============================================================== swerve modules
+swerve_modules:
+
+  rev_maxswerve_3in:
+    vendor: REV Robotics
+    name: 3in MAXSwerve Module
+    sku: REV-21-3005
+    url: https://www.revrobotics.com/rev-21-3005/
+    unit_usd: 275.00
+    set_of_4_usd: 1100.00
+    evidence: C
+    encoder_included: true
+    encoder_detail: Through Bore Encoder, 10-bit angular resolution, directly on the turning axis
+    wheel_diameter_in: 3
+    azimuth_ratio: "~46.42:1 (exactly 9424:203)"
+    drive_ratios: "3 base speeds (low/med/high); optional upgrade kit adds 5 higher ratios"
+    free_speed_ft_s: null            # not stated as text on the page
+    free_speed_evidence: U
+    motors_required:
+      azimuth: NEO 550 + SPARK MAX
+      drive: NEO / NEO Vortex (replacement shaft) / Falcon 500 (replacement shaft)
+    motors_included: false
+    module_mass_lb: null
+    notes: >
+      Encoder-included pricing makes the sticker gap vs EasySwerve smaller than it looks.
+
+  rev_easyswerve_4in:
+    vendor: REV Robotics
+    name: 4in EasySwerve Module
+    sku: REV-21-3006
+    url: https://www.revrobotics.com/rev-21-3006/
+    unit_usd: 223.00
+    set_of_4_usd: 892.00
+    evidence: C
+    encoder_included: false
+    encoder_detail: >
+      Requires a 1/2in hex encoder, e.g. Through Bore Encoder V2. Vendor text:
+      "A 1/2in hex encoder, like the Through Bore Encoder V2, is necessary to fully
+      build and operate the EasySwerve Module."
+    wheel_diameter_in: 4
+    azimuth_ratio: "20:1"
+    drive_ratios: "6.3:1 (single)"
+    free_speed_ft_s:
+      neo_vortex: 18.79
+      neo_2_0: 15.724
+    free_speed_evidence: C
+    motors_required:
+      supported: [NEO 2.0, NEO Vortex + SPARK Flex, NEO 1.1, CIM (top-mount only)]
+      azimuth_motor_spec: UNVERIFIED   # page lists motor options without splitting azimuth vs drive
+    motors_included: false
+    module_mass_lb: null
+    notes: >
+      Cheapest COTS swerve module found. Vendor claims "only four tools" to assemble
+      the module -- that claim covers the module, not the chassis it must sit in.
+
+  sds_mk4i:
+    vendor: Swerve Drive Specialties
+    name: MK4i Swerve Module
+    sku: variant-coded (no single PN on page)
+    url: https://www.swervedrivespecialties.com/products/mk4i-swerve-module
+    unit_usd: null
+    unit_usd_min: 365.00
+    unit_usd_max: 377.00
+    unit_usd_regular: 370.00
+    evidence: C
+    price_by_motor:
+      kraken_x60: [370.00, 377.00]
+      neo: [365.00, 372.00]
+      neo_vortex: [370.00, 377.00]
+      falcon_500: [365.00, 372.00]
+    encoder_included: false
+    wheel_included: true
+    wheel_detail: wheels with tread pre-installed
+    azimuth_ratio: null
+    azimuth_ratio_evidence: U
+    drive_ratios: "L1 / L2 / L3"
+    drive_ratio_note: >
+      Vendor: "are the most popular ratios and are suitable for standard full weight
+      competition robots. The L3 ratio is more aggressive and is recommended for
+      light weight robots."
+    free_speed_ft_s: null
+    free_speed_evidence: U            # published as a chart image only
+    motors_supported: [REV NEO, REV NEO Vortex, VEX Falcon 500, WCP Kraken X60]
+    motors_included: false
+    ships_assembled: false
+    module_mass_lb: null
+
+  sds_mk4n:
+    vendor: Swerve Drive Specialties
+    name: MK4n Swerve Module
+    sku: variant-coded (no single PN on page)
+    url: https://www.swervedrivespecialties.com/products/mk4n-swerve-module
+    unit_usd: null
+    unit_usd_min: 365.00
+    unit_usd_max: 377.00
+    evidence: C
+    encoder_included: false
+    encoder_guard_included: true
+    wheel_included: true
+    wheel_detail: tread pre-installed on the Billet option
+    azimuth_ratio: "18.75:1"
+    azimuth_ratio_evidence: C
+    drive_ratios: "L1+ / L2+ / L3+"
+    free_speed_ft_s: null
+    free_speed_evidence: U
+    motors_supported: [REV NEO, REV NEO Vortex, VEX Falcon 500, WCP Kraken X60]
+    motors_included: false
+    includes: [plates, gears, bearings, hardware, module-to-robot mounting hardware]
+
+  ttb_thrifty_swerve:
+    vendor: The Thrifty Bot
+    name: Thrifty Swerve
+    sku: TTB-SWERVE-KRAKENX60-KRAKENX60
+    url: https://www.thethriftybot.com/products/thrifty-swerve
+    unit_usd: 299.99
+    set_of_4_usd: 1199.96
+    evidence: C
+    encoder_included: true
+    encoder_detail: Thrifty Absolute Magnetic Encoder
+    tread_included: false
+    tread_width_in: 1.5
+    azimuth_ratio: "25:1"
+    azimuth_ratio_evidence: C
+    drive_ratios: "6 swappable ratios included, motor-dependent"
+    free_speed_ft_s: null
+    free_speed_evidence: U
+    gear_material: steel (azimuth and drive reduction)
+    motors_supported: [WCP Kraken X60, REV NEO, REV NEO Vortex]
+    motors_included: false
+    module_mass_lb:
+      neo_neo: 5.60
+      neo_kraken: 6.04
+      kraken_kraken: 6.28
+    module_mass_evidence: C
+    notes: >
+      Only vendor in this file publishing per-config module mass on the product page.
+      Steel gears are a durability argument; tread being excluded is a hidden line item.
+
+  wcp_swerve_x2:
+    vendor: WestCoast Products
+    name: Swerve X2
+    sku: variant-coded
+    url: https://wcproducts.com/collections/robot-drive/products/swerve-x2
+    unit_usd: 274.99
+    set_of_4_usd: 1099.96
+    evidence: C
+    encoder_included: false
+    encoder_detail: >
+      "Natively supports CAN and Mag Encoder"; on-axis encoder mounting.
+    mounting_styles: [tube, corner]
+    azimuth_ratio: null
+    azimuth_ratio_evidence: U
+    drive_ratios: null
+    drive_ratios_evidence: U          # ratio table lives on docs.wcproducts.com
+    motors_supported: [CIM, NEO, Kraken X60]
+    designed_for: Kraken X60
+    motors_included: false
+    module_mass_lb: null
+    notes: Cheapest current-generation module sticker price found. Wider wheel than Swerve X.
+
+  wcp_swerve_x_legacy:
+    vendor: WestCoast Products
+    name: Swerve X (Legacy)
+    sku: variant-coded
+    url: https://wcproducts.com/collections/robot-drive/products/swerve-x
+    unit_usd: 299.99
+    set_of_4_usd: 1199.96
+    evidence: C
+    status: legacy (superseded by Swerve X2)
+    encoder_included: false
+    mounting_styles: [tube, corner]
+    motors_supported: ["550", "775", CIM, NEO, Kraken X60]
+    motors_included: false
+    drive_ratios: null
+    drive_ratios_evidence: U
+
+# ============================================================ tank / WCD / KOP
+tank_chassis:
+
+  am14u6:
+    vendor: AndyMark
+    name: "AM14U6 - 6 Wheel Drop Center Robot Drive Base - 2026 FRC Kit of Parts"
+    sku: AM-14U6
+    url: https://www.andymark.com/products/am14u6-6-wheel-drop-center-robot-drive-base-2025-frc-kit-of-parts-drive-base
+    unit_usd: 940.00
+    price_note: same price for all gear-ratio options
+    evidence: C
+    includes:
+      - 2x Toughbox Mini S gearboxes
+      - HTD timing belts (160T, 131T, 120T)
+      - 6x 6in HiGrip wheels, 80A durometer
+      - bearings, shafts, gears, spacers, fasteners
+    excludes:
+      - CIM motors
+      - NEO motors
+      - battery
+      - charger
+      - bumper hardware mount kit
+      - vertical battery mount kit
+    configurations_in:
+      smallest: "24.3 x 27"
+      largest: "32.3 x 31"
+    center_drop_in:
+      long_config: 0.140
+      wide_config: 0.07
+    successor_am14u7: not mentioned on the page as of 2026-08-22
+    fabrication_required: rivet pre-cut, pre-drilled rails. No cutting, no drilling, no CAD.
+    tooling_floor: [rivet gun, drill, hex keys]
+    assembly_hours_estimate: [3, 5]
+    assembly_hours_evidence: S
+
+  wcp_greyt_chassis:
+    vendor: WestCoast Products
+    name: GreyT chassis kit
+    unit_usd: null
+    evidence: U
+    status: >
+      NO SUCH PRODUCT PAGE RESOLVED on 2026-08-22. GreyT is a family of MECHANISM kits
+      (Elevator, Telescope, Claw, Shooter), not a chassis. Do not cite a GreyT chassis.
+
+  wcp_2026_competitive_concept:
+    vendor: WestCoast Products
+    name: 2026 WCP Competitive Concept
+    url: https://wcproducts.com/products/2026-wcp-competitive-concept
+    unit_usd: 17.99
+    what_you_get: CAD / OnShape / BOM documentation package, not physical parts
+    full_kit_usd: 278.00
+    full_kit_list_usd: 400.00
+    full_kit_contents: UNVERIFIED
+    evidence: C           # for the two prices; kit contents are U
+    notes: Design reference only. Useful as a BOM cross-check, not as a chassis purchase.
+
+  wcp_wcd_kit:
+    vendor: WestCoast Products
+    name: WCD kit
+    unit_usd: null
+    evidence: U
+    status: product URL returned HTTP 404 on 2026-08-22
+
+  ttb_drivetrain_kits:
+    vendor: The Thrifty Bot
+    name: drivetrain collection
+    unit_usd: null
+    evidence: U
+    status: https://www.thethriftybot.com/collections/drivetrain returned HTTP 404 on 2026-08-22
+
+  versaframe_tube:
+    vendor: VEX / WCP
+    name: VersaFrame 2x1 structural tube
+    unit_usd: null
+    evidence: U
+    status: vexrobotics.com returned HTTP 403 to automated fetch on 2026-08-22
+
+# ================================================================ KOP / KitBot
+kop_kickoff_kit:
+  name: FIRST KitBot
+  url: https://www.firstinspires.org/resources/library/frc/kitbot
+  evidence: C
+  quote: "a versatile, beginner-friendly robot kit included in the FIRST Robotics Competition Kickoff Kit"
+  drivetrain: AM14U6 chassis; AndyMark publishes the drivetrain build guide
+  electrical: "the REV Robotics Control System components provided in the rookie Kickoff Kit"
+  biocore_2027_info: NONE PUBLISHED as of 2026-08-22 (newest resources are 2026)
+  capability_ceiling: alliance captain at a regional / district event
+  capability_evidence: C   # 100 unique Everybot-class alliance captains in 2026, per PF sec 3.3
+  right_for_small_team_when:
+    - nobody has assembled a swerve module before
+    - nobody has written field-oriented swerve code before   # weight double for 2027
+    - fewer than ~5 reliable mechanical students per build night
+    - the robot has 2+ distinct scoring mechanisms
+    - total robot budget under ~$6,000
+    - fewer than ~20 driver-practice hours achieved last season
+  rule_of_thumb: any two of the above true -> take the KOP/tank path
+
+# ==================================================================== motors
+motors_and_controllers:
+
+  rev_neo_v1_1:
+    vendor: REV Robotics
+    name: NEO Brushless Motor V1.1
+    sku: REV-21-1650
+    url: https://www.revrobotics.com/rev-21-1650/
+    unit_usd: 42.50
+    evidence: C
+    controller_required: SPARK MAX
+    controller_integrated: false
+
+  rev_spark_max:
+    vendor: REV Robotics
+    name: SPARK MAX Motor Controller
+    sku: REV-11-2158
+    url: https://www.revrobotics.com/rev-11-2158/
+    unit_usd: 100.00
+    evidence: C
+
+  ctre_kraken_x60:
+    vendor: CTR Electronics / WCP
+    name: Kraken X60 High Performance Brushless Motor Powered by Talon FX
+    sku: WCP-0940
+    url: https://store.ctr-electronics.com/products/kraken-x60
+    unit_usd: 217.99
+    price_tier: educational (FRC teams / institutions)
+    retail_price: contact sales@ctr-electronics.com
+    evidence: C
+    controller_integrated: true
+    controller_detail: integrated Talon FX
+    spec_quote: "1,108W peak power (413W@40amp), 87% max efficiency (@30A), and 7.09Nm stall torque"
+
+  rev_maxswerve_corner_bundle:
+    vendor: REV Robotics
+    name: MAXSwerve motor + controller bundle (per corner)
+    unit_usd: 280.00
+    evidence: C
+    source: ../04_PREDICTIVE_FACTORS.md sec 3.1 (fetched 2026-08-22)
+
+  rev_neo_550:
+    vendor: REV Robotics
+    name: NEO 550 Brushless Motor
+    sku: REV-21-1651
+    url: https://www.revrobotics.com/rev-21-1651/
+    unit_usd: 30.00
+    evidence: C
+    controller_required: SPARK MAX
+    role: MAXSwerve azimuth motor
+
+  rev_neo_vortex:
+    name: NEO Vortex / SPARK Flex
+    unit_usd: null
+    evidence: U
+
+  ctre_cancoder:
+    vendor: CTR Electronics
+    name: CANcoder - CAN Bus Magnetic Encoder
+    sku: "22-676768"
+    url: https://store.ctr-electronics.com/products/cancoder
+    unit_usd: 89.99
+    set_of_4_usd: 359.96
+    evidence: C
+    bus: CAN FD and CAN 2.0
+    used_by: [sds_mk4i, sds_mk4n, wcp_swerve_x2]
+    cost_note: >
+      4 CANcoders (359.96) cost more than the entire motor bill of a 4-NEO tank drive (170.00).
+      Any swerve comparison omitting encoders understates the swerve path by 160-360 USD.
+
+  rev_through_bore_encoder_v1:
+    vendor: REV Robotics
+    name: Through Bore Encoder V1
+    sku: REV-11-1271
+    url: https://www.revrobotics.com/rev-11-1271/
+    unit_usd: 40.80
+    evidence: C
+    bore: 1/2 in hex
+
+  rev_through_bore_encoder_v2:
+    name: Through Bore Encoder V2 (the part the EasySwerve docs name)
+    unit_usd: null
+    evidence: U
+    proxy_price_usd: 40.80
+    proxy_source: rev_through_bore_encoder_v1
+    proxy_evidence: S
+
+# ================================================================= gearboxes
+gearboxes:
+
+  rev_maxplanetary_system_kit:
+    vendor: REV Robotics
+    name: MAXPlanetary System Kit
+    sku: REV-25-2109
+    url: https://www.revrobotics.com/rev-21-2100/
+    unit_usd: 36.00
+    evidence: C
+    cartridges:
+      - {ratio: "2:1", sku: REV-21-2140, unit_usd: null, evidence: U}
+      - {ratio: "3:1", sku: REV-21-2101, unit_usd: null, evidence: U}
+      - {ratio: "4:1", sku: REV-21-2102, unit_usd: null, evidence: U}
+      - {ratio: "5:1", sku: REV-21-2103, unit_usd: null, evidence: U}
+      - {ratio: "9:1", sku: REV-21-2129, unit_usd: null, evidence: U}
+    bundle_range: "9:1 through 125:1 (125:1 = 5:1 + 5:1 + 5:1)"
+    bundle_evidence: C
+    drivetrain_relevance: none - belongs in the mechanism BOM; listed here to prevent double-ordering
+
+  am_toughbox_mini_s:
+    vendor: AndyMark
+    name: Toughbox Mini S
+    unit_usd: included in AM-14U6
+    evidence: C
+    ratios: multiple options, all at the same $940.00 chassis price
+
+  vex_versaplanetary:
+    vendor: VEX Robotics
+    name: VersaPlanetary
+    sku_pattern: 217-xxxx
+    unit_usd: null
+    evidence: U
+    status: vexrobotics.com/versaplanetary.html returned HTTP 403 to automated fetch 2026-08-22
+
+  wcp_gearboxes:
+    unit_usd: null
+    evidence: U
+
+  ttb_gearboxes:
+    unit_usd: null
+    evidence: U
+
+# ==================================================================== wheels
+wheels:
+
+  am_sds_colson_wheel_only:
+    vendor: AndyMark
+    name: SDS Colson Wheel (wheel only)
+    sku: am-5171
+    url: https://andymark.com/products/sds-colson-wheel
+    unit_usd: 19.10
+    evidence: C
+    diameter_in: 4
+    width_in: 1.5
+    construction: >
+      "co-injection molded construction of a thermoplastic elastomer tread permanently
+      bonded to a polyolefin core"
+    fits: MK4 and MK4i swerve modules
+    grip: moderate
+    durability: high (season-long typical)
+
+  am_sds_colson_with_hub:
+    vendor: AndyMark
+    sku: am-5173
+    unit_usd: 38.00
+    evidence: C
+
+  am_sds_colson_with_bevel_gear:
+    vendor: AndyMark
+    sku: am-5261
+    unit_usd: 72.00
+    evidence: C
+
+  wcp_colson_performa:
+    vendor: WestCoast Products
+    name: Colson Wheels (Performa)
+    url: https://wcproducts.com/products/colson-wheels
+    unit_usd_from: 4.99
+    per_size_sku: null
+    per_size_price: null
+    evidence: C            # for the "from" price only; per-size SKUs are U
+    features: integrated plastic hex hubs; wide variety of sizes
+
+  am_higrip_6in:
+    vendor: AndyMark
+    name: 6 in. HiGrip Wheel Rev2
+    sku: am-0940a
+    url: https://www.andymark.com/products/higrip-wheels-options
+    unit_usd: 12.00
+    evidence: C
+    status: DISCONTINUED
+    status_quote: "This product is no longer for sale at AndyMark and has been replaced by am-0940b."
+    successor_sku: am-0940b
+    successor_price_usd: null
+    successor_evidence: U
+    diameter_in: 6
+    bore_in: 0.95
+    bolt_pattern: six holes on 1.875 in diameter bolt circle
+    mass_lb: 0.5
+    load_capacity_lb: 90
+    material: black polycarbonate with TPU rubber, 80A durometer
+    tread_quote: "aggressive tread pattern providing maximum transfer of gearbox power to the ground"
+    grip: high on carpet
+    durability: lower than Colson (softer compound)
+    note: 6 of these ship inside AM-14U6 (evidence C)
+
+  roughtop_tread:
+    unit_usd: null
+    evidence: U
+    grip: highest of the common options
+    durability: lowest - budget 2 changes per season
+
+  omni_wheels:
+    unit_usd: null
+    evidence: U
+    use_case: corner-omni tank layout to ease turning; costs pushing power
+
+  mecanum:
+    unit_usd: null
+    evidence: U
+    recommendation: DO NOT USE
+    recommendation_evidence: H
+    why: holonomic without swerve traction; near-zero pushing force; extinct in modern FRC
+
+# =================================================================== bumpers
+bumpers:
+  geometry_authority: THE GAME MANUAL. Numbers below are 2026 REBUILT baseline, evidence H for BIOCORE.
+  source: research/rule_inventories/2026_rules_full.txt
+  rules_2026:
+    R402_A_padding:
+      min_depth_in: 2.25
+      min_height_in: 4.5
+      allowed_materials:
+        - solid pool noodles or backer rod
+        - solid polyethylene closed cell foam (incl. crosslinked), density 1.5-3.0 lb/ft3
+        - solid EVA closed cell foam, density 2.0-6.0 lb/ft3
+        - foam floor tiles
+      evidence: C
+    R402_B_backing: {min_height_in: 4.5, must_support_padding: true, evidence: C}
+    R402_C_cover: {material: cloth, must_cover: [outward, upward, downward facing surfaces], evidence: C}
+    R402_D_fastening:
+      requirement: rigid fastening system to the ROBOT PERIMETER
+      prohibited: [hook-and-loop tape, tape, cable ties]
+      evidence: C
+    R403_extension_limit_in: 4.0
+    R404_hard_part_limit_in: 1.25
+    R404_padding_beyond_hard_parts_in: 2.0
+    R405_bumper_zone_in: [2.5, 5.75]
+    R406_corner_fill_in: 2.25
+    R406_note: a mitered joint between separate segments does NOT satisfy corner fill
+    R407: bumpers must not act as wedges
+    R408_weight_with_bumpers_lb: 135.0
+    R103_weight_without_bumpers_lb: 115.0
+    R104_perimeter_max_in: 110.0
+    R104_height_max_in: 30
+  reference_design: Bumper Guide, Mechanical Resources section of the FIRST Technical Resources page
+  material_costs:
+    evidence: S            # ALL bumper dollar figures are unverified; no vendor kit page loaded
+    plywood_backing_usd: [25, 50]
+    pool_noodles_set_usd: [20, 40]
+    cloth_per_color_set_usd: [40, 90]
+    fasteners_usd: [20, 40]
+    planning_total_two_sets_usd: [150, 250]
+  small_team_tip: >
+    Build ONE set of backings with swappable cloth covers, not two complete sets.
+
+# ============================================================ 2027 Systemcore
+systemcore_2027:
+  status: replaces the roboRIO; WPILib 2027 is Systemcore-only
+  price_usd: null
+  price_evidence: U
+  price_note: >
+    FIRST states it is "on target to meet their goal of offering Systemcore at a lower
+    price than the roboRIO" but has published no number. Do not budget a guess.
+  production_units_available: false
+  drivetrain_impacts:
+    helps_swerve:
+      - id: five_can_buses
+        detail: 5 unique CAN interfaces, FD-capable, up to 8 Mbps, built-in 120 ohm termination (roboRIO had 1 bus @ 1 Mbps)
+        consequence: 8-motor + 4-encoder swerve = 12 CAN devices; no CANivore purchase needed
+        evidence: C
+      - id: onboard_imu
+        detail: 400 Hz quaternion, fused robot yaw, 3-axis accel + gyro
+        consequence: no Pigeon 2 / navX purchase; field-oriented swerve needs a gyro, so this saving lands on the swerve path
+        evidence: C
+    hurts_or_writes_off:
+      - id: spi_removed
+        consequence: ADIS16448, ADIS16470, ADXL345, ADXRS450 are e-waste for 2027
+        evidence: C
+      - id: analog_gyro_removed
+        evidence: C
+      - id: counter_removed
+        consequence: quadrature IS listed among the 6 reconfigurable I/O modes but is flagged "in progress or subject to change"
+        evidence: C
+      - id: servo_removed
+        consequence: only bites drivetrain if a servo-actuated shifter or PTO release was planned
+        evidence: C
+      - id: wpilib_2027_breaking_rewrite
+        detail: >
+          Java edu.wpi.first -> org.wpilib; C++ frc:: -> wpi::; Java 25 / C++23 required;
+          NetworkTables v3 removed; Shuffleboard, SmartDashboard, PathWeaver, RobotBuilder,
+          LabVIEW all removed.
+        consequence: >
+          EVERY swerve template (REV MAXSwerve template, YAGSL, CTRE swerve generator,
+          Phoenix 6, REVLib) must be re-released for 2027. 2026 swerve code does not port
+          by find-and-replace. THIS IS THE DOMINANT 2027 DRIVETRAIN RISK.
+        severity: high
+        evidence: C
+  decision_gate:
+    date: 2026-12-01
+    test: is a working, public 2027 vendor swerve template available?
+    if_no: a first-year swerve team defaults to tank
+    evidence: S
+
+# =========================================================== priced configs
+# line_items sum exactly to total_usd -- validated by 01_DRIVETRAIN.md sec 9 check V2.
+configurations:
+
+  T1_am14u6_4neo:
+    drivetrain_type: tank
+    total_usd: 1510.00
+    evidence: C
+    line_items:
+      - {part: am14u6,        qty: 1, unit_usd: 940.00, subtotal_usd: 940.00}
+      - {part: rev_neo_v1_1,  qty: 4, unit_usd: 42.50,  subtotal_usd: 170.00}
+      - {part: rev_spark_max, qty: 4, unit_usd: 100.00, subtotal_usd: 400.00}
+    gyro: onboard Systemcore IMU, $0
+    build_hours_estimate: [8, 17]
+    programming_hours_estimate: [2, 5]
+    hours_evidence: S
+
+  T2_am14u6_6neo:
+    drivetrain_type: tank
+    total_usd: 1795.00
+    evidence: C
+    line_items:
+      - {part: am14u6,        qty: 1, unit_usd: 940.00, subtotal_usd: 940.00}
+      - {part: rev_neo_v1_1,  qty: 6, unit_usd: 42.50,  subtotal_usd: 255.00}
+      - {part: rev_spark_max, qty: 6, unit_usd: 100.00, subtotal_usd: 600.00}
+    gyro: onboard Systemcore IMU, $0
+    build_hours_estimate: [8, 17]
+    programming_hours_estimate: [2, 5]
+    hours_evidence: S
+    recommendation: DEFAULT for a team that has never run swerve, in 2027 specifically
+
+  S1_easyswerve_neo:
+    drivetrain_type: swerve
+    total_usd: 2032.00
+    total_excludes: 4x absolute encoder (Through Bore Encoder V2) - V2 price UNVERIFIED
+    encoder_addon: {part: rev_through_bore_encoder_v1, qty: 4, unit_usd: 40.80, subtotal_usd: 163.20, evidence: S}
+    total_delivered_usd: 2195.20
+    total_delivered_evidence: S
+    evidence: C
+    line_items:
+      - {part: rev_easyswerve_4in, qty: 4, unit_usd: 223.00, subtotal_usd: 892.00}
+      - {part: rev_neo_v1_1,       qty: 8, unit_usd: 42.50,  subtotal_usd: 340.00}
+      - {part: rev_spark_max,      qty: 8, unit_usd: 100.00, subtotal_usd: 800.00}
+    build_hours_estimate: [17, 33]
+    programming_hours_estimate: [15, 100]
+    hours_evidence: S
+
+  S2_maxswerve_rev_bundles:
+    drivetrain_type: swerve
+    total_usd: 2220.00
+    evidence: C
+    line_items:
+      - {part: rev_maxswerve_3in,            qty: 4, unit_usd: 275.00, subtotal_usd: 1100.00}
+      - {part: rev_maxswerve_corner_bundle,  qty: 4, unit_usd: 280.00, subtotal_usd: 1120.00}
+    encoders: included with the module
+    build_hours_estimate: [17, 33]
+    programming_hours_estimate: [15, 100]
+    hours_evidence: S
+    recommendation: lowest-friction reorder for a team that already ran swerve in 2026
+
+  S3_swervex2_kraken:
+    drivetrain_type: swerve
+    total_usd: 2843.88
+    total_excludes: WCP Mag Encoder price UNVERIFIED; CANcoder priced below as the CAN alternative
+    encoder_addon: {part: ctre_cancoder, qty: 4, unit_usd: 89.99, subtotal_usd: 359.96, evidence: C}
+    total_delivered_usd: 3203.84
+    evidence: C
+    line_items:
+      - {part: wcp_swerve_x2,   qty: 4, unit_usd: 274.99, subtotal_usd: 1099.96}
+      - {part: ctre_kraken_x60, qty: 8, unit_usd: 217.99, subtotal_usd: 1743.92}
+    build_hours_estimate: [17, 33]
+    programming_hours_estimate: [15, 100]
+    hours_evidence: S
+
+  S4_thrifty_kraken:
+    drivetrain_type: swerve
+    total_usd: 2943.88
+    total_excludes: 1.5in tread (not included by vendor) - price UNVERIFIED
+    evidence: C
+    line_items:
+      - {part: ttb_thrifty_swerve, qty: 4, unit_usd: 299.99, subtotal_usd: 1199.96}
+      - {part: ctre_kraken_x60,    qty: 8, unit_usd: 217.99, subtotal_usd: 1743.92}
+    encoders: included with the module
+    module_set_mass_lb: 24.2      # NEO+Kraken config; 21% of the R103 115.0 lb budget
+    build_hours_estimate: [18, 35]
+    programming_hours_estimate: [15, 100]
+    hours_evidence: S
+
+  S5_mk4i_kraken:
+    drivetrain_type: swerve
+    total_usd: 3223.92
+    encoder_addon: {part: ctre_cancoder, qty: 4, unit_usd: 89.99, subtotal_usd: 359.96, evidence: C}
+    total_delivered_usd: 3583.88
+    evidence: C
+    line_items:
+      - {part: sds_mk4i,        qty: 4, unit_usd: 370.00, subtotal_usd: 1480.00}
+      - {part: ctre_kraken_x60, qty: 8, unit_usd: 217.99, subtotal_usd: 1743.92}
+    build_hours_estimate: [20, 39]
+    programming_hours_estimate: [15, 100]
+    hours_evidence: S
+
+# ============================================================ decision output
+decision:
+  drivetrain_factor_weight: 45        # inherited from ../04_PREDICTIVE_FACTORS.md, NOT re-derived
+  weight_scale: 0-100, relative only
+  ranks_below: [drive_practice (90), scope_discipline (85)]
+  cost_delta_usd:
+    narrowest: 425.00       # S2 (2220.00, encoders included) - T2 (1795.00). Both fully verified.
+    widest: 2073.88         # S5 delivered (3583.88) - T1 (1510.00), before spares
+    cheapest_fielded_swerve_usd: 2220.00     # S2 - only swerve config verified encoder-complete
+    cheapest_fielded_tank_usd: 1795.00       # T2
+  build_hour_delta:
+    narrowest: [9, 16]
+    widest: [12, 31]
+    evidence: S
+  programming_hour_delta:
+    with_released_2027_template: [10, 28]
+    without_released_2027_template: [45, 95]
+    evidence: S
+  recommendation_if_ran_swerve_2026: run swerve; reorder the same modules; port software as a named project starting at WPILib 2027 beta
+  recommendation_if_never_ran_swerve: >
+    DO NOT adopt swerve in 2027. Control-system reset year: WPILib is a breaking rewrite,
+    Systemcore has no production units as of 2026-08-22, and no vendor swerve template has
+    shipped for it. Run T2, finish by week 4, spend the delta on driver practice (weight 90).
+  tiebreaker_question: >
+    Can you name the student who will own the swerve software, and are they available
+    20 h/week in January? If not, the answer is tank.
+  key_quote: >
+    "You should pick your drivetrain for 3 reasons: It's the one you know how to build the
+    best. It's the one you know how to program the best. It's the one you know how to drive
+    the best. None of those reasons have anything to do with the game."
+  key_quote_source: https://www.chiefdelphi.com/t/510353/22
+
+# ====================================================== fall pre-order policy
+fall_preorder_2026:
+  safe_to_order_before_kickoff:
+    - chassis or 4 modules plus 1 spare module
+    - all drive motors and controllers
+    - wheels/tread plus one full spare set
+    - bumper cloth (R411/R412 numbering has been stable)
+  conditional:
+    - part: bumper backings and fasteners
+      condition: only if R403 / R405 geometry holds; verify on kickoff day before cutting
+  do_not_preorder:
+    - part: Systemcore
+      why: price unpublished, no production units, availability unknown
+    - part: any SPI IMU
+      why: SPI is removed in 2027
+
+# ================================================================= unverified
+# Re-curled 2026-09-04: every URL below returned the same status it did on 2026-08-22, so nothing
+# here has changed and nothing has come back. Two notes from that re-run:
+#   - VEX answers 403 to one request and 404 to the next. That is bot mitigation, not removal; the
+#     status is UNVERIFIED and only a browser settles it.
+#   - thethriftybot.com throttles automated fetches site-wide. Five TTB product pages elsewhere in
+#     this workbench returned 429 on 2026-09-04, and so did the vendor's own home page, so 429 from
+#     that host is this client being rate-limited and says nothing about the page. Confirm any TTB
+#     price in a browser before the 2026-11-21 order-by date.
+unverified_registry:
+  - {item: VEX VersaPlanetary, reason: HTTP 403 to automated fetch (403 and 404 alternately on 2026-09-04), url: https://www.vexrobotics.com/versaplanetary.html}
+  - {item: TTB drivetrain collection, reason: HTTP 404, url: https://www.thethriftybot.com/collections/drivetrain}
+  - {item: WCP WCD kit, reason: HTTP 404, url: https://wcproducts.com/collections/robot-drive/products/wcd-kit}
+  - {item: AndyMark HiGrip standalone, reason: HTTP 404, url: https://www.andymark.com/products/6-in-higrip-wheel-options}
+  - {item: AndyMark FRC bumper kit, reason: HTTP 404, url: https://www.andymark.com/products/frc-bumper-kit}
+  - {item: REV MAXSwerve system landing page, reason: HTTP 404, url: https://www.revrobotics.com/maxswerve/}
+  - {item: WCP GreyT chassis, reason: product appears not to exist - GreyT is a mechanism family}
+  - {item: gear ratio tables for MK4i / MK4n / MAXSwerve / Thrifty / Swerve X2, reason: published as images or on separate docs sites}
+  - {item: roughtop tread / omni / mecanum prices, reason: no vendor page loaded}
+  - {item: all bumper material dollar figures, reason: no vendor bumper kit page loaded; figures are S estimates}
+  - {item: module masses for all vendors except Thrifty, reason: not published on product pages}

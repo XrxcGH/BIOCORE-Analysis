@@ -1,0 +1,71 @@
+{
+  "2023": {
+    "events_checked": 179,
+    "heuristic_agreement_pct": 95.5,
+    "events_unresolvable": 22,
+    "true_seed_distribution_pct": {
+      "1": 65.4,
+      "2": 19.0,
+      "3": 7.8,
+      "4": 1.7,
+      "5": 3.9,
+      "6": 1.1,
+      "7": 1.1
+    },
+    "true_pct_seed_1": 65.4,
+    "true_pct_seed_1_or_2": 84.4,
+    "true_pct_seed_5_to_8": 6.1,
+    "n_events_with_resolved_winner": 179
+  },
+  "2024": {
+    "events_checked": 184,
+    "heuristic_agreement_pct": 95.7,
+    "events_unresolvable": 28,
+    "true_seed_distribution_pct": {
+      "1": 66.3,
+      "2": 16.3,
+      "3": 7.6,
+      "4": 4.3,
+      "5": 1.1,
+      "6": 1.6,
+      "7": 1.6,
+      "8": 1.1
+    },
+    "true_pct_seed_1": 66.3,
+    "true_pct_seed_1_or_2": 82.6,
+    "true_pct_seed_5_to_8": 5.4,
+    "n_events_with_resolved_winner": 184
+  },
+  "2025": {
+    "events_checked": 198,
+    "heuristic_agreement_pct": 98.5,
+    "events_unresolvable": 29,
+    "true_seed_distribution_pct": {
+      "1": 82.8,
+      "2": 10.1,
+      "3": 4.0,
+      "4": 2.0,
+      "5": 0.5,
+      "6": 0.5
+    },
+    "true_pct_seed_1": 82.8,
+    "true_pct_seed_1_or_2": 92.9,
+    "true_pct_seed_5_to_8": 1.0,
+    "n_events_with_resolved_winner": 198
+  },
+  "2026": {
+    "events_checked": 208,
+    "heuristic_agreement_pct": 97.1,
+    "events_unresolvable": 9,
+    "true_seed_distribution_pct": {
+      "1": 81.7,
+      "2": 13.9,
+      "3": 3.8,
+      "5": 0.5
+    },
+    "true_pct_seed_1": 81.7,
+    "true_pct_seed_1_or_2": 95.7,
+    "true_pct_seed_5_to_8": 0.5,
+    "n_events_with_resolved_winner": 208
+  }
+}

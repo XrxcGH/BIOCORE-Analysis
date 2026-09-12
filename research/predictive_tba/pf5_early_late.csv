@@ -1,0 +1,9 @@
+year,scope,n_teams,median_pct_growth_avg_match,median_change_rank_pctile,pct_improved_rank_pctile
+2023,all_events,2441,45.3,5.3,42.9
+2023,weeks_1_6_only,2372,37.0,0.2,48.8
+2024,all_events,2603,46.9,4.3,42.9
+2024,weeks_1_6_only,2543,39.6,0.6,48.1
+2025,all_events,2757,57.2,4.1,43.9
+2025,weeks_1_6_only,2702,45.7,-0.2,50.1
+2026,all_events,2835,67.4,7.2,40.4
+2026,weeks_1_6_only,2653,40.3,-1.9,52.6

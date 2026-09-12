@@ -1,0 +1,14 @@
+name: "REHEARSAL -- S6/S10 hybrid: simple FUEL scorer + reliable TOWER L2 climber"
+notes: >
+  KOP chassis, an under-bumper roller intake feeding a hopper that dumps FUEL into the HUB from a
+  surveyed ALLIANCE ZONE position, plus a winch climber for TOWER L2. The novel workstream is the
+  climber, because TRAVERSAL RP has a flat 50-point threshold at every event tier while ENERGIZED
+  escalates 3.6x from District to Championship -- the climb is the only RP path that does not get
+  harder at DCMP. FUEL scoring is deliberately COTS-shaped and fixed-position so it costs close to
+  zero drive-practice hours the team does not have. novel_mechanisms_max is 2; this spends one.
+mechanisms:
+  - kop_chassis
+  - bumpers_frame
+  - baseline_electrical_package
+  - under_bumper_intake
+  - passive_latch_climber

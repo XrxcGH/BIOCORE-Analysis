@@ -1,0 +1,44 @@
+
+==============================================================================
+ REBUILT (2026) -- REHEARSAL stand-in for BIOCORE  --  cycle model
+==============================================================================
+ Match: AUTO 20s + TELEOP 140s (endgame window 30s)
+ Cycle action: FUEL scored in an active HUB  =  8 unit(s)/cycle @ 1 pt(s) each  ->  8 pts/cycle
+ Your cycle time: 8.0s     AUTO units scored: 3.0
+
+--- Strategy comparison (what each endgame choice is really worth) ---
+
+endgame choice         cycle  cycles    units   autoP    teleP    fixP    TOTAL
+-------------------------------------------------------------------------------
+(none)                   8.0    17.5    143.0       3    140.0       0    143.0
+TOWER L1 (TELEOP)        8.0    16.5    135.0       3    132.0      10    145.0
+TOWER L2 (TELEOP)        8.0    15.6    128.0       3    125.0      20    148.0
+TOWER L3 (TELEOP)        8.0    14.4    118.0       3    115.0      30    148.0
+No climb                 8.0    17.5    143.0       3    140.0       0    143.0
+
+--- Break-even: is the fixed action worth the cycles it costs? ---
+
+action                   pts   time  cycles lost  pts lost     NET  verdict
+----------------------------------------------------------------------------------
+TOWER L1 (TELEOP)         10     8s         1.00       8.0    +2.0  WORTH IT
+TOWER L2 (TELEOP)         20    15s         1.88      15.0    +5.0  WORTH IT
+TOWER L3 (TELEOP)         30    25s         3.12      25.0    +5.0  WORTH IT
+No climb                   0     0s         0.00       0.0    +0.0  costs more than it pays
+
+--- Sensitivity: what is 1 second of cycle time worth? ---
+
+ Going from 8.0s to 9.0s costs 15.6 points/match.
+ Over a 12-match qualification schedule: 187 points.
+ -> Driver practice and a faster intake are worth ~15.6 pts/s/match. Compare that to the 8 pts/cycle a new mechanism might add.
+
+--- Ranking Point feasibility at 8.0s cycle ---
+
+RP               threshold  you (alone)  w/ alliance x3  reachable?
+--------------------------------------------------------------------------
+ENERGIZED              100          143             429  YES solo
+SUPERCHARGED           360          143             429  YES alliance
+TRAVERSAL               50          n/a             n/a  (climb-based; see above)
+   ENERGIZED: Regional/District 100 -> DCMP 240 -> Champs 360 [VERIFIED Table 6-5 p.48]. 3.6x escalation: an RP-optimised design correct at Week 1 is wrong at DCMP.
+   SUPERCHARGED: 360 / 360 / 500. Alliance-wide; unreachable solo at any tier.
+   TRAVERSAL: 50 at ALL THREE tiers -- the only non-escalating BONUS RP. This is the cheapest RP in the game and the small-team lever.
+

@@ -1,0 +1,25 @@
+# geom_pass_2026_lift.yaml -- clears the same 72 in aperture with NO gate failures at all.
+#
+# Third member of the GEOMETRY (REACH) regression set:
+#   geom_fail_2026_hopper.yaml   dump, 30 in rim   -> FAILS, short by 42 in
+#   geom_pass_2026_shooter.yaml  shoot, 108 in     -> reach PASSES (tooling floor separately fails)
+#   geom_pass_2026_lift.yaml     lift, 78 in       -> ALL GATES PASS
+#
+# Corpus R7: a lift rates BELOW R2 (shoot) precisely because of the 72 in lip -- it clears it with
+# 6 in to spare and must drive into contact to use it. It clears it, and that is the point here:
+# the gate rewards reach, not mechanism fashion.
+name: "GEOM PASS -- KOP chassis + telescoping arm lift vs a 72 in aperture"
+notes: >
+  Telescoping arm (TTB base + 2nd stage, 78 in delivery, bandsaw+drill floor) carries the game
+  piece over the 72 in HUB lip in contact. Inside budget, hours, workstreams, motors and tooling.
+target:
+  name: "HUB upper opening (2026 REBUILT)"
+  aperture_height_in: 72
+  aperture_range_in: 0        # 0 = the HUB may be approached at contact range
+  source: "manual s5.4 via reference/03_ARCHETYPE_CORPUS.md 2.4 item 4 [C]"
+mechanisms:
+  - kop_chassis
+  - bumpers_frame
+  - baseline_electrical_package
+  - id: telescoping_arm
+    note: "the mechanism that reaches: 78 in of stage travel over a 72 in lip"

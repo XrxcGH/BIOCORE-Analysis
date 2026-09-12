@@ -1,0 +1,154 @@
+id	similarity	class	headline_base	headline_new
+G423	0.010	EVERGREEN	*This isn’t combat robotics.	*DRIVE TEAMS, watch your reach.
+G414	0.020	GAMESPEC	*Keep your BUMPERS low	Don’t Climb on each other.
+G419	0.023	EVERGREEN	ANCHORS are off-limits.	*Don’t collude with your partners to shut down major parts of game play.
+G415	0.028	EVERGREEN	Expansion limits.	*Stay out of other ROBOTS.
+G404	0.029	EVERGREEN	No throwing in AUTO.	*ROBOTS: use SCORING ELEMENTS as directed.
+G416	0.029	EVERGREEN	Don’t damage the FIELD	*This isn’t combat robotics.
+E117	0.034	EVERGREEN	*Enter only 1 ROBOT.	*Do not record anyone at the event without their consent.
+G421	0.035	EVERGREEN	1 defender at a time.	*No wandering.
+G425	0.036	EVERGREEN	*There’s a 3-count on PINS.	*SCORING ELEMENT delivery.
+G427	0.036	GAMESPEC	ZONE protection.	The OUTPOST has a storage limit.
+G413	0.049	GAMESPEC	*ROBOTS must be safe.	Expansion limits.
+G409	0.057	EVERGREEN	1 of each at a time.	*ROBOTS must be safe.
+G302	0.060	EVERGREEN	*You can’t bring/use anything you want.	*Limit what you use during a MATCH
+G412	0.062	EVERGREEN	Only throw CORAL if in your REEF ZONE.	Watch your FIELD interaction.
+G424	0.065	EVERGREEN	*Don’t tip or entangle.	*Humans: use SCORING ELEMENTS as directed.
+G422	0.067	EVERGREEN	*Stay out of other ROBOTS.	*DRIVE COACHES and other teams: hands off the controls.
+G418	0.069	EVERGREEN	An Opponent’s CAGES are off-limits in TELEOP.	*There’s a 3-count on PINS.
+G405	0.080	EVERGREEN	No opponents CAGES in AUTO.	*Keep SCORING ELEMENTS in bounds.
+G417	0.084	EVERGREEN	Watch your FIELD interaction.	*Don’t tip or entangle.
+G406	0.093	EVERGREEN	*ROBOTS: use SCORING ELEMENTS as directed.	*Don’t abuse SCORING ELEMENTS.
+G408	0.094	GAMESPEC	*Don’t abuse SCORING ELEMENTS.	Don’t catch FUEL
+G411	0.111	EVERGREEN	Don’t put ALGAE on their REEF.	Don’t damage the FIELD
+G410	0.132	EVERGREEN	No de-scoring.	*Keep your BUMPERS low
+G426	0.151	EVERGREEN	*Don’t collude with your partners to shut down major parts of game play.	*DRIVE COACHES, SCORING ELEMENTS are off limits.
+E107	0.159	EVERGREEN	*Work in designated areas only.	*Work in designated areas only.
+Q101	0.171	EVERGREEN	*1 STUDENT, 1 Head REFEREE.	*Head REFEREE Interactions.
+E509	0.174	EVERGREEN	*Secure team identification assets.	*Secure team identification assets.
+G420	0.175	GAMESPEC	NET and contents are off-limits.	TOWER protection.
+G403	0.184	GAMESPEC	Limited AUTO opponent interaction.	Limited AUTO opponent interaction.
+R409	0.242	EVERGREEN	*BUMPERS shouldn’t move.	*BUMPERS should be passive.
+R615	0.249	EVERGREEN	*Power roboRIO as specified.	*Power roboRIO as specified.
+E902	0.258	EVERGREEN	*Don’t throw items from the stands.	*Don’t throw items from the stands.
+R617	0.260	EVERGREEN	*Power radio as specified – Part 2.	*Power radio as specified – Part 2.
+G211	0.279	EVERGREEN	*Egregious or exceptional violations.	*Egregious or exceptional violations.
+R703	0.283	EVERGREEN	*Use specific Ethernet port for roboRIO.	*Use specific Ethernet port for roboRIO.
+E602	0.284	EVERGREEN	*Practice only when/where permitted.	*Practice only when/where permitted.
+E502	0.307	EVERGREEN	*Stay in your pit.	*Stay in your pit.
+E106	0.345	EVERGREEN	*Some event resources for event teams only.	*Some event resources for event teams only.
+R904	0.382	EVERGREEN	*OPERATOR CONSOLE physical requirements.	*OPERATOR CONSOLE physical requirements.
+R405	0.396	EVERGREEN	*BUMPERS interact with BUMPERS.	*BUMPERS interact with BUMPERS.
+R402	0.457	EVERGREEN	*BUMPER construction.	*BUMPER construction.
+R616	0.489	EVERGREEN	*Power radio as specified – Part 1.	*Power radio as specified – Part 1.
+G210	0.491	EVERGREEN	*Don’t expect to gain by doing others harm.	*Don’t expect to gain by doing others harm.
+R205	0.519	EVERGREEN	*Don’t contaminate the FIELD.	*Don’t contaminate the FIELD.
+G407	0.534	GAMESPEC	*Keep SCORING ELEMENTS in bounds.	Only score while in your ALLIANCE ZONE.
+G206	0.535	EVERGREEN	*Don't violate rules for RPs.	*Don't violate rules for RPs.
+C301	0.536	EVERGREEN	*Wear your buttons.	*Wear your buttons.
+R622	0.568	EVERGREEN	*Use appropriately sized wire.	*Use appropriately sized wire.
+R401	0.576	EVERGREEN	*BUMPERS all around.	*BUMPERS almost all around.
+E401	0.581	EVERGREEN	*Load in during Load-In.	*Load in during Load-In.
+R202	0.603	EVERGREEN	*No exposed sharp edges.	*No exposed sharp edges.
+I101	0.605	EVERGREEN	*It’s your team’s ROBOT.	*It’s your team’s ROBOT.
+R505	0.612	EVERGREEN	*Don’t overload controllers.	*Don’t overload controllers.
+R203	0.632	EVERGREEN	*General safety.	*General safety.
+R503	0.638	EVERGREEN	*Don’t modify motors (mostly).	*Don’t modify motors (mostly).
+R404	0.697	EVERGREEN	*BUMPERS must be soft.	*BUMPERS must be soft.
+E303	0.705	EVERGREEN	*Tethered operation outside FIELDS/Practice Fields.	*Tethered operation outside FIELDS/PRACTICE AREAS.
+E114	0.707	EVERGREEN	*Limit flag and flagpole size.	*Limit flag and flagpole size.
+R406	0.723	EVERGREEN	*Fill BUMPER corners.	*Fill BUMPER corners.
+G101	0.726	EVERGREEN	*Humans, stay off the FIELD until green.	*Humans, remain outside the FIELD.
+R105	0.745	GAMESPEC	ROBOT extension limit.	ROBOT horizontal extension limit.
+E403	0.746	EVERGREEN	*Load-In Restrictions.	*Load-In Restrictions.
+R403	0.761	EVERGREEN	*BUMPER extension limit.	*BUMPER extension limit.
+R610	0.763	EVERGREEN	*1 breaker/fuse per circuit.	*1 breaker/fuse per circuit.
+G103	0.774	EVERGREEN	*Be careful what you interact with.	*Be careful what you interact with.
+T614	0.777	EVERGREEN	*For replays, no changing LINEUPS (mostly).	*For replays, no changing LINEUPS (mostly).
+R412	0.787	EVERGREEN	*Team number on BUMPERS.	*Team number on BUMPERS.
+R303	0.804	EVERGREEN	*Create new designs and software, unless they’re public.	*Create new designs and software, unless they’re public.
+G209	0.817	EVERGREEN	*Keep your ROBOT together.	*Keep your ROBOT together.
+E601	0.823	EVERGREEN	*Inspection for Practice Fields.	*Inspection for TEST & PRACTICE AREAS.
+R504	0.824	EVERGREEN	*Power (most) actuators off of approved devices.	*Power (most) actuators off of approved devices.
+R601	0.844	EVERGREEN	*Battery limit – everyone has the same power.	*Battery limit – everyone has the same power.
+R621	0.854	EVERGREEN	*Protect circuits with appropriate circuit breakers.	*Protect circuits with appropriate circuit breakers.
+R907	0.855	EVERGREEN	*No AC inverters.	*No AC inverters.
+E108	0.858	EVERGREEN	*Some things don’t belong at events.	*Some things don’t belong at events.
+E405	0.862	EVERGREEN	*Once done, head out.	*Once done, head out.
+R712	0.868	EVERGREEN	*Control PWM controllers from the roboRIO.	*Control PWM controllers from the roboRIO.
+R410	0.880	EVERGREEN	*BUMPERS must come off.	*BUMPERS must come off.
+E702	0.882	EVERGREEN	*Carts shouldn’t be too big.	*Carts shouldn’t be too big.
+R104	0.884	GAMESPEC	STARTING CONFIGURATION – max size.	STARTING CONFIGURATION – max size.
+E604	0.886	EVERGREEN	Give ROBOTS space.	*Give ROBOTS space.
+R502	0.887	EVERGREEN	*Only 4 propulsion motors.	*Only 4 propulsion motors.
+R609	0.890	EVERGREEN	*Connect main power safely.	*Connect main power safely.
+G303	0.891	EVERGREEN	*Start your ROBOTS.	*Start your ROBOTS.
+R619	0.893	EVERGREEN	*Only use specified circuit breakers in PDP/PDP2.0/PDH.	*Only use specified circuit breakers in a PD.
+R501	0.903	EVERGREEN	*Allowable motors.	*Allowable motors.
+R407	0.903	EVERGREEN	*BUMPERS shouldn’t be wedges.	*BUMPERS shouldn’t be wedges.
+R814	0.904	EVERGREEN	*Don’t connect solenoid outputs together.	*Don’t connect solenoid outputs together.
+R715	0.909	EVERGREEN	*Control PCM, PH, and Servo Hub from roboRIO.	*Control PCM, PH, and Servo Hub from roboRIO.
+R704	0.911	EVERGREEN	*Only use allowed ports and bandwidth to communicate with the ROBOT.	*Only use allowed ports and bandwidth to communicate with the ROBOT.
+E115	0.912	EVERGREEN	*No firearms.	*No firearms.
+G301	0.917	EVERGREEN	*Be prompt.	*Be prompt.
+G102	0.923	EVERGREEN	*Never step over the guardrail.	*Never step over the guardrail.
+R808	0.924	EVERGREEN	*Working air pressure limit.	*Working air pressure limit.
+E603	0.925	EVERGREEN	Practice Field attendance is limited.	*TEST/PRACTICE AREA attendance is limited.
+G402	0.925	EVERGREEN	*Let the ROBOT do its thing.	*Let the ROBOT do its thing.
+E506	0.926	EVERGREEN	*No brazing or welding.	*No brazing or welding.
+R709	0.936	EVERGREEN	*ROBOTS must have a signal light.	*ROBOTS must have a signal light.
+E606	0.941	EVERGREEN	Be safe.	*Be safe.
+R608	0.941	EVERGREEN	*Limit non-battery energy.	*Limit non-battery energy.
+R905	0.942	EVERGREEN	*FIELD wireless only.	*FIELD wireless only.
+I107	0.944	EVERGREEN	*No STUDENT, no inspection.	*No STUDENT, no inspection.
+T201	0.948	EVERGREEN	*Replays will be the same.	*Replays will be the same.
+E301	0.949	EVERGREEN	*No wireless communication.	*No wireless communication.
+R103	0.950	EVERGREEN	*ROBOT weight limit.	*ROBOT weight limit.
+R408	0.950	EVERGREEN	*Weight limit with BUMPERS.	*Weight limit with BUMPERS.
+R710	0.950	EVERGREEN	*Only specified modifications to control system devices permitted.	*Only specified modifications to control system devices permitted.
+R624	0.954	EVERGREEN	*Use specified wire colors (mostly).	*Use specified wire colors (mostly).
+R805	0.957	EVERGREEN	*If using pneumatics, these parts are required.	*If using pneumatics, these parts are required.
+R611	0.957	EVERGREEN	*The ROBOT frame is not a wire.	*The ROBOT frame is not a wire.
+T606	0.958	EVERGREEN	*Declining teams can’t be picked.	*Declining teams can’t be picked.
+R702	0.959	EVERGREEN	*Communicate with the ROBOT with the specified radio.	*Communicate with the ROBOT with the specified radio.
+R411	0.959	EVERGREEN	*BUMPERS indicate your ALLIANCE.	*BUMPERS indicate your ALLIANCE.
+E706	0.961	EVERGREEN	*Small ROBOT carts are allowed on the FIELD	*Small ROBOT carts are allowed on the FIELD
+R803	0.963	EVERGREEN	*Don’t modify pneumatics.	*Don’t modify pneumatics.
+R101	0.963	EVERGREEN	*ROBOT PERIMETER must be fixed.	*ROBOT PERIMETER must be fixed.
+R714	0.966	EVERGREEN	*Control CAN motor controllers from the roboRIO.	*Control CAN motor controllers from the roboRIO.
+G208	0.966	EVERGREEN	*Show up to your MATCHES.	*Show up to your Qualification MATCHES.
+R802	0.968	EVERGREEN	*No custom pneumatics and meet minimum pressure ratings.	*No custom pneumatics and meet minimum pressure ratings.
+T301	0.969	EVERGREEN	*Measurement, not practice.	*Measurement, not practice.
+G207	0.971	EVERGREEN	*Don’t abuse ARENA access.	*Don’t abuse ARENA access.
+I106	0.971	EVERGREEN	*ROBOTS are off for inspection (mostly).	*ROBOTS are off for inspection (mostly).
+E302	0.971	EVERGREEN	*Don’t interfere with wireless networks.	*Don’t interfere with wireless networks.
+I104	0.975	EVERGREEN	*Unless the change is listed below, any change to a ROBOT must get re-inspected.	*Unless the change is listed below, any change to a ROBOT must get re-inspected.
+R618	0.975	EVERGREEN	*Use PDP/PDP2.0/PDH terminals as designed.	*Use PD terminals as designed.
+R806	0.976	EVERGREEN	*Compressed air from ROBOT compressor only.	*Compressed air from ROBOT compressor only.
+R620	0.977	EVERGREEN	*Only use specified fuses in PDP/PDP2.0/PDH.	*Only use specified fuses in PD.
+R811	0.978	EVERGREEN	*Relief valve requirements.	*Relief valve requirements.
+R613	0.978	EVERGREEN	*Electrical system must be inspectable.	*Electrical system must be inspectable.
+G203	0.979	EVERGREEN	*Asking other teams to throw a MATCH – not cool.	*Asking other teams to throw a MATCH – not cool.
+T602	0.980	EVERGREEN	*STUDENTS must outnumber adults.	*STUDENTS must outnumber adults.
+G104	0.981	EVERGREEN	*Teams may not enable their ROBOTS on the FIELD.	*Teams may not enable their ROBOTS on the FIELD.
+I103	0.981	EVERGREEN	*Bring it all to inspection.	*Bring it all to inspection.
+R804	0.983	EVERGREEN	*Only use specific pneumatic devices.	*Only use specific pneumatic devices.
+G501	0.984	EVERGREEN	*Leave promptly.	*Leave promptly.
+R809	0.986	EVERGREEN	*Limited devices at high pressure.	*Limited devices at high pressure.
+T612	0.986	EVERGREEN	*Send a BACKUP TEAM Representative.	*Send a BACKUP TEAM Representative.
+R716	0.986	EVERGREEN	*Don’t alter the CAN bus.	*Don’t alter the CAN bus.
+E102	0.988	EVERGREEN	*Be nice.	*Be nice.
+E801	0.989	EVERGREEN	*If in the pits during Ceremonies, shhhhhh.	*If in the pits during Ceremonies, shhhhhh.
+R301	0.990	EVERGREEN	*Individual item cost limit.	*Individual item cost limit.
+G212	0.991	EVERGREEN	*All teams can play.	*All teams can play.
+R807	0.991	EVERGREEN	*Air storage pressure limit.	*Air storage pressure limit.
+R701	0.993	EVERGREEN	*Control the ROBOT with a roboRIO.	*Control the ROBOT with a roboRIO.
+G204	0.993	EVERGREEN	*Letting someone coerce you into throwing a MATCH – also not cool.	*Letting someone coerce you into throwing a MATCH – also not cool.
+R707	0.993	EVERGREEN	*Limited wireless allowed.	*Limited wireless allowed.
+R625	0.994	EVERGREEN	*Don’t modify critical power paths.	*Don’t modify critical power paths.
+T605	0.994	EVERGREEN	*Picks are time limited.	*Picks are time limited.
+E402	0.994	EVERGREEN	*Load-In person limit is 5.	*Load-In person limit is 6.
+E504	1.000	EVERGREEN	*No sparks.	*No sparks or flames.
+E605	1.000	EVERGREEN	Be ready to DISABLE.	*Be ready to DISABLE.
+I102	1.000	EVERGREEN	*Get inspected before playing a Qualification/Playoff MATCH.	*Get inspected before playing a Qualification MATCH.
+R801	1.000	EVERGREEN	*Only use explicitly permitted pneumatic parts.	*Only use explicitly permitted pneumatic parts

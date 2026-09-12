@@ -1,0 +1,423 @@
+{
+  "source": "The Blue Alliance public event pages, scraped by tools/tba_predictive_scrape.py",
+  "tables": {
+    "captaincy_base_rates": [
+      {
+        "year": 2023,
+        "events_attended": "1",
+        "n_teams": 833,
+        "pct_ever_captain": 8.4,
+        "pct_ever_on_alliance": 29.5,
+        "captaincies_per_team": 0.084
+      },
+      {
+        "year": 2023,
+        "events_attended": "2",
+        "n_teams": 1393,
+        "pct_ever_captain": 23.0,
+        "pct_ever_on_alliance": 68.4,
+        "captaincies_per_team": 0.258
+      },
+      {
+        "year": 2023,
+        "events_attended": "3",
+        "n_teams": 686,
+        "pct_ever_captain": 53.8,
+        "pct_ever_on_alliance": 98.3,
+        "captaincies_per_team": 0.697
+      },
+      {
+        "year": 2023,
+        "events_attended": "4+",
+        "n_teams": 372,
+        "pct_ever_captain": 80.9,
+        "pct_ever_on_alliance": 99.7,
+        "captaincies_per_team": 1.403
+      },
+      {
+        "year": 2023,
+        "events_attended": "ALL",
+        "n_teams": 3284,
+        "pct_ever_captain": 32.3,
+        "pct_ever_on_alliance": 68.3,
+        "captaincies_per_team": 0.435
+      },
+      {
+        "year": 2024,
+        "events_attended": "1",
+        "n_teams": 843,
+        "pct_ever_captain": 6.6,
+        "pct_ever_on_alliance": 22.3,
+        "captaincies_per_team": 0.066
+      },
+      {
+        "year": 2024,
+        "events_attended": "2",
+        "n_teams": 1532,
+        "pct_ever_captain": 22.5,
+        "pct_ever_on_alliance": 66.9,
+        "captaincies_per_team": 0.248
+      },
+      {
+        "year": 2024,
+        "events_attended": "3",
+        "n_teams": 730,
+        "pct_ever_captain": 54.7,
+        "pct_ever_on_alliance": 97.4,
+        "captaincies_per_team": 0.718
+      },
+      {
+        "year": 2024,
+        "events_attended": "4+",
+        "n_teams": 369,
+        "pct_ever_captain": 79.4,
+        "pct_ever_on_alliance": 99.7,
+        "captaincies_per_team": 1.407
+      },
+      {
+        "year": 2024,
+        "events_attended": "ALL",
+        "n_teams": 3474,
+        "pct_ever_captain": 31.5,
+        "pct_ever_on_alliance": 66.0,
+        "captaincies_per_team": 0.426
+      },
+      {
+        "year": 2025,
+        "events_attended": "1",
+        "n_teams": 910,
+        "pct_ever_captain": 5.8,
+        "pct_ever_on_alliance": 24.5,
+        "captaincies_per_team": 0.058
+      },
+      {
+        "year": 2025,
+        "events_attended": "2",
+        "n_teams": 1610,
+        "pct_ever_captain": 23.2,
+        "pct_ever_on_alliance": 68.7,
+        "captaincies_per_team": 0.258
+      },
+      {
+        "year": 2025,
+        "events_attended": "3",
+        "n_teams": 816,
+        "pct_ever_captain": 57.6,
+        "pct_ever_on_alliance": 96.9,
+        "captaincies_per_team": 0.761
+      },
+      {
+        "year": 2025,
+        "events_attended": "4+",
+        "n_teams": 351,
+        "pct_ever_captain": 79.8,
+        "pct_ever_on_alliance": 100.0,
+        "captaincies_per_team": 1.407
+      },
+      {
+        "year": 2025,
+        "events_attended": "ALL",
+        "n_teams": 3687,
+        "pct_ever_captain": 31.9,
+        "pct_ever_on_alliance": 67.0,
+        "captaincies_per_team": 0.429
+      },
+      {
+        "year": 2026,
+        "events_attended": "1",
+        "n_teams": 852,
+        "pct_ever_captain": 9.2,
+        "pct_ever_on_alliance": 35.8,
+        "captaincies_per_team": 0.092
+      },
+      {
+        "year": 2026,
+        "events_attended": "2",
+        "n_teams": 1639,
+        "pct_ever_captain": 21.8,
+        "pct_ever_on_alliance": 70.8,
+        "captaincies_per_team": 0.237
+      },
+      {
+        "year": 2026,
+        "events_attended": "3",
+        "n_teams": 828,
+        "pct_ever_captain": 59.7,
+        "pct_ever_on_alliance": 98.4,
+        "captaincies_per_team": 0.779
+      },
+      {
+        "year": 2026,
+        "events_attended": "4+",
+        "n_teams": 380,
+        "pct_ever_captain": 79.7,
+        "pct_ever_on_alliance": 100.0,
+        "captaincies_per_team": 1.439
+      },
+      {
+        "year": 2026,
+        "events_attended": "ALL",
+        "n_teams": 3699,
+        "pct_ever_captain": 33.3,
+        "pct_ever_on_alliance": 71.9,
+        "captaincies_per_team": 0.448
+      }
+    ],
+    "auto_within_event": [
+      {
+        "year": 2023,
+        "n_events": 179,
+        "median_spearman_rank_vs_avgmatch": 0.893,
+        "median_spearman_rank_vs_avgauto": 0.747,
+        "median_spearman_rank_vs_nonauto": 0.864,
+        "median_partial_auto_given_total": 0.044,
+        "median_auto_share_of_score_pct": 27.6
+      },
+      {
+        "year": 2024,
+        "n_events": 185,
+        "median_spearman_rank_vs_avgmatch": 0.873,
+        "median_spearman_rank_vs_avgauto": 0.719,
+        "median_spearman_rank_vs_nonauto": 0.848,
+        "median_partial_auto_given_total": -0.044,
+        "median_auto_share_of_score_pct": 37.3
+      },
+      {
+        "year": 2025,
+        "n_events": 198,
+        "median_spearman_rank_vs_avgmatch": 0.838,
+        "median_spearman_rank_vs_avgauto": 0.724,
+        "median_spearman_rank_vs_nonauto": 0.808,
+        "median_partial_auto_given_total": 0.259,
+        "median_auto_share_of_score_pct": 19.6
+      },
+      {
+        "year": 2026,
+        "n_events": 208,
+        "median_spearman_rank_vs_avgmatch": 0.882,
+        "median_spearman_rank_vs_avgauto": 0.719,
+        "median_spearman_rank_vs_nonauto": 0.875,
+        "median_partial_auto_given_total": 0.061,
+        "median_auto_share_of_score_pct": 20.6
+      }
+    ],
+    "pick_auc": [
+      {
+        "year": 2023,
+        "predictor": "qual_rank",
+        "n_events": 176,
+        "median_auc_picked": 0.827,
+        "p25": 0.752,
+        "p75": 0.891
+      },
+      {
+        "year": 2023,
+        "predictor": "avg_match",
+        "n_events": 176,
+        "median_auc_picked": 0.856,
+        "p25": 0.8,
+        "p75": 0.912
+      },
+      {
+        "year": 2023,
+        "predictor": "avg_auto",
+        "n_events": 176,
+        "median_auc_picked": 0.755,
+        "p25": 0.677,
+        "p75": 0.831
+      },
+      {
+        "year": 2023,
+        "predictor": "ranking_score",
+        "n_events": 176,
+        "median_auc_picked": 0.812,
+        "p25": 0.735,
+        "p75": 0.874
+      },
+      {
+        "year": 2024,
+        "predictor": "qual_rank",
+        "n_events": 180,
+        "median_auc_picked": 0.826,
+        "p25": 0.765,
+        "p75": 0.892
+      },
+      {
+        "year": 2024,
+        "predictor": "avg_match",
+        "n_events": 180,
+        "median_auc_picked": 0.872,
+        "p25": 0.806,
+        "p75": 0.922
+      },
+      {
+        "year": 2024,
+        "predictor": "avg_auto",
+        "n_events": 180,
+        "median_auc_picked": 0.731,
+        "p25": 0.66,
+        "p75": 0.811
+      },
+      {
+        "year": 2024,
+        "predictor": "ranking_score",
+        "n_events": 180,
+        "median_auc_picked": 0.821,
+        "p25": 0.753,
+        "p75": 0.887
+      },
+      {
+        "year": 2025,
+        "predictor": "qual_rank",
+        "n_events": 194,
+        "median_auc_picked": 0.782,
+        "p25": 0.706,
+        "p75": 0.855
+      },
+      {
+        "year": 2025,
+        "predictor": "avg_match",
+        "n_events": 194,
+        "median_auc_picked": 0.84,
+        "p25": 0.789,
+        "p75": 0.905
+      },
+      {
+        "year": 2025,
+        "predictor": "avg_auto",
+        "n_events": 194,
+        "median_auc_picked": 0.692,
+        "p25": 0.609,
+        "p75": 0.766
+      },
+      {
+        "year": 2025,
+        "predictor": "ranking_score",
+        "n_events": 194,
+        "median_auc_picked": 0.777,
+        "p25": 0.701,
+        "p75": 0.846
+      },
+      {
+        "year": 2026,
+        "predictor": "qual_rank",
+        "n_events": 200,
+        "median_auc_picked": 0.798,
+        "p25": 0.727,
+        "p75": 0.857
+      },
+      {
+        "year": 2026,
+        "predictor": "avg_match",
+        "n_events": 200,
+        "median_auc_picked": 0.801,
+        "p25": 0.731,
+        "p75": 0.856
+      },
+      {
+        "year": 2026,
+        "predictor": "avg_auto",
+        "n_events": 200,
+        "median_auc_picked": 0.7,
+        "p25": 0.589,
+        "p75": 0.766
+      },
+      {
+        "year": 2026,
+        "predictor": "ranking_score",
+        "n_events": 200,
+        "median_auc_picked": 0.783,
+        "p25": 0.717,
+        "p75": 0.85
+      }
+    ],
+    "multi_event_growth": [
+      {
+        "year": 2023,
+        "n_teams_early_and_late": 1314,
+        "median_pct_growth_avg_match": 49.8,
+        "median_pct_growth_avg_auto": 52.2,
+        "median_change_rank_pctile": 3.1,
+        "pct_teams_rank_pctile_improved": 44.4
+      },
+      {
+        "year": 2024,
+        "n_teams_early_and_late": 1542,
+        "median_pct_growth_avg_match": 49.8,
+        "median_pct_growth_avg_auto": 47.3,
+        "median_change_rank_pctile": 2.5,
+        "pct_teams_rank_pctile_improved": 45.1
+      },
+      {
+        "year": 2025,
+        "n_teams_early_and_late": 1378,
+        "median_pct_growth_avg_match": 66.8,
+        "median_pct_growth_avg_auto": 68.1,
+        "median_change_rank_pctile": 1.8,
+        "pct_teams_rank_pctile_improved": 46.8
+      },
+      {
+        "year": 2026,
+        "n_teams_early_and_late": 1511,
+        "median_pct_growth_avg_match": 73.5,
+        "median_pct_growth_avg_auto": 61.8,
+        "median_change_rank_pctile": 4.2,
+        "pct_teams_rank_pctile_improved": 41.3
+      }
+    ],
+    "reliability": [
+      {
+        "year": 2023,
+        "n_team_events": 7208,
+        "pct_team_events_with_any_DQ": 2.8,
+        "mean_DQ_per_team_event": 0.039,
+        "pct_team_events_short_of_modal_played": 0.0,
+        "median_winpct_top_quartile_rank": 72.7,
+        "median_winpct_bottom_quartile_rank": 30.0,
+        "median_rank_pctile_with_DQ": 75.7,
+        "median_rank_pctile_no_DQ": 48.9,
+        "pct_picked_with_DQ": 41.6,
+        "pct_picked_no_DQ": 62.9
+      },
+      {
+        "year": 2024,
+        "n_team_events": 7605,
+        "pct_team_events_with_any_DQ": 1.34,
+        "mean_DQ_per_team_event": 0.021,
+        "pct_team_events_short_of_modal_played": 0.0,
+        "median_winpct_top_quartile_rank": 72.7,
+        "median_winpct_bottom_quartile_rank": 27.3,
+        "median_rank_pctile_with_DQ": 86.0,
+        "median_rank_pctile_no_DQ": 50.0,
+        "pct_picked_with_DQ": 22.5,
+        "pct_picked_no_DQ": 61.7
+      },
+      {
+        "year": 2025,
+        "n_team_events": 8013,
+        "pct_team_events_with_any_DQ": 1.7,
+        "mean_DQ_per_team_event": 0.024,
+        "pct_team_events_short_of_modal_played": 0.0,
+        "median_winpct_top_quartile_rank": 75.0,
+        "median_winpct_bottom_quartile_rank": 27.3,
+        "median_rank_pctile_with_DQ": 86.4,
+        "median_rank_pctile_no_DQ": 49.1,
+        "pct_picked_with_DQ": 22.8,
+        "pct_picked_no_DQ": 62.1
+      },
+      {
+        "year": 2026,
+        "n_team_events": 8160,
+        "pct_team_events_with_any_DQ": 2.67,
+        "mean_DQ_per_team_event": 0.043,
+        "pct_team_events_short_of_modal_played": 0.0,
+        "median_winpct_top_quartile_rank": 75.0,
+        "median_winpct_bottom_quartile_rank": 28.6,
+        "median_rank_pctile_with_DQ": 74.6,
+        "median_rank_pctile_no_DQ": 49.2,
+        "pct_picked_with_DQ": 39.4,
+        "pct_picked_no_DQ": 64.7
+      }
+    ]
+  }
+}

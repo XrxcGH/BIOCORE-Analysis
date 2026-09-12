@@ -1,0 +1,3 @@
+# `research/rule_inventories/_text/`: text of the FIRST game manuals and Q&A
+
+This directory holds plain-text extractions of the FIRST Robotics Competition game manuals (`<year>.txt`, 2016 onward) and of the official Q&A archives (`qa_<year>.txt`), taken from the PDFs in `manuals/archive/frc/`. `tools/qa-rule-heat.py` caches its Q&A text here, and on kickoff day `KICKOFF_PLAYBOOK.md` writes the new manual's `2027.txt` here. None of it is in the repository, because the manuals and Q&A are FIRST's copyrighted material and a full-text extraction is a copy of them. To fill this directory, run `bash tools/rebuild-corpus.sh --fetch` from the repository root to download the PDFs, then `bash tools/rebuild-corpus.sh` to regenerate the text.

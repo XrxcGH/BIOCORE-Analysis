@@ -1,0 +1,440 @@
+# 04_competition_ops.yaml
+# Machine-readable companion to reference/team-ops/04_tuning_testing_competition_ops.md
+#
+# Evidence labels: C = CONFIRMED (primary source in this corpus), H = HISTORICAL-PATTERN,
+#                  S = SPECULATION / model assumption, UNVERIFIED
+# Every hours or dollars figure here must agree with reference/team_capacity.yaml.
+# Nothing here is BIOCORE-specific: BIOCORE's rules are not public as of 2026-08-22.
+
+meta:
+  version: 1
+  written: 2026-08-22
+  companion_md: reference/team-ops/04_tuning_testing_competition_ops.md
+  capacity_authority: reference/team_capacity.yaml
+  bom_authority: reference/bom/03_LAUNCHERS_ELECTRONICS.md
+  season: 2027 BIOCORE presented by Haas (FRC, FIRST CANOPY)
+  kickoff: "2027-01-09T12:00:00-05:00"
+  profile: "15 students, 15 scheduled h/wk, one experienced technical mentor, COTS path"
+
+# --------------------------------------------------------------------------- practice field
+practice_field:
+  # FIRST's own fidelity ladder, verbatim category names from the Playing FIELD webpage. [C]
+  fidelity_tiers:
+    - id: team_test_elements
+      label: "Team Test Elements (formerly 'Team Elements' / 'Team Versions')"
+      fidelity: low
+      material: "lumber / hardware-store materials"
+      tools: "common hand and power tools"
+      evidence: C
+    - id: event_test_elements
+      label: "Event Test Elements"
+      fidelity: low-to-medium
+      material: "notch-and-tab plywood + some real field components"
+      note: "manufactured by FIRST and used at official events"
+      evidence: C
+    - id: team_practice_elements
+      label: "Team Practice Elements"
+      fidelity: medium
+      note: "starting point for a higher-fidelity practice area"
+      evidence: C
+    - id: wood_practice_perimeter
+      label: "Wood Practice Perimeter"
+      fidelity: medium
+      note: "matches Team Practice Elements construction style"
+      evidence: C
+    - id: unofficial_for_sale
+      label: "Unofficial FIELD Elements for Sale"
+      vendors_2026: [AndyMark, WestCoast Products, The Thrifty Bot, REV Robotics, Swyft]
+      warning: "FIRST cannot confirm these match the Official FIELD"
+      evidence: C
+
+  # 2026 REBUILT Team Test Element shopping lists, verbatim from the build-instruction PDFs. [C]
+  # Held here as the SHAPE of what a 2027 element will cost, not as a 2027 claim.
+  te_2026_shopping_lists:
+    TE-26000_OUTPOST:
+      lumber: ["2x4x8 lumber x6", "1x2x8 lumber x1", "4'x8'x1/2\" plywood x1"]
+      hardware: ["#8 x 2.5\" wood screw x~54", "#8 x 1.5\" x~16", "#8 x 1\" x4",
+                 "1/4-20 x 3.5\" bolt x2", "1/4-20 wing nut x2"]
+      evidence: C
+    TE-26100_BUMP:
+      lumber: ["2x4x8 lumber x5", "4'x8'x1/2\" plywood x1"]
+      hardware: ["#8 x 2.5\" wood screw x~60", "#8 x 1.5\" x~24"]
+      evidence: C
+    TE-26200_TRENCH:
+      lumber: ["2x4x8 lumber x3", "4'x4'x1/2\" plywood x1"]
+      hardware: ["#8 x 2.5\" wood screw x~30", "#8 x 1.5\" x~8"]
+      evidence: C
+    TE-26600_DEPOT:
+      lumber: ["4'x4'x1/2\" plywood x1"]
+      hardware: ["wood glue"]
+      evidence: C
+    TE-26300_HUB:
+      note: "Version 2. Uses the same polycarbonate funnel panels as the real field (GE-26329);
+             purchasable from AndyMark / Thrifty Bot / WCP / REV instead of fabricating."
+      evidence: C
+    TE-26500_TOWER:
+      note: "Version 2. For practising hanging. AndyMark sold a TOWER RUNG in the same material
+             and length as the official RUNG, unpainted and undrilled."
+      evidence: C
+
+  official_carpet:
+    spec: "playing field carpet is 74 ft x 30 ft, two gray rolls"
+    consumables: ["carpet tape x1 roll", "3\" black gaffer's tape x3 rolls", "100 ft chalk line",
+                  "carpet knife", "utility knife", "100 ft tape measure"]
+    source: "2026 Field Manual sec 3.2 Carpet Installation"
+    evidence: C
+
+  # The reduction. See sec 1.6 of the companion .md.
+  minimum_viable_set:
+    - id: score_target
+      what: "one copy of the primary scoring structure"
+      why: "you cannot tune a scoring mechanism against a guess at its geometry"
+    - id: acquire_source
+      what: "one copy of the game-piece source / floor pickup zone"
+      why: "the other end of the cycle; half of every cycle-time measurement"
+    - id: measured_floor
+      what: "taped field outline at true dimensions + a driver-station sightline stand-in"
+      why: "distance and sightline are what the driver actually learns"
+  deferred_until_needed:
+    - "obstacles (BUMP / TRENCH analogues) - build only if the game has floor traversal"
+    - "endgame structure - replace with a DIMENSIONAL JIG of the exact interface geometry"
+    - "second alliance's half of the field"
+    - "AprilTag placement rig - only if you run vision pose estimation"
+
+# --------------------------------------------------------------------------- practice robot
+practice_robot:
+  options:
+    - id: full_second_robot
+      cost_usd_low: 1500
+      cost_usd_high: 2500
+      verdict: "OUT OF REACH - equals 60-100% of robot_discretionary ($2,500)"
+      extra_2027_risk: "requires a second Systemcore; price UNVERIFIED"
+    - id: identical_drivetrain_only
+      cost_usd_low: 500
+      cost_usd_high: 900
+      verdict: "RECOMMENDED"
+      note: "KoP-class chassis + 4 propulsion motors + a control board. Practice tethered."
+    - id: swap_superstructure
+      cost_usd_low: 0
+      cost_usd_high: 400
+      verdict: "situational - only when the superstructure is what you are iterating"
+    - id: last_years_robot
+      cost_usd: 0
+      verdict: "DO THIS ON 2026-09-01 - teaches driving, not this year's cycle"
+    - id: simulation
+      cost_usd: 0
+      verdict: "MANDATORY in 2027 - see reference/team-ops/03_programming_stack.md sec 7"
+    - id: finish_the_real_robot_earlier
+      cost_usd: 0
+      verdict: "the actual elite advantage; the second robot is a symptom, not the cause"
+
+# --------------------------------------------------------------------------- drive practice
+drive_practice:
+  budget_veq_h: 54.9                  # reference/team_capacity.yaml hours.allocation.drive_practice
+  people_per_session: 3.5             # driver, operator, field reset, spotter/coach
+  session_hours: 15.7
+  usable_fraction: 0.6                # after the robot is reliable enough to be worth driving
+  real_driver_hours_week1: 9          # S - 02_TEAM_CAPACITY_MODEL.md sec 3.4
+  real_driver_hours_week4: 13.4       # S - same fractions applied to 854 veq-h
+  competition_seat_time_minutes_per_event: 30   # ~12 quals x 2.5 min
+  # cycle-model.py --game rebuilt, worked example
+  points_per_second_of_cycle:
+    at_8s: 9.7
+    at_9s: 7.8
+    over_12_quals_at_8s: 117
+    over_12_quals_at_9s: 93
+
+  drills:
+    - {id: D1, name: "Straight-line stop-on-a-mark",       minutes: 10, measure: "stop within +/-2 in, 10 reps"}
+    - {id: D2, name: "Figure-eight around two cones",      minutes: 10, measure: "lap time, best of 5"}
+    - {id: D3, name: "Blind-side approach",                minutes: 10, measure: "score with the robot between you and the target"}
+    - {id: D4, name: "Full cycle, stopwatch",              minutes: 20, measure: "median of 10 cycles - THE number"}
+    - {id: D5, name: "Cycle under contact",                minutes: 15, measure: "median cycle with a defender robot"}
+    - {id: D6, name: "Recover from a dropped game piece",  minutes: 10, measure: "seconds to re-acquire"}
+    - {id: D7, name: "Auto handoff",                       minutes: 10, measure: "teleop first-cycle start latency"}
+    - {id: D8, name: "Endgame under a 20 s clock",         minutes: 15, measure: "success rate over 10 attempts"}
+    - {id: D9, name: "Brownout recovery",                  minutes: 10, measure: "seconds from stall to moving again"}
+    - {id: D10, name: "Comms-loss drill",                  minutes: 10, measure: "what the driver does with a dead radio"}
+
+# --------------------------------------------------------------------------- pre-match checklist
+prematch_checklist:
+  when: "runs in the queue line, every match, out loud, two people"
+  target_minutes: 4
+  power:
+    - "Fresh battery installed; number logged on the match sheet"
+    - "Battery strap tight; battery cannot move under a 15-degree tilt"
+    - "SB50 fully seated - listen for the click, then tug the cable, not the housing"
+    - "120 A main breaker seated and externally accessible (R612)"
+    - "All PD breakers seated; none warm to the touch from the last match"
+    - "Robot Signal Light illuminates on power-up (R709)"
+  mechanical:
+    - "Every fastener outside the frame perimeter re-checked (torque-mark line unbroken)"
+    - "Chain/belt tension checked on every driven stage"
+    - "No cracked 3D-printed part; no elongated bolt hole"
+    - "Bumpers: correct alliance colour, all fasteners in, no gap >= 1.25 in between adjacent segments (R401); hard parts <= 1.25 in out from the perimeter (R404)"
+    - "Robot in legal STARTING CONFIGURATION; nothing past the perimeter (R102)"
+  electrical:
+    - "Wiggle test: every Anderson/PowerPole, every CAN pigtail, every encoder connector"
+    - "No wire crossing a moving joint without a service loop and strain relief"
+    - "Radio LEDs visible; radio mount screws present (R707/R708)"
+  control:
+    - "Driver Station battery > 50% or on mains; laptop on the correct FMS profile"
+    - "Correct code version deployed and confirmed by a version string on the dashboard"
+    - "CAN device count on the dashboard equals the expected count - THE single best 30-second test"
+    - "Auto routine selected on the dashboard and read back out loud"
+    - "Joysticks/controllers in the correct USB order; cables strain-relieved to the console"
+  human:
+    - "Driver, operator, human player, coach all present and know the alliance plan"
+    - "Safety glasses on all four"
+    - "Spare-parts bag and the 6-minute kit at the field, not in the pit"
+
+# --------------------------------------------------------------------------- failure modes
+failure_modes:
+  - id: anderson_sb50
+    symptom: "intermittent total power loss; robot 'dies' and comes back"
+    root_cause: "cold-crimped or spring-fatigued SB50 contact"
+    design_out: "hex crimper (not pliers), pull-test every crimp to 20 lb, retire any SB50 that
+                 inserts without resistance; keep 2 spare SB50 pairs pre-crimped in the pit"
+  - id: can_bus
+    symptom: "devices drop off the dashboard at random; motors stop responding"
+    root_cause: "one bad daisy-chain solder joint, a missing terminator, or a shorted
+                 twisted pair inside a drag chain"
+    design_out: "split the bus by subsystem (Systemcore has 5 native CAN-FD ports), label every
+                 node, keep a known-good spare pigtail per vendor, never route CAN with power"
+  - id: encoder_cable
+    symptom: "one mechanism runs away or refuses to home"
+    root_cause: "flex fatigue at the connector on a moving stage"
+    design_out: "service loop, zip-tie the cable to the moving member (not the frame), absolute
+                 encoders where possible so a boot does not require a homing ritual"
+  - id: belts
+    symptom: "skipped teeth, then a snapped belt mid-match"
+    root_cause: "over-tension, misaligned pulleys, or debris"
+    design_out: "tensioner with a repeatable setting, matched-width pulleys, one spare belt of
+                 every length taped inside the pit toolbox"
+  - id: chain
+    symptom: "thrown chain, usually on the drivetrain, usually after contact"
+    root_cause: "slack from wear, no retention"
+    design_out: "tensioner block, chain guard, master-link locations recorded, spare master links"
+  - id: brownout
+    symptom: "robot slows or stops when several mechanisms run together"
+    root_cause: "battery internal resistance too high, or simultaneous current draw"
+    design_out: "load-test and retire batteries, current-limit in software, stagger mechanism
+                 start-up in code, never run a battery two matches in a row"
+  - id: fastener_backout
+    symptom: "a mechanism goes out of alignment across the day"
+    root_cause: "vibration"
+    design_out: "blue (242) threadlocker on every non-serviced fastener, nylock on anything
+                 serviced, torque-mark line across every bolt head and its substrate"
+  - id: bumper
+    symptom: "inspection failure or a mid-event bumper repair"
+    root_cause: "wood screws into end-grain plywood, no positive retention"
+    design_out: "through-bolt the backing, use a pin-and-bracket retention, carry a spare
+                 bumper fastener set and a staple gun"
+
+# --------------------------------------------------------------------------- spares
+spares:
+  # Governing rule of thumb (community consensus, cited in reference/04_PREDICTIVE_FACTORS.md sec 8):
+  # make a spare of EVERY part that lives outside the frame perimeter.
+  electrical:
+    - {item: "SB50 connector + 6 AWG contacts", qty: 2, unit_usd: 6.60, evidence: C}
+    - {item: "40 A snap-action breaker", qty: 4, evidence: S}
+    - {item: "30 A / 20 A breakers", qty: 4, evidence: S}
+    - {item: "120 A main breaker (CB285-120 class)", qty: 1, note: "long lead time - order early", evidence: C}
+    - {item: "motor controller (most-used model)", qty: 1, evidence: S}
+    - {item: "CAN pigtail per vendor", qty: 2, evidence: S}
+    - {item: "encoder + cable (each type on the robot)", qty: 1, evidence: S}
+    - {item: "limit switch", qty: 2, evidence: S}
+    - {item: "12 / 14 / 18 AWG wire, red+black", qty: "10 ft each", evidence: S}
+    - {item: "ferrules + WAGO-compatible tips", qty: "1 bag", evidence: S}
+    - {item: "Ethernet cable, short", qty: 2, evidence: S}
+    - {item: "Robot Signal Light (am-3583)", qty: 1, unit_usd: 70.00, evidence: C}
+  mechanical:
+    - {item: "every belt length on the robot", qty: 1}
+    - {item: "chain + master links", qty: "3 ft"}
+    - {item: "intake roller / compliant wheels", qty: "1 set"}
+    - {item: "every 3D-printed part outside the frame perimeter", qty: 1}
+    - {item: "drivetrain wheel + hub", qty: 1}
+    - {item: "gearbox pinion + shaft key", qty: 1}
+    - {item: "bumper fastener set + spare fabric panel", qty: 1}
+    - {item: "the whole primary-mechanism assembly, if it is small", qty: 1}
+  consumables:
+    - "blue (242) threadlocker"
+    - "zip ties, 4 in and 8 in"
+    - "gaffer tape, electrical tape, double-sided tape"
+    - "sandpaper, files"
+    - "shop towels, isopropyl alcohol (wheel cleaning)"
+    - "safety glasses, spare pairs for visitors"
+
+pit_tools:
+  # 10 ft x 10 ft is the modal FRC pit footprint - UNVERIFIED for 2027; confirm on the event page.
+  hand:
+    - "metric + imperial hex keys (2 full sets, one on a lanyard)"
+    - "ratcheting wrench set"
+    - "screwdrivers incl. #1/#2 Phillips and small flat"
+    - "needle-nose + diagonal cutters + wire strippers"
+    - "hex crimper for 6 AWG (SB50) and a ratcheting crimper for ferrules"
+    - "torque wrench (or a marked breaker bar) for anything safety-relevant"
+    - "tape measure, calipers, machinist square"
+  power:
+    - "cordless drill x2 (one drill, one driver - never re-chuck mid-repair)"
+    - "cordless impact driver"
+    - "soldering iron + solder + heat-shrink + heat gun"
+    - "Dremel-class rotary tool + cutoff wheels"
+  diagnostic:
+    - "multimeter (continuity + DC volts)"
+    - "battery load tester / internal-resistance meter"
+    - "laptop with the full toolchain OFFLINE-INSTALLED (see 03_programming_stack.md sec 9)"
+    - "spare USB cables, USB-C and USB-A, plus a USB hub"
+  infrastructure:
+    - "power strip + 25 ft extension cord"
+    - "battery charger (multi-bank, <= 6 A avg per R604, Anderson SB per R603)"
+    - "cart or hand truck rated for the robot"
+    - "labelled parts bins; one bin per subsystem"
+    - "printed pit banner with team number, and the pit-safety sign"
+    - "fire-safe battery storage / tray"
+
+# --------------------------------------------------------------------------- batteries
+batteries:
+  rule_refs:
+    R601: "exactly 1 non-spillable SLA, 12 V nominal, 17-18.2 Ah at the 20-h rate, rectangular,
+           7.1 x 3.0 x 6.6 in +/-0.1 each, 11.0-14.5 lb, nut-and-bolt terminals, vents unobstructed"
+    R602: "COTS USB packs <=100 Wh and batteries integral to a COTS computer/camera, for
+           cameras and computers ONLY"
+    R603: "chargers must have the corresponding Anderson SB connector installed"
+    R604: "charger may not exceed 6 A average charge current"
+    R605: "batteries are not ballast - no extra batteries on the ROBOT, powered or not"
+    R606: "battery secured so it will not dislodge in any arbitrary orientation"
+    R607: "battery, main-breaker and their lug/wire connections fully insulated at all times"
+  standard_part: "MK Battery ES17-12"
+  unit_price_usd_low: 58.00     # AndyMark 2-pack, C
+  unit_price_usd_high: 60.00    # REV 2-pack, C
+  minimum_count: 6
+  minimum_count_rationale: "1 in the robot, 1 on the charger, 4 resting - a 12-match qual day"
+  rest_minutes_after_charge: 30
+  retire_internal_resistance_mohm: 18
+  hard_rules:
+    - "never run a battery two matches in a row"
+    - "number every battery with a permanent label AND log it on every match sheet"
+    - "load-test at the start and end of the season; log internal resistance each time"
+    - "a battery that ever browned out the robot gets tested before it is trusted again"
+
+# --------------------------------------------------------------------------- alliance selection
+alliance_selection:
+  # 2026 REBUILT Game Manual sec 10.6.1 - all C. Re-verify against the 2027 manual at kickoff.
+  break_before_selection_minutes: 8
+  round1_pick_timer_seconds: 45
+  round2_pick_timer_seconds: 90
+  break_between_rounds_seconds: 120
+  round1_order: "descending, ALLIANCE 1 -> 8"
+  round2_order: "ascending, ALLIANCE 8 -> 1"
+  student_reps_min: 1
+  student_reps_max: 3
+  rules:
+    T601: "1-3 STUDENT representatives must report to the ARENA before selection starts"
+    T602: "STUDENTS must outnumber adults; a non-STUDENT is allowed only alongside exactly 2 STUDENTS"
+    T603: "only a STUDENT may use the mic; only one STUDENT may accept/decline"
+    T604: "only the ALLIANCE CAPTAIN may extend an invitation"
+    T605: "pick timer; skipped ALLIANCES are revisited within the round"
+    T606: "a team that declines cannot be picked later and is ineligible as a BACKUP TEAM"
+  backup_team: "the highest-seeded unselected team; the alliance cannot choose which"
+  playoff_turnaround: "UNVERIFIED - the 2026 GameManual HTML export in this corpus contains no
+                       playoff match-schedule table and no timeout rule. The companion .md sec 6.4
+                       uses 6 minutes as a PLANNING number [S], not a rule. Read sec 10 of the 2027
+                       manual and the *_PlayoffAllianceCommunication.pdf for your event tier."
+  playoff_extra_pit_crew: 3
+
+# --------------------------------------------------------------------------- calendar
+fall_2026_calendar:
+  - {date: "2026-09-01", action: "Start driving the 2026 robot. One hour, twice a week, forever."}
+  - {date: "2026-09-24", action: "Event preferencing opens. Field size first, then latest week."}
+  - {date: "2026-10-15", action: "Wood Practice Perimeter + carpet sourced and laid."}
+  - {date: "2026-11-12", action: "Pre-Kickoff Virtual Kit Release - re-price the spares list."}
+  - {date: "2026-11-17", action: "Kit & Kickoff selection closes."}
+  - {date: "2026-11-21", action: "BOM order-by. Batteries, SB50s, 120 A breaker on the PO."}
+  - {date: "2026-12-15", action: "Load-test and retire batteries; buy replacements to reach 6."}
+  - {date: "2027-01-09", action: "KICKOFF. Practice-element build package assigned by day 3."}
+  - {date: "2027-01-19", action: "Practice elements done (first-year work package, day 10)."}
+
+# --------------------------------------------------------------------------- driver selection
+driver_selection:
+  first_tryout: "2026-10-01 on last year's robot"
+  final_selection_by: "2027-02-05"
+  backup_driver_practice_share: 0.20
+  tryout_weights:                       # S - no published FRC standard exists
+    timed_slalom_5_gates: 0.20
+    stop_on_a_mark_10_reps: 0.20
+    blind_side_approach: 0.25
+    recovery_after_induced_fault: 0.20
+    coachability_under_noise: 0.15
+  note: "blind-side + recovery = 45% of the score; raw speed is 20%"
+
+# --------------------------------------------------------------------------- practice session
+practice_session:
+  minutes: 90
+  people: 3.5
+  veq_h_per_session: 5.25
+  sessions_before_week1: 10.5           # 54.9 veq-h / 5.25
+  blocks:
+    - {min: "0-5",   what: "pre-match checklist rehearsal, out loud, timed"}
+    - {min: "5-15",  what: "warm-up D1 then D2"}
+    - {min: "15-35", what: "D4 - ten timed cycles, RECORDED"}
+    - {min: "35-50", what: "rotating skill drill: D3/D5/D6/D7/D8 by week"}
+    - {min: "50-70", what: "two full match simulations, clock running, score kept"}
+    - {min: "70-80", what: "fault injection -> D9/D10"}
+    - {min: "80-90", what: "debrief + failure-log entries"}
+
+# --------------------------------------------------------------------------- failure log
+failure_log:
+  path: logs/failures_2027.csv
+  columns: [date, context, match, subsystem, part, symptom, root_cause, fix,
+            minutes_lost, battery_no, recurrence, logged_by]
+  contexts: [practice, quals, playoff, pit]
+  owner: "safety captain (Veteran G, 02_TEAM_CAPACITY_MODEL.md sec 4.2)"
+  rule: "any row with recurrence >= 2 is a DESIGN DEFECT, not an incident"
+
+# --------------------------------------------------------------------------- match day
+match_ops:
+  qual_cycle_minutes: 40
+  driving_minutes_per_match: 2.5
+  seat_time_per_event_minutes: 30       # ~12 quals x 2.5 min, H
+  timeline:
+    - {t: "T-25", what: "battery pulled from charger, rested"}
+    - {t: "T-20", what: "checklist part 1: POWER / MECHANICAL / ELECTRICAL, in the pit"}
+    - {t: "T-15", what: "alliance strategy meeting, 3 min, 7-step script"}
+    - {t: "T-10", what: "robot to queue"}
+    - {t: "T-6",  what: "checklist part 2: CONTROL / HUMAN, in the queue line, out loud"}
+    - {t: "T-2",  what: "robot on field, starting config, auto read back out loud"}
+    - {t: "T+3",  what: "visual damage scan BEFORE the cart moves"}
+    - {t: "T+8",  what: "90-second debrief, four questions"}
+    - {t: "T+10", what: "failure-log entries; battery to the bottom of the rotation"}
+  debrief_questions:
+    - "What did the robot do that it was not supposed to do?"
+    - "What did we (the humans) do that we did not intend?"
+    - "What did we learn about a partner or an opponent?"
+    - "What are we changing before the next match? (exactly ONE, with an owner and a time)"
+  six_minute_repair:
+    total_seconds: 360                  # S planning number - see playoff_turnaround, UNVERIFIED
+    protocol:
+      - {sec: "0-30",   what: "diagnose OUT LOUD; nobody touches anything"}
+      - {sec: "30-45",  what: "coach decides: repair / bypass / play degraded"}
+      - {sec: "45-300", what: "TWO people on the repair, max; a third fetches"}
+      - {sec: "300-330",what: "re-run POWER and CONTROL checklist blocks"}
+      - {sec: "330-360",what: "re-mark torque, log it, go"}
+
+# --------------------------------------------------------------------------- budget reconciliation
+budget_reconciliation:
+  robot_discretionary: 2500
+  wanted:
+    batteries_and_charger: 500
+    spares_list: 500
+    practice_field_3_elements: 400
+    practice_drivetrain_option_B: 700
+    robot_bom_floor: 1500
+  total_wanted: 3600
+  overrun: 1100                          # against 2500, before the BOM floor is even met
+  cut_order:                             # S - companion .md sec 10.4
+    - {rank: 1, item: batteries_and_charger, cut: "NEVER - brownout is a top-3 failure mode and a safety item"}
+    - {rank: 2, item: spares_list,           cut: "compress to ~250 by spare-ing only outside-the-perimeter parts"}
+    - {rank: 3, item: practice_field,        cut: "compress to ~150: build elements 1 and 3 only, defer 2 to week 3"}
+    - {rank: 4, item: practice_drivetrain,   cut: "THIS IS THE CUT - degrade to option D (last year's robot) + E (sim), $0"}
+  sponsor_ask: 1000                       # the specific, concrete ask that makes option B correct

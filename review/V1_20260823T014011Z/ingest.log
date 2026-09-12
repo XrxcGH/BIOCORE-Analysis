@@ -1,0 +1,175 @@
+BIOCORE ingest  label=V1  stamp=20260823T014012Z
+  manual   : manuals/2026-27_BIOCORE/BIOCORE_GameManual_V1.pdf
+  baseline : manuals/archive/frc/2026_REBUILT_GameManual.pdf
+  workdir  : manuals/2026-27_BIOCORE/ingest_V1_20260823T014012Z
+
+== 1. Extract text (pymupdf authoritative; pdftotext for tables) ==
+   pages=166  lines=5052  rules=227  glossary=100  violations=80  toc=138
+   class:    EVERGREEN=215  GAMESPEC=12
+   prefixes: C=1  E=55  G=47  I=7  Q=2  R=99  T=16
+   full_layout.txt  (TABLES ONLY -- never parse rules from this)
+   full_raw.txt     (reflowed reading order, for phrase greps)
+   full_lines.txt   5052 lines  <- authoritative body text
+
+== 2. Baseline extraction (cached) ==
+   cache hit: manuals/archive/frc/_spans/2026_REBUILT_GameManual
+
+== 3. Rule inventory, baseline diff, glossary diff, undefined ALL-CAPS ==
+   rules: new=227 base=227  ADDED=0  REMOVED=0  CHANGED=0  identical=227
+   class: gamespec=12  evergreen=215
+   glossary: new=100 base=100  ADDED=0  REMOVED=0  CHANGED=0
+   undefined ALL-CAPS: 52 distinct tokens, 25 distinct phrases
+   --- rule ids by prefix (G game, R robot, I inspection, T tournament, C champs, E event, Q question box) ---
+   C=1     E=55     G=47     I=7     Q=2     R=99     T=16  
+   --- ADDED rule ids (did not exist in the baseline) ---
+   (none)
+   --- REMOVED rule ids (existed in the baseline, gone now) ---
+   (none)
+   --- GAME-SPECIFIC rules (blue headline) = THIS IS THE NEW GAME, read every one ---
+   G403	Limited AUTO opponent interaction.
+   G407	Only score while in your ALLIANCE ZONE.
+   G408	Don’t catch FUEL
+   G413	Expansion limits.
+   G414	Don’t Climb on each other.
+   G420	TOWER protection.
+   G427	The OUTPOST has a storage limit.
+   R104	STARTING CONFIGURATION – max size.
+   R105	ROBOT horizontal extension limit.
+   R106	Horizontal extension – one direction at a time.
+   R107	ROBOT vertical extension limit.
+   R108	ROBOT extension floor interaction
+
+== 4. Scoring / timing / dimension / penalty harvest ==
+   scoring=66  timing=51  dimension=222  penalty=165
+   Violation: clauses=80 (rule-attributed)   raw grep hits=80   scored-when candidates=45
+   --- penalty vocabulary census ---
+   MINOR FOUL       24
+   MAJOR FOUL       54
+   TECH FOUL        0
+   YELLOW CARD      44
+   RED CARD         50
+   VERBAL WARNING   29
+   DISABLED         17
+   DISQUALIFIED     10
+
+== 5. Glossary + undefined ALL-CAPS terms ==
+   defined terms: 100   new vs baseline: 0
+   --- NEW defined terms (these nouns ARE the game) ---
+   --- ALL-CAPS used in the body but NOT defined in the glossary (loophole signal) ---
+       s1.6 promises ALL CAPS == defined term. Anything here is a typo, an acronym,
+       or a load-bearing undefined term. The third kind is where arguments get won.
+   REBUILT                x33   p1
+   TEST                   x22   p3
+   PRACTICE               x19   p3
+   BLUE                   x4    p45
+   REPEATEDLY             x4    p66
+   DISABLE                x3    p29
+   CONTROLLED             x3    p65
+   PINNING                x3    p72
+   B12ME522               x3    p106
+   MOMENTARILY            x2    p68
+   PINNED                 x2    p72
+   ALL                    x1    p9
+   CAPS                   x1    p9
+   AGE                    x1    p13
+   LEARN                  x1    p13
+   MORE                   x1    p13
+   DMX                    x1    p24
+   POWER                  x1    p36
+   ARRANGEMENT            x1    p43
+   DISQUALIFICATION       x1    p51
+   PLAYOFF                x1    p52
+   PPE                    x1    p63
+   PDV                    x1    p75
+   MSC                    x1    p77
+   EVA                    x1    p86
+   VDC                    x1    p93
+   LIDAR                  x1    p93
+   MAX                    x1    p95
+   FXS                    x1    p95
+   SPIKE-RELAY-H          x1    p95
+   SLA                    x1    p96
+   USB-PD                 x1    p97
+   CMOS                   x1    p97
+   RTC                    x1    p97
+   AMPD                   x1    p98
+   SBS                    x1    p99
+   ATC                    x1    p101
+   DIP                    x1    p105
+   RFID                   x1    p106
+   NFC                    x1    p106
+   --- undefined ALL-CAPS phrases ---
+   TEST AREAS                                 x11   p3
+   PRACTICE AREAS                             x10   p3
+   PRACTICE AREA                              x9    p151
+   REBUILT FIELD                              x4    p17
+   REBUILT ARENA                              x2    p17
+   FUEL CONTROLLED                            x2    p65
+   ROBOT REPEATEDLY                           x2    p70
+   PINNING ROBOT                              x2    p72
+   REBUILT ROBOT                              x2    p75
+   TEST AREA                                  x2    p157
+   ALL CAPS                                   x1    p9
+   LEARN MORE                                 x1    p13
+   NEUTRAL ZONE FUEL ARRANGEMENT              x1    p43
+   FUEL BLUE ALLIANCE                         x1    p45
+   RED ALLIANCE BLUE ALLIANCE RED ALLIANCE BLUE ALLIANCE x1    p45
+   REBUILT BONUS                              x1    p48
+   PLAYOFF MATCH                              x1    p52
+   SCORING ELEMENT CONTROLLED                 x1    p69
+   BLUE ROBOT                                 x1    p69
+   REBUILT KOP                                x1    p77
+
+== 6. Section map ==
+   138 headings -> SECTION_MAP.tsv
+   p4    1 Introduction
+   p13   2 FIRST Season Overview
+   p14   3 Game Sponsor Recognition
+   p15   4 Game Overview
+   p17   5 ARENA
+   p39   6 Game Details
+   p55   7 Game Rules (G)
+   p75   8 ROBOT Construction Rules (R)
+   p115  9 Inspection & Eligibility (I)
+   p119  10 Tournaments (T)
+   p133  11 District Tournaments
+   p143  12 Regional Tournaments
+   p147  13 FIRST Championship Tournament (C)
+   p149  14 Event Rules (E)
+   p161  15 Glossary
+
+== 7. Loophole tripwires ==
+   tripwire hits: 484
+   unresolved placeholders: 0
+
+== 8. Summary ==
+BIOCORE ingest  label=V1  stamp=20260823T014012Z
+manual   : manuals/2026-27_BIOCORE/BIOCORE_GameManual_V1.pdf
+baseline : manuals/archive/frc/2026_REBUILT_GameManual.pdf
+pages    : 166
+rules    : 227   added=0  removed=0  changed=0
+gamespec : 12   evergreen=215
+glossary : 100   added=0  removed=0
+undefined: 52 caps tokens, 25 phrases
+violations: 80
+
+==========================================================
+ INGEST COMPLETE -> manuals/2026-27_BIOCORE/ingest_V1_20260823T014012Z
+==========================================================
+ Hand these to the review, in this order:
+
+   1. rules_GAMESPECIFIC.tsv     blue-headline rules -- this IS the new game
+   2. rules_ADDED.txt            rule ids that did not exist in the baseline
+   3. rules_CHANGED.tsv          evergreen rules FIRST quietly edited (+ _DETAIL for diffs)
+   4. rules_REMOVED.txt          rules that vanished -- ask what replaced them
+   5. glossary_ADDED.txt         the new game's defined nouns
+   6. UNDEFINED_CAPS.tsv         ALL-CAPS used but never defined  <- loophole signal
+   7. violations.tsv             every enforcement clause, attached to its rule
+   8. SCORED_WHEN.txt            scored-live vs scored-at-the-buzzer evidence
+   9. scoring/timing/dimension/penalty_mentions.txt
+  10. TRIPWIRES.txt              ambiguity, discretion hooks, carve-outs
+  11. SECTION_MAP.tsv            where everything lives
+  12. spans/rules.json           every rule with body text, class, colour, page
+
+ full_lines.txt is the authoritative body text. full_layout.txt is TABLES ONLY.
+ Log: logs/ingest_V1_20260823T014012Z.log

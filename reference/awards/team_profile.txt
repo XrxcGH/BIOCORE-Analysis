@@ -1,0 +1,94 @@
+# team_profile.txt -- the ONLY file you edit on kickoff day (and again in week 4, and again
+# the night before your first event). Read by tools/award_target_rank.py.
+# Format: key: value. Booleans are true/false. '#' starts a comment.
+#
+# RULE FOR FILLING THIS IN: mark a signal true only if a JUDGE COULD VERIFY IT TODAY.
+# "we plan to" is false. "a student can show it and explain it in 60 seconds" is true.
+# Lying to this file produces a target list that gets you nothing.
+
+# ---------- context ----------
+team_number: 0                       # your FRC team number
+event_type: district                 # district | regional  (changes the points column)
+projected_qual_band: mid50_75        # top8 | top25pct | mid25_50 | mid50_75 | bottom25pct
+                                     # be honest. a 15-student team with no dedicated
+                                     # machinist that has never seeded top 8 is mid50_75.
+
+# ---------- Autonomous Award ----------
+auto_scores_multiple_actions: false  # >1 scoring action in AUTO, not just LEAVE
+auto_uses_closed_loop_sensing: false # pose estimate / vision / encoder feedback, not dead reckoning
+auto_reliability_logged: false       # attempts vs. successes recorded per match, on paper
+auto_runs_in_teleop_too: false       # auto-align / auto-score assists during TELEOP
+auto_selector_ui: false              # driver-station chooser with >2 real routines
+auto_sim_or_replay: false            # sim, log replay, or AdvantageScope-style playback
+
+# ---------- Creativity Award ----------
+one_mechanism_unlike_the_field: false      # you can name the mechanism and no one else has it
+conception_traceable_to_a_decision: false  # "we chose it on date X because Y", not "we found it"
+risk_mitigation_documented: false          # what you did because it might not work
+mechanism_works_on_field: false            # it scores, it does not just exist
+prototype_photos_exist: false              # v1 through vN photographed
+
+# ---------- Excellence in Engineering Award ----------
+design_process_documented: false     # problem -> requirement -> trade -> CAD -> test -> result
+robot_functional_on_field: false     # it plays the game; not "best", just works
+problem_statement_written: false     # one page: which game problems you chose to solve, which you skipped
+trade_study_with_numbers: false      # at least one option A vs B decision with measured data
+subsystems_integrate_cleanly: false  # no subsystem fights another; you can say why
+build_blog_public: false             # Open Alliance thread / public build log
+
+# ---------- Industrial Design Award ----------
+whole_robot_visually_coherent: false # one palette, one material language, no zip-tie archaeology
+serviceable_in_3_minutes: false      # swap the highest-risk part in <3 min, timed
+wire_management_planned: false       # routing designed in CAD, not added after
+consistent_material_finish: false    # anodize / powder / paint / consistent polycarb
+ergonomics_considered: false         # handles, lift points, battery access, bumper swap
+manufacturing_repeatable: false      # you can make part #2 identical to part #1
+
+# ---------- Innovation in Control Award ----------
+novel_control_feature: false               # a control element most teams do not have
+control_feature_explainable_by_a_student: false
+control_data_exists: false                 # a plot. error vs time, or before/after.
+custom_operator_interface: false           # custom board / replica controller / novel HID
+fast_and_accurate_motion: false            # a mechanism that is BOTH quick and repeatable
+control_writeup_published: false           # posted publicly so judges can find it
+sensor_fusion_or_estimator: false          # odometry + vision fused, Kalman, etc.
+
+# ---------- Quality Award ----------
+written_quality_plan: false          # the document that says how you stay working all weekend
+low_field_failure_rate: false        # you can state your failure count and it is low
+designed_in_redundancy: false        # a second path when part A dies
+spares_for_every_wear_part: false    # spares board, labelled
+torque_marks_and_loctite: false      # visible evidence of a fastener strategy
+preventive_maintenance_checklist: false  # run between every match, signed
+
+# ---------- Imagery Award ----------
+team_theme_exists: false
+theme_on_robot_and_pit_and_uniform: false
+theme_has_an_origin_story: false
+pit_is_photogenic: false
+robot_paint_or_wrap_is_deliberate: false
+
+# ---------- Judges' Award ----------
+one_singular_story_no_other_award_covers: false
+story_is_verifiable: false
+every_student_can_tell_it: false
+
+# ---------- team-attribute lanes (not robot-adjacent, listed for completeness) ----------
+visible_sustained_enthusiasm: false
+spirit_exists_outside_competition: false
+team_acts_as_a_unit: false
+documented_help_given_to_other_teams: false
+gp_story_at_this_event: false
+gp_story_year_round: false
+people_prosperity_planet_plan_written: false
+budget_tracked: false
+recruitment_and_succession_plan: false
+risk_register: false
+
+# ---------- eligibility gates (do not guess) ----------
+team_had_a_new_beginning: false      # Rising All-Star: new team OR major turnover/restart
+team_is_a_rookie_this_season: false  # Rookie All-Star: see the Award Workbook team-number note
+growth_is_measurable: false
+role_model_for_young_teams: false
+built_a_robot_appropriate_to_the_game: false
+sponsor_partnership_real: false

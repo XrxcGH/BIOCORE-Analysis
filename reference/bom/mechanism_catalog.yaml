@@ -1,0 +1,1501 @@
+# mechanism_catalog.yaml
+# Machine-readable companion to reference/bom/06_MECHANISM_CATALOG.md
+# Consumed by tools/bom-builder.py
+#
+# CONSOLIDATION NOTE: this file does NOT re-verify prices. It composes the already-verified
+# part rows from the phase-1 files into buildable mechanism archetypes:
+#     reference/bom/parts_drivetrain.yaml     (01_DRIVETRAIN.md)
+#     reference/bom/parts_manipulation.yaml   (02_MANIPULATION_ELEVATION.md)
+#     reference/bom/parts_electronics.yaml    (03_LAUNCHERS_ELECTRONICS.md)
+# Every unit_price with verified: true was read off a LIVE vendor page on 2026-08-22 by
+# that phase. Every line with verified: false carries unit_price: null and a separate
+# est_unit_price planning figure -- an estimate is NEVER promoted into a price field.
+#
+# Evidence labels: C CONFIRMED | H HISTORICAL-PATTERN | S SPECULATION | UNVERIFIED
+#
+# DELIVERY ENVELOPES (added 2026-08-22 after the rehearsal grade, review/REHEARSAL_GRADE.md sec 5).
+# Every mechanism that can put a game piece somewhere carries a `delivery:` block:
+#
+#     delivery:
+#       mode: shoot | lift | dump | place | roll
+#       min_height_in / max_height_in   vertical band this mechanism can deliver into, in inches
+#                                       above the carpet
+#       max_range_in                    horizontal standoff at which it can still deliver
+#                                       (0 or small = contact range only)
+#       provides_carrier: true          this is an elevation/arm that raises whatever rides on it
+#       requires_carrier: true          this contributes ~no reach of its own (end effectors,
+#                                       turrets, indexers); its height comes from a carrier
+#       evidence: C | H | S | UNVERIFIED
+#
+# tools/bom-builder.py GATES a config against the `target:` block in the bom_config, and shouts
+# if no target is declared. Mechanisms with game_piece_classes: [none] (drivetrain, electrical,
+# climbers, vision) deliver nothing and carry no delivery block; the gate ignores them.
+# The 2026 rehearsal costed a hopper dump (rim ~30 in) against a 72 in HUB lip and no tool
+# objected. That is the defect these blocks exist to make impossible.
+# Source shorthand: REB=2026 REBUILT, REEF=2025 REEFSCAPE, CRES=2024 CRESCENDO
+#
+# Hours (build/design/programming) are [S] planning figures calibrated against
+# reference/02_TEAM_CAPACITY_MODEL.md sec 3.1 and reference/bom/02_MANIPULATION_ELEVATION.md sec 13.
+
+meta:
+  version: 1
+  written: 2026-08-22
+  companion_md: reference/bom/06_MECHANISM_CATALOG.md
+  prices_inherited_from: 2026-08-22
+  currency: USD
+  season: 2027 BIOCORE presented by Haas (FRC, FIRST CANOPY)
+  kickoff: "2027-01-09T12:00:00-05:00"
+  team_profile: "~15 students, one experienced mentor, bandsaw+drill press, $2500 robot discretionary"
+  control_system: "Systemcore replaces roboRIO for 2027; WPILib 2027 is Systemcore-only"
+  price_volatility_warning: >
+    FRC vendor prices moved mid-season in 2026. Run reference/bom/recheck_prices.sh before any
+    purchase order. Treat every figure as +/-10% until re-verified the week of 2027-01-09.
+  scoring_element_warning: >
+    BIOCORE's scoring element name, geometry, and mass are NOT public as of 2026-08-22.
+    Every game_piece_classes entry is a hypothesis set, not a claim about BIOCORE.
+    Pollen / StarterBots / Skill Builders are FTC BIOBUZZ concepts and appear nowhere here.
+
+tooling_ranks:
+  hand_tools: 1
+  bandsaw_drillpress: 2
+  router_cnc: 3
+  mill_lathe: 4
+  outsourced: 5
+
+game_piece_classes:
+  - sphere_small          # <= 5 in dia, ~0.1-0.3 lb   (2022 CARGO class)
+  - sphere_large          # > 7 in dia                  (2016 BOULDER class)
+  - torus                 # ring / donut                (2023 CONE-and-CUBE era torus, 2025 CORAL-adjacent)
+  - cylinder              # tube / pipe                 (2025 REEFSCAPE CORAL class)
+  - cube_soft             # compliant cube              (2023 CUBE class)
+  - disc_flat             # frisbee / plate             (2013 DISC class)
+  - irregular             # non-canonical geometry
+  - none                  # mechanism does not touch a game piece
+
+# =========================================================================================
+mechanisms:
+
+# ------------------------------------------------------------------ DRIVETRAINS (4)
+- id: swerve_drivetrain
+  category: drivetrain
+  workstream: drivetrain
+  counts_as_novel: false
+  name: Swerve drivetrain (4 COTS modules)
+  function: Holonomic drive; independent steering and drive at each corner.
+  game_piece_classes: [none]
+  cots_parts:
+  - {vendor: REV Robotics, item: 4in EasySwerve Module, sku: REV-21-3006, qty: 4, unit_price: 223.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-3006/", verified: true}
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1 (drive), sku: REV-21-1650, qty: 4, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: NEO 550 Brushless Motor (azimuth), sku: REV-21-1651, qty: 4, unit_price: 30.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1651/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 8, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: Through Bore Encoder V1 (azimuth absolute), sku: REV-11-1271, qty: 4, unit_price: 40.80, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-1271/", verified: true}
+  - {vendor: CTR Electronics, item: "Pigeon 2.0 9-DOF IMU", sku: "21-737785", qty: 1, unit_price: 199.99, est_unit_price: null, url: "https://store.ctr-electronics.com/products/pigeon-2", verified: true}
+  fabricated_parts:
+  - {part: Frame rails 2x1 aluminum tube, material: 6061-T6 2x1x0.100 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 4, est_hours: 4}
+  - {part: Module mounting plates, material: 1/8 in 6061 sheet, process: drill from module template, machine_required: bandsaw_drillpress, qty: 4, est_hours: 6}
+  - {part: Belly pan, material: 1/8 in polycarbonate or 0.090 aluminum, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 3}
+  - {part: Corner gussets, material: 1/8 in 6061 angle, process: cut + drill, machine_required: bandsaw_drillpress, qty: 8, est_hours: 3}
+  cots_cost_usd: 2345.19
+  material_cost_usd: 260
+  total_cost_usd: 2605.19
+  tooling_floor: bandsaw_drillpress
+  build_hours: 40
+  design_hours: 22
+  programming_hours: 45
+  motors_required: 8
+  controllers_required: 8
+  sensors_required: [4x azimuth absolute encoder, 1x IMU, 8x integrated motor encoder]
+  pneumatics_required: false
+  lead_time_weeks: 4
+  stockout_risk: high
+  common_failure_modes:
+  - Azimuth zero offsets lost after a module is disassembled; robot drives sideways.
+  - Belt/gear backlash in azimuth causes hunting under closed-loop control.
+  - CAN bus ID collisions across 8 controllers + 4 encoders; intermittent brownouts on the bus.
+  - Set screws on drive shafts back out; one corner freewheels mid-match.
+  - Odometry drift when a wheel slips; auto paths walk off target by Week 2.
+  buy_vs_make_recommendation: >
+    BUY the modules outright, always. A 15-student team that machines its own swerve spends its entire
+    fabrication budget on a solved problem. Even buying, swerve consumes ~45 programming hours out of
+    134.8 available -- and 2027 is a Systemcore port year, so that 45 is on top of a platform rewrite.
+    This is the single largest scope decision on the robot. If programming depth is thin, do not do it.
+  cheapest_credible_usd: 2032
+  best_version_usd: 2844
+  evidence: C
+  notes: "S1 config in parts_drivetrain.yaml = $2032 (EasySwerve+NEO). S3 SwerveX2+Kraken = $2843.88."
+
+- id: tank_wcd
+  category: drivetrain
+  workstream: drivetrain
+  counts_as_novel: false
+  name: Tank / West Coast Drive (custom or kit-based 6WD)
+  function: Differential drive, dropped center wheel, high pushing capability.
+  game_piece_classes: [none]
+  cots_parts:
+  - {vendor: AndyMark, item: SDS Colson Wheel with hub, sku: am-5173, qty: 6, unit_price: 38.00, est_unit_price: null, url: "https://andymark.com/products/sds-colson-wheel", verified: true}
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1, sku: REV-21-1650, qty: 4, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 4, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit (gearbox), sku: REV-25-2109, qty: 2, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  - {vendor: UNVERIFIED, item: "#25 chain + master links, per side", sku: null, qty: 2, unit_price: null, est_unit_price: 35.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "1/2 in hex shaft + bearings + hubs bundle", sku: null, qty: 1, unit_price: null, est_unit_price: 140.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Side rails with dropped-center bearing bores, material: 2x1x0.100 6061 tube, process: cut + bore, machine_required: mill_lathe, qty: 2, est_hours: 10}
+  - {part: Cross members, material: 2x1x0.100 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 3, est_hours: 3}
+  - {part: Gearbox mounting plates, material: 1/4 in 6061 plate, process: bore + tap, machine_required: mill_lathe, qty: 2, est_hours: 6}
+  - {part: Belly pan, material: 1/8 in polycarbonate, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 3}
+  cots_cost_usd: 1080.00
+  material_cost_usd: 220
+  total_cost_usd: 1300.00
+  tooling_floor: mill_lathe
+  build_hours: 34
+  design_hours: 18
+  programming_hours: 12
+  motors_required: 4
+  controllers_required: 4
+  sensors_required: [1x IMU, 4x integrated motor encoder]
+  pneumatics_required: false
+  lead_time_weeks: 3
+  stockout_risk: med
+  common_failure_modes:
+  - Bearing bores drilled instead of bored; wheels bind and the drivetrain eats current.
+  - Chain tension lost as rails flex; chain skips a tooth under defense.
+  - Dropped center too shallow -> the robot will not turn on carpet.
+  - Gearbox output shaft shears where a set screw crushed the hex.
+  buy_vs_make_recommendation: >
+    MAKE only if you have reliable mill access. The dropped-center bearing bores are the one feature
+    that genuinely needs a mill; a drill press will produce a drivetrain that binds. If you do not have
+    a mill, buy the KOP chassis (see kop_chassis) instead -- it is the same architecture, pre-bored.
+  cheapest_credible_usd: 1116
+  best_version_usd: 1510
+  evidence: C
+  notes: "Reference config T1 in parts_drivetrain.yaml (AM14U6 + 4 NEO) = $1510 delivered."
+
+- id: kop_chassis
+  category: drivetrain
+  workstream: drivetrain
+  counts_as_novel: false
+  name: KOP chassis (AndyMark AM14U-series)
+  function: Pre-engineered 6-wheel drop-center drive base shipped in the Kit of Parts.
+  game_piece_classes: [none]
+  cots_parts:
+  - {vendor: AndyMark, item: "AM14U6 6-Wheel Drop Center Robot Drive Base", sku: AM-14U6, qty: 1, unit_price: 940.00, est_unit_price: null, url: "https://www.andymark.com/products/am14u6-6-wheel-drop-center-robot-drive-base-2025-frc-kit-of-parts-drive-base", verified: true}
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1, sku: REV-21-1650, qty: 4, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 4, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  fabricated_parts:
+  - {part: Belly pan / electronics board, material: 1/8 in polycarbonate, process: cut + drill, machine_required: hand_tools, qty: 1, est_hours: 3}
+  - {part: Superstructure mounting rails, material: 1x1 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 4, est_hours: 4}
+  kop_credit_usd: 1510.00
+  kop_credit_note: >-
+    [H] The AM14U-series chassis ships in the Kit of Parts, and recent KOPs have included a NEO/SPARK MAX-class motor+controller allotment. VERIFY against the 2027 Kit of Parts list on 2027-01-09 before relying on this credit.
+  cots_cost_usd: 1510.00
+  material_cost_usd: 90
+  total_cost_usd: 1600.00
+  tooling_floor: hand_tools
+  build_hours: 12
+  design_hours: 4
+  programming_hours: 10
+  motors_required: 4
+  controllers_required: 4
+  sensors_required: [1x IMU, 4x integrated motor encoder]
+  pneumatics_required: false
+  lead_time_weeks: 0
+  stockout_risk: low
+  common_failure_modes:
+  - Assembled with the gearbox on the wrong side; belly pan no longer fits.
+  - Chain tension not set at assembly; skips in Week 1.
+  - Team treats "it came in a box" as "it is done" and never drive-practices it.
+  buy_vs_make_recommendation: >
+    BUY -- it is already bought; it ships with registration. For a 15-student team this is 12 build
+    hours to a competition-legal drivetrain versus 34-40 for anything else, and it frees the entire
+    fabrication budget for the scoring mechanism. 02_TEAM_CAPACITY_MODEL sec 5 says you get TWO novel
+    mechanisms; spending one of them on a drivetrain you were given is the classic rookie error.
+  cheapest_credible_usd: 90
+  best_version_usd: 1600
+  evidence: C
+  notes: "cheapest_credible assumes the KOP chassis + KOP motors arrive free with registration."
+
+- id: bumpers_frame
+  category: drivetrain
+  workstream: drivetrain
+  counts_as_novel: false
+  name: Bumpers + frame perimeter package
+  function: Rule-mandated impact protection and the robot's legal frame perimeter.
+  game_piece_classes: [none]
+  cots_parts:
+  - {vendor: UNVERIFIED, item: "Pool noodle, 2-1/2 in nominal, per bumper segment", sku: null, qty: 8, unit_price: null, est_unit_price: 4.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "1000 denier Cordura, red and blue sets", sku: null, qty: 2, unit_price: null, est_unit_price: 60.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "Bumper mounting hardware / brackets", sku: null, qty: 1, unit_price: null, est_unit_price: 45.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Bumper backing, material: 3/4 in plywood, process: cut + drill, machine_required: bandsaw_drillpress, qty: 8, est_hours: 8}
+  - {part: Bumper fabric sewing / stapling, material: Cordura, process: sew + staple, machine_required: hand_tools, qty: 2, est_hours: 8}
+  - {part: Team number panels, material: vinyl or sewn numerals, process: cut + apply, machine_required: hand_tools, qty: 2, est_hours: 3}
+  cots_cost_usd: 197.00
+  material_cost_usd: 60
+  total_cost_usd: 257.00
+  tooling_floor: bandsaw_drillpress
+  build_hours: 19
+  design_hours: 4
+  programming_hours: 0
+  motors_required: 0
+  controllers_required: 0
+  sensors_required: []
+  pneumatics_required: false
+  lead_time_weeks: 2
+  stockout_risk: low
+  common_failure_modes:
+  - Bumper geometry rules changed at kickoff and the team built to last year's numbers -- FAILS INSPECTION.
+  - Corner gaps exceed the allowance; inspector rejects.
+  - Fabric not tight; noodle rotates and the bumper sags below the legal zone.
+  - Only one colour set built. Both are required.
+  buy_vs_make_recommendation: >
+    MAKE -- there is no credible COTS bumper. Budget 19 hours and start the backing boards the first
+    weekend. CRITICAL: bumper rules are in the top churn tier (see reference/RULE-CHURN-WATCHLIST.md);
+    re-derive every dimension from the BIOCORE manual on 2027-01-09 before a single cut.
+  cheapest_credible_usd: 197
+  best_version_usd: 300
+  evidence: H
+  notes: "Rule numbers change annually. 2026 REBUILT bumper rules are in research/rule_inventories/2026_rules_full.txt."
+
+# ------------------------------------------------------------------ INTAKES (3)
+- id: over_bumper_intake
+  category: intake
+  workstream: scoring
+  counts_as_novel: true
+  name: Over-bumper roller intake (fixed)
+  function: Sweeps a game piece from the floor over the bumper into the robot.
+  game_piece_classes: [sphere_small, sphere_large, cube_soft, torus, irregular]
+  delivery:
+    mode: roll
+    min_height_in: 0
+    max_height_in: 12
+    max_range_in: 6
+    provides_carrier: false
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      Reverse-rolling the intake ejects at roller height. 02_MANIPULATION_ELEVATION sec 6 A2:
+      roller cantilevered above and outside the bumper. Roller centreline sits just above the
+      bumper zone, so ~12 in is the ceiling and delivery is contact-range only.
+  cots_parts:
+  - {vendor: AndyMark, item: "Compliant Wheels, 3 in.", sku: null, qty: 6, unit_price: 8.40, est_unit_price: null, url: "https://andymark.com/products/compliant-wheels", verified: true}
+  - {vendor: The Thrifty Bot, item: Thrifty Dead Axle Tube Roller Kit, sku: null, qty: 2, unit_price: 45.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: REV Robotics, item: NEO 550 Brushless Motor, sku: REV-21-1651, qty: 1, unit_price: 30.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1651/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 2 - Half Inch Hex 22 Tooth #25 Sprocket", sku: null, qty: 1, unit_price: 19.99, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 10 - .50in OD x .25in ID Radial Bearing", sku: null, qty: 1, unit_price: 20.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  fabricated_parts:
+  - {part: Intake side plates, material: 1/8 in polycarbonate, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 5}
+  - {part: Roller standoff tube, material: 1x1 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 2}
+  - {part: Polycarbonate funnel / guide, material: 0.060 in polycarbonate, process: cut + heat bend, machine_required: hand_tools, qty: 1, est_hours: 3}
+  cots_cost_usd: 310.39
+  material_cost_usd: 70
+  total_cost_usd: 380.39
+  tooling_floor: bandsaw_drillpress
+  build_hours: 16
+  design_hours: 8
+  programming_hours: 4
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [1x beam break or current-spike detection]
+  pneumatics_required: false
+  lead_time_weeks: 2
+  stockout_risk: low
+  common_failure_modes:
+  - Roller sits too high; the game piece is pushed rather than pulled in.
+  - Compliant wheel durometer too hard; no grip on a smooth piece.
+  - Intake extends outside the frame perimeter at rest -> inspection failure.
+  - Sheet-metal or polycarb side plates flex and the roller axis walks.
+  buy_vs_make_recommendation: >
+    HYBRID: buy the roller kit and wheels, make the plates. This is the single best hours-to-capability
+    ratio on the robot at ~16 hours. For a 15-student team the over-bumper fixed intake is the default
+    answer whenever the game piece is floor-accessible and the bumper height allows it.
+  cheapest_credible_usd: 180
+  best_version_usd: 400
+  evidence: C
+
+- id: under_bumper_intake
+  category: intake
+  workstream: scoring
+  counts_as_novel: true
+  name: Under-bumper intake
+  function: Pulls a game piece beneath the bumper line into the robot chassis.
+  game_piece_classes: [disc_flat, cylinder, torus, cube_soft]
+  delivery:
+    mode: roll
+    min_height_in: 0
+    max_height_in: 6
+    max_range_in: 6
+    provides_carrier: false
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      Catalog function line: pulls a game piece BENEATH the bumper line. Anything it ejects
+      leaves at or below the bumper underside. Floor-level delivery, contact range.
+  cots_parts:
+  - {vendor: AndyMark, item: "Compliant Wheels, 2 in.", sku: null, qty: 8, unit_price: 6.20, est_unit_price: null, url: "https://andymark.com/products/compliant-wheels", verified: true}
+  - {vendor: The Thrifty Bot, item: Thrifty Live Axle Tube Roller Kit, sku: null, qty: 2, unit_price: 15.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: REV Robotics, item: NEO 550 Brushless Motor, sku: REV-21-1651, qty: 1, unit_price: 30.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1651/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 10 - .50in OD x .25in ID Radial Bearing", sku: null, qty: 1, unit_price: 20.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  fabricated_parts:
+  - {part: Bumper cutout reinforcement, material: 3/4 in plywood + 1/8 in aluminum strap, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 5}
+  - {part: Ramp / funnel plate, material: 0.060 in polycarbonate, process: cut + bend, machine_required: hand_tools, qty: 1, est_hours: 4}
+  - {part: Roller mounts, material: 1/8 in 6061 sheet, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 4}
+  cots_cost_usd: 229.60
+  material_cost_usd: 75
+  total_cost_usd: 304.60
+  tooling_floor: bandsaw_drillpress
+  build_hours: 18
+  design_hours: 10
+  programming_hours: 4
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [1x beam break]
+  pneumatics_required: false
+  lead_time_weeks: 2
+  stockout_risk: low
+  common_failure_modes:
+  - Bumper cutout exceeds the legal gap allowance -> inspection failure. THE dominant failure.
+  - Ground clearance too low; the robot high-centres on a field seam.
+  - Only works on thin pieces; a spherical piece jams at the bumper line.
+  - Cutout weakens the bumper backing and it cracks on first contact.
+  buy_vs_make_recommendation: >
+    MAKE, but verify the bumper cutout rule FIRST, verbatim, from the BIOCORE manual. Under-bumper is
+    cheaper and lower than over-bumper but it is rule-coupled in a way over-bumper is not. For a
+    15-student team, only choose this if the game piece is genuinely too flat to go over the bumper.
+  cheapest_credible_usd: 175
+  best_version_usd: 320
+  evidence: H
+
+- id: deploying_intake
+  category: intake
+  workstream: scoring
+  counts_as_novel: true
+  name: Deploying (articulated) intake
+  function: Stows inside the frame perimeter, deploys outside it to acquire game pieces.
+  game_piece_classes: [sphere_small, sphere_large, cube_soft, torus, cylinder, irregular]
+  delivery:
+    mode: roll
+    min_height_in: 0
+    max_height_in: 12
+    max_range_in: 18
+    provides_carrier: false
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      02_MANIPULATION_ELEVATION sec 6 A3: roller stows inside perimeter, pivots out. The pivot
+      buys horizontal reach outside the frame perimeter, not height. Still floor-class delivery.
+  cots_parts:
+  - {vendor: AndyMark, item: "Compliant Wheels, 3 in.", sku: null, qty: 6, unit_price: 8.40, est_unit_price: null, url: "https://andymark.com/products/compliant-wheels", verified: true}
+  - {vendor: The Thrifty Bot, item: Thrifty Dead Axle Tube Roller Kit, sku: null, qty: 2, unit_price: 45.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: REV Robotics, item: NEO 550 Brushless Motor (roller), sku: REV-21-1651, qty: 1, unit_price: 30.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1651/", verified: true}
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1 (pivot), sku: REV-21-1650, qty: 1, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 2, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit (pivot reduction), sku: REV-25-2109, qty: 1, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  - {vendor: REV Robotics, item: Through Bore Encoder V1 (pivot absolute), sku: REV-11-1271, qty: 1, unit_price: 40.80, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-1271/", verified: true}
+  fabricated_parts:
+  - {part: Pivot arms, material: 1x1x0.0625 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 5}
+  - {part: Pivot bearing blocks, material: 1/4 in 6061 plate, process: bore, machine_required: mill_lathe, qty: 2, est_hours: 5}
+  - {part: Roller cage plates, material: 1/8 in polycarbonate, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 5}
+  - {part: Hard stops, material: UHMW block, process: cut + drill, machine_required: hand_tools, qty: 2, est_hours: 2}
+  cots_cost_usd: 489.70
+  material_cost_usd: 110
+  total_cost_usd: 599.70
+  tooling_floor: mill_lathe
+  build_hours: 28
+  design_hours: 16
+  programming_hours: 12
+  motors_required: 2
+  controllers_required: 2
+  sensors_required: [1x absolute encoder on pivot, 1x beam break, 2x limit switch]
+  pneumatics_required: false
+  lead_time_weeks: 3
+  stockout_risk: med
+  common_failure_modes:
+  - Deployed intake gets hit by a defender; the pivot gearbox strips.
+  - No absolute encoder -> pivot loses zero after a brownout and slams into a hard stop.
+  - Deploy speed unlimited in software; the intake self-destructs on the first stow.
+  - Stowed position does not actually clear the frame perimeter -> inspection failure.
+  buy_vs_make_recommendation: >
+    This is a NOVEL MECHANISM in the 02_TEAM_CAPACITY_MODEL sense -- it costs you one of your two.
+    For a 15-student team, prefer a fixed over-bumper intake unless the game explicitly forces
+    stowing. If you must deploy, use pneumatics for the pivot (see pneumatics_package) -- it removes
+    the encoder, the closed loop, and roughly 8 programming hours.
+  cheapest_credible_usd: 330
+  best_version_usd: 620
+  evidence: H
+
+# ------------------------------------------------------------------ HANDLING (4)
+- id: gripper_end_effector
+  category: handling
+  workstream: scoring
+  counts_as_novel: true
+  name: Gripper / claw end effector
+  function: Grasps and retains one game piece under positive control.
+  game_piece_classes: [cylinder, torus, cube_soft, irregular]
+  delivery:
+    mode: place
+    min_height_in: 0
+    max_height_in: 4
+    max_range_in: 6
+    provides_carrier: false
+    requires_carrier: true
+    evidence: H
+    notes: >-
+      An end effector has no reach of its own -- bolted to the frame it places at carriage height.
+      All of its height comes from whatever elevation or arm carries it, plus ~4 in of jaw offset.
+      02_MANIPULATION_ELEVATION sec 12 lists "elevator + short wrist" as the scoring composition.
+  cots_parts:
+  - {vendor: AndyMark, item: "Compliant Wheels, 2 in.", sku: null, qty: 4, unit_price: 6.20, est_unit_price: null, url: "https://andymark.com/products/compliant-wheels", verified: true}
+  - {vendor: REV Robotics, item: NEO 550 Brushless Motor, sku: REV-21-1651, qty: 1, unit_price: 30.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1651/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: CTR Electronics, item: "CANrange Time-of-Flight Proximity Sensor", sku: "24-827871", qty: 1, unit_price: 64.99, est_unit_price: null, url: "https://store.ctr-electronics.com/products/canrange", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 10 - .50in OD x .25in ID Radial Bearing", sku: null, qty: 1, unit_price: 20.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  fabricated_parts:
+  - {part: Gripper jaws, material: PETG or PC-CF 3D print, process: FDM print, machine_required: hand_tools, qty: 2, est_hours: 4}
+  - {part: Jaw carrier plates, material: 1/8 in polycarbonate, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 4}
+  - {part: Compliant grip pads, material: 60A urethane sheet or silicone tape, process: cut + adhere, machine_required: hand_tools, qty: 4, est_hours: 1}
+  cots_cost_usd: 239.79
+  material_cost_usd: 55
+  total_cost_usd: 294.79
+  tooling_floor: bandsaw_drillpress
+  build_hours: 14
+  design_hours: 12
+  programming_hours: 6
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [1x time-of-flight or beam break, 1x current sensing for grip detection]
+  pneumatics_required: false
+  lead_time_weeks: 2
+  stockout_risk: low
+  common_failure_modes:
+  - Grip force tuned by stall current; the motor cooks over a 2.5-minute match.
+  - 3D printed jaws crack at the layer line on the first hard contact.
+  - Piece pose entering the gripper is uncontrolled; grip succeeds 70% of the time.
+  - No detection of "have piece"; the driver scores air.
+  buy_vs_make_recommendation: >
+    MAKE. There is no general-purpose COTS FRC gripper because the geometry is game-specific -- and
+    BIOCORE's scoring element is not public, so this entry cannot be more specific than the class.
+    Print jaws in PETG/PC-CF, keep the carrier plates in polycarbonate so they bend instead of break.
+    Roller-style (intake-wheels-in-a-jaw) beats pinch-style for a small team: it self-centres.
+  cheapest_credible_usd: 155
+  best_version_usd: 320
+  evidence: S
+
+- id: indexer_conveyor
+  category: handling
+  workstream: scoring
+  counts_as_novel: true
+  name: Indexer / conveyor
+  function: Moves game pieces from intake to scoring mechanism and singulates them.
+  game_piece_classes: [sphere_small, cube_soft, cylinder, disc_flat]
+  delivery:
+    mode: place
+    min_height_in: 0
+    max_height_in: 0
+    max_range_in: 0
+    provides_carrier: false
+    requires_carrier: true
+    evidence: C
+    notes: >-
+      Transport only. Catalog function line: moves game pieces from intake to scoring mechanism.
+      It contributes zero reach; the launcher or elevator it feeds is what must clear the aperture.
+  cots_parts:
+  - {vendor: AndyMark, item: "Compliant Wheels, 2 in.", sku: null, qty: 10, unit_price: 6.20, est_unit_price: null, url: "https://andymark.com/products/compliant-wheels", verified: true}
+  - {vendor: The Thrifty Bot, item: Thrifty Live Axle Tube Roller Kit, sku: null, qty: 3, unit_price: 15.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: REV Robotics, item: NEO 550 Brushless Motor, sku: REV-21-1651, qty: 1, unit_price: 30.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1651/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 2 - Half Inch Hex 22 Tooth #25 Sprocket", sku: null, qty: 2, unit_price: 19.99, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: UNVERIFIED, item: "Beam break sensor pair", sku: null, qty: 3, unit_price: null, est_unit_price: 18.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Conveyor side plates, material: 1/8 in polycarbonate, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 6}
+  - {part: Belt/roller tower standoffs, material: 1x1 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 4, est_hours: 3}
+  - {part: Polycarbonate guide walls, material: 0.060 in polycarbonate, process: cut + bend, machine_required: hand_tools, qty: 2, est_hours: 3}
+  cots_cost_usd: 330.98
+  material_cost_usd: 80
+  total_cost_usd: 410.98
+  tooling_floor: bandsaw_drillpress
+  build_hours: 20
+  design_hours: 10
+  programming_hours: 14
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [3x beam break for position tracking]
+  pneumatics_required: false
+  lead_time_weeks: 2
+  stockout_risk: low
+  common_failure_modes:
+  - Two pieces arrive at once and jam at the singulation point.
+  - Beam breaks blinded by arena lighting; state machine desynchronises.
+  - Indexer state machine has no recovery path; a jam requires a match-ending reboot.
+  - Compression too high; the piece deforms and will not launch consistently.
+  buy_vs_make_recommendation: >
+    MAKE, and only if the game genuinely lets you hold more than one piece. 02_MANIPULATION sec 5.1
+    is explicit: if possession is capped at 1-2, an indexer is 20 build + 14 programming hours you
+    spent for nothing. Check the possession rule at 12:05 on kickoff day before drawing anything.
+  cheapest_credible_usd: 240
+  best_version_usd: 420
+  evidence: H
+
+- id: hopper
+  category: handling
+  workstream: scoring
+  counts_as_novel: true
+  name: Hopper / storage magazine
+  function: Passive or semi-passive bulk storage of multiple game pieces.
+  game_piece_classes: [sphere_small, cube_soft, disc_flat]
+  delivery:
+    mode: dump
+    min_height_in: 0
+    max_height_in: 30
+    max_range_in: 12
+    provides_carrier: false
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      A hopper dumps over its own rim and no higher. Walls are cut from the 0.060 in polycarbonate
+      24x48 sheet in this mechanism own cots_parts list, so rim height is bounded near 24-30 in.
+      03_LAUNCHERS_ELECTRONICS sec 4, passive lob / dump row: only works at contact range.
+      THIS IS THE 2026 REHEARSAL DEFECT -- a hopper dump was costed against a 72 in HUB lip.
+  cots_parts:
+  - {vendor: UNVERIFIED, item: "0.060 in polycarbonate sheet, 24x48", sku: null, qty: 2, unit_price: null, est_unit_price: 55.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "Agitator surgical tubing / bungee", sku: null, qty: 1, unit_price: null, est_unit_price: 15.00, url: null, verified: false}
+  - {vendor: REV Robotics, item: NEO 550 Brushless Motor (agitator, optional), sku: REV-21-1651, qty: 1, unit_price: 30.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1651/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  fabricated_parts:
+  - {part: Hopper walls, material: 0.060 in polycarbonate, process: cut + heat bend + rivet, machine_required: hand_tools, qty: 4, est_hours: 8}
+  - {part: Hopper frame, material: 1x1 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 6, est_hours: 4}
+  - {part: Funnel floor, material: 0.060 in polycarbonate, process: cut + bend, machine_required: hand_tools, qty: 1, est_hours: 3}
+  cots_cost_usd: 255.00
+  material_cost_usd: 70
+  total_cost_usd: 325.00
+  tooling_floor: hand_tools
+  build_hours: 15
+  design_hours: 8
+  programming_hours: 2
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: []
+  pneumatics_required: false
+  lead_time_weeks: 1
+  stockout_risk: low
+  common_failure_modes:
+  - Pieces bridge across the funnel throat and stop feeding -- the classic hopper failure.
+  - Hopper volume exceeds any legal possession limit; the robot is penalised for holding.
+  - Walls flex outward under load and pieces escape over the top.
+  - Hopper blocks access to the battery / main breaker; pit crew cannot work.
+  buy_vs_make_recommendation: >
+    MAKE, cheaply, and only when the game rewards bulk possession. Never build a hopper before you
+    have measured the possession limit. Design the funnel throat at >= 1.6x the piece's largest
+    dimension or it WILL bridge; that ratio is the single highest-value number in this entry.
+  cheapest_credible_usd: 195
+  best_version_usd: 330
+  evidence: H
+
+- id: vision_package
+  category: support
+  workstream: software
+  counts_as_novel: false
+  name: Vision package (AprilTag pose + piece detection)
+  function: Field-relative pose estimation and game-piece localisation.
+  game_piece_classes: [none]
+  cots_parts:
+  - {vendor: Limelight Vision, item: Limelight 3A, sku: null, qty: 1, unit_price: 189.00, est_unit_price: null, url: "https://limelightvision.io/collections/products", verified: true}
+  - {vendor: UNVERIFIED, item: "Global-shutter USB camera (for 3A)", sku: null, qty: 1, unit_price: null, est_unit_price: 60.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "Cat6 patch cable + passive PoE injector", sku: null, qty: 2, unit_price: null, est_unit_price: 22.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Camera mount, material: PETG 3D print or 1/8 in aluminum, process: FDM print or cut+drill, machine_required: hand_tools, qty: 2, est_hours: 3}
+  - {part: Calibration target rig, material: printed AprilTag on rigid board, process: print + mount, machine_required: hand_tools, qty: 1, est_hours: 2}
+  cots_cost_usd: 293.00
+  material_cost_usd: 25
+  total_cost_usd: 318.00
+  tooling_floor: hand_tools
+  build_hours: 6
+  design_hours: 4
+  programming_hours: 30
+  motors_required: 0
+  controllers_required: 0
+  sensors_required: [1x vision coprocessor camera]
+  pneumatics_required: false
+  lead_time_weeks: 3
+  stockout_risk: med
+  common_failure_modes:
+  - Camera pose in robot frame measured by eye; every tag estimate is off by inches.
+  - Pose estimate fused without a rejection gate; one bad frame teleports the robot's odometry.
+  - Venue lighting differs from the shop; exposure tuned wrong on Thursday.
+  - Latency compensation not implemented; the robot aims where the target used to be.
+  buy_vs_make_recommendation: >
+    BUY the Limelight. Do NOT roll your own coprocessor stack on a 15-student team in a Systemcore
+    transition year. Even bought, this is ~30 programming hours out of 134.8, and 02_TEAM_CAPACITY
+    sec 5.3 explicitly calls a vision-based pose stack "workstream #4" -- over the line. Treat vision
+    as an OPTION you enable in week 4 if programming is ahead of schedule, not a week-1 commitment.
+  cheapest_credible_usd: 189
+  best_version_usd: 544
+  evidence: C
+  notes: "Limelight 4 at $449.00 with optional Hailo-8 kit at $95.00 is the best_version path."
+
+# ------------------------------------------------------------------ LAUNCHERS (5)
+- id: single_flywheel
+  category: launcher
+  workstream: scoring
+  counts_as_novel: true
+  name: Single flywheel launcher
+  function: Accelerates a game piece to a launch velocity using one driven wheel against a backplate.
+  game_piece_classes: [sphere_small, disc_flat, torus]
+  delivery:
+    mode: shoot
+    min_height_in: 12
+    max_height_in: 108
+    max_range_in: 240
+    provides_carrier: false
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      Ballistic delivery: apex is set by exit velocity, not by robot height. 03_LAUNCHERS_ELECTRONICS
+      sec 1.3 (flywheel + hood) is the architecture that put the 2020 INFINITE RECHARGE and 2022
+      RAPID REACT goals (8-9 ft) in range off a one-motor flywheel. max_range_in is the REACHABLE
+      envelope, not the ACCURATE one: the sec 1.3 verdict is fixed hood, one spot, tuned to death,
+      so treat anything past the tuned spot as unscored.
+  cots_parts:
+  - {vendor: West Coast Products / CTR Electronics, item: Kraken X60 (Talon FX), sku: WCP-0940, qty: 1, unit_price: 217.99, est_unit_price: null, url: "https://store.ctr-electronics.com/products/kraken-x60", verified: true}
+  - {vendor: WestCoast Products, item: "Straight Stretch Core Flex Wheel 1.625 in 30A", sku: WCP-1281, qty: 6, unit_price: 2.99, est_unit_price: null, url: "https://store.ctr-electronics.com/products/stretch-core-straight-flex-wheel", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 10 - .50in OD x .25in ID Radial Bearing", sku: null, qty: 1, unit_price: 20.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: UNVERIFIED, item: "1/2 in hex shaft, 12 in", sku: null, qty: 2, unit_price: null, est_unit_price: 14.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Flywheel side plates, material: 1/4 in 6061 plate, process: bore + tap, machine_required: mill_lathe, qty: 2, est_hours: 8}
+  - {part: Backplate / compression wall, material: 0.090 in polycarbonate, process: cut + bend, machine_required: hand_tools, qty: 1, est_hours: 3}
+  - {part: Exit guide, material: 0.060 in polycarbonate, process: cut + bend, machine_required: hand_tools, qty: 1, est_hours: 2}
+  cots_cost_usd: 283.93
+  material_cost_usd: 95
+  total_cost_usd: 378.93
+  tooling_floor: mill_lathe
+  build_hours: 20
+  design_hours: 14
+  programming_hours: 18
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [1x integrated motor encoder for closed-loop velocity]
+  pneumatics_required: false
+  lead_time_weeks: 3
+  stockout_risk: med
+  common_failure_modes:
+  - Recovery time between shots dominates cycle time and nobody measured it.
+  - Wheel surface polishes after 200 shots; range drifts short by match 8.
+  - Compression set by feel; shot-to-shot variance is the whole error budget.
+  - Battery sag between shots changes exit velocity; no voltage compensation in the controller.
+  - Open-loop percent-output control instead of closed-loop velocity. Range is then unrepeatable.
+  buy_vs_make_recommendation: >
+    Only build a launcher if the arithmetic in 03_LAUNCHERS sec 1.8 / tools/cycle-model.py says it
+    beats a placement mechanism on points-per-second. If it does: single flywheel, high-inertia,
+    ONE motor, closed-loop velocity, fixed hood. Recovery time beats peak RPM -- size for inertia,
+    not speed. If BIOCORE's element is not a projectile class, this entry is dead scope.
+  cheapest_credible_usd: 270
+  best_version_usd: 400
+  evidence: S
+  notes: "S until BIOCORE's scoring element is public. Launcher games are ~40% of FRC seasons [H]."
+
+- id: dual_flywheel
+  category: launcher
+  workstream: scoring
+  counts_as_novel: true
+  name: Dual flywheel launcher (opposed wheels)
+  function: Two counter-rotating wheels launch the piece; differential speed sets spin.
+  game_piece_classes: [sphere_small, disc_flat, torus]
+  delivery:
+    mode: shoot
+    min_height_in: 12
+    max_height_in: 108
+    max_range_in: 240
+    provides_carrier: false
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      Same ballistic envelope as the single flywheel; the second wheel buys spin control and
+      bounce-out resistance (03_LAUNCHERS_ELECTRONICS sec 1.3), not extra height.
+  cots_parts:
+  - {vendor: West Coast Products / CTR Electronics, item: Kraken X60 (Talon FX), sku: WCP-0940, qty: 2, unit_price: 217.99, est_unit_price: null, url: "https://store.ctr-electronics.com/products/kraken-x60", verified: true}
+  - {vendor: WestCoast Products, item: "Straight Stretch Core Flex Wheel 1.625 in 30A", sku: WCP-1281, qty: 12, unit_price: 2.99, est_unit_price: null, url: "https://store.ctr-electronics.com/products/stretch-core-straight-flex-wheel", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 10 - .50in OD x .25in ID Radial Bearing", sku: null, qty: 2, unit_price: 20.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: UNVERIFIED, item: "1/2 in hex shaft, 12 in", sku: null, qty: 4, unit_price: null, est_unit_price: 14.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Launcher side plates, material: 1/4 in 6061 plate, process: bore + tap, machine_required: mill_lathe, qty: 2, est_hours: 10}
+  - {part: Wheel gap shims, material: 6061 stock, process: turn, machine_required: mill_lathe, qty: 4, est_hours: 3}
+  - {part: Exit guide, material: 0.060 in polycarbonate, process: cut + bend, machine_required: hand_tools, qty: 1, est_hours: 2}
+  cots_cost_usd: 567.86
+  material_cost_usd: 120
+  total_cost_usd: 687.86
+  tooling_floor: mill_lathe
+  build_hours: 26
+  design_hours: 18
+  programming_hours: 22
+  motors_required: 2
+  controllers_required: 2
+  sensors_required: [2x integrated motor encoder]
+  pneumatics_required: false
+  lead_time_weeks: 3
+  stockout_risk: med
+  common_failure_modes:
+  - Two velocity loops fight each other; the piece squirts sideways.
+  - Wheel gap not adjustable; one durometer change means new plates.
+  - Doubles the recovery-time problem and doubles the current draw spike.
+  - Backspin tuned once, on one battery, and never re-checked.
+  buy_vs_make_recommendation: >
+    For a 15-student team, dual flywheel is a WORSE trade than single flywheel: +6 build hours,
+    +4 programming hours, +$218 in motor, and the only thing you buy is spin control. Choose it ONLY
+    if the game demands a flat trajectory with controlled spin over a long range. Otherwise: single.
+  cheapest_credible_usd: 512
+  best_version_usd: 720
+  evidence: S
+
+- id: variable_hood_shooter
+  category: launcher
+  workstream: scoring
+  counts_as_novel: true
+  name: Variable-hood shooter
+  function: Flywheel launcher with a servo/motor-adjustable exit angle for range flexibility.
+  game_piece_classes: [sphere_small, disc_flat]
+  delivery:
+    mode: shoot
+    min_height_in: 12
+    max_height_in: 120
+    max_range_in: 300
+    provides_carrier: false
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      The adjustable exit angle is what widens the envelope: 03_LAUNCHERS_ELECTRONICS sec 1.3,
+      fixed-vs-variable hood table -- a variable hood trades one more closed loop for range
+      flexibility. Highest reach envelope in the catalog, and the highest tuning risk.
+  cots_parts:
+  - {vendor: West Coast Products / CTR Electronics, item: Kraken X60 (Talon FX), sku: WCP-0940, qty: 1, unit_price: 217.99, est_unit_price: null, url: "https://store.ctr-electronics.com/products/kraken-x60", verified: true}
+  - {vendor: REV Robotics, item: NEO 550 Brushless Motor (hood), sku: REV-21-1651, qty: 1, unit_price: 30.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1651/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit (hood reduction), sku: REV-25-2109, qty: 1, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  - {vendor: REV Robotics, item: Through Bore Encoder V1 (hood absolute), sku: REV-11-1271, qty: 1, unit_price: 40.80, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-1271/", verified: true}
+  - {vendor: WestCoast Products, item: "Straight Stretch Core Flex Wheel 1.625 in 30A", sku: WCP-1281, qty: 6, unit_price: 2.99, est_unit_price: null, url: "https://store.ctr-electronics.com/products/stretch-core-straight-flex-wheel", verified: true}
+  fabricated_parts:
+  - {part: Hood arc plates, material: 1/4 in 6061 plate, process: profile + bore, machine_required: router_cnc, qty: 2, est_hours: 10}
+  - {part: Hood skin, material: 0.060 in polycarbonate, process: cut + roll, machine_required: hand_tools, qty: 1, est_hours: 4}
+  - {part: Launcher side plates, material: 1/4 in 6061 plate, process: bore + tap, machine_required: mill_lathe, qty: 2, est_hours: 8}
+  cots_cost_usd: 442.73
+  material_cost_usd: 140
+  total_cost_usd: 582.73
+  tooling_floor: router_cnc
+  build_hours: 34
+  design_hours: 24
+  programming_hours: 30
+  motors_required: 2
+  controllers_required: 2
+  sensors_required: [1x hood absolute encoder, 1x flywheel encoder, vision for range]
+  pneumatics_required: false
+  lead_time_weeks: 4
+  stockout_risk: med
+  common_failure_modes:
+  - Range-to-hood-angle lookup table has 4 points and interpolates badly between them.
+  - Hood backdrives under launch impulse; angle changes shot to shot.
+  - Requires vision to be useful, so it inherits every vision failure mode too.
+  - Arc plates cut on a router with the wrong radius; the hood binds at one end of travel.
+  buy_vs_make_recommendation: >
+    DO NOT BUILD THIS on a 15-student team. It needs router/CNC access, a working vision pose stack,
+    a calibrated lookup table, and 30 programming hours -- it is workstream #4 and #5 at once.
+    The correct small-team answer to "we need two ranges" is TWO FIXED HOODS or a two-position
+    pneumatic hood stop, not a continuously variable one.
+  cheapest_credible_usd: 443
+  best_version_usd: 700
+  evidence: S
+
+- id: turret
+  category: launcher
+  workstream: scoring
+  counts_as_novel: true
+  name: Turret (rotating launcher/effector platform)
+  function: Decouples aiming from chassis heading; rotates the scoring mechanism.
+  game_piece_classes: [sphere_small, disc_flat, torus]
+  delivery:
+    mode: place
+    min_height_in: 0
+    max_height_in: 0
+    max_range_in: 0
+    provides_carrier: false
+    requires_carrier: true
+    evidence: C
+    notes: >-
+      Aiming platform, not a deliverer. Catalog function line: decouples aiming from chassis
+      heading. Contributes zero inches; the launcher bolted to it owns the whole envelope.
+  cots_parts:
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1, sku: REV-21-1650, qty: 1, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit, sku: REV-25-2109, qty: 2, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  - {vendor: REV Robotics, item: Through Bore Encoder V1 (turret absolute), sku: REV-11-1271, qty: 1, unit_price: 40.80, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-1271/", verified: true}
+  - {vendor: UNVERIFIED, item: "Large-diameter slew bearing or lazy-susan ring", sku: null, qty: 1, unit_price: null, est_unit_price: 130.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "Turret ring gear, 200+ tooth", sku: null, qty: 1, unit_price: null, est_unit_price: 95.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Turret deck plate, material: 1/4 in 6061 plate, process: profile + bore, machine_required: router_cnc, qty: 1, est_hours: 10}
+  - {part: Bearing race retainer, material: 1/4 in 6061 plate, process: profile, machine_required: router_cnc, qty: 1, est_hours: 6}
+  - {part: Cable management drag chain mounts, material: PETG 3D print, process: FDM print, machine_required: hand_tools, qty: 4, est_hours: 3}
+  cots_cost_usd: 480.30
+  material_cost_usd: 180
+  total_cost_usd: 660.30
+  tooling_floor: router_cnc
+  build_hours: 38
+  design_hours: 28
+  programming_hours: 26
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [1x absolute encoder, 2x limit switch for travel stops, vision for aiming]
+  pneumatics_required: false
+  lead_time_weeks: 5
+  stockout_risk: high
+  common_failure_modes:
+  - Wire routing through the rotation axis; cables twist and pull out mid-match.
+  - Travel limits enforced only in software; a code bug shears the ring gear.
+  - Backlash in the ring gear makes closed-loop aiming oscillate.
+  - Turret ring is the heaviest single part on the robot and it is all at the top.
+  buy_vs_make_recommendation: >
+    DO NOT BUILD. A turret is the archetypal scope trap: it requires CNC, vision, a large-diameter
+    bearing with a 5-week lead time, and 26 programming hours -- and its entire benefit (aim while
+    moving) is largely delivered by swerve for free. 02_TEAM_CAPACITY sec 5 gives this team THREE
+    workstreams. A turret is #4. Listed here so it can be explicitly, deliberately rejected.
+  cheapest_credible_usd: 480
+  best_version_usd: 780
+  evidence: S
+
+- id: catapult
+  category: launcher
+  workstream: scoring
+  counts_as_novel: true
+  name: Catapult / kicker (stored-energy launcher)
+  function: Releases stored spring or pneumatic energy in a single impulse to launch a piece.
+  game_piece_classes: [sphere_small, sphere_large, cube_soft]
+  delivery:
+    mode: shoot
+    min_height_in: 24
+    max_height_in: 96
+    max_range_in: 120
+    provides_carrier: false
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      03_LAUNCHERS_ELECTRONICS sec 4: fixed range unless you build a variable stop; good when the
+      target is a big, close, forgiving goal, bad when range must vary. High apex, narrow usable
+      band -- min_height_in is high because a stored-energy arm cannot deliver gently at low height.
+  cots_parts:
+  - {vendor: The Thrifty Bot, item: Constant Force Spring Kit, sku: null, qty: 2, unit_price: 49.99, est_unit_price: null, url: "https://www.thethriftybot.com/products/constant-force-spring-kit", verified: true}
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1 (winch/cock), sku: REV-21-1650, qty: 1, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit (high reduction), sku: REV-25-2109, qty: 2, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  - {vendor: UNVERIFIED, item: "Ratchet / one-way clutch + release mechanism", sku: null, qty: 1, unit_price: null, est_unit_price: 80.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Throwing arm, material: 1x2x0.0625 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 4}
+  - {part: Pivot bearing blocks, material: 1/4 in 6061 plate, process: bore, machine_required: mill_lathe, qty: 2, est_hours: 5}
+  - {part: Hard stop / energy absorber, material: UHMW + urethane bumper, process: cut + drill, machine_required: hand_tools, qty: 2, est_hours: 3}
+  - {part: Piece cradle, material: 0.060 in polycarbonate, process: cut + bend, machine_required: hand_tools, qty: 1, est_hours: 2}
+  cots_cost_usd: 394.48
+  material_cost_usd: 100
+  total_cost_usd: 494.48
+  tooling_floor: mill_lathe
+  build_hours: 24
+  design_hours: 16
+  programming_hours: 10
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [1x limit switch at cocked position, 1x limit switch at release]
+  pneumatics_required: false
+  lead_time_weeks: 3
+  stockout_risk: med
+  common_failure_modes:
+  - The hard stop takes the full impulse every shot; the frame cracks by Week 2 practice.
+  - Re-cock time is 1.5-3 s and destroys cycle time versus a flywheel.
+  - Single fixed energy -> exactly one range. Any range change means physical re-tuning.
+  - Stored energy at rest is a safety and inspection concern; needs a positive lock.
+  buy_vs_make_recommendation: >
+    MAKE only for a heavy or soft piece a flywheel cannot grip, and only if the game has ONE launch
+    range. The catapult's honest advantage over a flywheel is that it needs almost no programming
+    (10 h vs 18-30 h) and no closed-loop velocity control -- for a programming-starved 15-student
+    team in a Systemcore year, that is a real argument. Its honest disadvantage is cycle time.
+  cheapest_credible_usd: 360
+  best_version_usd: 520
+  evidence: S
+
+# ------------------------------------------------------------------ ELEVATION (3)
+- id: cascade_elevator
+  category: elevation
+  workstream: scoring
+  counts_as_novel: true
+  name: Cascade elevator (multi-stage, stages move together)
+  function: Vertical linear extension; stage N moves at N x carriage-relative speed.
+  game_piece_classes: [cylinder, torus, cube_soft, irregular]
+  delivery:
+    mode: lift
+    min_height_in: 0
+    max_height_in: 72
+    max_range_in: 6
+    provides_carrier: true
+    requires_carrier: false
+    evidence: UNVERIFIED
+    notes: >-
+      UNVERIFIED. The GreyT Cascade Elevator row in 02_MANIPULATION_ELEVATION sec 9 is explicit:
+      price [C], stage/travel spec UNVERIFIED. 72 in is a PLANNING figure for a 2-stage stack on a
+      ~6 in deck (total travel H = N*s, sec 10). Pull the real per-stage stroke from the published
+      WCP CAD before any design decision depends on this number.
+  cots_parts:
+  - {vendor: WestCoast Products, item: GreyT Cascade Elevator, sku: null, qty: 1, unit_price: 299.99, est_unit_price: null, url: "https://wcproducts.com/products/greyt-cascade-elevator", verified: true}
+  - {vendor: The Thrifty Bot, item: Elevator Dyneema Pulley Kit, sku: null, qty: 1, unit_price: 59.99, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: The Thrifty Bot, item: "1/8 in Dyneema Rope - 25 FT", sku: null, qty: 1, unit_price: 10.99, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1, sku: REV-21-1650, qty: 2, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 2, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit, sku: REV-25-2109, qty: 2, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  - {vendor: The Thrifty Bot, item: Elevator Gusset Kit, sku: null, qty: 1, unit_price: 39.99, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  fabricated_parts:
+  - {part: Elevator mounting towers, material: 2x1x0.100 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 5}
+  - {part: Carriage plate, material: 1/4 in 6061 plate, process: drill + tap, machine_required: bandsaw_drillpress, qty: 1, est_hours: 5}
+  - {part: Cross-brace, material: 1x1 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 2}
+  cots_cost_usd: 767.96
+  material_cost_usd: 150
+  total_cost_usd: 917.96
+  tooling_floor: bandsaw_drillpress
+  build_hours: 30
+  design_hours: 20
+  programming_hours: 20
+  motors_required: 2
+  controllers_required: 2
+  sensors_required: [1x bottom limit switch, 2x integrated encoder, optional absolute encoder]
+  pneumatics_required: false
+  lead_time_weeks: 4
+  stockout_risk: med
+  common_failure_modes:
+  - Rigging routed wrong; stages bind or one stage lifts before the other.
+  - Dyneema rope wraps over itself on the drum and the effective radius jumps.
+  - No bottom limit switch; the carriage drives into the base and strips the gearbox.
+  - "Gravity holding: elevator falls on disable and shears the carriage. Needs a brake or a ratchet."
+  - Motor sized for speed, not torque; it stalls at the top of travel with a piece.
+  buy_vs_make_recommendation: >
+    BUY the elevator kit. Fabricating extrusion, bearing blocks, and rigging from scratch is 60+ hours
+    and it is the single most common place a small team's season dies. WCP GreyT at $299.99 or the
+    Thrifty single-stage at $389.00 both remove that risk. Cascade gives you speed; continuous gives
+    you simplicity. See continuous_elevator for the trade.
+  cheapest_credible_usd: 611
+  best_version_usd: 950
+  evidence: C
+
+- id: continuous_elevator
+  category: elevation
+  workstream: scoring
+  counts_as_novel: true
+  name: Continuous elevator (single-stage or chained, constant ratio)
+  function: Vertical linear extension where every stage moves at the same rate.
+  game_piece_classes: [cylinder, torus, cube_soft, irregular]
+  delivery:
+    mode: lift
+    min_height_in: 0
+    max_height_in: 40
+    max_range_in: 6
+    provides_carrier: true
+    requires_carrier: false
+    evidence: UNVERIFIED
+    notes: >-
+      UNVERIFIED. The Thrifty Elevator Stage Kit is bought here as a SINGLE stage
+      (02_MANIPULATION_ELEVATION sec 9), so travel is one stroke, not N*s -- a single-stage
+      continuous elevator is the low-reach option by construction. 40 in is a planning figure;
+      TTB does not publish the stroke in machine-readable form. Verify before designing to it.
+  cots_parts:
+  - {vendor: The Thrifty Bot, item: "Thrifty Elevator Stage Kit -- Single Stage", sku: null, qty: 1, unit_price: 389.00, est_unit_price: null, url: "https://www.thethriftybot.com/products/thrifty-elevator-stage-kit", verified: true}
+  - {vendor: The Thrifty Bot, item: "Elevator #25H Chain Drive Kit", sku: null, qty: 1, unit_price: 199.99, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: The Thrifty Bot, item: Sliding Elevator Bearing Block Kit, sku: null, qty: 1, unit_price: 99.99, est_unit_price: null, url: "https://www.thethriftybot.com/products/sliding-elevator-bearing-block-kit", verified: true}
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1, sku: REV-21-1650, qty: 1, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit, sku: REV-25-2109, qty: 2, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  fabricated_parts:
+  - {part: Elevator mounting towers, material: 2x1x0.100 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 5}
+  - {part: Carriage plate, material: 1/4 in 6061 plate, process: drill + tap, machine_required: bandsaw_drillpress, qty: 1, est_hours: 4}
+  cots_cost_usd: 903.48
+  material_cost_usd: 110
+  total_cost_usd: 1013.48
+  tooling_floor: bandsaw_drillpress
+  build_hours: 22
+  design_hours: 14
+  programming_hours: 14
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [1x bottom limit switch, 1x integrated encoder]
+  pneumatics_required: false
+  lead_time_weeks: 3
+  stockout_risk: med
+  common_failure_modes:
+  - Chain stretch changes the zero over the season; positions drift.
+  - Single motor stalls under load at full extension.
+  - No hold mechanism; the carriage sags when disabled.
+  - Chain attachment point is the failure point -- it fatigues and snaps.
+  buy_vs_make_recommendation: >
+    BUY. This is the SMALL-TEAM DEFAULT for elevation: one motor, one ratio, one limit switch, no
+    rigging puzzle, ~14 programming hours versus 20 for cascade. You lose top speed and total
+    extension per unit of chassis height. For a 15-student team that trade is nearly always correct.
+  cheapest_credible_usd: 599
+  best_version_usd: 1100
+  evidence: C
+
+- id: telescoping_arm
+  category: elevation
+  workstream: scoring
+  counts_as_novel: true
+  name: Telescoping arm (linear extension on a pivot or fixed angle)
+  function: Extends reach along one axis using nested tubes.
+  game_piece_classes: [cylinder, torus, irregular]
+  delivery:
+    mode: lift
+    min_height_in: 0
+    max_height_in: 78
+    max_range_in: 36
+    provides_carrier: true
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      Grounded in this mechanism own COTS line: TTB Thrifty Telescoping Tube Kit, base + 2nd stage
+      (2 -> 1.5 -> 1 in). 02_MANIPULATION_ELEVATION sec 11 records the base kit constant-force
+      springs as 39 in. Two stages of ~36 in stroke plus a ~6 in deck lands near 78 in.
+      max_range_in assumes the tube is angled rather than vertical: you get height OR reach.
+  cots_parts:
+  - {vendor: The Thrifty Bot, item: "Thrifty Telescoping Tube Kit -- Base + 2nd Stage (2in to 1.5in to 1in)", sku: null, qty: 1, unit_price: 220.00, est_unit_price: null, url: "https://www.thethriftybot.com/products/thrifty-telescoping-tube-kit", verified: true}
+  - {vendor: The Thrifty Bot, item: Elevator Dyneema Pulley Kit, sku: null, qty: 1, unit_price: 59.99, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1, sku: REV-21-1650, qty: 1, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit, sku: REV-25-2109, qty: 2, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  fabricated_parts:
+  - {part: Base tube mount, material: 1/4 in 6061 plate, process: drill + tap, machine_required: bandsaw_drillpress, qty: 2, est_hours: 4}
+  - {part: End effector interface plate, material: 1/8 in 6061 sheet, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 3}
+  - {part: Slide pads, material: UHMW / Delrin stock, process: cut + drill, machine_required: hand_tools, qty: 8, est_hours: 3}
+  cots_cost_usd: 494.49
+  material_cost_usd: 90
+  total_cost_usd: 584.49
+  tooling_floor: bandsaw_drillpress
+  build_hours: 20
+  design_hours: 12
+  programming_hours: 12
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [1x retracted limit switch, 1x integrated encoder]
+  pneumatics_required: false
+  lead_time_weeks: 3
+  stockout_risk: med
+  common_failure_modes:
+  - Slide pads wear; the arm develops play at full extension and the tip wanders inches.
+  - Extended arm is a lever; a side hit bends the base tube permanently.
+  - Retraction relies on gravity or a spring and jams when the tubes are loaded off-axis.
+  - Extension limit not enforced; the robot exceeds the extension rule -> penalty.
+  buy_vs_make_recommendation: >
+    BUY the tube kit. Making nested telescoping tubes with correct clearance requires a mill and
+    a lot of fitting. At $220.00 for two stages this is the cheapest reach-extension in the catalog.
+  cheapest_credible_usd: 494
+  best_version_usd: 620
+  evidence: C
+
+# ------------------------------------------------------------------ ARMS (3)
+- id: single_jointed_arm
+  category: arm
+  workstream: scoring
+  counts_as_novel: true
+  name: Single-jointed arm
+  function: One powered pivot swings an end effector through an arc.
+  game_piece_classes: [cylinder, torus, cube_soft, irregular]
+  delivery:
+    mode: place
+    min_height_in: 0
+    max_height_in: 60
+    max_range_in: 30
+    provides_carrier: true
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      02_MANIPULATION_ELEVATION sec 13: an elevator is only required when highest and lowest score
+      locations are more than roughly 4 ft apart in height -- i.e. a single pivot covers about a
+      48 in span, which off a ~12 in shoulder deck tops out near 60 in. Height and reach trade
+      against each other along the arc; they are not simultaneous.
+  cots_parts:
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1, sku: REV-21-1650, qty: 1, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit, sku: REV-25-2109, qty: 3, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  - {vendor: REV Robotics, item: Through Bore Encoder V1 (absolute on pivot), sku: REV-11-1271, qty: 1, unit_price: 40.80, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-1271/", verified: true}
+  - {vendor: The Thrifty Bot, item: Constant Force Spring Kit (gravity counterbalance), sku: null, qty: 1, unit_price: 49.99, est_unit_price: null, url: "https://www.thethriftybot.com/products/constant-force-spring-kit", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 10 - .75in OD x .25in ID Radial Ball Bearing", sku: null, qty: 1, unit_price: 20.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  fabricated_parts:
+  - {part: Arm tube, material: 1x2x0.0625 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 4}
+  - {part: Pivot bearing blocks, material: 1/4 in 6061 plate, process: bore, machine_required: mill_lathe, qty: 2, est_hours: 5}
+  - {part: Gearbox mounting plate, material: 1/4 in 6061 plate, process: bore + tap, machine_required: mill_lathe, qty: 1, est_hours: 4}
+  - {part: Hard stops, material: UHMW block, process: cut + drill, machine_required: hand_tools, qty: 2, est_hours: 2}
+  cots_cost_usd: 361.29
+  material_cost_usd: 95
+  total_cost_usd: 456.29
+  tooling_floor: mill_lathe
+  build_hours: 22
+  design_hours: 16
+  programming_hours: 18
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [1x absolute encoder on the pivot axis, 2x limit switch]
+  pneumatics_required: false
+  lead_time_weeks: 3
+  stockout_risk: low
+  common_failure_modes:
+  - Absolute encoder on the motor instead of the joint -> zero lost through gearbox backlash.
+  - Gravity feedforward not implemented; the arm sags on hold and overshoots on the way up.
+  - Reduction sized for speed; the arm cannot hold a loaded end effector horizontal.
+  - Arm swings outside the frame perimeter at a legal-extension boundary nobody checked.
+  buy_vs_make_recommendation: >
+    MAKE the arm, BUY the gearbox stack. A single-jointed arm is the cheapest and most reliable
+    manipulator topology available to a 15-student team -- one motor, one absolute encoder, one
+    gravity feedforward term. Prefer it over any elevator when the required reach fits an arc.
+    NON-NEGOTIABLE: absolute encoder ON THE JOINT, not on the motor shaft.
+  cheapest_credible_usd: 371
+  best_version_usd: 520
+  evidence: C
+
+- id: double_jointed_arm
+  category: arm
+  workstream: scoring
+  counts_as_novel: true
+  name: Double-jointed arm (shoulder + elbow)
+  function: Two powered pivots reach arbitrary points in a plane.
+  game_piece_classes: [cylinder, torus, cube_soft, irregular]
+  delivery:
+    mode: place
+    min_height_in: 0
+    max_height_in: 72
+    max_range_in: 48
+    provides_carrier: true
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      Catalog function line: two powered pivots reach arbitrary points in a plane -- the second
+      joint buys the plane, at 3.0x complexity plus inverse-kinematics software risk
+      (02_MANIPULATION_ELEVATION sec 12). Highest arm envelope, worst achievability.
+  cots_parts:
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1, sku: REV-21-1650, qty: 2, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 2, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit, sku: REV-25-2109, qty: 6, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  - {vendor: REV Robotics, item: Through Bore Encoder V1 (absolute per joint), sku: REV-11-1271, qty: 2, unit_price: 40.80, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-1271/", verified: true}
+  - {vendor: The Thrifty Bot, item: Constant Force Spring Kit, sku: null, qty: 2, unit_price: 49.99, est_unit_price: null, url: "https://www.thethriftybot.com/products/constant-force-spring-kit", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 10 - .75in OD x .25in ID Radial Ball Bearing", sku: null, qty: 2, unit_price: 20.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  fabricated_parts:
+  - {part: Upper arm tube, material: 1x2x0.0625 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 4}
+  - {part: Forearm tube, material: 1x1x0.0625 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 3}
+  - {part: Shoulder bearing blocks, material: 1/4 in 6061 plate, process: bore, machine_required: mill_lathe, qty: 2, est_hours: 5}
+  - {part: Elbow bearing blocks, material: 1/4 in 6061 plate, process: bore, machine_required: mill_lathe, qty: 2, est_hours: 5}
+  - {part: Cable/wire routing along the arm, material: drag chain + PETG mounts, process: FDM print + assemble, machine_required: hand_tools, qty: 1, est_hours: 4}
+  cots_cost_usd: 722.58
+  material_cost_usd: 160
+  total_cost_usd: 882.58
+  tooling_floor: mill_lathe
+  build_hours: 40
+  design_hours: 30
+  programming_hours: 40
+  motors_required: 2
+  controllers_required: 2
+  sensors_required: [2x absolute encoder on joints, 4x limit switch]
+  pneumatics_required: false
+  lead_time_weeks: 4
+  stockout_risk: med
+  common_failure_modes:
+  - Inverse kinematics written from scratch under time pressure; singularities crash the arm.
+  - Coupled gravity torque -- elbow angle changes the shoulder load -- and the feedforward ignores it.
+  - Joint travel envelope allows self-collision; the arm folds into itself.
+  - Wire routing across two moving joints fails first, not the mechanism.
+  - The two joints together draw more current than budgeted; brownout on simultaneous motion.
+  buy_vs_make_recommendation: >
+    REJECT for a 15-student team. Forty build hours out of 129.8 and FORTY programming hours out of
+    134.8 -- in a Systemcore port year that is not a mechanism, it is the entire season. A single-
+    jointed arm on an elevator reaches the same workspace with half the control complexity. Listed
+    so the team can point at this entry and say no on kickoff day.
+  cheapest_credible_usd: 741
+  best_version_usd: 1000
+  evidence: S
+
+- id: virtual_four_bar
+  category: arm
+  workstream: scoring
+  counts_as_novel: true
+  name: Virtual four-bar (belt/chain-coupled wrist)
+  function: Keeps the end effector at a constant world angle through the arm's arc.
+  game_piece_classes: [cylinder, torus, cube_soft]
+  delivery:
+    mode: place
+    min_height_in: 0
+    max_height_in: 56
+    max_range_in: 30
+    provides_carrier: true
+    requires_carrier: false
+    evidence: H
+    notes: >-
+      02_MANIPULATION_ELEVATION sec 13 makes this the explicit decision fork: if sec 0 step 2 shows
+      scoring heights reachable by a virtual four-bar (~40 h), build this instead of an elevator.
+      Same arc as a single-jointed arm; the coupled wrist buys a constant world angle, not height.
+  cots_parts:
+  - {vendor: REV Robotics, item: NEO Brushless Motor V1.1, sku: REV-21-1650, qty: 1, unit_price: 42.50, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-1650/", verified: true}
+  - {vendor: REV Robotics, item: SPARK MAX Motor Controller, sku: REV-11-2158, qty: 1, unit_price: 100.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-2158/", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit, sku: REV-25-2109, qty: 3, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  - {vendor: REV Robotics, item: Through Bore Encoder V1, sku: REV-11-1271, qty: 1, unit_price: 40.80, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-1271/", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 2 - Half Inch Hex 22 Tooth #25 Sprocket", sku: null, qty: 2, unit_price: 19.99, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 1 - #25 Chain Tensioner", sku: null, qty: 2, unit_price: 14.99, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: The Thrifty Bot, item: "QTY 10 - .75in OD x .25in ID Radial Ball Bearing", sku: null, qty: 1, unit_price: 20.00, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  fabricated_parts:
+  - {part: Arm tube with idler slots, material: 1x2x0.0625 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 5}
+  - {part: Shoulder + wrist bearing blocks, material: 1/4 in 6061 plate, process: bore, machine_required: mill_lathe, qty: 4, est_hours: 8}
+  - {part: Wrist effector plate, material: 1/8 in 6061 sheet, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 3}
+  cots_cost_usd: 381.26
+  material_cost_usd: 110
+  total_cost_usd: 491.26
+  tooling_floor: mill_lathe
+  build_hours: 26
+  design_hours: 18
+  programming_hours: 14
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [1x absolute encoder on shoulder, 2x limit switch]
+  pneumatics_required: false
+  lead_time_weeks: 3
+  stockout_risk: low
+  common_failure_modes:
+  - Chain tension lost -> the wrist angle drifts and the "virtual" constraint stops holding.
+  - Idler placement wrong; the chain rubs the arm tube and saws through it.
+  - The coupling ratio is not 1:1 and nobody noticed until the effector tilts at full extension.
+  buy_vs_make_recommendation: >
+    MAKE, and strongly prefer this over a double-jointed arm. A virtual four-bar delivers most of the
+    double-jointed benefit -- constant effector attitude across the arc -- for ONE motor and 14
+    programming hours instead of 40. For a 15-student team this is the correct sophisticated-arm
+    answer. The mechanism does the math so the programmers do not have to.
+  cheapest_credible_usd: 380
+  best_version_usd: 540
+  evidence: H
+
+# ------------------------------------------------------------------ CLIMBERS (3)
+- id: winch_climber
+  category: climber
+  workstream: endgame
+  counts_as_novel: true
+  name: Winch climber (rope/strap pull-up)
+  function: Pulls the robot up using a motorised drum and a rope or strap hooked over a bar.
+  game_piece_classes: [none]
+  cots_parts:
+  - {vendor: AndyMark, item: "Climber in a Box Winch Kit (2 x 2 in. extrusion)", sku: am-4664, qty: 1, unit_price: 72.00, est_unit_price: null, url: "https://andymark.com/products/climber-in-a-box-winch-kits", verified: true}
+  - {vendor: West Coast Products / CTR Electronics, item: Kraken X60 (Talon FX), sku: WCP-0940, qty: 1, unit_price: 217.99, est_unit_price: null, url: "https://store.ctr-electronics.com/products/kraken-x60", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit (high reduction), sku: REV-25-2109, qty: 3, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  - {vendor: The Thrifty Bot, item: "1/8 in Dyneema Rope - 25 FT", sku: null, qty: 1, unit_price: 10.99, est_unit_price: null, url: "https://www.thethriftybot.com/collections/elevator-kits", verified: true}
+  - {vendor: UNVERIFIED, item: "Ratchet wrench / one-way clutch for hold", sku: null, qty: 1, unit_price: null, est_unit_price: 45.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Winch drum mount, material: 1/4 in 6061 plate, process: bore + tap, machine_required: mill_lathe, qty: 2, est_hours: 5}
+  - {part: Hook, material: 1/4 in 6061 plate or steel, process: profile + deburr, machine_required: bandsaw_drillpress, qty: 1, est_hours: 4}
+  - {part: Structural tie into the frame, material: 2x1 6061 tube + gussets, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 4}
+  cots_cost_usd: 453.98
+  material_cost_usd: 85
+  total_cost_usd: 538.98
+  tooling_floor: bandsaw_drillpress
+  build_hours: 18
+  design_hours: 12
+  programming_hours: 6
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [1x limit switch at full retract, 1x integrated encoder]
+  pneumatics_required: false
+  lead_time_weeks: 2
+  stockout_risk: low
+  common_failure_modes:
+  - No ratchet or brake; the robot descends when the motor is disabled at match end -> no points.
+  - Rope wraps over itself; effective drum radius jumps and the pull stalls.
+  - Frame not reinforced at the winch mount; the mount tears out under full robot weight.
+  - Hook geometry does not capture the bar reliably at any approach angle but one.
+  buy_vs_make_recommendation: >
+    BUY the winch kit, MAKE the hook and the structural tie. This is the cheapest points-per-hour
+    endgame in the catalog at 18 build hours and 6 programming hours. Mandatory: a mechanical hold
+    (ratchet or worm) so the climb survives the disable at T=0. That single part is the difference
+    between scoring the climb and not.
+  cheapest_credible_usd: 385
+  best_version_usd: 560
+  evidence: C
+
+- id: telescoping_climber
+  category: climber
+  workstream: endgame
+  counts_as_novel: true
+  name: Telescoping climber (extend-hook-retract)
+  function: Extends a tube above the bar, hooks, and retracts to lift the robot.
+  game_piece_classes: [none]
+  cots_parts:
+  - {vendor: AndyMark, item: "Climber in a Box, With Extrusion, Stage 2", sku: am-4668, qty: 1, unit_price: 277.00, est_unit_price: null, url: "https://andymark.com/products/climber-in-a-box", verified: true}
+  - {vendor: West Coast Products / CTR Electronics, item: Kraken X60 (Talon FX), sku: WCP-0940, qty: 1, unit_price: 217.99, est_unit_price: null, url: "https://store.ctr-electronics.com/products/kraken-x60", verified: true}
+  - {vendor: REV Robotics, item: MAXPlanetary System Kit, sku: REV-25-2109, qty: 3, unit_price: 36.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-21-2100/", verified: true}
+  - {vendor: The Thrifty Bot, item: Constant Force Spring Kit (extend assist), sku: null, qty: 1, unit_price: 49.99, est_unit_price: null, url: "https://www.thethriftybot.com/products/constant-force-spring-kit", verified: true}
+  fabricated_parts:
+  - {part: Climber base mount, material: 1/4 in 6061 plate, process: bore + tap, machine_required: mill_lathe, qty: 2, est_hours: 5}
+  - {part: Hook head, material: 1/4 in 6061 plate, process: profile, machine_required: bandsaw_drillpress, qty: 1, est_hours: 4}
+  - {part: Frame reinforcement, material: 2x1 6061 tube + gussets, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 4}
+  cots_cost_usd: 652.98
+  material_cost_usd: 100
+  total_cost_usd: 752.98
+  tooling_floor: mill_lathe
+  build_hours: 26
+  design_hours: 18
+  programming_hours: 12
+  motors_required: 1
+  controllers_required: 1
+  sensors_required: [2x limit switch, 1x integrated encoder]
+  pneumatics_required: false
+  lead_time_weeks: 3
+  stockout_risk: med
+  common_failure_modes:
+  - Extension height rule changed at kickoff; the climber is illegal as designed.
+  - Extended tube is hit by a robot in the last 10 seconds and bends; it will not retract.
+  - Hook misses the bar because the drivers cannot see the alignment. Needs a camera or a guide.
+  - Deployment eats 3-5 s of a 30 s endgame; the cycle math was never done.
+  buy_vs_make_recommendation: >
+    BUY the kit if the game's bar geometry needs the reach. Otherwise prefer winch_climber -- it is
+    $130 cheaper, 8 build hours shorter, and has one fewer failure mode. Telescoping only wins when
+    the climb point is genuinely above the robot's static height.
+  cheapest_credible_usd: 545
+  best_version_usd: 800
+  evidence: C
+
+- id: passive_latch_climber
+  category: climber
+  workstream: endgame
+  counts_as_novel: true
+  name: Passive latch / hook climber (no dedicated actuator)
+  function: Climbs using an existing mechanism or drivetrain motion plus a passive latch.
+  game_piece_classes: [none]
+  cots_parts:
+  - {vendor: UNVERIFIED, item: "Spring-loaded latch hardware / gas spring", sku: null, qty: 2, unit_price: null, est_unit_price: 40.00, url: null, verified: false}
+  - {vendor: The Thrifty Bot, item: Constant Force Spring Kit, sku: null, qty: 1, unit_price: 49.99, est_unit_price: null, url: "https://www.thethriftybot.com/products/constant-force-spring-kit", verified: true}
+  - {vendor: UNVERIFIED, item: "1/4 in aluminum plate stock for hooks", sku: null, qty: 1, unit_price: null, est_unit_price: 55.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Passive hooks, material: 1/4 in 6061 plate, process: profile + deburr, machine_required: bandsaw_drillpress, qty: 2, est_hours: 5}
+  - {part: Latch pivot + spring mount, material: 1/8 in 6061 sheet, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 4}
+  - {part: Frame reinforcement, material: 2x1 6061 tube, process: cut + drill, machine_required: bandsaw_drillpress, qty: 2, est_hours: 3}
+  cots_cost_usd: 184.99
+  material_cost_usd: 60
+  total_cost_usd: 244.99
+  tooling_floor: bandsaw_drillpress
+  build_hours: 12
+  design_hours: 10
+  programming_hours: 2
+  motors_required: 0
+  controllers_required: 0
+  sensors_required: []
+  pneumatics_required: false
+  lead_time_weeks: 1
+  stockout_risk: low
+  common_failure_modes:
+  - Latch requires a precise drive approach; it works in the shop and fails at the venue.
+  - Latch engages accidentally during the match and drags on the carpet.
+  - Only reaches the lowest-value climb tier; the points may not justify even 12 hours.
+  buy_vs_make_recommendation: >
+    MAKE. If the game has a low climb tier reachable by driving into it, this is the highest
+    points-per-hour mechanism in the entire catalog: ZERO motors, ZERO controllers, 2 programming
+    hours. For a 15-student team, check for this option FIRST on kickoff day before pricing a winch.
+  cheapest_credible_usd: 185
+  best_version_usd: 260
+  evidence: H
+
+# ------------------------------------------------------------------ SUPPORT PACKAGES (2)
+- id: pneumatics_package
+  category: support
+  workstream: support
+  counts_as_novel: false
+  name: Pneumatics package
+  function: Compressed-air actuation -- fast binary motion without a motor or a control loop.
+  game_piece_classes: [none]
+  cots_parts:
+  - {vendor: REV Robotics, item: Pneumatic Hub (PH), sku: REV-11-1852, qty: 1, unit_price: 90.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-1852/", verified: true}
+  - {vendor: AndyMark, item: Viair 90C Air Compressor, sku: null, qty: 1, unit_price: 118.00, est_unit_price: null, url: "https://andymark.com/products/viair-90c-air-compressor", verified: true}
+  - {vendor: REV Robotics, item: Analog Pressure Sensor, sku: REV-11-1107, qty: 2, unit_price: 39.42, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-1107/", verified: true}
+  - {vendor: UNVERIFIED, item: "Air cylinders, 1-1/16 bore x 6 in stroke", sku: null, qty: 2, unit_price: null, est_unit_price: 42.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "Air storage tanks", sku: null, qty: 2, unit_price: null, est_unit_price: 22.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "Tubing, fittings, relief valve, vent valve, gauges kit", sku: null, qty: 1, unit_price: null, est_unit_price: 95.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Cylinder clevis mounts, material: 1/4 in 6061 plate, process: drill + tap, machine_required: bandsaw_drillpress, qty: 4, est_hours: 4}
+  - {part: Compressor + tank mounting tray, material: 1/8 in 6061 sheet, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 3}
+  cots_cost_usd: 509.84
+  material_cost_usd: 45
+  total_cost_usd: 554.84
+  tooling_floor: bandsaw_drillpress
+  build_hours: 14
+  design_hours: 6
+  programming_hours: 5
+  motors_required: 0
+  controllers_required: 0
+  sensors_required: [2x pressure sensor (system + working), limit switches per cylinder]
+  pneumatics_required: true
+  lead_time_weeks: 2
+  stockout_risk: low
+  common_failure_modes:
+  - Leaks. Every pneumatic robot leaks; the compressor runs all match and browns out the bus.
+  - Vent valve missing or not accessible -> inspection failure.
+  - Cylinder force computed at 60 psi working but the design assumed 120 psi.
+  - Compressor duty cycle exceeds recharge; the last cylinder actuation of the match does not happen.
+  - Adds ~8-10 lb to a weight budget that had no slack.
+  buy_vs_make_recommendation: >
+    BUY the whole package or skip it entirely -- there is no partial pneumatics. The real trade for a
+    15-student team: pneumatics buys you a binary actuator with ZERO closed-loop programming, which in
+    a Systemcore port year is worth real hours. It costs ~$450, ~9 lb, and a permanent leak-hunting
+    task. Rule of thumb: worth it at 2+ binary actuations, never worth it for exactly one.
+  cheapest_credible_usd: 425
+  best_version_usd: 620
+  evidence: C
+
+- id: baseline_electrical_package
+  category: support
+  workstream: software
+  counts_as_novel: false
+  name: Baseline electrical package (Systemcore era)
+  function: Power distribution, control, radio, battery, and wiring -- the mandatory robot spine.
+  game_piece_classes: [none]
+  cots_parts:
+  - {vendor: FIRST / TBD, item: "Systemcore control system", sku: null, qty: 1, unit_price: null, est_unit_price: 450.00, url: null, verified: false}
+  - {vendor: REV Robotics, item: Power Distribution Hub (PDH), sku: REV-11-1850, qty: 1, unit_price: 250.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-1850/", verified: true}
+  - {vendor: AndyMark, item: Robot Signal Light (RSL), sku: am-3583, qty: 1, unit_price: 70.00, est_unit_price: null, url: "https://andymark.com/products/robot-signal-light", verified: true}
+  - {vendor: AndyMark, item: "Vivid-Hosting VH-109 FRC Radio V1.5", sku: am-5583a, qty: 1, unit_price: 201.00, est_unit_price: null, url: "https://andymark.com/products/vivid-hosting-vh-109-frc-radio-v1-5", verified: true}
+  - {vendor: REV Robotics, item: Radio Power Module (RPM), sku: REV-11-1856, qty: 1, unit_price: 34.00, est_unit_price: null, url: "https://www.revrobotics.com/rev-11-1856/", verified: true}
+  - {vendor: AndyMark, item: "MK ES17-12 12V SLA Battery (Set of 2)", sku: null, qty: 3, unit_price: 116.00, est_unit_price: null, url: "https://andymark.com/products/mk-es17-12-12v-sla-battery-set-of-2", verified: true}
+  - {vendor: AndyMark, item: "Anderson SB50 Connector with Contacts", sku: null, qty: 4, unit_price: 6.60, est_unit_price: null, url: "https://andymark.com/products/sb50-anderson-powerpole-connector-with-contacts", verified: true}
+  - {vendor: UNVERIFIED, item: "120A main breaker (CB285-120)", sku: null, qty: 2, unit_price: null, est_unit_price: 25.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "Battery charger, <=6A, SB connector", sku: null, qty: 2, unit_price: null, est_unit_price: 90.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "6 AWG / 12 AWG / 18 AWG wire + ferrules + lugs", sku: null, qty: 1, unit_price: null, est_unit_price: 160.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "Snap-action breaker assortment", sku: null, qty: 1, unit_price: null, est_unit_price: 60.00, url: null, verified: false}
+  - {vendor: UNVERIFIED, item: "CAN wire 50 ft + Cat6 + consumables", sku: null, qty: 1, unit_price: null, est_unit_price: 85.00, url: null, verified: false}
+  fabricated_parts:
+  - {part: Electronics board, material: 1/4 in polycarbonate or 1/8 in plywood, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 4}
+  - {part: Battery retention mount, material: 1/8 in 6061 + strap, process: cut + drill, machine_required: bandsaw_drillpress, qty: 1, est_hours: 3}
+  - {part: Wire loom routing + labelling, material: split loom + labels, process: assemble, machine_required: hand_tools, qty: 1, est_hours: 8}
+  kop_credit_usd: 721.00
+  kop_credit_note: >-
+    [S] Assumes the 2027 KOP supplies the Systemcore control system, the VH-109 radio, and the RSL, as the 2024-2026 KOPs supplied the roboRIO-era equivalents. UNVERIFIED until the Pre-Kickoff Virtual Kit Release, 2026-11-12.
+  cots_cost_usd: 1914.40
+  material_cost_usd: 65
+  total_cost_usd: 1979.40
+  tooling_floor: bandsaw_drillpress
+  build_hours: 30
+  design_hours: 8
+  programming_hours: 40
+  motors_required: 0
+  controllers_required: 0
+  sensors_required: [1x IMU (Systemcore onboard, may make Pigeon 2.0 redundant)]
+  pneumatics_required: false
+  lead_time_weeks: 6
+  stockout_risk: high
+  common_failure_modes:
+  - "2027 SPECIFIC: Systemcore price, availability, and ship date are UNVERIFIED as of 2026-08-22."
+  - Battery count too low; you cannot rotate charged batteries through a qualification schedule.
+  - Crimps done with pliers instead of a proper crimper; intermittent faults nobody can find.
+  - CAN bus daisy chain broken by one bad connector; half the robot disappears from the bus.
+  - Main breaker not accessible per rule; inspection failure.
+  - Wiring not labelled; every pit debug takes 3x longer than it should.
+  buy_vs_make_recommendation: >
+    BUY everything; make only the board and the loom. This package is NOT optional and NOT a
+    workstream you can defer -- it is inside mandatory workstream #1. Budget 40 programming hours
+    because 2027 is a Systemcore port: WPILib 2027 is Systemcore-only, so NO 2026 code carries over
+    untouched. Order long-lead items in the fall. Watch for the Pre-Kickoff Virtual Kit Release
+    (2026-11-12) for the first hard Systemcore price and availability data.
+  cheapest_credible_usd: 1400
+  best_version_usd: 2200
+  evidence: C
+  notes: >
+    Baseline totals in parts_electronics.yaml: $3982.68 verified subtotal for a FULL swerve robot
+    including drive motors and controllers. This entry excludes motors/controllers (they belong to
+    the mechanisms that use them) to avoid double counting in bom-builder.py rollups.

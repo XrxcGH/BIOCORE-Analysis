@@ -1,0 +1,18 @@
+# ambitious.yaml -- deliberately over the line. This input EXISTS TO FAIL.
+# Use it on kickoff day to show a team, in numbers, why the whiteboard robot is impossible.
+name: "AMBITIOUS -- swerve + turret shooter + double-jointed arm + vision + pneumatics"
+notes: >
+  The whiteboard robot. Every gate that can trip, trips. Run this next to simple.yaml and
+  put both outputs on the wall before anyone starts CAD.
+mechanisms:
+  - swerve_drivetrain
+  - bumpers_frame
+  - baseline_electrical_package
+  - vision_package
+  - deploying_intake
+  - indexer_conveyor
+  - variable_hood_shooter
+  - turret
+  - double_jointed_arm
+  - telescoping_climber
+  - pneumatics_package

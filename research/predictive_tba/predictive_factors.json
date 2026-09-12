@@ -1,0 +1,548 @@
+{
+  "source": "The Blue Alliance public event pages",
+  "years": {
+    "2023": {
+      "alliance_selection_rank_pct": {
+        "captain": {
+          "n": 1430,
+          "median_rank_pct": 15.0,
+          "mean_rank_pct": 17.0,
+          "p10_rank_pct": 3.1,
+          "p90_rank_pct": 33.3,
+          "pct_from_top_25pct_of_field": 76.6,
+          "pct_from_bottom_half_of_field": 0.4
+        },
+        "pick1": {
+          "n": 1430,
+          "median_rank_pct": 30.1,
+          "mean_rank_pct": 32.8,
+          "p10_rank_pct": 9.7,
+          "p90_rank_pct": 58.8,
+          "pct_from_top_25pct_of_field": 39.9,
+          "pct_from_bottom_half_of_field": 17.2
+        },
+        "pick2": {
+          "n": 1430,
+          "median_rank_pct": 60.0,
+          "mean_rank_pct": 60.8,
+          "p10_rank_pct": 35.9,
+          "p90_rank_pct": 88.2,
+          "pct_from_top_25pct_of_field": 2.3,
+          "pct_from_bottom_half_of_field": 66.4
+        },
+        "backup": {
+          "n": 199,
+          "median_rank_pct": 42.9,
+          "mean_rank_pct": 46.5,
+          "p10_rank_pct": 24.7,
+          "p90_rank_pct": 72.4,
+          "pct_from_top_25pct_of_field": 10.1,
+          "pct_from_bottom_half_of_field": 37.2
+        }
+      },
+      "deepest_pick_rank_pct": {
+        "n_events": 179,
+        "median": 90.0,
+        "p90": 100.0,
+        "pct_events_reaching_bottom_half": 99.4,
+        "pct_events_reaching_bottom_quartile": 84.9
+      },
+      "event_winner_by_alliance_seed": {
+        "n_events": 179,
+        "pct": {
+          "1": 67.6,
+          "2": 17.3,
+          "3": 6.1,
+          "4": 1.1,
+          "5": 5.6,
+          "6": 1.1,
+          "7": 1.1
+        },
+        "pct_seed_1": 67.6,
+        "pct_seed_1_to_2": 84.9,
+        "pct_seed_5_to_8": 7.8
+      },
+      "auto": {
+        "auto_column": "Avg Auto",
+        "n_team_events": 7208,
+        "median_auto_pct_of_match_score": 27.2,
+        "mean_auto_pct_of_match_score": 27.2,
+        "median_avg_match_score": 78.9,
+        "median_avg_auto": 22.4,
+        "spearman_rank_vs_avg_auto": 0.217,
+        "spearman_rank_vs_avg_match": 0.246
+      },
+      "week_trend": {
+        "Week 1": {
+          "n_events": 28,
+          "mean_event_avg_match_score": 65.2,
+          "mean_event_top_team_avg_score": 98.0,
+          "mean_event_avg_auto": 17.7
+        },
+        "Week 2": {
+          "n_events": 24,
+          "mean_event_avg_match_score": 65.7,
+          "mean_event_top_team_avg_score": 98.6,
+          "mean_event_avg_auto": 17.3
+        },
+        "Week 3": {
+          "n_events": 33,
+          "mean_event_avg_match_score": 72.9,
+          "mean_event_top_team_avg_score": 105.7,
+          "mean_event_avg_auto": 20.0
+        },
+        "Week 4": {
+          "n_events": 35,
+          "mean_event_avg_match_score": 81.5,
+          "mean_event_top_team_avg_score": 113.6,
+          "mean_event_avg_auto": 22.9
+        },
+        "Week 5": {
+          "n_events": 31,
+          "mean_event_avg_match_score": 82.8,
+          "mean_event_top_team_avg_score": 117.8,
+          "mean_event_avg_auto": 22.9
+        },
+        "Week 6": {
+          "n_events": 20,
+          "mean_event_avg_match_score": 114.8,
+          "mean_event_top_team_avg_score": 143.1,
+          "mean_event_avg_auto": 31.2
+        },
+        "FIRST Championship": {
+          "n_events": 8,
+          "mean_event_avg_match_score": 135.6,
+          "mean_event_top_team_avg_score": 165.7,
+          "mean_event_avg_auto": 34.9
+        },
+        "w1_to_w5_score_inflation_pct": 27.0,
+        "w1_to_w5_top_team_inflation_pct": 20.2
+      },
+      "played_shortfall": {
+        "n_team_events": 7208,
+        "pct_teams_played_fewer_than_modal_quals": 0.0,
+        "median_rank_pct_full_schedule": 51.3,
+        "median_rank_pct_short_schedule": null
+      },
+      "dq": {
+        "n_team_events": 7208,
+        "pct_with_at_least_one_dq": 2.8,
+        "mean_dq_per_team_event": 0.039
+      },
+      "picked_teams": {
+        "n": 4489,
+        "median_score_percentile": 33.3,
+        "median_rank_percentile": 33.3,
+        "pct_picked_outside_top_third_by_score": 50.4
+      }
+    },
+    "2024": {
+      "alliance_selection_rank_pct": {
+        "captain": {
+          "n": 1479,
+          "median_rank_pct": 14.3,
+          "mean_rank_pct": 16.3,
+          "p10_rank_pct": 3.0,
+          "p90_rank_pct": 32.5,
+          "pct_from_top_25pct_of_field": 78.9,
+          "pct_from_bottom_half_of_field": 0.3
+        },
+        "pick1": {
+          "n": 1479,
+          "median_rank_pct": 30.0,
+          "mean_rank_pct": 32.6,
+          "p10_rank_pct": 10.0,
+          "p90_rank_pct": 58.3,
+          "pct_from_top_25pct_of_field": 39.7,
+          "pct_from_bottom_half_of_field": 16.8
+        },
+        "pick2": {
+          "n": 1479,
+          "median_rank_pct": 58.6,
+          "mean_rank_pct": 59.9,
+          "p10_rank_pct": 35.0,
+          "p90_rank_pct": 87.5,
+          "pct_from_top_25pct_of_field": 2.4,
+          "pct_from_bottom_half_of_field": 63.1
+        },
+        "backup": {
+          "n": 213,
+          "median_rank_pct": 45.7,
+          "mean_rank_pct": 47.4,
+          "p10_rank_pct": 27.9,
+          "p90_rank_pct": 68.4,
+          "pct_from_top_25pct_of_field": 6.6,
+          "pct_from_bottom_half_of_field": 40.8
+        }
+      },
+      "deepest_pick_rank_pct": {
+        "n_events": 185,
+        "median": 88.7,
+        "p90": 100.0,
+        "pct_events_reaching_bottom_half": 100.0,
+        "pct_events_reaching_bottom_quartile": 85.4
+      },
+      "event_winner_by_alliance_seed": {
+        "n_events": 182,
+        "pct": {
+          "1": 69.8,
+          "2": 14.3,
+          "3": 7.1,
+          "4": 3.8,
+          "5": 1.1,
+          "6": 1.1,
+          "7": 1.6,
+          "8": 1.1
+        },
+        "pct_seed_1": 69.8,
+        "pct_seed_1_to_2": 84.1,
+        "pct_seed_5_to_8": 4.9
+      },
+      "auto": {
+        "auto_column": "Avg Auto",
+        "n_team_events": 7605,
+        "median_auto_pct_of_match_score": 37.3,
+        "mean_auto_pct_of_match_score": 37.5,
+        "median_avg_match_score": 45.2,
+        "median_avg_auto": 17.1,
+        "spearman_rank_vs_avg_auto": 0.255,
+        "spearman_rank_vs_avg_match": 0.287
+      },
+      "week_trend": {
+        "Week 1": {
+          "n_events": 32,
+          "mean_event_avg_match_score": 37.4,
+          "mean_event_top_team_avg_score": 57.6,
+          "mean_event_avg_auto": 14.0
+        },
+        "Week 2": {
+          "n_events": 30,
+          "mean_event_avg_match_score": 37.4,
+          "mean_event_top_team_avg_score": 59.7,
+          "mean_event_avg_auto": 14.3
+        },
+        "Week 3": {
+          "n_events": 32,
+          "mean_event_avg_match_score": 42.2,
+          "mean_event_top_team_avg_score": 66.0,
+          "mean_event_avg_auto": 16.0
+        },
+        "Week 4": {
+          "n_events": 38,
+          "mean_event_avg_match_score": 46.7,
+          "mean_event_top_team_avg_score": 70.8,
+          "mean_event_avg_auto": 17.8
+        },
+        "Week 5": {
+          "n_events": 17,
+          "mean_event_avg_match_score": 46.4,
+          "mean_event_top_team_avg_score": 71.4,
+          "mean_event_avg_auto": 17.6
+        },
+        "Week 6": {
+          "n_events": 28,
+          "mean_event_avg_match_score": 63.4,
+          "mean_event_top_team_avg_score": 88.6,
+          "mean_event_avg_auto": 23.0
+        },
+        "FIRST Championship": {
+          "n_events": 8,
+          "mean_event_avg_match_score": 84.4,
+          "mean_event_top_team_avg_score": 113.8,
+          "mean_event_avg_auto": 28.2
+        },
+        "w1_to_w5_score_inflation_pct": 24.1,
+        "w1_to_w5_top_team_inflation_pct": 24.0
+      },
+      "played_shortfall": {
+        "n_team_events": 7605,
+        "pct_teams_played_fewer_than_modal_quals": 0.0,
+        "median_rank_pct_full_schedule": 51.3,
+        "median_rank_pct_short_schedule": null
+      },
+      "dq": {
+        "n_team_events": 7605,
+        "pct_with_at_least_one_dq": 1.3,
+        "mean_dq_per_team_event": 0.021
+      },
+      "picked_teams": {
+        "n": 4650,
+        "median_score_percentile": 32.6,
+        "median_rank_percentile": 32.6,
+        "pct_picked_outside_top_third_by_score": 49.9
+      }
+    },
+    "2025": {
+      "alliance_selection_rank_pct": {
+        "captain": {
+          "n": 1583,
+          "median_rank_pct": 15.0,
+          "mean_rank_pct": 16.6,
+          "p10_rank_pct": 3.0,
+          "p90_rank_pct": 31.7,
+          "pct_from_top_25pct_of_field": 78.3,
+          "pct_from_bottom_half_of_field": 0.2
+        },
+        "pick1": {
+          "n": 1583,
+          "median_rank_pct": 30.9,
+          "mean_rank_pct": 33.7,
+          "p10_rank_pct": 9.7,
+          "p90_rank_pct": 62.5,
+          "pct_from_top_25pct_of_field": 39.0,
+          "pct_from_bottom_half_of_field": 19.2
+        },
+        "pick2": {
+          "n": 1583,
+          "median_rank_pct": 61.3,
+          "mean_rank_pct": 62.2,
+          "p10_rank_pct": 37.2,
+          "p90_rank_pct": 89.3,
+          "pct_from_top_25pct_of_field": 1.7,
+          "pct_from_bottom_half_of_field": 69.0
+        },
+        "backup": {
+          "n": 172,
+          "median_rank_pct": 40.0,
+          "mean_rank_pct": 42.1,
+          "p10_rank_pct": 24.0,
+          "p90_rank_pct": 67.7,
+          "pct_from_top_25pct_of_field": 12.8,
+          "pct_from_bottom_half_of_field": 23.3
+        }
+      },
+      "deepest_pick_rank_pct": {
+        "n_events": 198,
+        "median": 92.2,
+        "p90": 100.0,
+        "pct_events_reaching_bottom_half": 100.0,
+        "pct_events_reaching_bottom_quartile": 91.9
+      },
+      "event_winner_by_alliance_seed": {
+        "n_events": 198,
+        "pct": {
+          "1": 83.8,
+          "2": 9.1,
+          "3": 4.0,
+          "4": 1.5,
+          "5": 1.0,
+          "6": 0.5
+        },
+        "pct_seed_1": 83.8,
+        "pct_seed_1_to_2": 92.9,
+        "pct_seed_5_to_8": 1.5
+      },
+      "auto": {
+        "auto_column": "Avg Auto",
+        "n_team_events": 8013,
+        "median_auto_pct_of_match_score": 20.0,
+        "mean_auto_pct_of_match_score": 20.1,
+        "median_avg_match_score": 86.4,
+        "median_avg_auto": 16.5,
+        "spearman_rank_vs_avg_auto": 0.221,
+        "spearman_rank_vs_avg_match": 0.229
+      },
+      "week_trend": {
+        "Week 1": {
+          "n_events": 25,
+          "mean_event_avg_match_score": 72.5,
+          "mean_event_top_team_avg_score": 112.2,
+          "mean_event_avg_auto": 14.1
+        },
+        "Week 2": {
+          "n_events": 31,
+          "mean_event_avg_match_score": 67.3,
+          "mean_event_top_team_avg_score": 111.2,
+          "mean_event_avg_auto": 13.9
+        },
+        "Week 3": {
+          "n_events": 39,
+          "mean_event_avg_match_score": 77.1,
+          "mean_event_top_team_avg_score": 119.9,
+          "mean_event_avg_auto": 15.6
+        },
+        "Week 4": {
+          "n_events": 38,
+          "mean_event_avg_match_score": 88.3,
+          "mean_event_top_team_avg_score": 135.1,
+          "mean_event_avg_auto": 17.4
+        },
+        "Week 5": {
+          "n_events": 28,
+          "mean_event_avg_match_score": 96.2,
+          "mean_event_top_team_avg_score": 147.9,
+          "mean_event_avg_auto": 19.3
+        },
+        "Week 6": {
+          "n_events": 29,
+          "mean_event_avg_match_score": 128.3,
+          "mean_event_top_team_avg_score": 175.7,
+          "mean_event_avg_auto": 25.8
+        },
+        "FIRST Championship": {
+          "n_events": 8,
+          "mean_event_avg_match_score": 182.0,
+          "mean_event_top_team_avg_score": 228.5,
+          "mean_event_avg_auto": 37.7
+        },
+        "w1_to_w5_score_inflation_pct": 32.7,
+        "w1_to_w5_top_team_inflation_pct": 31.8
+      },
+      "played_shortfall": {
+        "n_team_events": 8013,
+        "pct_teams_played_fewer_than_modal_quals": 0.0,
+        "median_rank_pct_full_schedule": 51.3,
+        "median_rank_pct_short_schedule": null
+      },
+      "dq": {
+        "n_team_events": 8013,
+        "pct_with_at_least_one_dq": 1.7,
+        "mean_dq_per_team_event": 0.024
+      },
+      "picked_teams": {
+        "n": 4921,
+        "median_score_percentile": 32.9,
+        "median_rank_percentile": 33.3,
+        "pct_picked_outside_top_third_by_score": 50.0
+      }
+    },
+    "2026": {
+      "alliance_selection_rank_pct": {
+        "captain": {
+          "n": 1658,
+          "median_rank_pct": 16.2,
+          "mean_rank_pct": 17.8,
+          "p10_rank_pct": 3.2,
+          "p90_rank_pct": 34.2,
+          "pct_from_top_25pct_of_field": 73.3,
+          "pct_from_bottom_half_of_field": 0.3
+        },
+        "pick1": {
+          "n": 1658,
+          "median_rank_pct": 30.0,
+          "mean_rank_pct": 32.4,
+          "p10_rank_pct": 9.1,
+          "p90_rank_pct": 59.3,
+          "pct_from_top_25pct_of_field": 41.3,
+          "pct_from_bottom_half_of_field": 16.6
+        },
+        "pick2": {
+          "n": 1658,
+          "median_rank_pct": 63.9,
+          "mean_rank_pct": 64.1,
+          "p10_rank_pct": 38.8,
+          "p90_rank_pct": 90.6,
+          "pct_from_top_25pct_of_field": 1.2,
+          "pct_from_bottom_half_of_field": 73.7
+        },
+        "backup": {
+          "n": 253,
+          "median_rank_pct": 46.0,
+          "mean_rank_pct": 49.5,
+          "p10_rank_pct": 26.4,
+          "p90_rank_pct": 77.3,
+          "pct_from_top_25pct_of_field": 7.9,
+          "pct_from_bottom_half_of_field": 42.3
+        }
+      },
+      "deepest_pick_rank_pct": {
+        "n_events": 208,
+        "median": 93.3,
+        "p90": 100.0,
+        "pct_events_reaching_bottom_half": 100.0,
+        "pct_events_reaching_bottom_quartile": 93.8
+      },
+      "event_winner_by_alliance_seed": {
+        "n_events": 207,
+        "pct": {
+          "1": 84.1,
+          "2": 11.6,
+          "3": 3.4,
+          "5": 1.0
+        },
+        "pct_seed_1": 84.1,
+        "pct_seed_1_to_2": 95.7,
+        "pct_seed_5_to_8": 1.0
+      },
+      "auto": {
+        "auto_column": "Avg Auto Fuel",
+        "n_team_events": 8160,
+        "median_auto_pct_of_match_score": 20.6,
+        "mean_auto_pct_of_match_score": 20.9,
+        "median_avg_match_score": 143.3,
+        "median_avg_auto": 29.2,
+        "spearman_rank_vs_avg_auto": 0.219,
+        "spearman_rank_vs_avg_match": 0.291
+      },
+      "week_trend": {
+        "Week 1": {
+          "n_events": 29,
+          "mean_event_avg_match_score": 115.4,
+          "mean_event_top_team_avg_score": 245.1,
+          "mean_event_avg_auto": 24.2
+        },
+        "Week 2": {
+          "n_events": 32,
+          "mean_event_avg_match_score": 119.7,
+          "mean_event_top_team_avg_score": 267.2,
+          "mean_event_avg_auto": 25.4
+        },
+        "Week 3": {
+          "n_events": 38,
+          "mean_event_avg_match_score": 133.7,
+          "mean_event_top_team_avg_score": 287.2,
+          "mean_event_avg_auto": 27.4
+        },
+        "Week 4": {
+          "n_events": 36,
+          "mean_event_avg_match_score": 159.9,
+          "mean_event_top_team_avg_score": 320.9,
+          "mean_event_avg_auto": 32.8
+        },
+        "Week 5": {
+          "n_events": 21,
+          "mean_event_avg_match_score": 159.4,
+          "mean_event_top_team_avg_score": 336.1,
+          "mean_event_avg_auto": 31.3
+        },
+        "Week 6": {
+          "n_events": 25,
+          "mean_event_avg_match_score": 192.6,
+          "mean_event_top_team_avg_score": 368.5,
+          "mean_event_avg_auto": 38.7
+        },
+        "Week 7": {
+          "n_events": 16,
+          "mean_event_avg_match_score": 275.3,
+          "mean_event_top_team_avg_score": 440.1,
+          "mean_event_avg_auto": 51.8
+        },
+        "FIRST Championship": {
+          "n_events": 8,
+          "mean_event_avg_match_score": 407.8,
+          "mean_event_top_team_avg_score": 622.3,
+          "mean_event_avg_auto": 81.7
+        },
+        "w1_to_w5_score_inflation_pct": 38.1,
+        "w1_to_w5_top_team_inflation_pct": 37.1
+      },
+      "played_shortfall": {
+        "n_team_events": 8160,
+        "pct_teams_played_fewer_than_modal_quals": 0.0,
+        "median_rank_pct_full_schedule": 51.4,
+        "median_rank_pct_short_schedule": null
+      },
+      "dq": {
+        "n_team_events": 8160,
+        "pct_with_at_least_one_dq": 2.7,
+        "mean_dq_per_team_event": 0.043
+      },
+      "picked_teams": {
+        "n": 5227,
+        "median_score_percentile": 34.2,
+        "median_rank_percentile": 34.2,
+        "pct_picked_outside_top_third_by_score": 51.8
+      }
+    }
+  }
+}

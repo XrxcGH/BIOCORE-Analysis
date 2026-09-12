@@ -1,0 +1,449 @@
+#!/usr/bin/env python3
+"""
+score-strategy.py -- score candidate BIOCORE strategies on TWO axes and print the
+ranked table, the quadrant, the tier and the BINDING CONSTRAINT for each.
+
+WHY THIS EXISTS
+---------------
+On kickoff day a team of 15 will list eight ideas on a whiteboard and pick the
+exciting one. This turns that into arithmetic against a fixed model of the team.
+
+    ACHIEVABILITY  13 factors, 0-5, weights derived from reference/04_predictive_factors.yaml
+    VALUE           5 factors, 0-5, V1 IMPORTED from tools/cycle-model.py
+    GATES           hard disqualifiers, independent of score
+    OUTPUT          the QUADRANT. The combined index only orders rows inside it.
+
+USAGE
+  # back-test: score all 30 archetypes from the calibration corpus
+  python tools/score-strategy.py --from-corpus reference/archetype_corpus.yaml
+
+  # score your own kickoff-day candidates
+  python tools/score-strategy.py --candidates strategies.yaml
+
+  # one candidate in detail (factor-by-factor)
+  python tools/score-strategy.py --from-corpus reference/archetype_corpus.yaml --detail R2
+
+  # machine-readable
+  python tools/score-strategy.py --from-corpus reference/archetype_corpus.yaml --json
+
+CANDIDATE YAML SCHEMA (hand-authored; this is the real use)
+  team_overrides:            # optional, override reference/achievability_rubric.yaml
+    outsourced_2d_account: true
+  candidates:
+  - id: S1
+    name: Fixed-position scorer
+    achievability: {A1: 3, A2: 3, A3: 4, A4: 3, A5: 4, A6: 5, A7: 3,
+                    A8: 5, A9: 4, A10: 4, A11: 4, A12: 3, A13: 4}
+    value:         {V1: 4, V2: 4, V3: 4, V4: 1, V5: 4}
+    gates_input:   {mfg_floor: bandsaw+drill, new_workstreams: 1, novel_mechanisms: 1,
+                    marginal_cost_high_usd: 1100, mechanism_hours: 174,
+                    mentor_minutes_per_week: 80}
+    # optional: let cycle-model.py compute V1 instead of hand-scoring it
+    cycle_model:   {game: rebuilt, cycle: 9, auto_scored: 3,
+                    endgame: "TOWER L3 (TELEOP)", median_alliance_score: 147}
+
+Requires PyYAML. cycle-model.py is imported, never reimplemented.
+"""
+import sys, os, json, argparse, importlib.util
+
+try:
+    import yaml
+except ImportError:
+    sys.exit("PyYAML required:  python -m pip install pyyaml")
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+DEFAULT_RUBRIC = os.path.join(ROOT, "reference", "achievability_rubric.yaml")
+CYCLE_MODEL = os.path.join(HERE, "cycle-model.py")
+
+
+# ------------------------------------------------------------------ cycle-model bridge
+def load_cycle_model():
+    """Import tools/cycle-model.py as a module. The VALUE axis consumes its output."""
+    if not os.path.exists(CYCLE_MODEL):
+        return None
+    spec = importlib.util.spec_from_file_location("cycle_model", CYCLE_MODEL)
+    mod = importlib.util.module_from_spec(spec)
+    try:
+        spec.loader.exec_module(mod)
+    except Exception as e:                                    # pragma: no cover
+        print(f"  [warn] could not import cycle-model.py: {e}", file=sys.stderr)
+        return None
+    return mod
+
+
+def points_from_cycle_model(cm, spec):
+    """spec = {game, cycle, auto_scored, endgame}. Returns points/match or None."""
+    if cm is None or not spec:
+        return None
+    try:
+        g = cm.load_game(spec.get("game", "rebuilt"))
+        r = cm.model(g, float(spec.get("cycle", 8.0)),
+                     float(spec.get("auto_scored", 3)),
+                     spec.get("endgame"))
+        return r["total"]
+    except Exception as e:
+        print(f"  [warn] cycle-model call failed: {e}", file=sys.stderr)
+        return None
+
+
+# ------------------------------------------------------------------ banding helpers
+def band(value, edges, descending=False):
+    """edges = 5 thresholds mapping to scores 5,4,3,2,1; anything past the last -> 0.
+    descending=False means SMALLER value is better (hours, cost, minutes)."""
+    scores = [5, 4, 3, 2, 1]
+    for e, s in zip(edges, scores):
+        if (value <= e) if not descending else (value >= e):
+            return s
+    return 0
+
+
+MFG_MULT = {"hand": 0.6, "bandsaw+drill": 0.8, "router": 1.1, "CNC": 1.4}
+SC_DELTA = {"none": 0.0, "encoders": 0.0, "gyro+encoders": 0.5,
+            "vision-assist": 1.0, "full-pose": 1.0}
+VISION = {"vision-assist", "full-pose"}
+
+
+def score_from_corpus(rec, rub):
+    """Deterministic archetype_corpus.yaml -> factor scores. All [S]. Back-test only."""
+    m = rec.get("mechanism_count", 0) or 0
+    pd_ = rec.get("programming_difficulty", 1) or 1
+    mfg = rec.get("mfg_floor", "hand")
+    sens = rec.get("sensing", "none")
+    cost_hi = (rec.get("marginal_cost_usd") or [0, 0])[1]
+    prof = (rec.get("reliability_profile") or "").upper()
+    dps = rec.get("drive_practice_sensitivity", "med")
+    inv = rec.get("invariant", "I1")
+    out = rec.get("outcome", "unpicked")
+    tc = rub["team_constants"]
+
+    hours = 90 * m * MFG_MULT.get(mfg, 1.0) + 15 * pd_
+    minutes = 40 * m + (30 if mfg in ("router", "CNC") else 0)
+    chain = 0.93 ** (m + (1 if sens in VISION else 0))
+    pd_adj = pd_ + SC_DELTA.get(sens, 0.0)
+    iters = 1 + 0.5 * m + (1 if pd_ >= 4 else 0) + (1 if sens in VISION else 0)
+    serial = m + (1 if mfg in ("router", "CNC") else 0) + (1 if sens in VISION else 0)
+
+    a = {
+        "A1": band(hours, [60, 110, 160, 205, 300]),
+        "A2": {0: 5, 1: 4, 2: 3, 3: 1}.get(m, 0),
+        "A3": band(minutes / tc["mentor_unblock_minutes_per_week"], [.25, .5, .75, 1.0, 1.5]),
+        "A4": {"low": 5, "med": 3, "high": 2, "extreme": 0}.get(dps, 3),
+        "A5": band(chain, [.90, .85, .80, .72, .65], descending=True),
+        "A6": 5 if ("GRACEFUL" in prof or "PARTIAL" in prof) else (1 if "TOTAL" in prof else 3),
+        "A7": band(pd_adj, [1, 2, 3, 4, 5]),
+        "A8": {"none": 5, "encoders": 5, "gyro+encoders": 4,
+               "vision-assist": 2, "full-pose": 1}.get(sens, 3),
+        "A9": {"hand": 5, "bandsaw+drill": 4, "router": 2, "CNC": 0}.get(mfg, 2),
+        "A10": min(5, {"hand": 4, "bandsaw+drill": 4, "router": 3, "CNC": 1}.get(mfg, 3)
+                   + (1 if m <= 1 else 0)),
+        "A11": band(iters, [1, 2, 3, 4, 5]),
+        "A12": band(cost_hi, [300, 700, 1200, 1800, 2500]),
+        "A13": band(serial, [1, 2, 3, 4, 5]),
+    }
+
+    # ---- VALUE. V1 uses direct points, or the invariant's indirect equivalent.
+    ppc = rec.get("points_per_cycle") or 0
+    cyc = rec.get("est_cycles_per_match") or 0
+    pts = ppc * cyc
+    ind = rub["value"]["factors"][0]["indirect_points_equivalent"]
+    if pts == 0:
+        if inv == "I3":
+            pts = ind["defense_specialist"]
+        elif inv == "I6":
+            pts = ind["feeder_support"]
+    median = ((rub.get("_season_medians") or {}).get(rec.get("season")) or 100)
+    share = pts / median if median else 0
+    fixed_pos = any(k in (rec.get("scoring_actions") or "")
+                    for k in ("ONE ", "one fixed", "fixed", "surveyed"))
+    am = rub["auto_score_from_corpus"]
+    v = {
+        "V1": band(share, [.45, .30, .18, .10, .05], descending=True),
+        "V2": am["V2_by_invariant"].get(inv, 2),
+        "V3": am["V3_from_outcome"].get(out, 0),
+        "V4": max(0, am["V4_by_invariant"].get(inv, 3) + (-1 if fixed_pos else 0)),
+        "V5": am["V5_from_outcome"].get(out, 0),
+    }
+    gi = {
+        "mfg_floor": mfg,
+        "new_workstreams": 1 if m >= 1 else 0,
+        "novel_mechanisms": m,
+        "marginal_cost_high_usd": cost_hi,
+        "mechanism_hours": hours,
+        "mentor_minutes_per_week": minutes,
+        "drive_practice_sensitivity": dps,
+    }
+    return a, v, gi, {"points_per_match": pts, "share": share}
+
+
+# ------------------------------------------------------------------ gates
+def run_gates(gi, rub):
+    tc, fired = rub["team_constants"], []
+    mfg = gi.get("mfg_floor", "hand")
+    owned = set(tc["owned_manufacturing"])
+    if mfg not in owned:
+        if mfg == "router" and tc.get("outsourced_2d_account"):
+            pass                                   # exception satisfied
+        else:
+            fired.append(("G1", "MACHINE", f"needs '{mfg}'; shop has {sorted(owned)}"))
+    nm = gi.get("novel_mechanisms", 0)
+    nws = gi.get("new_workstreams", 0)
+    if nm > tc["novel_mechanisms_max"]:
+        fired.append(("G2", "WORKSTREAMS",
+                      f"{nm} novel mechanisms > novel_mechanisms_max {tc['novel_mechanisms_max']}"))
+    elif nws + 3 > tc["parallel_workstreams_max"] + 1:
+        fired.append(("G2", "WORKSTREAMS",
+                      f"{nws} new streams exceeds parallel_workstreams_max {tc['parallel_workstreams_max']}"))
+    if gi.get("marginal_cost_high_usd", 0) > tc["budget_usd_robot_discretionary"]:
+        fired.append(("G3", "BUDGET",
+                      f"${gi['marginal_cost_high_usd']:,.0f} > ${tc['budget_usd_robot_discretionary']:,}"))
+    if gi.get("mechanism_hours", 0) > tc["mechanism_hours_pool"]:
+        fired.append(("G4", "HOURS",
+                      f"{gi['mechanism_hours']:.0f} h > {tc['mechanism_hours_pool']} h pool"))
+    if gi.get("mentor_minutes_per_week", 0) > tc["mentor_unblock_minutes_per_week"]:
+        fired.append(("G5", "MENTOR",
+                      f"{gi['mentor_minutes_per_week']:.0f} min/wk > {tc['mentor_unblock_minutes_per_week']} min/wk"))
+    soft = (gi.get("drive_practice_sensitivity") == "extreme"
+            and tc["real_driver_seat_hours"] < 20)
+    return fired, soft
+
+
+# ------------------------------------------------------------------ scoring
+def index(scores, factors):
+    num = sum(f["weight"] * scores.get(f["id"], 0) for f in factors)
+    den = 5 * sum(f["weight"] for f in factors)
+    return 100.0 * num / den if den else 0.0
+
+
+def evaluate(cand, rub):
+    af, vf = rub["achievability"]["factors"], rub["value"]["factors"]
+    a, v = cand["achievability"], cand["value"]
+    A, V = index(a, af), index(v, vf)
+    C = 0.55 * A + 0.45 * V
+    fired, soft = run_gates(cand.get("gates_input", {}), rub)
+
+    q = rub["quadrants"]
+    at, vt = q["achievability_threshold"], q["value_threshold"]
+    quad = ("BUILD THIS" if (A >= at and V >= vt) else
+            "CHEAP INSURANCE" if (A >= at) else
+            "TRAP" if (V >= vt) else "DELETE")
+
+    # "no zeros in GREEN": a 0 on any achievability factor is a statement that the
+    # design is at an anchor written as impossible, and a weighted mean can hide it.
+    # A4 is EXCLUDED -- it has its own dedicated gate (G6), and double-penalising it
+    # would drop every defense archetype the corpus labels YES.
+    zeros = [f["id"] for f in af if f["id"] != "A4" and a.get(f["id"], 0) == 0]
+
+    if fired:
+        tier = "T4 GATED"
+    else:
+        tier = "T1 GREEN" if C >= 62 else "T2 STRETCH" if C >= 48 else "T3 RED"
+        if len(zeros) >= 2:
+            tier = "T3 RED"
+        elif zeros and tier == "T1 GREEN":
+            tier = "T2 STRETCH"
+        if soft:
+            tier = {"T1 GREEN": "T2 STRETCH", "T2 STRETCH": "T3 RED"}.get(tier, tier)
+
+    if fired:
+        binding = f"GATE {fired[0][0]} {fired[0][1]}: {fired[0][2]}"
+    else:
+        worst = max(af, key=lambda f: f["weight"] * (5 - a.get(f["id"], 0)))
+        binding = (f"{worst['id']} {worst['name']} = {a.get(worst['id'], 0)}/5"
+                   + ("  [+G6 drive-hours]" if soft else "")
+                   + (f"  [zero: {','.join(zeros)}]" if zeros else ""))
+
+    return dict(id=cand["id"], name=cand["name"], A=A, V=V, C=C, quadrant=quad,
+                tier=tier, binding=binding, gates=fired, soft_gate=soft, zeros=zeros,
+                achievability=a, value=v, extra=cand.get("extra", {}))
+
+
+# ------------------------------------------------------------------ input loading
+def from_corpus(path, rub):
+    with open(path, encoding="utf-8") as fh:
+        c = yaml.safe_load(fh)
+    rub["_season_medians"] = {
+        s: d["median"] for s, d in
+        c["base_rates"]["alliance_score_distribution"].items() if isinstance(d, dict)}
+    out = []
+    for rec in c["archetypes"]:
+        a, v, gi, extra = score_from_corpus(rec, rub)
+        extra["corpus_verdict"] = rec.get("small_team_verdict")
+        extra["season"] = rec.get("season")
+        extra["invariant"] = rec.get("invariant")
+        out.append(dict(id=rec["id"], name=rec["name"], achievability=a, value=v,
+                        gates_input=gi, extra=extra))
+    return out
+
+
+def from_candidates(path, rub, cm):
+    with open(path, encoding="utf-8") as fh:
+        doc = yaml.safe_load(fh)
+    rub["team_constants"].update(doc.get("team_overrides") or {})
+    out = []
+    for c in doc["candidates"]:
+        extra = dict(c.get("extra") or {})
+        spec = c.get("cycle_model")
+        if spec:
+            pts = points_from_cycle_model(cm, spec)
+            if pts is not None:
+                med = spec.get("median_alliance_score") or 100
+                share = pts / med
+                c.setdefault("value", {})["V1"] = band(share, [.45, .30, .18, .10, .05],
+                                                       descending=True)
+                extra["points_per_match"] = pts
+                extra["share"] = share
+                extra["v1_source"] = "tools/cycle-model.py"
+        out.append(dict(id=c["id"], name=c["name"],
+                        achievability=c.get("achievability", {}),
+                        value=c.get("value", {}),
+                        gates_input=c.get("gates_input", {}), extra=extra))
+    return out
+
+
+# ------------------------------------------------------------------ output
+def print_table(rows, rub, show_verdict=False):
+    q = rub["quadrants"]
+    print("=" * 118)
+    print(" BIOCORE ACHIEVABILITY x VALUE  --  ~15 students, 1 mentor, $2,500 discretionary, "
+          f"{rub['team_constants']['effective_build_hours']} effective h")
+    print("=" * 118)
+    hdr = (f"{'id':<5}{'strategy':<34}{'ACH':>6}{'VAL':>6}{'idx':>6}  "
+           f"{'quadrant':<16}{'tier':<12}{'binding constraint':<32}")
+    if show_verdict:
+        hdr += "corpus"
+    print(hdr)
+    print("-" * 118)
+    for r in rows:
+        line = (f"{r['id']:<5}{r['name'][:33]:<34}{r['A']:>6.1f}{r['V']:>6.1f}{r['C']:>6.1f}  "
+                f"{r['quadrant']:<16}{r['tier']:<12}{r['binding'][:31]:<32}")
+        if show_verdict:
+            line += str(r['extra'].get("corpus_verdict", ""))
+        print(line)
+    print("-" * 118)
+    print(f" quadrant thresholds: ACH >= {q['achievability_threshold']}, VAL >= {q['value_threshold']}"
+          f"   |   tiers: T1 >= 62, T2 >= 48, T3 < 48, T4 = any hard gate")
+    print(" combined index = 0.55*ACH + 0.45*VAL. RANK BY IT, DECIDE BY THE QUADRANT.")
+
+
+def print_matrix(rows, rub):
+    q = rub["quadrants"]
+    at, vt = q["achievability_threshold"], q["value_threshold"]
+    cells = {"BUILD THIS": [], "CHEAP INSURANCE": [], "TRAP": [], "DELETE": []}
+    for r in rows:
+        cells[r["quadrant"]].append(r["id"] + ("*" if r["gates"] else ""))
+    print(f"\n{'':<12}+{'-'*34}+{'-'*34}+")
+    print(f"{'':<12}|{' VALUE < ' + str(vt):^34}|{' VALUE >= ' + str(vt):^34}|")
+    print(f"{'':<12}+{'-'*34}+{'-'*34}+")
+    for lab, lo, hi in ((f"ACH >= {at}", "CHEAP INSURANCE", "BUILD THIS"),
+                        (f"ACH <  {at}", "DELETE", "TRAP")):
+        print(f"{lab:<12}|{lo:^34}|{hi:^34}|")
+        a, b = " ".join(cells[lo]) or "-", " ".join(cells[hi]) or "-"
+        for i in range(0, max(len(a), len(b), 1), 32):
+            print(f"{'':<12}|{a[i:i+32]:^34}|{b[i:i+32]:^34}|")
+        print(f"{'':<12}+{'-'*34}+{'-'*34}+")
+    print("  * = a hard gate fired; the quadrant is shown for information, the tier is T4 GATED.")
+
+
+def print_detail(r, rub):
+    print(f"\n{'='*78}\n {r['id']}  {r['name']}\n{'='*78}")
+    print(f" ACHIEVABILITY {r['A']:.1f}   VALUE {r['V']:.1f}   index {r['C']:.1f}"
+          f"   {r['quadrant']}   {r['tier']}")
+    if r["extra"].get("points_per_match") is not None:
+        src = r["extra"].get("v1_source", "corpus points_per_cycle x cycles")
+        print(f" points/match {r['extra']['points_per_match']:.1f}"
+              f"  (share of median {r['extra'].get('share', 0):.2f})   source: {src}")
+    print(f"\n{'factor':<32}{'w':>5}{'score':>7}{'w*s':>8}{'deficit':>9}")
+    print("-" * 62)
+    for f in rub["achievability"]["factors"]:
+        s = r["achievability"].get(f["id"], 0)
+        print(f"{f['id'] + ' ' + f['name']:<32}{f['weight']:>5}{s:>7}"
+              f"{f['weight']*s:>8}{f['weight']*(5-s):>9}")
+    print("-" * 62)
+    for f in rub["value"]["factors"]:
+        s = r["value"].get(f["id"], 0)
+        print(f"{f['id'] + ' ' + f['name']:<32}{f['weight']:>5}{s:>7}{f['weight']*s:>8}{'':>9}")
+    print("-" * 62)
+    if r["gates"]:
+        for g in r["gates"]:
+            print(f" GATE {g[0]} {g[1]}: {g[2]}")
+    if r["soft_gate"]:
+        print(" SOFT GATE G6 DRIVE_HOURS: extreme sensitivity at 9 h of seat time -> one tier down")
+    print(f" BINDING CONSTRAINT: {r['binding']}")
+
+
+def backtest(rows):
+    """Do the rubric's tiers agree with the corpus's hand labels?"""
+    mapping = {"YES": {"T1 GREEN", "T2 STRETCH"}, "CONDITIONAL": {"T2 STRETCH", "T3 RED"},
+               "MARGINAL": {"T2 STRETCH", "T3 RED"}, "NO": {"T3 RED", "T4 GATED"}}
+    hits, tot, misses = 0, 0, []
+    for r in rows:
+        hv = r["extra"].get("corpus_verdict")
+        if not hv:
+            continue
+        tot += 1
+        if r["tier"] in mapping.get(hv, set()):
+            hits += 1
+        else:
+            misses.append((r["id"], hv, r["tier"], r["binding"]))
+    print(f"\n--- Back-test against archetype_corpus.yaml hand labels ---\n")
+    print(f" agreement: {hits}/{tot} = {100*hits/tot:.0f}%"
+          f"   (the corpus's own risk predicate scores 21/30 = 70%)")
+    if misses:
+        print(f"\n{'id':<5}{'hand':<14}{'rubric':<12}binding constraint")
+        print("-" * 78)
+        for m in misses:
+            print(f"{m[0]:<5}{m[1]:<14}{m[2]:<12}{m[3][:44]}")
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__,
+                                 formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--rubric", default=DEFAULT_RUBRIC)
+    ap.add_argument("--from-corpus", metavar="PATH",
+                    help="score archetype_corpus.yaml records (the back-test)")
+    ap.add_argument("--candidates", metavar="PATH", help="your own candidate YAML")
+    ap.add_argument("--detail", metavar="ID", help="factor-by-factor for one candidate")
+    ap.add_argument("--top", type=int, default=0, help="show only the top N rows")
+    ap.add_argument("--set", action="append", default=[], metavar="KEY=VALUE",
+                    help="override a team_constants key, e.g. --set outsourced_2d_account=true")
+    ap.add_argument("--json", action="store_true")
+    a = ap.parse_args()
+
+    with open(a.rubric, encoding="utf-8") as fh:
+        rub = yaml.safe_load(fh)
+    for kv in a.set:
+        k, _, v = kv.partition("=")
+        rub["team_constants"][k] = yaml.safe_load(v)
+    cm = load_cycle_model()
+
+    if a.from_corpus:
+        cands, verdicts = from_corpus(a.from_corpus, rub), True
+    elif a.candidates:
+        cands, verdicts = from_candidates(a.candidates, rub, cm), False
+    else:
+        ap.error("give --from-corpus or --candidates")
+
+    rows = sorted((evaluate(c, rub) for c in cands), key=lambda r: -r["C"])
+    if a.top:
+        rows = rows[:a.top]
+
+    if a.json:
+        print(json.dumps(rows, indent=2, default=str))
+        return
+    if a.detail:
+        for r in rows:
+            if r["id"] == a.detail:
+                print_detail(r, rub)
+                return
+        sys.exit(f"no candidate with id {a.detail}")
+
+    print_table(rows, rub, show_verdict=verdicts)
+    print_matrix(rows, rub)
+    if verdicts:
+        backtest(rows)
+    print()
+
+
+if __name__ == "__main__":
+    main()

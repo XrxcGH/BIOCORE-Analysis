@@ -1,0 +1,149 @@
+# REHEARSAL candidates -- 2026 REBUILT standing in for BIOCORE.
+# Enumerated per STRATEGY-RANKING-SYSTEM.md section 2 generators A-F, then de-duplicated.
+# Raw generated: 31. Scored rows after de-dup: 14. Anti-blind-spot checklist 2.7: all 10 boxes have a row.
+# Achievability hand-scored against reference/ACHIEVABILITY-RUBRIC.md section 2 anchors for ~15 students,
+# 205 h mechanism pool, 2 novel mechanisms max, 3 workstreams max, ~9 h driver seat time, $2,500.
+
+team_overrides:
+  outsourced_2d_account: false
+
+candidates:
+- id: S1
+  name: "Full-field FUEL volume cycler (variable range shooter)"
+  achievability: {A1: 1, A2: 1, A3: 2, A4: 1, A5: 1, A6: 3, A7: 1,
+                  A8: 2, A9: 2, A10: 3, A11: 1, A12: 2, A13: 2}
+  value:         {V2: 4, V3: 4, V4: 2, V5: 4}
+  gates_input:   {mfg_floor: router, new_workstreams: 2, novel_mechanisms: 2,
+                  marginal_cost_high_usd: 1900, mechanism_hours: 190,
+                  mentor_minutes_per_week: 200, drive_practice_sensitivity: high}
+  cycle_model:   {game: game_def.json, cycle: 12, auto_scored: 6, median_alliance_score: 120}
+
+- id: S2
+  name: "Fixed-position FUEL scorer -- one surveyed spot in the ALLIANCE ZONE"
+  achievability: {A1: 4, A2: 3, A3: 3, A4: 4, A5: 4, A6: 3, A7: 4,
+                  A8: 4, A9: 4, A10: 4, A11: 3, A12: 4, A13: 4}
+  value:         {V2: 3, V3: 3, V4: 1, V5: 2}
+  gates_input:   {mfg_floor: bandsaw+drill, new_workstreams: 1, novel_mechanisms: 1,
+                  marginal_cost_high_usd: 700, mechanism_hours: 105,
+                  mentor_minutes_per_week: 130, drive_practice_sensitivity: low}
+  cycle_model:   {game: game_def.json, cycle: 14, auto_scored: 4, median_alliance_score: 120}
+
+- id: S3
+  name: "AUTO-only specialist -- FUEL preload dump + TOWER L1 in AUTO, idle after"
+  achievability: {A1: 5, A2: 4, A3: 4, A4: 5, A5: 4, A6: 1, A7: 2,
+                  A8: 4, A9: 5, A10: 4, A11: 4, A12: 5, A13: 4}
+  value:         {V2: 2, V3: 2, V4: 5, V5: 1}
+  gates_input:   {mfg_floor: hand, new_workstreams: 0, novel_mechanisms: 1,
+                  marginal_cost_high_usd: 300, mechanism_hours: 55,
+                  mentor_minutes_per_week: 60, drive_practice_sensitivity: low}
+  cycle_model:   {game: game_def.json, cycle: 20, auto_scored: 8, median_alliance_score: 120}
+
+- id: S4
+  name: "Pure defense -- zero scoring mechanisms, deny the active HUB"
+  achievability: {A1: 5, A2: 5, A3: 5, A4: 0, A5: 5, A6: 3, A7: 5,
+                  A8: 5, A9: 5, A10: 5, A11: 5, A12: 5, A13: 5}
+  value:         {V2: 0, V3: 2, V4: 5, V5: 1}
+  gates_input:   {mfg_floor: hand, new_workstreams: 0, novel_mechanisms: 0,
+                  marginal_cost_high_usd: 0, mechanism_hours: 0,
+                  mentor_minutes_per_week: 20, drive_practice_sensitivity: high}
+  cycle_model:   {game: game_def.json, cycle: 99, auto_scored: 0, median_alliance_score: 120}
+
+- id: S5
+  name: "Feeder / support -- herd NEUTRAL ZONE FUEL to the CHUTE, raise a partner rate"
+  achievability: {A1: 5, A2: 5, A3: 5, A4: 3, A5: 5, A6: 5, A7: 5,
+                  A8: 5, A9: 5, A10: 4, A11: 4, A12: 5, A13: 5}
+  value:         {V2: 2, V3: 3, V4: 4, V5: 2}
+  gates_input:   {mfg_floor: hand, new_workstreams: 0, novel_mechanisms: 0,
+                  marginal_cost_high_usd: 150, mechanism_hours: 30,
+                  mentor_minutes_per_week: 40, drive_practice_sensitivity: med}
+  cycle_model:   {game: game_def.json, cycle: 30, auto_scored: 0, median_alliance_score: 120}
+
+- id: S6
+  name: "Deliberately simple and flawless -- KOP chassis + hopper dump + passive L1 latch"
+  achievability: {A1: 5, A2: 4, A3: 4, A4: 4, A5: 5, A6: 5, A7: 4,
+                  A8: 5, A9: 5, A10: 5, A11: 4, A12: 4, A13: 5}
+  value:         {V2: 3, V3: 3, V4: 3, V5: 2}
+  gates_input:   {mfg_floor: bandsaw+drill, new_workstreams: 1, novel_mechanisms: 1,
+                  marginal_cost_high_usd: 600, mechanism_hours: 60,
+                  mentor_minutes_per_week: 75, drive_practice_sensitivity: low}
+  cycle_model:   {game: game_def.json, cycle: 16, auto_scored: 3, median_alliance_score: 120}
+
+- id: S7
+  name: "ENDGAME anchor, LOW tier -- TOWER L1 only, passive latch"
+  achievability: {A1: 5, A2: 4, A3: 4, A4: 4, A5: 5, A6: 3, A7: 5,
+                  A8: 5, A9: 5, A10: 4, A11: 4, A12: 5, A13: 5}
+  value:         {V2: 3, V3: 2, V4: 4, V5: 1}
+  gates_input:   {mfg_floor: bandsaw+drill, new_workstreams: 0, novel_mechanisms: 1,
+                  marginal_cost_high_usd: 250, mechanism_hours: 40,
+                  mentor_minutes_per_week: 50, drive_practice_sensitivity: low}
+  cycle_model:   {game: game_def.json, cycle: 99, auto_scored: 0, median_alliance_score: 120}
+
+- id: S8
+  name: "ENDGAME anchor, MID tier -- TOWER L2 winch climber"
+  achievability: {A1: 3, A2: 3, A3: 3, A4: 3, A5: 3, A6: 3, A7: 4,
+                  A8: 4, A9: 4, A10: 4, A11: 3, A12: 4, A13: 3}
+  value:         {V2: 4, V3: 3, V4: 4, V5: 3}
+  gates_input:   {mfg_floor: bandsaw+drill, new_workstreams: 1, novel_mechanisms: 1,
+                  marginal_cost_high_usd: 550, mechanism_hours: 120,
+                  mentor_minutes_per_week: 140, drive_practice_sensitivity: med}
+  cycle_model:   {game: game_def.json, cycle: 99, auto_scored: 0, median_alliance_score: 120}
+
+- id: S9
+  name: "ENDGAME anchor, TOP tier -- TOWER L3 telescoping climber"
+  achievability: {A1: 2, A2: 1, A3: 2, A4: 2, A5: 2, A6: 1, A7: 3,
+                  A8: 4, A9: 0, A10: 3, A11: 2, A12: 3, A13: 2}
+  value:         {V2: 4, V3: 4, V4: 4, V5: 4}
+  gates_input:   {mfg_floor: CNC, new_workstreams: 2, novel_mechanisms: 2,
+                  marginal_cost_high_usd: 1100, mechanism_hours: 175,
+                  mentor_minutes_per_week: 210, drive_practice_sensitivity: high}
+  cycle_model:   {game: game_def.json, cycle: 99, auto_scored: 0, median_alliance_score: 120}
+
+- id: S10
+  name: "TRAVERSAL RP specialist -- reliable L2 climb + coach partners to 50 TOWER pts"
+  achievability: {A1: 3, A2: 3, A3: 3, A4: 4, A5: 3, A6: 3, A7: 4,
+                  A8: 4, A9: 4, A10: 4, A11: 3, A12: 4, A13: 3}
+  value:         {V2: 5, V3: 4, V4: 4, V5: 3}
+  gates_input:   {mfg_floor: bandsaw+drill, new_workstreams: 1, novel_mechanisms: 1,
+                  marginal_cost_high_usd: 550, mechanism_hours: 125,
+                  mentor_minutes_per_week: 140, drive_practice_sensitivity: med}
+  cycle_model:   {game: game_def.json, cycle: 99, auto_scored: 0, median_alliance_score: 120}
+
+- id: S11
+  name: "ENERGIZED RP chaser -- FUEL volume tuned to the 100 threshold, ignores climb"
+  achievability: {A1: 3, A2: 3, A3: 3, A4: 2, A5: 3, A6: 3, A7: 3,
+                  A8: 3, A9: 4, A10: 3, A11: 2, A12: 3, A13: 3}
+  value:         {V2: 4, V3: 3, V4: 2, V5: 2}
+  gates_input:   {mfg_floor: bandsaw+drill, new_workstreams: 1, novel_mechanisms: 1,
+                  marginal_cost_high_usd: 900, mechanism_hours: 150,
+                  mentor_minutes_per_week: 150, drive_practice_sensitivity: med}
+  cycle_model:   {game: game_def.json, cycle: 13, auto_scored: 5, median_alliance_score: 120}
+
+- id: S12
+  name: "Choke-point denial -- speed-only, no mechanism, owns the TRENCH lane"
+  achievability: {A1: 5, A2: 5, A3: 5, A4: 0, A5: 5, A6: 3, A7: 5,
+                  A8: 5, A9: 5, A10: 5, A11: 5, A12: 4, A13: 5}
+  value:         {V2: 0, V3: 2, V4: 5, V5: 1}
+  gates_input:   {mfg_floor: hand, new_workstreams: 0, novel_mechanisms: 0,
+                  marginal_cost_high_usd: 400, mechanism_hours: 0,
+                  mentor_minutes_per_week: 20, drive_practice_sensitivity: high}
+  cycle_model:   {game: game_def.json, cycle: 99, auto_scored: 0, median_alliance_score: 120}
+
+- id: S13
+  name: "DO-EVERYTHING (recorded so it can be rejected) -- swerve + turret + L3"
+  achievability: {A1: 0, A2: 0, A3: 0, A4: 1, A5: 0, A6: 1, A7: 0,
+                  A8: 0, A9: 0, A10: 1, A11: 0, A12: 0, A13: 0}
+  value:         {V2: 5, V3: 5, V4: 4, V5: 5}
+  gates_input:   {mfg_floor: router, new_workstreams: 4, novel_mechanisms: 4,
+                  marginal_cost_high_usd: 4200, mechanism_hours: 420,
+                  mentor_minutes_per_week: 420, drive_practice_sensitivity: high}
+  cycle_model:   {game: game_def.json, cycle: 10, auto_scored: 8, median_alliance_score: 120}
+
+- id: S14
+  name: "Uncontested-window scorer -- score only while own HUB is active, stage otherwise"
+  achievability: {A1: 4, A2: 3, A3: 4, A4: 4, A5: 4, A6: 3, A7: 3,
+                  A8: 4, A9: 4, A10: 4, A11: 3, A12: 4, A13: 4}
+  value:         {V2: 3, V3: 3, V4: 4, V5: 2}
+  gates_input:   {mfg_floor: bandsaw+drill, new_workstreams: 1, novel_mechanisms: 1,
+                  marginal_cost_high_usd: 700, mechanism_hours: 100,
+                  mentor_minutes_per_week: 120, drive_practice_sensitivity: low}
+  cycle_model:   {game: game_def.json, cycle: 14, auto_scored: 4, median_alliance_score: 120}

@@ -1,0 +1,403 @@
+# strategy_ranking_system.yaml
+# Machine-readable companion to STRATEGY-RANKING-SYSTEM.md
+# Generated 2026-08-22. Season: FRC 2027 BIOCORE presented by Haas (FIRST CANOPY).
+
+meta:
+  file: STRATEGY-RANKING-SYSTEM.md
+  generated: 2026-08-22
+  season: 2027
+  game: BIOCORE presented by Haas
+  program: FRC
+  kickoff_utc_note: "2027-01-09 12:00 ET"
+  kickoff_date: 2027-01-09
+  control_system: Systemcore            # replaces roboRIO; largest change since cRIO
+  sibling_game_do_not_confuse:
+    name: BIOBUZZ
+    program: FTC
+    kickoff: 2026-09-12
+    forbidden_nouns: [Pollen, StarterBots, Skill Builders]
+  team_profile: {students: 15, budget: limited, mentors_technical: 1, experience: experienced_mentor}
+  evidence_labels: {C: CONFIRMED, H: HISTORICAL-PATTERN, S: SPECULATION, UNVERIFIED: unchecked}
+
+source_shorthand:
+  REB: manuals/archive/frc/2026_REBUILT_GameManual.pdf
+  REEF: 2025 REEFSCAPE
+  CRES: 2024 CRESCENDO
+  CAP: reference/02_TEAM_CAPACITY_MODEL.md
+  ARCH: reference/03_ARCHETYPE_CORPUS.md
+  PF: reference/04_PREDICTIVE_FACTORS.md
+  RUB: reference/ACHIEVABILITY-RUBRIC.md
+  AWA: reference/awards/AWARD-ALIGNMENT.md
+  MECH: reference/bom/06_MECHANISM_CATALOG.md
+  PLAY: KICKOFF_PLAYBOOK.md
+  SCOUT: reference/SCOUTING-PLAN.md
+  CHURN: reference/RULE-CHURN-WATCHLIST.md
+  QAH: reference/QA-AMBIGUITY-HOTSPOTS.md
+
+# ---------------------------------------------------------------- §0 workflow
+kickoff_workflow:
+  - step: 1
+    cmd: bash tools/probe-2027-manual.sh --download
+    purpose: locate + download the manual (CDN container listing is disabled; filename is guessed)
+    seconds: 10
+  - step: 2
+    cmd: bash tools/ingest-manual.sh "$M" V1
+    purpose: extract text, rule inventory, evergreen diff vs 2026 REBUILT
+    seconds: 60
+  - step: 3
+    cmd: python tools/capacity_model.py --students 15 --hours-per-week 15 --deadline week1
+    purpose: reconfirm BINDING = novel_mechanisms_max
+    seconds: 2
+  - step: 4
+    cmd: python tools/rubric_weights.py "$M"
+    purpose: re-derive rubric weights from the BIOCORE manual, not REBUILT
+    seconds: 5
+  - step: 5
+    cmd: bash reference/awards/kickoff_award_check.sh "$M"
+    purpose: confirm award names unchanged
+    exit_0_means: names current
+    seconds: 10
+  - step: 6
+    cmd: python tools/cycle-model.py --game strategies/2027.json --sweep
+    purpose: price the VALUE axis (V1) from cycle arithmetic
+  - step: 7
+    cmd: python tools/score-strategy.py --candidates strategies/candidates.yaml
+    purpose: the ranked table, quadrant, tier, binding constraint
+  - step: 8
+    cmd: python tools/bom-builder.py strategies/primary.yaml --markdown
+    purpose: BOM + hard gate check
+    exit_codes: {0: all gates pass, 1: at least one gate FAILS, 2: bad input}
+  - step: 9
+    read_aloud: [top row quadrant, top row binding constraint, bom-builder VERDICT line]
+
+kickoff_workflow_minimum_viable_steps: [1, 2, 3]
+
+# ---------------------------------------------------------------- §1 pipeline
+pipeline:
+  - id: 1
+    stage: ingest
+    owner: mentor
+    artifact: manuals/2026-27_BIOCORE/*.pdf + research/rule_inventories/2027*
+    exit_test: evergreen diff printed
+    clock: "0:00-0:15"
+  - id: 2
+    stage: comprehend
+    owner: whole_team
+    artifact: PLAY 1.2-1.10 tables filled
+    exit_test: comprehension self-test passed without looking (PLAY 1.10)
+    clock: "0:15-1:00"
+  - id: 3
+    stage: enumerate
+    owner: strategy_lead
+    artifact: strategies/candidates.yaml
+    exit_test: all six generators run; 2.7 checklist ticked
+    clock: "1:00-2:00"
+  - id: 4
+    stage: price_value
+    owner: two_students_plus_mentor
+    artifact: strategies/2027.json
+    exit_test: cycle-model.py --sweep runs clean
+    clock: "2:00-3:00"
+  - id: 5
+    stage: decompose
+    owner: design_lead
+    artifact: mechanism list per candidate
+    exit_test: every mechanism maps to MECH §2 id or is flagged NOVEL
+    clock: "3:00-4:00"
+  - id: 6
+    stage: bom
+    owner: build_lead
+    artifact: strategies/*.yaml + order_sheet.csv
+    exit_test: exit code recorded per candidate
+    clock: day1-2
+  - id: 7
+    stage: score
+    owner: strategy_lead_plus_mentor
+    artifact: strategies/ranked.json
+    exit_test: every candidate has A, V, tier, binding constraint
+    clock: day2
+  - id: 8
+    stage: place_and_rank
+    owner: whole_team
+    artifact: the 2x2 on the whiteboard
+    exit_test: every row has a quadrant AND a decision; no maybes
+    clock: day2
+  - id: 9
+    stage: descope_loop
+    owner: strategy_lead
+    artifact: new candidate ids
+    exit_test: every Q3 row has >=1 descoped sibling scored
+    clock: day2
+    reenters_at_stage: 5
+  - id: 10
+    stage: attach_awards
+    owner: awards_lead
+    artifact: awards/plan.md
+    exit_test: exactly 2 awards named, calendar dated
+    clock: day3
+  - id: 11
+    stage: team_brief
+    owner: mentor
+    artifact: strategies/BRIEF.md
+    exit_test: one page; a first-year can read it aloud
+    clock: day3
+  - id: 12
+    stage: rescore
+    owner: strategy_lead
+    artifact: dated ranked_*.json + GONOGO memos
+    exit_test: no missed checkpoint rows
+    clock: all_season
+    reenters_at_stage: 7
+
+hard_limits:                      # [C] CAP §5.3, RUB §5
+  parallel_workstreams_max: 3
+  novel_mechanisms_max: 2
+  novel_mechanisms_recommended: 1
+  workstreams_already_spoken_for:
+    - drivetrain_frame_bumpers_electrical
+    - primary_scoring_mechanism
+    - software_controls_systemcore
+  deductions_2027:                # applied BEFORE the workstream gate
+    vision_pose_estimation: {novel_mechanisms_max: 1}
+    first_year_swerve: {novel_mechanisms_max: 1}
+    both: {novel_mechanisms_max: 0, note: "builds a drivebase and nothing else"}
+  more_students_changes_nothing:
+    at_15: 2.0
+    at_20: 2.0
+    only_levers: [machine_capacity, outsourced_fabrication]
+
+# ---------------------------------------------------------------- §2 enumeration
+enumeration_generators:
+  A_by_scoring_action:
+    per_scoring_table_row: [only_that_action, fixed_position_variant, auto_only_variant, deny_variant]
+  B_by_field_zone:
+    questions:
+      - {q: "score without leaving this zone?", candidate: fixed_station_scorer}
+      - {q: "protected from defense?", candidate: protected_zone_camper}
+      - {q: "traffic choke point?", candidate: choke_point_defender}
+      - {q: "human player feeds here?", candidate: feeder_adjacent_support}
+      - {q: "uncontested zone?", candidate: uncontested_scoring_specialist}
+  C_by_match_phase: [auto_only, teleop_only, endgame_only_per_tier]
+  D_by_alliance_role: [primary_scorer, second_scorer, feeder_support, defender, endgame_anchor, insurance]
+  E_by_rp_path: [cheapest_share_of_each_rp, solo_rp_securer, ignore_rps_maximize_win]
+  F_by_opponent_denial: [occupy_space, consume_resource, arrive_first, force_fouls]
+  targets: {raw_candidates: "20-40", scored_rows_after_dedupe: "8-14"}
+
+anti_blind_spot_checklist:
+  - {item: zero-scoring-mechanism pure defense, invariant: I3}
+  - {item: never leaves one field zone, invariant: null}
+  - {item: acts only in AUTO, invariant: I5}
+  - {item: acts only in last 30 seconds, invariant: I4}
+  - {item: raises a partner's score not its own, invariant: I6}
+  - {item: simplest legal scoring robot, invariant: I7}
+  - {item: KOP chassis + one COTS-derived mechanism, reference: "MECH §12.1 simple.yaml exit 0"}
+  - {item: do-everything robot written down TO BE REJECTED, invariant: I2, record: 0_of_5}
+  - {item: descoped variant of every Q3 TRAP row}
+  - {item: legality re-check against edited evergreen rules}
+
+dedupe_rule:
+  same_row_only_if_all_match: [mechanism_list, field_zone, match_phase]
+  when_in_doubt: keep_both
+
+invariant_success_rates:          # [C] ARCH §7
+  I1: {name: reliable high-volume single-task scorer, full_spec: "0/4", restricted_variant: "6/9"}
+  I2: {name: do-everything robot, record: "0/5", instruction: record only so it can be rejected}
+  I3: {name: defense specialist, record: "3/4"}
+  I4: {name: endgame specialist, low_mid_tier: "3/3", top_tier: "0/3"}
+  I5: {name: auto specialist, scoped_1_2_elements: "5/5", full_scope: "1/5"}
+  I6: {name: feeder/support robot, record: "5/5"}
+  I7: {name: deliberately-minimal flawless robot, record: "5/5"}
+
+# ---------------------------------------------------------------- §3 uncertainty
+knowability:
+  high_confidence_day1: [scoring_table, point_values, field_zones, protection_rules, rp_thresholds, scoring_element_specs]
+  low_confidence_day1: [our_cycle_time, defense_legality_in_practice, realistic_match_scores, systemcore_stability, alliance_meta]
+  medium: [cots_availability]
+
+band_protocol:
+  form: {best: int, likely: int, worst: int}
+  decision_rules:
+    - {bands: same_quadrant, decision: decide_now}
+    - {bands: Q1_or_Q2, decision: build_it_ordering_only}
+    - {bands: Q1_or_Q3, decision: do_not_commit_buy_information_or_take_descoped_variant}
+    - {bands: worst_case_fires_hard_gate, decision: treat_as_gated_today}
+
+dominant_uncertainty_factors:
+  - {factor: A4, name: drive_practice_sensitivity, weight: 90, day1_confidence: MEDIUM}
+  - {factor: A5, name: reliability_exposure, weight: 88, day1_confidence: LOW}
+  - {factor: A1, name: build_hours_fit, weight: 85, day1_confidence: MEDIUM}
+  - {factor: A2, name: parallel_workstream_demand, weight: 85, day1_confidence: HIGH}
+  - {factor: A7, name: programming_complexity, weight: 70, day1_confidence: LOW_IN_2027, reason: Systemcore}
+  - {factor: V1, name: points_per_150s, weight: null, day1_confidence: LOW}
+
+uncertainty_bias_note: >-
+  score unknowables pessimistically; this systematically favours simple designs,
+  matching ARCH rules 1-4
+
+information_purchases:
+  - {action: file Q&A questions in first 48h, cost_h: 2, resolves: rule ambiguity}
+  - {action: cardboard/wood prototype of riskiest mechanism, cost_h: 8, resolves: [A5, A11, V1]}
+  - {action: time a human doing the cycle on a taped field, cost_h: 3, resolves: V1}
+  - {action: order long-lead COTS part before deciding, cost: money, resolves: [A10, A13]}
+  - {action: watch week-1 webcasts, cost_h: 6, resolves: [scores, defense_meta, rp_achievability]}
+  - {action: recruit second technical mentor, deadline: 2026-11-17, resolves: "G5 gate 204 -> 408 min/wk"}
+
+# ---------------------------------------------------------------- §4 matrix
+matrix:
+  thresholds: {achievability: 60, value: 55}
+  quadrants:
+    Q1: {name: BUILD THIS, rule: "A>=60 and V>=55", action: commit kickoff weekend, lead_by_day: 3, cad_freeze_day: 10}
+    Q2: {name: CHEAP INSURANCE, rule: "A>=60 and V<55", action: second mechanism / fallback, build_after: primary passes first reliability test}
+    Q3: {name: TRAP, rule: "A<60 and V>=55", action: enumerate descoped variants and rescore each as its own candidate}
+    Q4: {name: DELETE, rule: "A<60 and V<55", action: cross it off out loud; no maybes}
+  tiers:
+    T1_GREEN: "index >= 62, no hard gate, 0 zeros"
+    T2_STRETCH: "48 <= index < 62, no hard gate; requires a NAMED purchased enabler"
+    T3_RED: "index < 48, no hard gate"
+    T4_GATED: "any hard gate at any index"
+  gates:
+    G1_MACHINE: {hard: true, fires: "mfg floor not in [hand, bandsaw+drill, 3dprint]"}
+    G2_WORKSTREAMS: {hard: true, fires: "novel_mechanisms > 2 or total streams > 3"}
+    G3_BUDGET: {hard: true, fires: marginal_cost_high > 2500}
+    G4_HOURS: {hard: true, fires: mechanism_hours > 205}
+    G5_MENTOR: {hard: true, fires: unblock demand > 204 min/wk}
+    G6_DRIVE_HOURS: {hard: false, effect: one_tier_downgrade, fires: "A4 == 0 and real_driver_seat_hours < 20"}
+
+pursue_counts:
+  PRIMARY: {count: 1, source: highest-index Q1 row, workstream_cost: 0_additional}
+  FALLBACK: {count: 1, source: descoped sibling of PRIMARY or Q2, workstream_cost: 0, constraint: MUST share the primary's mechanism}
+  INSURANCE: {count: 1, source: "Q2 / ARCH I7", workstream_cost: 0_if_behaviour_1_if_mechanism}
+  STRATEGIC_ROLE: {count: 1, source: "ARCH I3/I6", workstream_cost: 0_mechanisms_real_practice_hours}
+  REJECTED_ON_RECORD: {count: "3-6"}
+
+tie_breaks_inside_quadrant:
+  - fewer_novel_mechanisms
+  - lower_A4_deficit
+  - better_graceful_degradation_A6
+  - lower_manufacturing_floor
+  - shorter_critical_path_A13
+
+tie_break_never_use: point_ceiling
+
+# ---------------------------------------------------------------- §5 awards
+award_attachment:
+  awards_per_event_max: 1           # [C] Judging Manual
+  prepared_lanes: 2
+  rule: two prepared lanes is the efficient frontier; a third buys overlap not probability
+  hours_available: 44.9
+  share_of_plan_pct: 7.5
+  slack_hours: 0.0
+  name_check_cmd: bash reference/awards/kickoff_award_check.sh <MANUAL>
+  pairings:                          # [C] AWA §2.5, 2026 exact names
+    I1: {primary: Quality Award, secondary: Creativity Award sponsored by Rockwell Automation}
+    I2: {primary: Creativity Award sponsored by Rockwell Automation, secondary: Industrial Design Award, warning: do not build for this}
+    I3: {primary: Judges Award, secondary: Gracious Professionalism Award}
+    I4: {primary: Excellence in Engineering Award sponsored by Littelfuse, secondary: Creativity Award sponsored by Rockwell Automation}
+    I5: {primary: Innovation in Control Award sponsored by nVent, secondary: Autonomous Award sponsored by Google.org}
+    I6: {primary: Gracious Professionalism Award, secondary: Creativity Award sponsored by Rockwell Automation}
+    I7: {primary: Quality Award, secondary: Excellence in Engineering Award sponsored by Littelfuse}
+
+materials_calendar:                  # kickoff-relative offsets are [C]; event-week rows are [S]
+  - {day: 0, offset: D+0..2, item: pairing chosen, owner: awards_lead}
+  - {day: 3, offset: D+3, item: dated design log started, owner: every_subteam}
+  - {day: 10, offset: D+10, item: CAD freeze screenshots + rejected-alternatives page, owner: design_lead}
+  - {day: 21, offset: D+21, item: reliability test log opened, owner: build_lead}
+  - {day: 28, offset: D+28, item: 5-minute pitch outline (AWA 3.10), owner: awards_lead}
+  - {day: 35, offset: D+35, item: judge-question prep bank rehearsed (AWA 3.11), owner: whole_team}
+  - {day: 35, offset: D+35, item: written submission drafted, owner: awards_lead}
+  - {day: null, offset: event-7d, item: pit display + one-page robot sheet + binder, owner: awards_lead}
+  - {day: null, offset: event-7d, item: accessibility check measured (AWA 1.4), owner: awards_lead}
+  - {day: null, offset: event-1d, item: two students can pitch cold, owner: mentor}
+
+award_anti_patterns: [chasing an award the robot does not support, retrofitting a story, opening a third lane]
+
+# ---------------------------------------------------------------- §6 outputs
+templates:
+  - {id: brief, file: strategies/BRIEF.md, section: "6.1", purpose: one-page strategy brief}
+  - {id: ranked, file: strategies/RANKED.md, section: "6.2", purpose: ranked strategy table}
+  - {id: constraints, file: strategies/CONSTRAINTS.md, section: "6.3", purpose: design-constraint sheet}
+  - {id: order_sheet, file: strategies/order_sheet.csv, section: "6.4", purpose: BOM / order sheet}
+  - {id: award_checklist, file: awards/CHECKLIST.md, section: "6.5", purpose: award materials checklist}
+  - {id: gonogo, file: "strategies/GONOGO_<date>.md", section: "6.6", purpose: go/no-go memo}
+
+price_rule: re-verify every price against the live vendor page before any money moves; unverified is UNVERIFIED, never an estimate
+
+# ---------------------------------------------------------------- §7 checkpoints
+checkpoints:
+  - {id: C0, name: initial rank, when: D+0..2, rerun: full_section_0}
+  - {id: C1, name: first Q&A answers, when: D+3..7, rerun: [qa-rule-heat.py, QAH], can_change: legality of denial candidates}
+  - {id: C2, name: team update sweep, when: every TU from D+3, cmd: "python tools/teamupdate-diff.py season 2027 --watch"}
+  - {id: C3, name: CAD freeze, when: D+10, rerun: bom-builder.py, can_change: [G1, G3, G4]}
+  - {id: C4, name: first mechanism moves, when: ~D+21, rerun: score-strategy.py, can_change: [A5, A7, A11]}
+  - {id: C5, name: two weeks pre-event, when: ~D+35, rerun: full_rescore_plus_gonogo}
+  - {id: C6, name: week-1 results, when: "~D+42 [S]", rerun: cycle-model.py with observed scores, note: biggest single correction of the season}
+  - {id: C7, name: our event after quals day 1, when: event_day_1, rerun: "scouting-plan.py picklist"}
+  - {id: C8, name: before alliance selection, when: event_day_2 -1h, rerun: SCOUT §5 pick list}
+  - {id: C9, name: between events, when: "+2 weeks [S]", rerun: full_rescore}
+  - {id: C10, name: pre-DCMP/Champs, when: "~D+70+ [S]", rerun: rp thresholds, note: "REB escalated 100 -> 240 -> 360 (3.6x)"}
+
+team_update_change_classes:
+  cosmetic: {action: log and move on}
+  constraint: {action: update CONSTRAINTS.md and rerun bom-builder.py}
+  scoring: {action: rerun cycle-model.py then score-strategy.py}
+  legality: {action: STOP; rescore every denial candidate; a whole quadrant can move}
+
+fallback_triggers:
+  - {id: T1, condition: primary mechanism has not moved under power, fires: D+24, action: descope to FALLBACK scope}
+  - {id: T2, condition: mechanism reliability < 80% over 20 attempts, fires: D+35, action: descope one tier}
+  - {id: T3, condition: drive practice hours < 20 at two weeks pre-event, fires: D+28, action: freeze mechanism work and drive}
+  - {id: T4, condition: Systemcore stack not controlling the drivetrain, fires: D+17, action: cut software-dependent scope}
+  - {id: T5, condition: hard gate fires at CAD freeze, fires: D+10, action: descope; do not argue with the gate}
+  - {id: T6, condition: a Team Update makes the primary strategy illegal, fires: any, action: rerun section 0 steps 4-8 same day}
+
+# ---------------------------------------------------------------- §8 prompts
+prompts:
+  - {id: P1, section: "8.1", stage: "1-2", name: ingest and comprehend, output: strategies/COMPREHENSION.md}
+  - {id: P2, section: "8.2", stage: "3", name: enumerate candidates, output: strategies/candidates.yaml}
+  - {id: P3, section: "8.3", stage: "4", name: price the value axis, output: strategies/2027.json}
+  - {id: P4, section: "8.4", stage: "5-6", name: decompose and BOM, output: "strategies/<id>.yaml"}
+  - {id: P5, section: "8.5", stage: "7-8", name: score place rank, output: strategies/RANKED.md}
+  - {id: P6, section: "8.6", stage: "9", name: descope a trap, output: new candidate ids}
+  - {id: P7, section: "8.7", stage: "10", name: attach awards, output: awards/CHECKLIST.md}
+  - {id: P8, section: "8.8", stage: "12", name: checkpoint rescore, output: "strategies/GONOGO_<date>.md"}
+
+# ---------------------------------------------------------------- validation
+validation:
+  - {id: V1, cmd: bash tools/probe-2027-manual.sh, expect: no hits until 2027 kickoff}
+  - {id: V2, cmd: bash tools/ingest-manual.sh manuals/archive/frc/2026_REBUILT_GameManual.pdf DRYRUN, expect: completes}
+  - {id: V3, cmd: python tools/capacity_model.py --students 15 --hours-per-week 15 --deadline week1, expect: "BINDING = 2"}
+  - {id: V4, cmd: python tools/score-strategy.py --from-corpus reference/archetype_corpus.yaml, expect: reproduces 30 known outcomes}
+  - {id: V5a, cmd: python tools/bom-builder.py reference/bom/examples/simple.yaml, expect_exit: 0}
+  - {id: V5b, cmd: python tools/bom-builder.py reference/bom/examples/moderate.yaml, expect_exit: 1}
+  - {id: V5c, cmd: python tools/bom-builder.py reference/bom/examples/ambitious.yaml, expect_exit: 1}
+  - {id: V6, cmd: bash reference/awards/kickoff_award_check.sh, expect_exit: 0}
+  - {id: V7, cmd: python tools/cycle-model.py --game rebuilt --sweep, expect: sensitivity table}
+  - {id: V8, cmd: "python tools/teamupdate-diff.py season 2027 --watch", expect: no 2027 updates yet}
+
+rehearsal: run section 0 end to end against REBUILT with students, timed, on a Saturday in November
+
+files_written:
+  - STRATEGY-RANKING-SYSTEM.md
+  - strategy_ranking_system.yaml
+
+files_expected_on_kickoff_day:
+  - strategies/COMPREHENSION.md
+  - strategies/candidates.yaml
+  - strategies/2027.json
+  - strategies/ranked.json
+  - strategies/RANKED.md
+  - strategies/BRIEF.md
+  - strategies/CONSTRAINTS.md
+  - strategies/order_sheet.csv
+  - awards/plan.md
+  - awards/CHECKLIST.md
+
+known_limitations:
+  - no BIOCORE game facts exist; every game-specific field is a slot
+  - "Q-thresholds A>=60 / V>=55 are back-tested on 30 records over 5 seasons [H], not derived"
+  - "Systemcore adjustment is [H]/[S]; no roboRIO->Systemcore precedent exists in this repo"
+  - "event-week calendar dates are [S] until registration; only kickoff-relative offsets are exact"
+  - award names are 2026-exact; kickoff_award_check.sh is the guard
+  - pipeline assumes one event before any re-rank matters
+  - this file does not validate prices
+  - the band protocol is a discipline, not a tool feature

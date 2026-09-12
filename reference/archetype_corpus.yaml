@@ -1,0 +1,992 @@
+# archetype_corpus.yaml
+# Machine-readable companion to reference/03_ARCHETYPE_CORPUS.md
+#
+# The calibration set the achievability rubric is back-tested against.
+# 30 strategy/design archetypes from five real FRC seasons (2022-2026), each with
+# a known competitive outcome and a known small-team verdict. Effort is weighted
+# toward 2026 REBUILT (8 records) -- freshest data, largest sample, and the manual
+# BIOCORE most plausibly resembles.
+#
+# Written 2026-08-22. Team profile every verdict is tuned for:
+#   ~15 students, experienced mentor, below-median funding, no dedicated practice
+#   field assumed, no in-house CNC assumed.
+#
+# evidence: C = confirmed against a primary source in this corpus (manual text or
+#               scraped TBA data)
+#           H = historical pattern across prior FRC seasons, not stated for BIOCORE
+#           S = speculation / reconstruction (mechanism counts, cost bands, cycle
+#               estimates, difficulty ratings -- all of these are S)
+#           U = unverified
+#
+# IMPORTANT: no record in this file describes BIOCORE. BIOCORE is FRC, kickoff
+# 2027-01-09 12:00 ET, and its game is not public as of 2026-08-22. The seven
+# `invariants` below carry empty BIOCORE slots to be filled on kickoff day.
+
+meta:
+  version: 1
+  written: 2026-08-22
+  game_being_prepared_for: BIOCORE presented by Haas (FRC, 2027 season, FIRST CANOPY)
+  kickoff: 2027-01-09T12:00:00-05:00
+  companion_md: reference/03_ARCHETYPE_CORPUS.md
+  seasons_in_corpus: [2022, 2023, 2024, 2025, 2026]
+  n_archetypes: 30
+  primary_calibration_season: 2026
+  control_system_note: >
+    2027 replaces the roboRIO with Systemcore. Every programming_difficulty value
+    in this file was measured under a mature WPILib/roboRIO stack. Apply the
+    systemcore_adjustment table before using any of them for 2027 planning.
+  sources:
+    manuals: manuals/archive/frc/_txt/{2022_RAPIDREACT,2023_CHARGEDUP,2024_CRESCENDO,2025_REEFSCAPE,2026_REBUILT}.txt
+    tba: research/predictive_tba/tba_{copr,alliances,matches,rankings}_{2023..2026}.csv
+    predictive_factors: reference/04_PREDICTIVE_FACTORS.md
+    awards: reference/awards/00_AWARD_LIST_EMPIRICAL_2026.md
+
+# --------------------------------------------------------------- field schema
+schema:
+  scoring_actions:            "manual-named actions this robot targets, nothing else"
+  points_per_cycle:           "points per completed acquire->travel->score->return loop"
+  est_cycles_per_match:       "how many such loops fit in the scoring window"
+  mechanism_count:            "powered subsystems BEYOND the drivetrain (nominal, not max)"
+  drivetrain:                 [tank, swerve, either]
+  sensing:                    [none, encoders, gyro+encoders, vision-assist, full-pose]
+  marginal_cost_usd:          "[low, high] band BEYOND a base drivetrain + control system, 2026 USD, +/-40%"
+  mfg_floor:                  [hand, bandsaw+drill, router, CNC]
+  programming_difficulty:     "1 = teleop mapping only ... 5 = closed-loop + vision + multi-step auto"
+  drive_practice_sensitivity: [low, med, high, extreme]
+  reliability_profile:        "the specific failure mode, and whether it is graceful or total"
+  outcome:                    [event-winning, captain-tier, first-pick, second-pick, third-pick, unpicked]
+  small_team_verdict:         ["YES", "CONDITIONAL", "MARGINAL", "NO"]
+
+# --------------------------------------------------- empirical base rates [C]
+# Derived from research/predictive_tba/. Reproduce with 03_ARCHETYPE_CORPUS.md section 10.2.
+base_rates:
+  evidence: C
+  winning_alliances_with_a_below_median_opr_member:
+    2023: {hits: 115, total: 179, pct: 64}
+    2024: {hits: 125, total: 182, pct: 69}
+    2025: {hits: 135, total: 198, pct: 68}
+    2026: {hits: 160, total: 206, pct: 78}
+  rank1_seeds_with_a_below_median_opr_member_pct: {2023: 71, 2024: 68, 2025: 71, 2026: 81}
+  deepest_picked_team_opr_percentile_median: {2023: 85, 2024: 82, 2025: 88, 2026: 90}
+  deepest_picked_team_opr_percentile_p90_event: {2023: 95, 2024: 96, 2025: 96, 2026: 97}
+  alliance_score_distribution:
+    note: "n = 115,390 alliance-scores, 2023-2026"
+    2023: {median: 87,  p25: 62, p75: 114, p90: 139, p99: 178, p99_over_median: 2.0}
+    2024: {median: 50,  p25: 35, p75: 68,  p90: 87,  p99: 121, p99_over_median: 2.4}
+    2025: {median: 93,  p25: 63, p75: 128, p90: 169, p99: 236, p99_over_median: 2.5}
+    2026: {median: 147, p25: 78, p75: 253, p90: 374, p99: 608, p99_over_median: 4.1}
+  individual_copr_2026: {n: 8160, median: 38.5, p90: 153.4, p99: 270.6, max: 470.7}
+  interpretation: >
+    Two-thirds to four-fifths of event-WINNING alliances carry a below-median-scoring
+    robot, rising to 78% in 2026 REBUILT. The support, defense, endgame and minimal
+    archetypes are the statistically normal path onto a winning alliance for this team
+    profile, not a consolation prize. Caveat: OPR percentile cannot distinguish a
+    deliberate support robot from a broken one, so this is an UPPER bound.
+
+# ---------------------------------------------------- season scoring reference
+season_facts:
+  2026:
+    name: REBUILT presented by Haas
+    manual: TU22, 166 pp
+    evidence: C
+    scoring_element: {name: FUEL, spec: "5.91in (15.0cm) high-density foam ball, 0.448-0.500 lb"}
+    elements_staged_per_match: 504      # 600 at DCMP/Champs
+    possession_cap: none                # "may control any amount of fuel at a time"
+    auto_seconds: 20
+    teleop_seconds: 140
+    shift_structure: "TRANSITION 10s; SHIFT 1-4 @ 25s; END GAME 30s"
+    own_hub_active_seconds: 110         # of 160 -- derived [S]
+    hub_opening_height_in: 72           # front edge off carpet -- the mechanism gate
+    hub_opening_size_in: 41.7           # hexagonal
+    hub_distance_from_alliance_wall_in: 158.6
+    points: {fuel_active_hub: 1, fuel_inactive_hub: 0,
+             tower_L1_auto: 15, tower_L1_teleop: 10, tower_L2: 20, tower_L3: 30}
+    bonus_rp_regional: {ENERGIZED: 100, SUPERCHARGED: 360, TRAVERSAL: 50}
+    defense_restriction: "TOWER protection only; neutral zone unrestricted; 5-count on PINS"
+  2025:
+    name: REEFSCAPE
+    manual: V3, 164 pp
+    evidence: C
+    points: {leave_auto: 3, coral_L1: [3, 2], coral_L2: [4, 3], coral_L3: [6, 4],
+             coral_L4: [7, 5], algae_processor: [6, 6], algae_net: [4, 4],
+             park: 2, shallow_cage: 6, deep_cage: 12}
+    rp: {AUTO: "all robots LEAVE + >=1 CORAL", CORAL: ">=7 CORAL on each level (3 levels w/ coop)", BARGE: ">=16 BARGE points"}
+  2024:
+    name: CRESCENDO
+    manual: V5, 153 pp
+    evidence: "C* -- pdftotext column extraction misaligned; reconciled against published table layout"
+    points: {leave_auto: 2, amp_note: [2, 1], speaker_note: [5, 2], speaker_amplified: [null, 5],
+             park: 1, onstage: 3, onstage_spotlit: 4, harmony: 2, trap: 5}
+    rp: {MELODY: "18 NOTES (15 w/ coop) regional/district", ENSEMBLE: ">=10 STAGE points and >=2 ONSTAGE"}
+  2023:
+    name: CHARGED UP
+    manual: V4, 142 pp
+    evidence: C
+    points: {mobility_auto: 3, bottom_row: [3, 2], middle_row: [4, 3], top_row: [6, 5],
+             link: 5, supercharged_node: 3, docked: [8, 6], docked_and_engaged: [12, 10], park: 2}
+    rp: {SUSTAINABILITY: "LINK count threshold", ACTIVATION: "CHARGE STATION point threshold"}
+  2022:
+    name: RAPID REACT
+    manual: V7, 136 pp
+    evidence: C
+    points: {taxi_auto: 2, lower_hub: [2, 1], upper_hub: [4, 2],
+             low_rung: 4, mid_rung: 6, high_rung: 10, traversal_rung: 15}
+    rp: {CARGO_BONUS: "20 CARGO (18 with a QUINTET: >=5 CARGO in AUTO)", HANGAR_BONUS: ">=16 HANGAR points"}
+    tba_data_available: false   # research/predictive_tba/ starts at 2023
+
+# ============================================================== the archetypes
+archetypes:
+
+# ---------------------------------------------------------- 2026 REBUILT (8)
+- id: R1
+  season: 2026
+  name: Cycle Cannon (turreted high-rate shooter)
+  invariant: I1
+  scoring_actions: "FUEL into the active HUB, continuously, from anywhere in the NEUTRAL ZONE"
+  points_per_cycle: 32          # 25-40 FUEL per trip, 1 pt each
+  est_cycles_per_match: 6
+  mechanism_count: 4            # intake, indexer/hopper, flywheel, turret+hood
+  drivetrain: swerve
+  sensing: full-pose
+  marginal_cost_usd: [1200, 2400]
+  mfg_floor: CNC
+  programming_difficulty: 5
+  drive_practice_sensitivity: high
+  reliability_profile: "Indexer jams under 30-ball loads; flywheel surface wear shifts range mid-event. Failure is PARTIAL -- rate drops, robot keeps scoring."
+  outcome: event-winning
+  small_team_verdict: "NO"
+  verdict_reason: "The turret + pose-fusion stack is where 15-student teams lose the season. p90 COPR 153 is reachable only with weeks of tuning this team will spend on integration instead of driving."
+  evidence: {points: C, field_specs: C, mechanism_and_cost: S, outcome: C}
+
+- id: R2
+  season: 2026
+  name: Fixed-Zone Bulk Shooter
+  invariant: I1
+  scoring_actions: "FUEL into the active HUB from ONE surveyed position; single hood angle, single RPM setpoint"
+  points_per_cycle: 12          # 8-15 FUEL
+  est_cycles_per_match: 5
+  mechanism_count: 2            # intake, flywheel (gravity/roller feed, no powered indexer)
+  drivetrain: either
+  sensing: encoders
+  marginal_cost_usd: [600, 1100]
+  mfg_floor: bandsaw+drill
+  programming_difficulty: 2
+  drive_practice_sensitivity: med
+  reliability_profile: "One setpoint, one distance. Failure = the burst misses until the driver re-acquires the spot. GRACEFUL."
+  outcome: first-pick
+  small_team_verdict: "YES"
+  verdict_reason: "The highest-value small-team play in REBUILT. Same point currency as R1 at one-third the cost and roughly 40% of the rate -- and 40% of an uncapped game is still above the 38.5 median COPR."
+  evidence: {points: C, mechanism_and_cost: S, outcome: H}
+
+- id: R3
+  season: 2026
+  name: Neutral-Zone Herder / Feeder
+  invariant: I6
+  scoring_actions: "No direct scoring. Sweeps NEUTRAL ZONE FUEL toward partners, into the DEPOT, and to the OUTPOST CORRAL"
+  points_per_cycle: 0
+  est_cycles_per_match: null
+  indirect_effect: "+20-40% partner throughput [S]"
+  mechanism_count: 1
+  drivetrain: either
+  sensing: none
+  marginal_cost_usd: [150, 450]
+  mfg_floor: hand
+  programming_difficulty: 1
+  drive_practice_sensitivity: med
+  reliability_profile: "Nothing to break. A bent plow keeps working."
+  outcome: second-pick
+  small_team_verdict: "YES"
+  verdict_reason: "504 FUEL on the field means acquisition, not scoring, is the bottleneck for most robots. Weak pick equity alone -- pair with R4."
+  evidence: {field_specs: C, mechanism_and_cost: S, outcome: H}
+
+- id: R4
+  season: 2026
+  name: TOWER Climber Specialist (LEVEL 3)
+  invariant: I4
+  scoring_actions: "TOWER LEVEL 3 in END GAME = 30 pts; supplies 30 of TRAVERSAL RP's 50"
+  points_per_cycle: 30
+  est_cycles_per_match: 1
+  mechanism_count: 2            # winch + deployable hook/telescope
+  drivetrain: either
+  sensing: encoders
+  marginal_cost_usd: [250, 700]
+  mfg_floor: bandsaw+drill
+  programming_difficulty: 2
+  drive_practice_sensitivity: high
+  reliability_profile: "Single-shot. Miss the hook and the score is 0. TOTAL failure, no partial credit."
+  outcome: second-pick
+  small_team_verdict: "YES"
+  verdict_reason: "30 pts is ~20% of the 147-pt median match from one 15-second action, and TRAVERSAL (50) is satisfied by one L3 plus one L2. Alliance captains shop for this."
+  evidence: {points: C, rp_threshold: C, mechanism_and_cost: S, outcome: H}
+
+- id: R5
+  season: 2026
+  name: AUTO Specialist
+  invariant: I5
+  scoring_actions: "8 preloaded FUEL + DEPOT FUEL scored in the 20s AUTO; optionally TOWER L1 at 15 (vs 10 in TELEOP)"
+  points_per_cycle: 20          # 12-30 pts banked in AUTO
+  est_cycles_per_match: 1
+  mechanism_count: 0            # reuses whatever the robot already has
+  drivetrain: either
+  sensing: full-pose
+  marginal_cost_usd: [0, 350]
+  mfg_floor: hand              # software-only; no fabrication
+  programming_difficulty: 4
+  drive_practice_sensitivity: low
+  reliability_profile: "Fails to a stationary robot. Costs nothing else. GRACEFUL."
+  outcome: captain-tier
+  small_team_verdict: "YES"
+  verdict_reason: "Best points-per-dollar in the corpus: zero mechanisms, 1.5x point premium on TOWER L1. NOTE the wrinkle -- winning the AUTO FUEL count sets your own HUB inactive for SHIFT 1, so the value is banked points, not tempo. See systemcore_adjustment: this is the highest-risk category for 2027."
+  evidence: {points: C, shift_mechanic: C, mechanism_and_cost: S, outcome: H}
+
+- id: R6
+  season: 2026
+  name: Shift Defender / HUB Denier
+  invariant: I3
+  scoring_actions: "No direct scoring. Denies the opponent's two 25s active SHIFTS while your own HUB is inactive"
+  points_per_cycle: 0
+  est_cycles_per_match: 2
+  indirect_effect: "-30 to -60 opponent points [S]"
+  mechanism_count: 1            # optional blocker/wall
+  drivetrain: swerve
+  sensing: none
+  marginal_cost_usd: [0, 350]
+  mfg_floor: hand
+  programming_difficulty: 1
+  drive_practice_sensitivity: extreme
+  reliability_profile: "No mechanism to fail. The risk is FOULS, not breakage."
+  outcome: second-pick
+  small_team_verdict: "YES"
+  verdict_reason: "REBUILT is the strongest defense season in this corpus, purely structurally: for 50s your HUB is dead, so defense costs you literally nothing. The manual itself endorses it. Only TOWER protection restricts where you may play."
+  evidence: {shift_mechanic: C, defense_rules: C, outcome: C}
+
+- id: R7
+  season: 2026
+  name: Depot Cycler / Lift Dumper
+  invariant: I1
+  scoring_actions: "FUEL into the HUB by lifting it over the 72in front lip; short DEPOT loop"
+  points_per_cycle: 20          # 15-25 FUEL
+  est_cycles_per_match: 4
+  mechanism_count: 3            # intake, elevator/conveyor, dump gate
+  drivetrain: either
+  sensing: encoders
+  marginal_cost_usd: [700, 1500]
+  mfg_floor: router
+  programming_difficulty: 3
+  drive_practice_sensitivity: med
+  reliability_profile: "Elevator/conveyor is the most jam-prone delivery path in the game. One stuck FUEL kills the run. TOTAL failure."
+  outcome: third-pick
+  small_team_verdict: MARGINAL
+  verdict_reason: "Feasible, but the 72in front lip means lifting costs more per point than shooting. R2 dominates it on every axis. MARGINAL is an economic judgment, not a feasibility one."
+  evidence: {hub_height: C, mechanism_and_cost: S, outcome: S}
+
+- id: R8
+  season: 2026
+  name: Minimal Flawless (plow + LEVEL 1 climb)
+  invariant: I7
+  scoring_actions: "Herd FUEL toward partners; TOWER LEVEL 1 = 10 TELEOP (15 in AUTO)"
+  points_per_cycle: 12
+  est_cycles_per_match: 1
+  mechanism_count: 1
+  drivetrain: either
+  sensing: encoders
+  marginal_cost_usd: [250, 550]
+  mfg_floor: hand
+  programming_difficulty: 2
+  drive_practice_sensitivity: med
+  reliability_profile: "Two independent simple systems. Degrades GRACEFULLY -- lose the climb, keep herding."
+  outcome: third-pick
+  small_team_verdict: "YES"
+  verdict_reason: "The safe floor. But 10-15 pts is a thin share of a 147-pt median match; in REBUILT specifically, minimal is safe rather than valuable."
+  evidence: {points: C, mechanism_and_cost: S, outcome: H}
+
+# --------------------------------------------------------- 2025 REEFSCAPE (6)
+- id: F1
+  season: 2025
+  name: L4 Branch Specialist
+  invariant: I1
+  scoring_actions: "CORAL onto L4 BRANCH (7 AUTO / 5 TELEOP)"
+  points_per_cycle: 5
+  est_cycles_per_match: 10
+  mechanism_count: 3            # elevator, wrist/arm, coral intake
+  drivetrain: swerve
+  sensing: vision-assist
+  marginal_cost_usd: [1400, 2600]
+  mfg_floor: CNC
+  programming_difficulty: 4
+  drive_practice_sensitivity: high
+  reliability_profile: "Elevator setpoints drift with belt stretch; a dropped CORAL on the reef blocks a branch for the rest of the match. PARTIAL failure."
+  outcome: event-winning
+  small_team_verdict: "NO"
+  verdict_reason: "An elevator plus an articulated wrist reaching a 6ft branch is the single most over-attempted mechanism of 2025. It ate small teams' build seasons."
+  evidence: {points: C, mechanism_and_cost: S, outcome: C}
+
+- id: F2
+  season: 2025
+  name: L1 Trough Filler
+  invariant: I6
+  scoring_actions: "CORAL into the trough, L1 (3 AUTO / 2 TELEOP)"
+  points_per_cycle: 2
+  est_cycles_per_match: 15
+  mechanism_count: 2            # intake + short delivery
+  drivetrain: either
+  sensing: encoders
+  marginal_cost_usd: [350, 800]
+  mfg_floor: bandsaw+drill
+  programming_difficulty: 2
+  drive_practice_sensitivity: med
+  reliability_profile: "Ground-level delivery. Almost nothing to jam. GRACEFUL."
+  outcome: second-pick
+  small_team_verdict: "YES"
+  verdict_reason: "CORAL RP required >=7 CORAL on EACH level. The L1 row was the row nobody elite wanted to fill, so a cheap trough filler was RP-critical to alliances that could not spare a cycle."
+  evidence: {points: C, rp_threshold: C, mechanism_and_cost: S, outcome: H}
+
+- id: F3
+  season: 2025
+  name: Processor Cycler
+  invariant: I1
+  scoring_actions: "ALGAE into the PROCESSOR (6 pts -- the highest single action value in REEFSCAPE)"
+  points_per_cycle: 6
+  est_cycles_per_match: 6
+  mechanism_count: 2            # compliant intake + eject
+  drivetrain: either
+  sensing: encoders
+  marginal_cost_usd: [500, 1100]
+  mfg_floor: bandsaw+drill
+  programming_difficulty: 2
+  drive_practice_sensitivity: med
+  reliability_profile: "Compliant-wheel grip on ALGAE degrades over an event. GRACEFUL."
+  outcome: first-pick
+  small_team_verdict: "YES"
+  verdict_reason: "THE inversion case of the corpus: a 6-pt action beat the prestige 5-pt L4 action for less than half the mechanism. Read every row of the point table before choosing."
+  evidence: {points: C, mechanism_and_cost: S, outcome: H}
+
+- id: F4
+  season: 2025
+  name: Deep CAGE Climber
+  invariant: I4
+  scoring_actions: "BARGE, off-the-ground via deep CAGE = 12 pts"
+  points_per_cycle: 12
+  est_cycles_per_match: 1
+  mechanism_count: 2
+  drivetrain: either
+  sensing: encoders
+  marginal_cost_usd: [400, 900]
+  mfg_floor: router
+  programming_difficulty: 3
+  drive_practice_sensitivity: high
+  reliability_profile: "Single-shot; the deep-cage interface tolerance is unforgiving. TOTAL failure."
+  outcome: second-pick
+  small_team_verdict: CONDITIONAL
+  verdict_condition: "YES only if you build a cage-interface practice fixture and log >=50 climbs before event 1. Otherwise the shallow cage (6 pts) is the correct target."
+  verdict_reason: "One deep cage alone nearly satisfies BARGE RP (16). High reward, but the failure mode is total and practice-gated."
+  evidence: {points: C, rp_threshold: C, mechanism_and_cost: S, outcome: H}
+
+- id: F5
+  season: 2025
+  name: AUTO Specialist
+  invariant: I5
+  scoring_actions: "LEAVE (3) + 3-4 CORAL at L4 (7 each) inside AUTO"
+  points_per_cycle: 27
+  est_cycles_per_match: 1
+  mechanism_count: 0
+  drivetrain: swerve
+  sensing: full-pose
+  marginal_cost_usd: [0, 400]
+  mfg_floor: hand
+  programming_difficulty: 5
+  drive_practice_sensitivity: low
+  reliability_profile: "Path drift compounds across a multi-piece routine. Fails to a parked robot."
+  outcome: captain-tier
+  small_team_verdict: CONDITIONAL
+  verdict_condition: "YES at LEAVE + 1 CORAL (which alone satisfies AUTO RP for the alliance). NO at 4-piece."
+  verdict_reason: "AUTO RP was gated on ALL robots leaving plus one CORAL -- so the cheap version was the RP-relevant version. Scope, not capability, is the failure axis."
+  evidence: {points: C, rp_threshold: C, cost: S, outcome: H}
+
+- id: F6
+  season: 2025
+  name: ALGAE Defender / Reef Clearer
+  invariant: I3
+  scoring_actions: "No direct scoring. Removes opponent ALGAE and blocks the PROCESSOR loop"
+  points_per_cycle: 0
+  est_cycles_per_match: null
+  mechanism_count: 1
+  drivetrain: swerve
+  sensing: none
+  marginal_cost_usd: [0, 300]
+  mfg_floor: hand
+  programming_difficulty: 1
+  drive_practice_sensitivity: extreme
+  reliability_profile: "No mechanism. Foul risk only."
+  outcome: second-pick
+  small_team_verdict: "YES"
+  verdict_reason: "68% of 2025 event-winning alliances carried a below-median-OPR robot."
+  evidence: {outcome: C, mechanism_and_cost: S}
+
+# -------------------------------------------------------- 2024 CRESCENDO (6)
+- id: C1
+  season: 2024
+  name: SPEAKER Cycler (variable distance)
+  invariant: I1
+  scoring_actions: "NOTE into SPEAKER: 2 pts, 5 when AMPLIFIED; 5 in AUTO"
+  points_per_cycle: 3
+  est_cycles_per_match: 12
+  mechanism_count: 3            # intake, indexer, shooter+pivot
+  drivetrain: swerve
+  sensing: vision-assist
+  marginal_cost_usd: [900, 1800]
+  mfg_floor: router
+  programming_difficulty: 4
+  drive_practice_sensitivity: high
+  reliability_profile: "Shooter RPM plus a distance-solved pivot angle. PARTIAL failure -- accuracy degrades before it stops."
+  outcome: event-winning
+  small_team_verdict: CONDITIONAL
+  verdict_condition: "YES only in the fixed-distance subwoofer variant (see C3). NO with a variable-distance interpolation table."
+  verdict_reason: "Same family as C3, different variant. The rubric must score variants, not families."
+  evidence: {points: "C*", mechanism_and_cost: S, outcome: C}
+
+- id: C2
+  season: 2024
+  name: AMP Feeder / Amplification Manager
+  invariant: I6
+  scoring_actions: "NOTE into AMP (1 pt), then trigger the AMPLIFIED window so partners score 5 instead of 2"
+  points_per_cycle: 1
+  est_cycles_per_match: 10
+  indirect_effect: "+3 pts per partner NOTE during each AMPLIFIED window [C*]"
+  mechanism_count: 2
+  drivetrain: either
+  sensing: encoders
+  marginal_cost_usd: [500, 1000]
+  mfg_floor: bandsaw+drill
+  programming_difficulty: 2
+  drive_practice_sensitivity: med
+  reliability_profile: "Low, short delivery. GRACEFUL."
+  outcome: second-pick
+  small_team_verdict: "YES"
+  verdict_reason: "The season's best support archetype: a 1-pt action that multiplied the alliance's 2-pt actions to 5, and drove the MELODY RP."
+  evidence: {points: "C*", mechanism_and_cost: S, outcome: H}
+
+- id: C3
+  season: 2024
+  name: Subwoofer Camper (fixed-distance shooter)
+  invariant: I7
+  scoring_actions: "NOTE into SPEAKER from the fixed subwoofer position only"
+  points_per_cycle: 2
+  est_cycles_per_match: 10
+  mechanism_count: 2
+  drivetrain: either
+  sensing: encoders
+  marginal_cost_usd: [600, 1100]
+  mfg_floor: bandsaw+drill
+  programming_difficulty: 2
+  drive_practice_sensitivity: med
+  reliability_profile: "One setpoint. The real risk is a contested position, not a mechanical one."
+  outcome: second-pick
+  small_team_verdict: "YES"
+  verdict_reason: "The definitive small-team CRESCENDO robot. Removes the entire distance-solving problem for a modest rate penalty."
+  evidence: {points: "C*", mechanism_and_cost: S, outcome: H}
+
+- id: C4
+  season: 2024
+  name: STAGE Climber + TRAP
+  invariant: I4
+  scoring_actions: "ONSTAGE 3 (SPOTLIT 4) + HARMONY 2 + NOTE in TRAP 5"
+  points_per_cycle: 8
+  est_cycles_per_match: 1
+  mechanism_count: 2
+  drivetrain: either
+  sensing: encoders
+  marginal_cost_usd: [600, 1300]
+  mfg_floor: router
+  programming_difficulty: 3
+  drive_practice_sensitivity: high
+  reliability_profile: "Chain alignment plus a delivery at height. Single-shot, TOTAL failure."
+  outcome: second-pick
+  small_team_verdict: CONDITIONAL
+  verdict_condition: "YES for ONSTAGE alone (3-4 pts, one winch). NO with TRAP -- the second mechanism at height is where it breaks."
+  verdict_reason: "ENSEMBLE RP required >=10 STAGE points and >=2 ONSTAGE robots, so plain ONSTAGE was already RP-relevant without TRAP."
+  evidence: {points: "C*", rp_threshold: "C*", mechanism_and_cost: S, outcome: H}
+
+- id: C5
+  season: 2024
+  name: AUTO Specialist
+  invariant: I5
+  scoring_actions: "LEAVE (2) + 3-4 SPEAKER NOTES at 5 each inside AUTO"
+  points_per_cycle: 20
+  est_cycles_per_match: 1
+  mechanism_count: 0
+  drivetrain: swerve
+  sensing: full-pose
+  marginal_cost_usd: [0, 400]
+  mfg_floor: hand
+  programming_difficulty: 5
+  drive_practice_sensitivity: low
+  reliability_profile: "Fails to a parked robot."
+  outcome: captain-tier
+  small_team_verdict: CONDITIONAL
+  verdict_condition: "2-NOTE auto YES. 4-NOTE auto NO."
+  verdict_reason: "SPEAKER paid 5 in AUTO vs 2 in TELEOP -- a 2.5x premium, the largest AUTO premium in the corpus. Scope is the failure axis, not capability."
+  evidence: {points: "C*", cost: S, outcome: H}
+
+- id: C6
+  season: 2024
+  name: Defense Specialist
+  invariant: I3
+  scoring_actions: "No direct scoring. Denies the SPEAKER lane and boxes out the AMP"
+  points_per_cycle: 0
+  est_cycles_per_match: null
+  mechanism_count: 0
+  drivetrain: swerve
+  sensing: none
+  marginal_cost_usd: [0, 250]
+  mfg_floor: hand
+  programming_difficulty: 1
+  drive_practice_sensitivity: extreme
+  reliability_profile: "No mechanism. Foul risk only."
+  outcome: second-pick
+  small_team_verdict: "YES"
+  verdict_reason: "CRESCENDO is the corpus's defense maximum BY SCORE SHARE -- at a 50-pt median, denying three cycles is ~12% of a match. (REBUILT is the maximum by opportunity cost.) 69% of 2024 winners carried a below-median robot."
+  evidence: {outcome: C, mechanism_and_cost: S}
+
+# ------------------------------------------------------- 2023 CHARGED UP (5)
+- id: G1
+  season: 2023
+  name: Cube-Only Top-Row Cycler
+  invariant: I1
+  scoring_actions: "CUBE onto the top ROW (6 AUTO / 5 TELEOP); contributes to LINKs at 5 each"
+  points_per_cycle: 6
+  est_cycles_per_match: 8
+  mechanism_count: 2            # intake + arm
+  drivetrain: swerve
+  sensing: vision-assist
+  marginal_cost_usd: [800, 1600]
+  mfg_floor: router
+  programming_difficulty: 3
+  drive_practice_sensitivity: high
+  reliability_profile: "CUBE is forgiving geometry; arm setpoints drift. PARTIAL failure."
+  outcome: first-pick
+  small_team_verdict: "YES"
+  verdict_reason: "Deliberately dropping CONES halved the season's hardest tolerance problem for roughly a 15% point loss. The canonical de-scope decision of the corpus."
+  evidence: {points: C, mechanism_and_cost: S, outcome: H}
+
+- id: G2
+  season: 2023
+  name: Full-Grid CONE + CUBE Scorer
+  invariant: I2
+  scoring_actions: "Both GAME PIECES, all three ROWS, double-substation intake, LINK optimisation"
+  points_per_cycle: 6
+  est_cycles_per_match: 10
+  mechanism_count: 4            # intake, elevator, wrist, gripper
+  drivetrain: swerve
+  sensing: full-pose
+  marginal_cost_usd: [1600, 3000]
+  mfg_floor: CNC
+  programming_difficulty: 5
+  drive_practice_sensitivity: high
+  reliability_profile: "Cone-tip alignment is the season's hardest tolerance. A tipped CONE is a TOTAL cycle loss."
+  outcome: event-winning
+  small_team_verdict: "NO"
+  verdict_reason: "The do-everything instance for 2023. Integration debt is multiplicative, and it is paid in the weeks that would otherwise be drive practice."
+  evidence: {points: C, mechanism_and_cost: S, outcome: C}
+
+- id: G3
+  season: 2023
+  name: CHARGE STATION Specialist
+  invariant: I4
+  scoring_actions: "AUTO DOCKED and ENGAGED (12) + TELEOP DOCKED and ENGAGED (10) = 22 pts"
+  points_per_cycle: 22
+  est_cycles_per_match: 2
+  mechanism_count: 1            # often zero -- drivetrain plus a gyro loop
+  drivetrain: either
+  sensing: gyro+encoders
+  marginal_cost_usd: [0, 300]
+  mfg_floor: hand
+  programming_difficulty: 3
+  drive_practice_sensitivity: high
+  reliability_profile: "A balance loop. A mis-timed partner tips the station and both robots lose ENGAGED. PARTIAL (DOCKED still pays 6-8)."
+  outcome: second-pick
+  small_team_verdict: "YES"
+  verdict_reason: "22 points against an 87-point median match, from a gyro and a PID loop. Best points-per-dollar record in the entire corpus, and it gated the ACTIVATION RP."
+  evidence: {points: C, mechanism_and_cost: S, outcome: H}
+
+- id: G4
+  season: 2023
+  name: HYBRID-Row Filler / LINK Facilitator
+  invariant: I7
+  scoring_actions: "GAME PIECES into the bottom/HYBRID ROW (3 AUTO / 2 TELEOP), completing LINKs at 5"
+  points_per_cycle: 3
+  est_cycles_per_match: 12
+  mechanism_count: 1
+  drivetrain: either
+  sensing: none
+  marginal_cost_usd: [250, 600]
+  mfg_floor: hand
+  programming_difficulty: 1
+  drive_practice_sensitivity: low
+  reliability_profile: "Push-in delivery at floor level. Essentially unbreakable."
+  outcome: third-pick
+  small_team_verdict: "YES"
+  verdict_reason: "A 2-pt action that completed 5-pt LINKs and gated the SUSTAINABILITY RP. Cheap actions that complete a set are worth more than their face value."
+  evidence: {points: C, mechanism_and_cost: S, outcome: H}
+
+- id: G5
+  season: 2023
+  name: Defense / Floor-Intake Support
+  invariant: I3
+  scoring_actions: "No direct scoring. Denies COMMUNITY entry; feeds partners from the floor"
+  points_per_cycle: 0
+  est_cycles_per_match: null
+  mechanism_count: 1
+  drivetrain: swerve
+  sensing: none
+  marginal_cost_usd: [0, 300]
+  mfg_floor: hand
+  programming_difficulty: 1
+  drive_practice_sensitivity: extreme
+  reliability_profile: "No mechanism. Foul risk only."
+  outcome: third-pick
+  small_team_verdict: CONDITIONAL
+  verdict_condition: "The protected LOADING ZONE narrowed the legal defense window. Viable only where the opponent's cycle passes through unprotected space."
+  verdict_reason: "Demonstrates that defense value is a RULE-DEPENDENT variable, not a constant. Read the protection rules before committing (section 0, step 5)."
+  evidence: {defense_rules: C, outcome: C, mechanism_and_cost: S}
+
+# ------------------------------------------------------ 2022 RAPID REACT (5)
+- id: P1
+  season: 2022
+  name: UPPER HUB Cycler
+  invariant: I1
+  scoring_actions: "CARGO into the UPPER HUB (4 AUTO / 2 TELEOP)"
+  points_per_cycle: 3
+  est_cycles_per_match: 13
+  mechanism_count: 3            # intake, indexer, shooter
+  drivetrain: swerve
+  sensing: vision-assist
+  marginal_cost_usd: [900, 1800]
+  mfg_floor: router
+  programming_difficulty: 4
+  drive_practice_sensitivity: high
+  reliability_profile: "Two-ball indexer jams. PARTIAL failure."
+  outcome: event-winning
+  small_team_verdict: CONDITIONAL
+  verdict_condition: "YES in the fixed-range variant (shoot only from the tarmac edge). NO with a turret and a distance table."
+  verdict_reason: "Same variant argument as C1/C3. RAPID REACT's 2-CARGO possession cap made high-rate shooting less dominant than REBUILT's uncapped design."
+  evidence: {points: C, mechanism_and_cost: S, outcome: H}
+
+- id: P2
+  season: 2022
+  name: LOWER HUB Dumper
+  invariant: I7
+  scoring_actions: "CARGO into the LOWER HUB (2 AUTO / 1 TELEOP) by driving up and dumping"
+  points_per_cycle: 2
+  est_cycles_per_match: 15
+  mechanism_count: 1
+  drivetrain: either
+  sensing: none
+  marginal_cost_usd: [200, 500]
+  mfg_floor: hand
+  programming_difficulty: 1
+  drive_practice_sensitivity: low
+  reliability_profile: "Nearly unbreakable. GRACEFUL."
+  outcome: third-pick
+  small_team_verdict: "YES"
+  verdict_reason: "The canonical minimal-viable robot of 2022 -- and CARGO BONUS RP counted CARGO in EITHER hub, so a lower-hub dumper was RP-relevant."
+  evidence: {points: C, rp_threshold: C, mechanism_and_cost: S, outcome: H}
+
+- id: P3
+  season: 2022
+  name: TRAVERSAL Climber
+  invariant: I4
+  scoring_actions: "HANGAR TRAVERSAL RUNG = 15 pts"
+  points_per_cycle: 15
+  est_cycles_per_match: 1
+  mechanism_count: 3            # static hooks, dynamic arms, rotation
+  drivetrain: either
+  sensing: full-pose
+  marginal_cost_usd: [900, 2000]
+  mfg_floor: CNC
+  programming_difficulty: 5
+  drive_practice_sensitivity: extreme
+  reliability_profile: "Multi-stage, sequenced and timed. TOTAL failure, and it consumes the last 25 seconds either way."
+  outcome: first-pick
+  small_team_verdict: "NO"
+  verdict_reason: "The most seductive over-reach in the corpus: a single visible number (15) hiding a three-mechanism sequenced motion. The RP only needed 16 HANGAR points, reachable with 2 MID + 1 HIGH."
+  evidence: {points: C, rp_threshold: C, mechanism_and_cost: S, outcome: H}
+
+- id: P4
+  season: 2022
+  name: MID-RUNG Climber + Low CARGO
+  invariant: I7
+  scoring_actions: "HANGAR MID RUNG (6) plus LOWER HUB CARGO (1-2)"
+  points_per_cycle: 6
+  est_cycles_per_match: 1
+  mechanism_count: 2
+  drivetrain: either
+  sensing: encoders
+  marginal_cost_usd: [350, 800]
+  mfg_floor: bandsaw+drill
+  programming_difficulty: 2
+  drive_practice_sensitivity: med
+  reliability_profile: "One winch, one motion. GRACEFUL."
+  outcome: second-pick
+  small_team_verdict: "YES"
+  verdict_reason: "Two MID (12) plus one HIGH (10) = 22 clears the 16-point HANGAR BONUS RP. The RP never required TRAVERSAL. The small-team answer to 2022."
+  evidence: {points: C, rp_threshold: C, mechanism_and_cost: S, outcome: H}
+
+- id: P5
+  season: 2022
+  name: QUINTET AUTO Specialist
+  invariant: I5
+  scoring_actions: ">=5 CARGO in AUTO (drops CARGO BONUS RP threshold 20 -> 18) plus TAXI (2)"
+  points_per_cycle: 18
+  est_cycles_per_match: 1
+  mechanism_count: 0
+  drivetrain: swerve
+  sensing: full-pose
+  marginal_cost_usd: [0, 400]
+  mfg_floor: hand
+  programming_difficulty: 5
+  drive_practice_sensitivity: low
+  reliability_profile: "Fails to a TAXI (2 pts). GRACEFUL."
+  outcome: captain-tier
+  small_team_verdict: CONDITIONAL
+  verdict_condition: "2-CARGO auto YES. 5-CARGO QUINTET NO."
+  verdict_reason: "The QUINTET was the corpus's only AUTO action that changed an RP THRESHOLD rather than adding points. Worth checking for a BIOCORE equivalent."
+  evidence: {points: C, rp_threshold: C, cost: S, outcome: H}
+
+# ================================================== cross-season invariants
+invariants:
+
+- id: I1
+  name: Reliable high-volume single-task scorer
+  instances: [R1, R2, R7, F1, F3, C1, C3, G1, P1]
+  seasons_present: "5/5"
+  median_mechanism_count: 2
+  median_marginal_cost_usd: 900
+  typical_mfg_floor: router
+  typical_programming_difficulty: 3
+  small_team_success_rate: "4/9 outright YES; 6/9 when restricted to the fixed-range / single-tier variant; 0/4 at full spec"
+  award_pairing: ["Quality Award", "Industrial Design Award"]
+  lesson: >
+    The SIMPLIFIED variant beats the full one for this team, every season. The delta
+    is entirely mechanism_count and programming_difficulty, not concept. The rubric
+    must score the VARIANT, never the family.
+  biocore_slot_prompt: "What is the single highest-frequency scoring action, and can it be done from one fixed position?"
+  biocore_answer: null
+
+- id: I2
+  name: Do-everything robot
+  instances: [G2, "R1 at full spec", "F1+F3 combined", "C1+C2+C4 combined", "P1+P3 combined"]
+  seasons_present: "5/5"
+  median_mechanism_count: 4
+  median_marginal_cost_usd: 2200
+  typical_mfg_floor: CNC
+  typical_programming_difficulty: 5
+  small_team_success_rate: "0/5"
+  award_pairing: ["Creativity Award sponsored by Rockwell Automation (only if it works)"]
+  lesson: >
+    Zero small-team successes in five seasons. Cost is multiplicative, not additive:
+    each extra mechanism multiplies integration debt, and integration debt is paid in
+    the weeks that would have been drive practice -- the highest-weighted factor in
+    reference/04_PREDICTIVE_FACTORS.md. A rubric that lets a strategy score well by
+    SUMMING capability points is broken.
+  biocore_slot_prompt: "Do NOT fill this slot. Record it only so there is something explicit to reject."
+  biocore_answer: null
+
+- id: I3
+  name: Defense specialist
+  instances: [R6, F6, C6, G5]
+  seasons_present: "5/5"
+  median_mechanism_count: 1
+  median_marginal_cost_usd: 150
+  typical_mfg_floor: hand
+  typical_programming_difficulty: 1
+  small_team_success_rate: "3/4 YES (G5 CONDITIONAL on the protection rules)"
+  award_pairing: ["Judges' Award", "Gracious Professionalism Award"]
+  lesson: >
+    Value is RULE-DEPENDENT, not constant. Two independent multipliers: score share
+    (CRESCENDO, median 50 -- each denied cycle is a large fraction of the match) and
+    opportunity cost (REBUILT -- your HUB is dead for 50s, so defense is free). Check
+    both. The entire cost of this archetype is DRIVER HOURS, which no cost-and-
+    complexity predicate can see.
+  biocore_slot_prompt: "Is there any period, zone or state in which our own scoring is impossible or worthless?"
+  biocore_answer: null
+
+- id: I4
+  name: Endgame specialist
+  instances: [R4, F4, C4, G3, P3, P4]
+  seasons_present: "5/5"
+  median_mechanism_count: 2
+  median_marginal_cost_usd: 500
+  typical_mfg_floor: bandsaw+drill
+  typical_programming_difficulty: 3
+  small_team_success_rate: "3/6 outright; 3/3 at the low/mid tier (R4, G3, P4); 0/3 at the top tier (F4 deep cage, C4 trap, P3 traversal)"
+  award_pairing: ["Excellence in Engineering Award sponsored by Littelfuse"]
+  lesson: >
+    The RP threshold is almost never set at the top tier. RAPID REACT's HANGAR RP (16)
+    was cleared by 2 MID + 1 HIGH, never needing TRAVERSAL. REBUILT's TRAVERSAL RP (50)
+    is cleared by one L3 + one L2. Find the threshold, then buy the CHEAPEST tier that
+    clears it.
+  biocore_slot_prompt: "What is the largest single-action point value in the last 30 seconds, and what is its RP threshold?"
+  biocore_answer: null
+
+- id: I5
+  name: AUTO specialist
+  instances: [R5, F5, C5, P5, "G3 auto-dock"]
+  seasons_present: "5/5"
+  median_mechanism_count: 0
+  median_marginal_cost_usd: 200
+  typical_mfg_floor: hand
+  typical_programming_difficulty: 5
+  small_team_success_rate: "2/5 outright; 5/5 scoped to 1-2 elements; 0/3 at full scope"
+  award_pairing: ["Autonomous Award sponsored by Google.org", "Innovation in Control Award sponsored by nVent"]
+  lesson: >
+    Zero mechanisms, software only, and in EVERY season the highest per-second point
+    density of the match (REBUILT TOWER L1 15 vs 10; CRESCENDO SPEAKER 5 vs 2;
+    REEFSCAPE L4 7 vs 5). The failure axis is SCOPE, not capability. WARNING for 2027:
+    see systemcore_adjustment -- this is the single highest-risk category under a new
+    control system. De-scope it; do not delete it.
+  biocore_slot_prompt: "What does the AUTO period pay EXTRA for, versus TELEOP? Express it as a ratio."
+  biocore_answer: null
+
+- id: I6
+  name: Feeder / support robot
+  instances: [R3, F2, C2, G4, P2]
+  seasons_present: "5/5"
+  median_mechanism_count: 1
+  median_marginal_cost_usd: 400
+  typical_mfg_floor: hand
+  typical_programming_difficulty: 2
+  small_team_success_rate: "5/5"
+  award_pairing: ["Industrial Design Award", "Team Spirit Award"]
+  lesson: >
+    A 100% small-team success rate across five seasons. Cheap actions that COMPLETE A
+    SET (a LINK, an RP row, an AMPLIFIED window) are worth far more than their face
+    value. 64-78% of event-winning alliances carried a below-median-scoring robot.
+  biocore_slot_prompt: "Can a robot with NO scoring mechanism materially raise a partner's rate? Name the field feature it exploits."
+  biocore_answer: null
+
+- id: I7
+  name: Deliberately-minimal flawless robot
+  instances: [R8, F2, C3, G4, P2]
+  seasons_present: "5/5"
+  median_mechanism_count: 1
+  median_marginal_cost_usd: 350
+  typical_mfg_floor: hand
+  typical_programming_difficulty: 2
+  small_team_success_rate: "5/5"
+  award_pairing: ["Quality Award", "Excellence in Engineering Award sponsored by Littelfuse"]
+  lesson: >
+    "It never failed" IS the Quality Award thesis, and it is the only archetype whose
+    value is highest exactly when the team's resources are lowest. Caveat: in a
+    high-scoring game (REBUILT, median 147) a minimal robot is SAFE rather than
+    VALUABLE. Check the season's median score before treating minimal as sufficient.
+  biocore_slot_prompt: "What is the cheapest action that scores something at all, every single match?"
+  biocore_answer: null
+
+# ============================================ the verdict predicate + back-test
+# The rubric's first regression test. See 03_ARCHETYPE_CORPUS.md section 10.3.
+verdict_predicate:
+  form: |
+    risk = (mechanism_count >= 3)
+         + (programming_difficulty >= 4)
+         + (mfg_floor in {router, CNC})
+         + (marginal_cost_usd[1] > 1200)
+    NO          if risk >= 3
+    CONDITIONAL if risk == 2
+    YES         if risk <= 1
+  agreement_with_hand_labels: "21/30 = 70%"
+  disagreements:
+    - family: "scope-conditional AUTO"
+      records: [F5, C5, P5]
+      predicate_says: YES
+      hand_says: CONDITIONAL
+      root_cause: >
+        The predicate cannot see SCOPE. A 1-element auto and a 4-element auto have
+        identical cost, mechanism count and mfg floor, and opposite verdicts.
+      fix: "add a `scope` dimension; score the scoped variant, not the archetype family"
+    - family: "fixed-range variant of a volume scorer"
+      records: [C1, P1]
+      predicate_says: NO
+      hand_says: CONDITIONAL
+      root_cause: >
+        The predicate scores the full-spec family. The hand label scores the best
+        available variant. Same root cause as the AUTO family -- this is section 7.1
+        Rule 1 showing up as a measurable prediction error.
+      fix: "enumerate variants as separate rubric candidates before scoring"
+    - family: "rule-dependent defense window"
+      records: [G5]
+      predicate_says: YES
+      hand_says: CONDITIONAL
+      root_cause: "CHARGED UP's protected LOADING ZONE narrowed where defense was legal. Invisible to a cost predicate."
+      fix: "read the protection rules from the manual first (section 0, step 5) and gate I3 on the result"
+    - family: "borderline cost/mfg, mechanism actually in reach"
+      records: [G1, F4]
+      predicate_says: [CONDITIONAL, YES]
+      hand_says: [YES, CONDITIONAL]
+      root_cause: "adjacent-class error; the cost band straddles the $1200 cut and mfg_floor `router` is over-weighted for a single simple part"
+      fix: "make mfg_floor a graded term rather than a binary, weighted by how many parts need that floor"
+    - family: "economic, not feasibility"
+      records: [R7]
+      predicate_says: NO
+      hand_says: MARGINAL
+      root_cause: "MARGINAL is outside the predicate's output range by construction -- it means 'feasible but a cheaper action pays more per dollar'."
+      fix: "add a dominance check: flag MARGINAL when another archetype beats it on every field"
+  overriding_term_required:
+    rule: |
+      downgrade YES -> CONDITIONAL if drive_practice_sensitivity == "extreme"
+                                   and available_drive_hours_before_event_1 < 20
+    why: >
+      Defense archetypes are trivially cheap and trivially simple, yet their entire
+      cost is driver hours -- an input the cost/complexity predicate cannot see. This
+      is consistent with reference/04_PREDICTIVE_FACTORS.md, where drive_practice
+      carries the highest weight (90) from independent evidence.
+
+# ================================================== 2027 Systemcore adjustment
+# 2027 replaces the roboRIO. Apply BEFORE using any programming_difficulty above.
+systemcore_adjustment:
+  evidence: S
+  status: "no 2027 control-system software has shipped for evaluation as of 2026-08-22"
+  bands:
+    - applies_to: "teleop-only, open-loop (I3, I6, I7)"
+      delta: 0.0
+      why: "motor-controller mapping is the first thing any new control system ships working"
+    - applies_to: "single closed-loop mechanism (I4, simplified I1)"
+      delta: 0.5
+      why: "PID/velocity control ports easily; tuning constants do not transfer"
+    - applies_to: "odometry / path-following (I5)"
+      delta: 1.0
+      why: "highest-risk category; vendor swerve and odometry libraries historically lag a new control system by weeks"
+    - applies_to: "vision + pose fusion (full I1, I2)"
+      delta: 1.0
+      also: "treat as UNAVAILABLE in build weeks 1-3"
+      why: "coprocessor integration, AprilTag pipelines and NetworkTables stabilise last"
+  consequence: >
+    I5 is normally this corpus's best points-per-dollar play at a 100% scoped success
+    rate. In 2027 it carries real first-season execution risk. Budget for a
+    LEAVE-equivalent plus ONE scoring element, not a multi-element path, until the
+    Systemcore odometry story is proven at a Week 1 event.
+
+# ====================================================== falsification checks
+# What would break this corpus. Run against the BIOCORE manual on 2027-01-09.
+falsification_checks:
+- check: "Is BIOCORE's scoring element CAPPED in possession?"
+  breaks: "section 7.1 Rule 1. A cap compresses the score spread and the simplified I1 variant loses its edge."
+- check: "Does BIOCORE have a period or state where scoring is impossible?"
+  breaks: "I3's REBUILT-strength verdict. Without it, defense reverts to CONDITIONAL."
+- check: "Is the top scoring tier worth more than 2x the bottom tier?"
+  breaks: "I7. In REBUILT (flat 1 pt) minimal robots contribute little; in a 2x+ tiered game, less still."
+- check: "Does an RP threshold exist that ONE cheap robot can nearly satisfy alone?"
+  breaks: "I4's YES. REBUILT TRAVERSAL (50, from L3+L2) and REEFSCAPE BARGE (16, from one deep cage) both did."
+- check: "Is AUTO longer than 15s and paid at a premium?"
+  breaks: "I5. A 20s AUTO paying 1.5x (REBUILT) is worth software effort; a 10s AUTO paying 1x is not."
+
+# ================================================================ limitations
+limitations:
+- "Archetype MEMBERSHIP is expert-assigned, not measured. TBA publishes scores, not designs; no public dataset labels a robot as `fixed-zone shooter`. Every mechanism_count, mfg_floor, sensing and marginal_cost_usd value is S."
+- "`outcome` is a season-level generalisation. `event-winning` means the archetype was routinely present on winning alliances, not that every instance won."
+- "COPR is not contribution. The below-median-OPR base rate cannot distinguish a deliberate support robot from a broken one, so it is an UPPER bound on how often a deliberate support archetype was on a winning alliance."
+- "2022 has no scraped TBA data in this repo (research/predictive_tba/ starts at 2023). RAPID REACT records rest on the manual and on pattern, with no local outcome statistics."
+- "CRESCENDO point values are labelled C* -- the pdftotext extraction of Table 6-2 misaligns its columns; values were reconciled against the published table layout. Re-verify against the PDF before quoting externally."
+- "Cost bands are 2026 USD, exclude drivetrain and control system, and exclude the Systemcore changeover (2027 pricing unknown as of 2026-08-22). Treat every band as +/-40%."
+- "No record in this file describes BIOCORE. The seven biocore_answer fields are null by design and are the kickoff-day deliverable."
+- "All programming_difficulty values are pre-Systemcore. Apply systemcore_adjustment before use; that adjustment is itself S."

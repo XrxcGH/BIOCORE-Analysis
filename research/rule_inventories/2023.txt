@@ -1,0 +1,177 @@
+# FRC 2023 CHARGEDUP -- 176 rules (2023_CHARGEDUP_GameManual.pdf)
+G101   p52   [TU-CHANGED] Dangerous ROBOTS: not allowed.
+G102   p52   [TU-CHANGED] ROBOTS, stay on the FIELD during the MATCH.
+G103   p52   [TU-CHANGED] Keep your BUMPERS low.
+G104   p52   [TU-CHANGED] Keep your BUMPERS together.
+G105   p52   [TU-CHANGED] Keep it together.
+G106   p52   Tall ROBOTS not allowed.
+G107   p53   Don’t overextend yourself.
+G108   p54   Opponent’s zone, no extension.
+G109   p54   Don’t extend in multiple directions
+G201   p56   [TU-CHANGED] Don’t expect to gain by doing others harm.
+G202   p56   [TU-CHANGED] There’s a 5-count on PINS.
+G203   p56   [TU-CHANGED] Don’t collude with your partners to shut down major parts of game play.
+G204   p57   [TU-CHANGED] Stay out of other ROBOTS.
+G205   p57   [TU-CHANGED] This isn’t combat robotics.
+G206   p58   [TU-CHANGED] Don’t tip or entangle.
+G207   p58   Right of way.
+G208   p59   Don’t climb on each other unless in the COMMUNITY.
+G209   p59   During the ENDGAME, don’t touch ROBOTS touching their CHARGE STATION.
+G301   p60   Be careful what you interact with.
+G302   p60   Stay on your side before TELEOP.
+G303   p60   Do not interfere with opponent GAME PIECES before TELEOP.
+G304   p60   Don’t mess with the opponent’s CHARGE STATION.
+G305   p61   Don’t trick the sensors.
+G306   p61   Don’t jam the CHARGE STATION.
+G401   p61   [TU-CHANGED] Keep GAME PIECES in bounds.
+G402   p61   [TU-CHANGED] GAME PIECES: use as directed.
+G403   p61   1 GAME PIECE at a time (except in LOADING ZONE and COMMUNITY).
+G404   p62   Launching GAME PIECES is only okay in the COMMUNITY.
+G405   p62   Don’t mess with the opponents’ GRIDS.
+H101   p63   [TU-CHANGED] Be a good person.
+H102   p63   [TU-CHANGED] Enter only 1 ROBOT.
+H103   p64   [TU-CHANGED] Humans, stay off the FIELD until green.
+H104   p64   [TU-CHANGED] Never step over the guardrail.
+H105   p64   [TU-CHANGED] Asking other teams to throw a MATCH – not cool.
+H106   p65   [TU-CHANGED] Letting someone coerce you in to throwing a MATCH – also not cool.
+H107   p65   [TU-CHANGED] Throwing your own MATCH is bad
+H108   p65   [TU-CHANGED] Don’t abuse ARENA access.
+H109   p66   [TU-CHANGED] Be careful what you interact with.
+H110   p66   Don’t mess with GAME PIECES
+H111   p66   Don't violate rules for Ranking Points.
+H201   p66   [TU-CHANGED] Egregious or exceptional violations.
+H202   p67   [TU-CHANGED] 1 STUDENT, 1 Head REFEREE.
+H301   p67   [TU-CHANGED] Be prompt.
+H302   p68   [TU-CHANGED] Teams may not enable their ROBOTS on the FIELD.
+H303   p69   [TU-CHANGED] You can’t bring/use anything you want.
+H304   p70   [TU-CHANGED] By invitation only.
+H305   p70   [TU-CHANGED] Show up to your MATCHES.
+H306   p70   [TU-CHANGED] Identify yourself.
+H307   p70   [TU-CHANGED] Plug in to/be in your DRIVER STATION.
+H308   p71   [TU-CHANGED] Don’t bang on the glass.
+H309   p71   Know your ROBOT setup.
+H310   p71   Know your DRIVETEAM positions
+H311   p71   Leave the GAME PIECES alone.
+H312   p72   Leave promptly.
+H401   p72   [TU-CHANGED] Behind the lines.
+H402   p72   [TU-CHANGED] Disconnect or set down controllers.
+H403   p72   [TU-CHANGED] Let the ROBOT do its thing.
+H501   p72   [TU-CHANGED] COACHES and other teams: hands off the controls.
+H502   p72   [TU-CHANGED] No wandering.
+H503   p73   [TU-CHANGED] COACHES, GAME PIECES are off limits.
+H504   p73   GAME PIECES through PORTALS only.
+H505   p73   DRIVE TEAMS, watch your reach.
+H506   p73   DRIVE TEAMS, avoid ROBOTS.
+R101   p76   [TU-CHANGED] FRAME PERIMETER must be fixed.
+R102   p77   [TU-CHANGED] STARTING CONFIGURATION – no overhang.
+R103   p77   [TU-CHANGED] ROBOT weight limit.
+R104   p77   STARTING CONFIGURATION – max size.
+R105   p78   ROBOT extension limit.
+R201   p78   [TU-CHANGED] No digging into carpet.
+R202   p78   [TU-CHANGED] No exposed sharp edges.
+R203   p78   [TU-CHANGED] General safety.
+R204   p79   [TU-CHANGED] GAME PIECES stay with the FIELD.
+R205   p79   [TU-CHANGED] Don’t contaminate the FIELD.
+R206   p79   [TU-CHANGED] Don’t damage GAME PIECES.
+R301   p79   [TU-CHANGED] Individual item cost limit.
+R302   p81   [TU-CHANGED] Custom parts, generally from this year only.
+R303   p82   [TU-CHANGED] Create new designs and software, unless they’re public.
+R304   p83   [TU-CHANGED] During an event, only work during pit hours.
+R401   p83   [TU-CHANGED] BUMPERS should protect all corners.
+R402   p85   [TU-CHANGED] BUMPERS must stay low.
+R403   p85   [TU-CHANGED] BUMPERS shouldn’t move.
+R404   p85   [TU-CHANGED] BUMPERS must come off.
+R405   p85   [TU-CHANGED] BUMPERS indicate your ALLIANCE.
+R406   p86   [TU-CHANGED] Team number on BUMPERS.
+R407   p86   [TU-CHANGED] BUMPER weight limit.
+R408   p86   [TU-CHANGED] BUMPER construction.
+R409   p89   [TU-CHANGED] Fill BUMPER corners.
+R410   p89   [TU-CHANGED] BUMPERS must be supported.
+R501   p90   [TU-CHANGED] Allowable motors.
+R502   p92   [TU-CHANGED] Don’t modify motors (mostly).
+R503   p92   [TU-CHANGED] Power (most) actuators offof approved devices.
+R504   p93   [TU-CHANGED] Don’t overload controllers.
+R505   p94   [TU-CHANGED] Control servos safely.
+R601   p95   [TU-CHANGED] Battery limit – everyone has the same power.
+R602   p95   [TU-CHANGED] Other batteries for cameras or computers only.
+R603   p95   [TU-CHANGED] Charge batteries with safe connectors.
+R604   p95   [TU-CHANGED] Charge batteries at a safe rate.
+R605   p95   [TU-CHANGED] Batteries are not ballast.
+R606   p96   [TU-CHANGED] Secure the battery.
+R607   p96   [TU-CHANGED] Insulate battery connections.
+R608   p96   [TU-CHANGED] Limit non-battery energy.
+R609   p96   [TU-CHANGED] Connect main power safely.
+R610   p97   [TU-CHANGED] 1 breaker per circuit.
+R611   p97   [TU-CHANGED] The ROBOT frame is not a wire.
+R612   p97   [TU-CHANGED] Must be able to turn ROBOT on and off safely.
+R613   p97   [TU-CHANGED] Electrical system must be inspectable.
+R614   p97   [TU-CHANGED] No high voltage allowed.
+R615   p97   [TU-CHANGED] Power roboRIO as specified.
+R616   p98   [TU-CHANGED] Power radio as specified – Part 1.
+R617   p99   [TU-CHANGED] Power radio as specified – Part 2.
+R618   p100  [TU-CHANGED] Use PDP/PDH terminals as designed.
+R619   p100  [TU-CHANGED] Only use specified circuit breakers in PDP/PDH.
+R620   p100  [TU-CHANGED] Only use specified fuses in PDP/PDH.
+R621   p100  [TU-CHANGED] Protect circuits with appropriate circuit breakers.
+R622   p101  [TU-CHANGED] Use appropriately sized wire.
+R623   p102  [TU-CHANGED] Use only appropriate connectors.
+R624   p102  [TU-CHANGED] Use specified wire colors (mostly).
+R625   p102  [TU-CHANGED] Don’t modify critical power paths.
+R701   p103  [TU-CHANGED] Control the ROBOT with a roboRIO.
+R702   p103  [TU-CHANGED] Communicate with the ROBOT with the specified radio.
+R703   p103  [TU-CHANGED] Use specific Ethernet port for roboRIO.
+R704   p103  [TU-CHANGED] Only use allowed ports and bandwidth to communicate with the ROBOT.
+R705   p104  [TU-CHANGED] Configure devices for your team number.
+R706   p104  [TU-CHANGED] Don’t bypass the ARENA network.
+R707   p104  [TU-CHANGED] No other wireless allowed.
+R708   p104  [TU-CHANGED] Wireless bridge must be visible.
+R709   p104  [TU-CHANGED] ROBOTS must have a signal light.
+R710   p105  [TU-CHANGED] Only specified modifications to control system devices permitted.
+R711   p106  [TU-CHANGED] Don’t connect motor outputs to roboRIO.
+R712   p106  [TU-CHANGED] Control PWM controllers from the roboRIO.
+R713   p106  [TU-CHANGED] Only approved MXP devices can control actuators.
+R714   p106  [TU-CHANGED] Control CAN motor controllers from the roboRIO.
+R715   p107  [TU-CHANGED] Control PCM/PH(S) from roboRIO.
+R716   p107  [TU-CHANGED] Connect the PDP/PDH to the roboRIO CAN bus.
+R717   p107  [TU-CHANGED] Don’t alter the CAN bus.
+R718   p107  [TU-CHANGED] USB to CAN adapter permitted.
+R801   p107  [TU-CHANGED] Only use explicitly permitted pneumatic parts.
+R802   p107  [TU-CHANGED] No custom pneumatics and meet minimum pressure ratings.
+R803   p107  [TU-CHANGED] Don’t modify pneumatics.
+R804   p108  [TU-CHANGED] Only use specific pneumatic devices.
+R805   p108  [TU-CHANGED] If using pneumatics, these parts are required.
+R806   p109  [TU-CHANGED] Compressed air from ROBOT compressor only.
+R807   p109  [TU-CHANGED] Air storage pressure limit.
+R808   p109  [TU-CHANGED] Working air pressure limit.
+R809   p110  [TU-CHANGED] Limited devices at high pressure.
+R810   p110  [TU-CHANGED] Pressure gauges must be visible.
+R811   p110  [TU-CHANGED] Relief valve requirements.
+R812   p110  [TU-CHANGED] Pressure switch requirements.
+R813   p110  [TU-CHANGED] Vent plug requirements.
+R814   p110  [TU-CHANGED] Don’t connect solenoid outputs together.
+R901   p110  [TU-CHANGED] Use the specified Driver Station Software.
+R902   p111  [TU-CHANGED] The OPERATOR CONSOLE must have a visible display.
+R903   p111  [TU-CHANGED] Connect FMS Ethernet directly to the OPERATOR CONSOLE.
+R904   p111  [TU-CHANGED] OPERATOR CONSOLE physical requirements.
+R905   p111  [TU-CHANGED] FIELD wireless only.
+R906   p111  [TU-CHANGED] No unsafe OPERATOR CONSOLES.
+I101   p112  [TU-CHANGED] It’s your team’s ROBOT.
+I102   p113  [TU-CHANGED] Get inspected before playing a Qualification/Playoff MATCH.
+I103   p113  [TU-CHANGED] Bring it all to inspection.
+I104   p113  [TU-CHANGED] Unless the change is listed below, any change to a ROBOT must get re-inspected.
+I105   p114  [TU-CHANGED] Don’t exploit re-inspection.
+I106   p114  [TU-CHANGED] ROBOTS are off for inspection (mostly).
+I107   p115  [TU-CHANGED] No STUDENT, no inspection.
+T301   p119  [TU-CHANGED] Replays will be the same.
+T401   p119  [TU-CHANGED] Freeze, ROBOT.
+T701   p122  [TU-CHANGED] Send a STUDENT representative.
+T702   p122  [TU-CHANGED] Declining teams can’t be picked.
+T703   p125  [TU-CHANGED] No BACKUP TEAM for replayed MATCHES
+T704   p125  [TU-CHANGED] No BACKUP TEAMS for 1st match.
+T705   p126  [TU-CHANGED] BACKUP TEAMS play when called.
+T706   p126  [TU-CHANGED] BACKUP TEAMS due 2 minutes before the MATCH start time.
+T707   p126  [TU-CHANGED] Be there to be a BACKUP TEAM.
+T708   p126  [TU-CHANGED] Send a BACKUP TEAM Representative
+T709   p127  [TU-CHANGED] LINEUPS due 2 minutes before the MATCH.
+T710   p127  [TU-CHANGED] For replays, no changing LINEUPS (mostly).
+T901   p135  [TU-CHANGED] Wear your buttons.

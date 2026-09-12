@@ -1,0 +1,7 @@
+E118	EVERGREEN	*Enter only 1 ROBOT.
+E510	EVERGREEN	*No automated tools overnight
+E511	EVERGREEN	*Pit Power Limit.
+Q102	EVERGREEN	Conversations must be civil.
+R106	GAMESPEC	Horizontal extension – one direction at a time.
+R107	GAMESPEC	ROBOT vertical extension limit.
+R108	GAMESPEC	ROBOT extension floor interaction

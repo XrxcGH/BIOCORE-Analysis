@@ -1,0 +1,30 @@
+# geom_pass_2026_shooter.yaml -- the same team, the same budget, a robot that can actually score.
+#
+# Companion to geom_fail_2026_hopper.yaml. Identical chassis, identical intake, identical 72 in
+# aperture. The ONLY change is the delivery mechanism: a hopper (dumps over its own 30 in rim)
+# becomes a single flywheel shooter (ballistic, apex set by exit velocity, not by robot height).
+# This is corpus R2 -- "the highest-value small-team play in REBUILT" (03_ARCHETYPE_CORPUS 2.3).
+#
+# Keep this file next to the FAIL case: together they are the GEOMETRY (REACH) regression pair.
+name: "GEOM PASS -- KOP chassis + under-bumper intake + fixed flywheel shooter vs a 72 in aperture"
+notes: >
+  Fixed-zone bulk shooter. Reaches the 72 in HUB lip ballistically from a surveyed floor
+  position, so no elevator, no arm and no second workstream of elevation software.
+  NOTE the other gate: single_flywheel's tooling_floor is mill_lathe, above this shop's
+  bandsaw+drill floor, so TOOLING FLOOR fails and the builder points at the $400 / +2 wk
+  outsourcing line. That failure is real, pre-existing and unrelated to reach -- it is the
+  price of the only mechanism class in the catalog that clears 72 in from the floor. Compare
+  geom_pass_2026_lift.yaml, which clears the same aperture inside the shop's tooling floor.
+target:
+  name: "HUB upper opening (2026 REBUILT)"
+  aperture_height_in: 72
+  aperture_range_in: 96       # shoot from a surveyed stand-off, not in contact
+  source: "manual s5.4 via reference/03_ARCHETYPE_CORPUS.md 2.4 item 4 [C]"
+mechanisms:
+  - kop_chassis
+  - bumpers_frame
+  - baseline_electrical_package
+  - id: under_bumper_intake
+    note: "floor acquisition below the bumper line -- unchanged from the FAIL case"
+  - id: single_flywheel
+    note: "the mechanism that reaches: ballistic delivery to the 72 in lip"

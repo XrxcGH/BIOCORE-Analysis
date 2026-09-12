@@ -1,0 +1,13 @@
+id	page	class	headline
+G403	64	GAMESPEC	Limited AUTO opponent interaction.
+G407	65	GAMESPEC	Only score while in your ALLIANCE ZONE.
+G408	65	GAMESPEC	Don’t catch FUEL
+G413	67	GAMESPEC	Expansion limits.
+G414	69	GAMESPEC	Don’t Climb on each other.
+G420	73	GAMESPEC	TOWER protection.
+G427	74	GAMESPEC	The OUTPOST has a storage limit.
+R104	79	GAMESPEC	STARTING CONFIGURATION – max size.
+R105	79	GAMESPEC	ROBOT horizontal extension limit.
+R106	79	GAMESPEC	Horizontal extension – one direction at a time.
+R107	81	GAMESPEC	ROBOT vertical extension limit.
+R108	81	GAMESPEC	ROBOT extension floor interaction

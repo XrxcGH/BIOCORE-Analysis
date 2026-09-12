@@ -1,0 +1,6 @@
+season,minor_foul,major_foul,typical_alliance_score,major_foul_pct_of_score,pin_seconds,n_protected_zones,protected_zones,one_defender_rule,n_regardless_of_who_initiates,auto_gated_rp,scoring_rows,w_defense,w_auto,w_scope
+2022,4,8,,,5,1,HANGAR ZONE,False,2,NONE,10,37,40,95
+2023,5,12,78.9,15.2,5,0,,False,2,NONE,,35,40,85
+2024,2,5,45.2,11.1,5,3,PODIUM|SOURCE/AMP ZONE|STAGE,False,4,NONE,8,11,40,95
+2025,2,6,86.4,6.9,3,2,CAGE|ZONE,True,3,AUTO RP,12,9,65,95
+2026,5,15,143.3,10.5,3,1,TOWER,False,1,NONE,7,17,40,85

@@ -1,0 +1,6 @@
+season,short,minor_foul,major_foul,typical_alliance_score,major_foul_pct_of_score,pin_seconds,protected_zones,n_teleop_wide_protections,n_endgame_only_protections,one_defender_rule,possession_limit,auto_gated_rp,scoring_rows,w_defense,w_auto,w_scope
+2022,RAPD,4,8,,,5,HANGAR ZONE[endgame-only],0,1,False,2,NONE,10,41,40,95
+2023,CHRG,5,12,78.9,15.2,5,,0,0,False,1,NONE,,35,40,85
+2024,CRES,2,5,45.2,11.1,5,PODIUM[teleop-wide]|SOURCE/AMP ZONE[teleop-wide]|STAGE[endgame-only],2,1,False,1,NONE,16,16,40,95
+2025,REEF,2,6,86.4,6.9,3,CAGE[endgame-only]|ZONE[teleop-wide],1,1,True,1,AUTO RP,14,1,65,95
+2026,REB,5,15,143.3,10.5,3,TOWER[endgame-only],0,1,False,NONE,NONE,9,26,40,95

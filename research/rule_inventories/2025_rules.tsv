@@ -1,0 +1,229 @@
+rule_id	prefix	num	page	stmt_chars	viol_chars	inset_chars	stmt_sha1	headline
+C301	C	301	147	2154	120	490	70b00e616813	C301*Wear your buttons
+E101	E	101	149	938	0	107	1ab24ae681c1	Personal safety comes first
+E102	E	102	149	183	0	1498	1f22dfb53307	Be nice
+E103	E	103	150	106	0	0	586223b4f3f1	Children with adults, please
+E104	E	104	150	134	0	0	bf3261134797	Respect the venue
+E105	E	105	150	168	121	262	2341427fb4b7	Teams must check in
+E106	E	106	150	332	0	0	a9f57011293a	Some event resources for event teams only
+E107	E	107	150	447	0	0	dc21ca22aa3c	Work in designated areas only
+E108	E	108	151	296	0	0	bfd494406d26	Some things don’t belong at events
+E109	E	109	151	251	0	0	049492c7a99a	Don’t arrange for additional utilities
+E110	E	110	151	196	0	0	8eef06f98356	Don’t sell stuff
+E111	E	111	151	74	0	0	be3df8118afb	Don’t give out food
+E112	E	112	151	123	0	0	6e37637372da	Make FIRST loud, but with restrictions
+E113	E	113	151	435	0	361	e0732603af51	Hang banners with care
+E114	E	114	151	94	0	224	6e7087ddd6d4	Limit flag and flagpole size
+E115	E	115	151	225	0	0	87bfe438dc38	No firearms
+E116	E	116	152	165	71	0	0c833eb748f9	Only COTS batteries allowed
+E117	E	117	152	1151	0	638	6fb87a37cec5	Enter only 1 ROBOT
+E201	E	201	152	169	0	292	c812fdcb01c6	The ROBOT goes alone to off-site machine shops
+E301	E	301	152	158	0	247	7524c692abf4	No wireless communication
+E302	E	302	153	282	111	178	55f8c07d53cb	Don’t interfere with wireless networks
+E303	E	303	153	797	0	0	992232abf96d	Tethered operation outside FIELDS/Practice Fields
+E401	E	401	153	406	49	408	465d53361e3a	Load in during Load-In
+E402	E	402	153	151	51	0	f5da30df2a61	Load-In person limit is 5
+E403	E	403	153	279	53	0	abbf07fbf619	Load-In Restrictions
+E404	E	404	154	138	0	0	29b368f5e93f	Pit must be left in a safe state
+E405	E	405	154	1028	53	225	73fd9d8fc5fa	Once done, head out
+E501	E	501	154	101	0	0	1fb77c5b30b8	Pits are unavailable if closed
+E502	E	502	154	246	0	0	2d3c62aa7122	Stay in your pit
+E503	E	503	154	46	0	0	76d53c645919	Keep aisles clear
+E504	E	504	154	74	0	126	470edd3fb5f0	No sparks
+E505	E	505	154	60	229	91	36328acc2b12	Nothing too big
+E506	E	506	154	54	224	0	2c2e02164c0b	No brazing or welding
+E507	E	507	155	88	155	0	d9266cd9c0fd	Solder with specific tools only
+E508	E	508	155	106	163	0	a90af5c7e8bb	Structures must be safe
+E509	E	509	155	2415	163	0	403c6581e8f6	Secure team identification assets
+E601	E	601	155	150	0	0	6433aafeaa41	Inspection for Practice Fields
+E602	E	602	155	167	0	293	eb92c8a38bc9	Practice only when/where permitted
+E603	E	603	156	126	0	399	e170819a1528	Practice Field attendance is limited
+E604	E	604	156	192	0	59	32394d4ccb4c	Give ROBOTS space
+E605	E	605	156	137	0	0	66ff10b8714e	Be ready to DISABLE
+E606	E	606	156	528	95	0	a824c3c81710	Be safe
+E701	E	701	156	109	0	0	0667615c8587	Carts must be safe and easy to use
+E702	E	702	156	76	0	0	9850c08940ea	Carts shouldn’t be too big
+E703	E	703	156	119	0	0	3d5a53416ea1	Carts can’t park anywhere
+E704	E	704	156	226	0	0	096d80ba3ddb	No noisy carts
+E705	E	705	156	67	0	0	87ccd00560e6	No motor driven carts
+E706	E	706	156	985	0	0	d656f835cb22	Small ROBOT carts are allowed on the FIELD
+E801	E	801	157	276	0	0	5ac9b2037ccd	If in the pits during Ceremonies, shhhhhh
+E802	E	802	157	134	0	0	215013eceb32	Pit person limit during Ceremonies is 5
+E803	E	803	157	468	0	0	6b092b415273	Be respectful during anthems
+E901	E	901	157	107	0	427	d471b0137764	No saving seats
+E902	E	902	157	10344	0	0	0b9037072e13	Don’t throw items from the stands
+G101	G	101	57	213	81	359	e40d907fcd0d	G101*Humans, stay off the FIELD until green
+G102	G	102	57	102	81	716	5376801895f1	G102*Never step over the guardrail
+G103	G	103	57	293	81	0	c2c6ed638977	G103*Be careful what you interact with
+G104	G	104	57	279	81	685	9802583bdce5	G104*Teams may not enable their ROBOTS on the FIELD
+G201	G	201	58	150	81	868	9935c274dd7b	G201*Be a good person
+G202	G	202	58	103	81	0	7193887b14b9	G202*Don’t bang on the glass
+G203	G	203	58	321	78	883	42ab65ebc616	G203*Asking other teams to throw a MATCH – not cool
+G204	G	204	59	351	78	863	f02bbf4102a0	G204*Letting someone coerce you into throwing a MATCH – also not cool
+G205	G	205	59	189	78	420	f8280b5c6972	G205*Throwing your own MATCH is bad
+G206	G	206	59	165	78	178	9bd503ceebcb	G206*Don't violate rules for RPs
+G207	G	207	59	359	81	435	e9a7d34f5a94	G207*Don’t abuse ARENA access
+G208	G	208	60	207	24	127	673e5f85e575	G208*Show up to your MATCHES
+G209	G	209	60	97	20	0	6a5d14c8c710	G209*Keep your ROBOT together
+G210	G	210	61	343	47	1165	a8df9ea2c6b4	G210*Don’t expect to gain by doing others harm
+G211	G	211	61	469	30	1574	e4e3624b697b	G211*Egregious or exceptional violations
+G212	G	212	62	156	82	0	2bd1e464db1c	G212*All teams can play
+G301	G	301	62	347	767	3168	4bf2477f4c5e	G301*Be prompt
+G302	G	302	63	1620	131	616	43b678fe1aba	G302*You can’t bring/use anything you want
+G303	G	303	64	1049	280	265	e07ce53e7b22	G303*Start your ROBOTS
+G401	G	401	65	328	66	451	a8b94bbfca34	G401*Behind the lines
+G402	G	402	65	293	37	0	f379eb4158eb	G402*Let the ROBOT do its thing
+G403	G	403	65	343	96	0	f12bd72ac9d0	G403Limited AUTO opponent interaction
+G404	G	404	65	84	22	0	746c6c1331ab	G404No throwing in AUTO
+G405	G	405	65	115	22	0	1598d41f460b	G405No opponents CAGES in AUTO
+G406	G	406	66	175	22	321	70ef1cf5d5d7	G406*ROBOTS: use SCORING ELEMENTS as directed
+G407	G	407	66	212	47	0	127979a8d479	G407*Keep SCORING ELEMENTS in bounds
+G408	G	408	66	98	366	235	21a799c99c2d	G408*Don’t abuse SCORING ELEMENTS
+G409	G	409	66	502	79	750	97a86c4f8bc6	G4091 of each at a time
+G410	G	410	67	82	92	0	0d30540c17fb	G410No de-scoring
+G411	G	411	67	99	38	0	0d50d08273ec	G411Don’t put ALGAE on their REEF
+G412	G	412	67	137	22	722	74382fe14478	G412Only throw CORAL if in your REEF ZONE
+G413	G	413	67	572	20	425	266db3933e86	G413*ROBOTS must be safe
+G414	G	414	68	74	22	0	cab2315d33e6	G414*Keep your BUMPERS low
+G415	G	415	68	265	142	1059	677e8a556d10	G415Expansion limits
+G416	G	416	69	66	343	0	993b283b87fe	G416Don’t damage the FIELD
+G417	G	417	69	305	304	0	028f40a35ec7	G417Watch your FIELD interaction
+G418	G	418	69	104	93	0	dc3c3635573a	G418An Opponent’s CAGES are off-limits in TELEOP
+G419	G	419	69	125	66	882	14b0116f340b	G419ANCHORS are off-limits
+G420	G	420	69	111	79	0	cffe505b3b15	G420NET and contents are off-limits
+G421	G	421	70	425	113	0	f22368de88c3	G4211 defender at a time
+G422	G	422	70	220	22	161	a5b53a009d17	G422*Stay out of other ROBOTS
+G423	G	423	70	509	109	1741	1e1b7a1acbe4	G423*This isn’t combat robotics
+G424	G	424	71	109	123	899	eb9ee518a420	G424*Don’t tip or entangle
+G425	G	425	71	916	113	98	29176ace8563	G425*There’s a 3-count on PINS
+G426	G	426	72	203	113	468	21f0db2a098f	G426*Don’t collude with your partners to shut down major parts of game play
+G427	G	427	72	217	22	113	30a580b72c4c	G427ZONE protection
+G428	G	428	72	223	71	0	093f56fed3c2	G428CAGE protection
+G429	G	429	72	663	21	706	e83d7daeffc1	G429*No wandering
+G430	G	430	73	207	58	127	09af90ee30b8	G430*COACHES and other teams: hands off the controls
+G431	G	431	73	86	22	0	975a651877f6	G431*DRIVE TEAMS, watch your reach
+G432	G	432	73	187	22	101	950fcae7f26e	G432*Humans: use SCORING ELEMENTS as directed
+G433	G	433	73	282	22	0	00713b6d8af7	G433*SCORING ELEMENT delivery
+G434	G	434	73	114	22	0	622ddaab4b28	G434*COACHES, SCORING ELEMENTS are off limits
+G435	G	435	73	386	43	0	7a36b304e711	G435The PROCESSOR AREA has a storage limit
+G501	G	501	74	5541	94	3780	57b4861eb098	G501*Leave promptly
+I101	I	101	115	380	0	1410	97b97ad41878	It’s your team’s ROBOT
+I102	I	102	116	231	206	0	4a7c82d684c0	Get inspected before playing a Qualification/Playoff MATCH
+I103	I	103	116	553	0	0	3c9d8c8cbd47	Bring it all to inspection
+I104	I	104	116	1106	0	0	25f6debd1b66	Unless the change is listed below, any change to a ROBOT must get re-inspected
+I105	I	105	117	121	0	1961	72f0a300c179	Don’t exploit re-inspection
+I106	I	106	117	855	0	84	2fe726e74b6b	ROBOTS are off for inspection (mostly)
+I107	I	107	118	2246	0	1510	0e25ab5bc4cd	No STUDENT, no inspection
+R101	R	101	77	420	0	521	cf294bb91acf	R101*ROBOT PERIMETER must be fixed
+R102	R	102	78	340	0	532	fb2c75d3eb5a	R102*STARTING CONFIGURATION – no overhang
+R103	R	103	78	677	0	0	b73d420f3388	R103*ROBOT weight limit
+R104	R	104	78	186	0	299	32af3e74d2a9	R104STARTING CONFIGURATION – max size
+R105	R	105	78	210	0	268	7bd1b6633b2c	R105ROBOT extension limit
+R201	R	201	79	350	0	0	ed4cc730bcb2	R201*No digging into carpet
+R202	R	202	79	174	0	0	debc0bfe811a	R202*No exposed sharp edges
+R203	R	203	79	163	0	1739	5e1e20e7311d	R203*General safety
+R204	R	204	80	168	0	213	eff9444c88a6	R204*Leave SCORING ELEMENTS at the FIELD
+R205	R	205	80	157	0	0	53dd50967085	R205*Don’t contaminate the FIELD
+R206	R	206	80	204	0	235	679d86c4ebcb	R206*Don’t damage SCORING ELEMENTS
+R301	R	301	80	272	0	4859	6864d091e1b7	R301*Individual item cost limit
+R302	R	302	82	122	0	760	ef35890feb0d	R302*MAJOR MECHANISM, from this year only
+R303	R	303	82	246	0	1985	d053140b6733	R303*Create new designs and software, unless they’re public
+R304	R	304	83	1484	0	1048	0344d2785c5b	R304*During an event, only work during pit hours
+R401	R	401	84	257	0	0	8a9abfa0e337	R401*BUMPERS all around
+R402	R	402	84	1726	0	443	3b3641deca2a	R402*BUMPER construction
+R403	R	403	86	104	0	0	202d925b1805	R403*BUMPER extension limit
+R404	R	404	86	364	0	158	4c3f0be1f63f	R404*BUMPERS must be soft
+R405	R	405	86	249	0	638	94053ce8f80c	R405*BUMPERS interact with BUMPERS
+R406	R	406	87	271	0	276	f68ab225a011	R406*Fill BUMPER corners
+R407	R	407	88	101	0	307	a8691d25480c	R407*BUMPERS shouldn’t be wedges
+R408	R	408	88	131	0	0	bec5a5d6dfdf	R408*Weight limit with BUMPERS
+R409	R	409	88	94	0	0	4492b6b54d0c	R409*BUMPERS shouldn’t move
+R410	R	410	88	120	0	102	e4b8c0692f32	R410*BUMPERS must come off
+R411	R	411	89	720	0	0	e1a928a767f8	R411*BUMPERS indicate your ALLIANCE
+R412	R	412	89	657	0	875	f8d054f40e39	R412*Team number on BUMPERS
+R501	R	501	89	2303	0	1335	1960c4e6886f	R501*Allowable motors
+R502	R	502	91	289	0	485	b0393132133b	R502*Only 4 propulsion motors
+R503	R	503	92	1339	0	177	0cfa0400c3ed	R503*Don’t modify motors (mostly)
+R504	R	504	92	1995	0	147	b713f4efd36e	R504*Power (most) actuators off of approved devices
+R505	R	505	93	1171	0	0	722c5e3ecec3	R505*Don’t overload controllers
+R506	R	506	94	441	0	0	37f222e77a6d	R506*Control servos safely
+R601	R	601	94	596	0	857	cee4edf8474d	R601*Battery limit – everyone has the same power
+R602	R	602	95	659	0	153	737c07fd44d2	R602*Other batteries for cameras or computers only
+R603	R	603	95	155	0	0	d97c8079ab52	R603*Charge batteries with safe connectors
+R604	R	604	95	155	0	0	99ddbc3c6e4d	R604*Charge batteries at a safe rate
+R605	R	605	95	165	0	84	a4cc5a585adb	R605*Batteries are not ballast
+R606	R	606	95	201	0	0	43c0fd768dd8	R606*Secure the battery
+R607	R	607	95	200	0	0	bc8af3656587	R607*Insulate battery connections
+R608	R	608	95	406	0	0	a17fa9a560f6	R608*Limit non-battery energy
+R609	R	609	96	914	0	341	f869208411ff	R609*Connect main power safely
+R610	R	610	96	242	0	0	6bb90935cdb7	R610*1 breaker/fuse per circuit
+R611	R	611	96	184	0	595	f609c8d50c1e	R611*The ROBOT frame is not a wire
+R612	R	612	97	205	0	532	5e6a57c7db47	R612*Must be able to turn ROBOT on and off safely
+R613	R	613	97	139	0	189	8be676872407	R613*Electrical system must be inspectable
+R614	R	614	97	410	0	0	3779a187ee71	R614*No high voltage allowed
+R615	R	615	97	581	0	0	b533cb73a6b8	R615*Power roboRIO as specified
+R616	R	616	98	622	0	440	65c926f31385	R616*Power radio as specified – Part 1
+R617	R	617	99	930	0	81	ac6d4e6c8ac6	R617*Power radio as specified – Part 2
+R618	R	618	100	117	0	355	ffdb1a142faf	R618*Use PDP/PDP2
+R619	R	619	100	419	0	0	3666413f05d1	R619*Only use specified circuit breakers in PDP/PDP2
+R620	R	620	100	461	0	126	23d7ef529d27	R620*Only use specified fuses in PDP/PDP2
+R621	R	621	100	971	0	227	50d79d72d0a7	R621*Protect circuits with appropriate circuit breakers
+R622	R	622	101	1597	0	297	ce93df98deff	R622*Use appropriately sized wire
+R623	R	623	102	267	0	54	14366239e427	R623*Use only appropriate connectors
+R624	R	624	102	631	0	0	fc164b5c9387	R624*Use specified wire colors (mostly)
+R625	R	625	103	526	0	503	64b08a1d6f53	R625*Don’t modify critical power paths
+R626	R	626	103	465	0	0	b9ff5a0d9b5e	R626*VH-109 PoE passthrough
+R701	R	701	103	236	0	206	46689f95fde8	R701*Control the ROBOT with a roboRIO
+R702	R	702	103	418	0	0	7ec26ffeef2e	R702*Communicate with the ROBOT with the specified radio
+R703	R	703	103	680	0	442	737657dd49fd	R703*Use specific Ethernet port for roboRIO
+R704	R	704	104	1099	0	401	d87ddcb8a2de	R704*Only use allowed ports and bandwidth to communicate with the ROBOT
+R705	R	705	105	254	0	0	3cebc7945ac7	R705*Configure devices for your team number
+R706	R	706	105	153	0	0	3ae1bd1d2705	R706*Don’t bypass the ARENA network
+R707	R	707	105	302	0	287	8bf85a96614c	R707*Limited wireless allowed
+R708	R	708	105	146	0	133	8d9d04f84bc8	R708*Wireless bridge must be visible
+R709	R	709	105	556	0	59	cbf11e4a5922	R709*ROBOTS must have a signal light
+R710	R	710	106	2421	0	589	b2c159a3b447	R710*Only specified modifications to control system devices permitted
+R711	R	711	107	203	0	0	b5efa67870ed	R711*Don’t connect motor outputs to roboRIO
+R712	R	712	107	529	0	0	a0a4e9bb455d	R712*Control PWM controllers from the roboRIO
+R713	R	713	107	497	0	635	283a08dfe37b	R713*Only approved MXP devices can control actuators
+R714	R	714	107	338	0	482	087799158f0b	R714*Control CAN motor controllers from the roboRIO
+R715	R	715	108	276	0	0	798e419d6dd9	R715*Control PCM, PH, and Servo Hub from roboRIO
+R716	R	716	108	198	0	162	1162e4c60a7e	R716*Don’t alter the CAN bus
+R717	R	717	108	344	0	143	0e584ebec2e1	R717*USB to CAN adapter permitted
+R801	R	801	108	262	0	0	50efade339fd	R801*Only use explicitly permitted pneumatic parts
+R802	R	802	108	341	0	266	557fd81d6be4	R802*No custom pneumatics and meet minimum pressure ratings
+R803	R	803	108	565	0	154	df803fc6a30c	R803*Don’t modify pneumatics
+R804	R	804	109	1542	0	715	3ba383094dd4	R804*Only use specific pneumatic devices
+R805	R	805	109	708	0	0	8e0de89f894d	R805*If using pneumatics, these parts are required
+R806	R	806	110	253	0	389	419d849d8002	R806*Compressed air from ROBOT compressor only
+R807	R	807	110	200	0	0	63df1899d4b4	R807*Air storage pressure limit
+R808	R	808	110	326	0	100	44b502513826	R808*Working air pressure limit
+R809	R	809	111	279	0	172	d6fa43fbe6a9	R809*Limited devices at high pressure
+R810	R	810	111	252	0	0	b46b33932b03	R810*Pressure gauges must be visible
+R811	R	811	111	380	0	91	0c900d691c9c	R811*Relief valve requirements
+R812	R	812	111	875	0	132	fa70a1c36627	R812*Pressure switch requirements
+R813	R	813	111	296	0	0	66dc01f091be	R813*Vent plug requirements
+R814	R	814	111	132	0	166	709808e22596	R814*Don’t connect solenoid outputs together
+R901	R	901	112	351	0	170	08ee05842286	R901*Use the specified Driver Station Software
+R902	R	902	112	411	0	0	a61ffe11681b	R902*The OPERATOR CONSOLE must have a visible display
+R903	R	903	112	552	0	242	c5d42df4c64f	R903*Connect FMS Ethernet directly to the OPERATOR CONSOLE
+R904	R	904	112	380	0	458	26d20e9e85c7	R904*OPERATOR CONSOLE physical requirements
+R905	R	905	112	182	0	284	d12062795a54	R905*FIELD wireless only
+R906	R	906	113	204	0	0	a15f554b241e	R906*No unsafe OPERATOR CONSOLES
+R907	R	907	113	2373	0	163	23f3b36d998a	R907*No AC inverters
+T201	T	201	120	781	64	147	f379e72c4408	T201*Replays will be the same
+T301	T	301	120	6796	112	99	4c162a4ed985	T301*Measurement, not practice
+T601	T	601	123	510	116	104	8281286030bd	T601*Send your STUDENT representatives
+T602	T	602	123	814	43	173	5a8f742d3fce	T602*STUDENTS must outnumber adults
+T603	T	603	124	109	48	0	589e34e139a2	T603*Only STUDENTS may use the mic
+T604	T	604	124	187	71	0	446559fd98be	T604*Only the ALLIANCE CAPTAIN may invite an ALLIANCE
+T605	T	605	124	1929	214	1436	9f2c32e25007	T605*Picks are time limited
+T606	T	606	125	5676	99	714	7094207686ef	T606*Declining teams can’t be picked
+T607	T	607	129	246	33	0	93ec48ba51bb	No BACKUP TEAM for replayed MATCHES
+T608	T	608	129	112	33	0	b3f983773997	No BACKUP TEAMS for 1st MATCH
+T609	T	609	129	135	32	125	787efa9269cd	BACKUP TEAMS play when called
+T610	T	610	129	678	52	137	b706a501113a	T610*BACKUP TEAMS due 2 minutes before the MATCH start time
+T611	T	611	129	166	50	0	d29123de16bf	T611*Be there to be a BACKUP TEAM
+T612	T	612	129	1388	141	175	3d415251704a	T612*Send a BACKUP TEAM Representative
+T613	T	613	130	191	85	980	09925870b772	T613*LINEUPS due 2 minutes before the MATCH
+T614	T	614	130	27556	36	515	d17c92c93c7a	T614*For replays, no changing LINEUPS (mostly)

@@ -1,0 +1,34 @@
+======================================================================================================================
+ BIOCORE ACHIEVABILITY x VALUE  --  ~15 students, 1 mentor, $2,500 discretionary, 599 effective h
+======================================================================================================================
+id   strategy                             ACH   VAL   idx  quadrant        tier        binding constraint              
+----------------------------------------------------------------------------------------------------------------------
+S5   Feeder / support -- herd NEUTRAL    93.1  39.0  68.7  CHEAP INSURANCE T1 GREEN    A4 drive_practice_sensitivity = 
+S6   Deliberately simple and flawless    90.1  40.3  67.7  CHEAP INSURANCE T1 GREEN    A4 drive_practice_sensitivity = 
+S7   ENDGAME anchor, LOW tier -- TOWER   88.3  34.5  64.1  CHEAP INSURANCE T1 GREEN    A6 graceful_degradation = 3/5   
+S10  TRAVERSAL RP specialist -- reliab   67.7  58.6  63.6  BUILD THIS      T1 GREEN    A5 reliability_exposure = 3/5   
+S14  Uncontested-window scorer -- scor   73.4  42.8  59.6  CHEAP INSURANCE T2 STRETCH  A2 parallel_workstream_demand = 
+S4   Pure defense -- zero scoring mech   86.4  25.5  59.0  CHEAP INSURANCE T2 STRETCH  A4 drive_practice_sensitivity = 
+S12  Choke-point denial -- speed-only,   85.5  25.5  58.5  CHEAP INSURANCE T2 STRETCH  A4 drive_practice_sensitivity = 
+S8   ENDGAME anchor, MID tier -- TOWER   65.6  49.7  58.4  CHEAP INSURANCE T2 STRETCH  A4 drive_practice_sensitivity = 
+S3   AUTO-only specialist -- FUEL prel   78.2  33.1  57.9  CHEAP INSURANCE T2 STRETCH  A6 graceful_degradation = 1/5   
+S2   Fixed-position FUEL scorer -- one   73.2  35.5  56.2  CHEAP INSURANCE T2 STRETCH  A2 parallel_workstream_demand = 
+S11  ENERGIZED RP chaser -- FUEL volum   57.5  41.7  50.4  DELETE          T2 STRETCH  A4 drive_practice_sensitivity = 
+S9   ENDGAME anchor, TOP tier -- TOWER   39.6  57.9  47.9  TRAP            T4 GATED    GATE G1 MACHINE: needs 'CNC'; s 
+S1   Full-field FUEL volume cycler (va   31.7  53.1  41.3  DELETE          T4 GATED    GATE G2 WORKSTREAMS: 2 new stre 
+S13  DO-EVERYTHING (recorded so it can    4.9  70.0  34.2  TRAP            T4 GATED    GATE G2 WORKSTREAMS: 4 novel me 
+----------------------------------------------------------------------------------------------------------------------
+ quadrant thresholds: ACH >= 60, VAL >= 55   |   tiers: T1 >= 62, T2 >= 48, T3 < 48, T4 = any hard gate
+ combined index = 0.55*ACH + 0.45*VAL. RANK BY IT, DECIDE BY THE QUADRANT.
+
+            +----------------------------------+----------------------------------+
+            |            VALUE < 55            |            VALUE >= 55           |
+            +----------------------------------+----------------------------------+
+ACH >= 60   |         CHEAP INSURANCE          |            BUILD THIS            |
+            |   S5 S6 S7 S14 S4 S12 S8 S3 S2   |               S10                |
+            +----------------------------------+----------------------------------+
+ACH <  60   |              DELETE              |               TRAP               |
+            |             S11 S1*              |             S9* S13*             |
+            +----------------------------------+----------------------------------+
+  * = a hard gate fired; the quadrant is shown for information, the tier is T4 GATED.
+

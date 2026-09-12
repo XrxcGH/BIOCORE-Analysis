@@ -1,0 +1,26 @@
+# geom_fail_2026_hopper.yaml -- THE 2026 REHEARSAL DEFECT, reconstructed. This input EXISTS TO FAIL.
+#
+# This is the robot the 2026-08 dress rehearsal costed, gate-checked, scheduled and ordered parts
+# for: KOP chassis + under-bumper intake + hopper dump, against the REBUILT HUB whose scoring lip
+# sits 72 in off the carpet (reference/03_ARCHETYPE_CORPUS.md 2.4 item 4, [C] REB 5.4).
+# Every dollar, hour, workstream and motor gate PASSED. The robot could not score.
+#
+# Keep this file. It is the regression test for the GEOMETRY (REACH) gate: if this ever passes
+# again, the gate has been broken or the catalog envelopes have been inflated.
+name: "GEOM FAIL -- KOP chassis + under-bumper intake + hopper dump vs a 72 in aperture"
+notes: >
+  The rehearsal robot. Cheap, buildable, inside every capacity gate, and 42 inches short of the
+  only place the game awards points. Run it next to geom_pass_2026_shooter.yaml.
+target:
+  name: "HUB upper opening (2026 REBUILT)"
+  aperture_height_in: 72
+  aperture_range_in: 0        # 0 = the HUB may be approached at contact range
+  source: "manual s5.4 via reference/03_ARCHETYPE_CORPUS.md 2.4 item 4 [C]"
+mechanisms:
+  - kop_chassis
+  - bumpers_frame
+  - baseline_electrical_package
+  - id: under_bumper_intake
+    note: "floor acquisition below the bumper line"
+  - id: hopper
+    note: "bulk FUEL storage, dumped at the HUB -- this is the mechanism that cannot reach"

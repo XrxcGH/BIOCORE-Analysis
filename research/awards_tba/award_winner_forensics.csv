@@ -1,0 +1,18 @@
+award,n_wins_2022_2026,unique_teams,median_rank_pct,p25_rank_pct,p75_rank_pct,pct_winner_top25pct_qual,pct_winner_bottom_half_qual,pct_also_won_field_award_same_event,pct_wins_by_repeat_winners,pct_wins_by_top10_teams,pct_wins_by_first_time_judged_team,median_winner_team_number,p25_winner_team_number,p75_winner_team_number
+Industrial Design Award,937,604,17.5,8.0,33.5,64.6,11.9,35.9,56.1,6.1,23.5,3602,1561,5951
+Quality Award,946,649,18.2,9.1,35.1,62.4,12.2,36.4,52.2,5.8,26.1,3494,1640,5893
+Excellence in Engineering Award,941,570,15.4,6.5,31.5,67.6,11.3,45.0,60.1,7.2,23.6,3461,1646,5498
+Creativity Award,938,706,31.8,16.2,55.0,41.3,28.1,21.4,42.5,5.3,32.3,4146,1774,6326
+Innovation in Control Award,942,612,17.6,7.5,35.0,64.5,10.4,41.3,55.5,6.7,25.2,3477,1540,5693
+Autonomous Award,939,536,9.0,4.4,18.8,83.9,4.9,58.9,64.2,7.6,24.1,3255,1540,5598
+Imagery Award,936,577,48.7,28.3,68.7,21.6,47.7,13.6,59.0,7.8,32.2,4957,2177,7087
+Judges' Award,953,787,50.0,23.3,74.4,27.6,49.6,12.6,31.5,3.6,38.2,5012,2543,7312
+Rookie All-Star Award,680,574,66.7,45.0,83.3,8.9,68.4,10.0,29.1,4.4,99.9,9691,9124,10633
+Rising All-Star Award,778,613,67.5,43.9,84.5,10.1,69.1,11.1,37.9,4.5,64.4,9158,8564,9600
+Team Spirit Award,943,677,53.6,32.3,74.0,17.0,52.0,11.5,46.4,5.7,33.8,4855,2517,7153
+Team Sustainability Award,773,542,44.0,25.5,70.4,25.0,44.1,16.8,51.4,6.0,10.3,3881,1922,6377
+Gracious Professionalism Award,949,661,43.6,23.8,67.8,26.8,41.3,17.2,49.6,5.5,27.0,4061,1983,6135
+Engineering Inspiration Award,946,556,33.3,13.5,57.1,40.5,31.1,27.0,65.9,5.9,21.9,3558,1841,5695
+FIRST Impact Award,938,445,27.8,12.5,54.8,46.8,27.0,26.5,76.8,7.9,20.1,3347,1507,5414
+Safety Award,2,2,85.2,85.2,85.2,0.0,100.0,0.0,0.0,100.0,0.0,7831,7001,8661
+Innovation Award,5,4,51.4,50.0,80.5,0.0,60.0,40.0,40.0,100.0,20.0,4904,4904,5199
