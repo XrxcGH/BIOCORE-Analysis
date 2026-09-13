@@ -61,9 +61,3 @@ reference/validation/*/SCORED_WHEN.txt
 reference/validation/*/TRIPWIRES.txt
 reference/validation/*/UNDEFINED_CAPS.tsv
 review/*/BRIEFING_PACK.md
-
-# Temporary: these two files quote FIRST's full award descriptions and
-# guidelines next to original analysis, and no tool rebuilds them. Remove
-# these lines once the quotes are cut to a sentence each with a citation.
-reference/awards/awards.yaml
-reference/awards/01_AWARD_WINNING_PATTERNS.md

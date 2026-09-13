@@ -1,0 +1,1242 @@
+# awards.yaml -- machine-readable companion to 00_AWARD_LIST_VERIFIED.md
+# THE authoritative FRC award list for the 2026-27 (BIOCORE presented by Haas) season.
+# Built 2026-08-22. Every `evidence: C` field is traceable to a `source:` URL or to a
+# primary document in this corpus. Nothing here is invented.
+#
+# REGENERATE / RE-VERIFY:
+#   python fetch_award_pages.py && python award_diff.py     # exit 0 == this file still valid
+#
+# SCHEMA (one mapping per award, key = machine-safe slug)
+#   name                 exact official 2026 string, sponsor suffix included
+#   name_tba             string The Blue Alliance / FRC-Events emits, if different
+#   sponsor              null if none
+#   category             machine | team_attribute | submitted | performance | individual | standalone
+#   decided_by           pit_interview | scheduled_interview | submission_plus_interview |
+#                        external_panel | match_play | event_committee | first_hq
+#   submission           null, or {opens, closes, submitter, artifacts}
+#   eligibility          plain-text gate
+#   advances             what winning it does for Championship qualification
+#   criteria_quote       short verbatim excerpt from the FIRST authority webpage; the full text is
+#                        on the page named in source. All *_quote fields keep FIRST wording short,
+#                        in quotation marks and cited; text labeled "Paraphrase" is this
+#                        file's summary, not FIRST's wording.
+#   per_event_2026       {events_offered, rows, per_event} from TBA 2026 season records.
+#                        [CORRECTED 2026-08-22] events_offered is the count of DISTINCT EVENTS at
+#                        which the EXACT award name appears -- never an award summed with its
+#                        Finalist/Semi-Finalist tier, never Regional+District+DCMP summed into one.
+#                        Multi-tier awards carry by_tier: with one entry per exact TBA name; the
+#                        top-level figures then describe the tier a normal competing team can reach.
+#                        Authority: reference/awards/00_AWARD_LIST_VERIFIED.md 2.1a.
+#                        Regenerate/verify: python tools/award_availability.py
+#   small_team           winnable | stretch | needs_large_program | not_competable
+#   evidence             C | H | S | UNVERIFIED
+#   source               URL(s)
+
+meta:
+  season: "2026-27"
+  game: "BIOCORE presented by Haas"
+  program: "FIRST Robotics Competition (FRC)"
+  kickoff: "2027-01-09T12:00:00-05:00"
+  built: "2026-08-22"
+  authority_pages_state_on_their_face: >-
+    "This document is considered the authority on Awards Based on Machine Attributes"
+    / "This webpage is considered the authority on Awards Based on Team Attributes"
+    / "...on Submitted Awards"
+  baseline_docs_are_2025_26_revisions: true
+  baseline_doc_revs:
+    award_workbook: "Rev. Oct 2025"
+    judge_manual: "Rev 2 - 2/18/2026"
+    fia_judging_guidelines: "Rev. Jan 2026"
+    fla_judging_guidelines: "Rev. Feb 2026"
+  season_totals_2026:
+    regional_events: 56
+    district_events: 122
+    total_events_in_tba: 218
+    median_award_rows_per_event: 18
+  stats_method: >-
+    All winner-distribution percentages in this file were recomputed 2026-08-22 directly from
+    research/awards_tba/tba_awards_{2022..2026}.csv (23,167 award rows, 1,057 year-event pairs).
+    Award names were canonicalised across the 5 seasons before aggregation:
+    "Chairman's Award" folded into FIRST Impact Award; "Rookie Inspiration Award" folded into
+    Rising All-Star Award; "Entrepreneurship Award" folded into Team Sustainability Award;
+    all sponsor suffixes stripped. "top-8" means TBA qual_rank <= 8; "bottom half" means
+    rank_pct > 50.
+
+# =====================================================================
+# A. MACHINE / CREATIVITY / INNOVATION AWARDS
+#    Judged from a pit interview. No pre-submission of any kind.
+# =====================================================================
+
+autonomous:
+  name: "Autonomous Award sponsored by Google.org"
+  name_tba: "Autonomous Award sponsored by Google.org"
+  sponsor: "Google.org"
+  sponsor_conflict: >-
+    Judge Manual Rev 2 - 2/18/2026 p.12 prints "sponsored by Google DeepMind".
+    The authority webpage and all 208 TBA 2026 event records say "Google.org".
+    Treat Google.org as correct; re-check at kickoff.
+  category: machine
+  decided_by: pit_interview
+  submission: null
+  eligibility: "Any team. No restriction, no once-per-level cap."
+  advances: "No. Machine awards carry District points only (5), no Championship slot."
+  criteria_quote: >-
+    "Celebrates the team whose machine has demonstrated consistent, reliable, high-performance
+    robot operation during autonomous (i.e. non-operated guided) actions during match play."
+    (Awards Based on Machine Attributes page, Autonomous entry updated December 18, 2025;
+    https://www.firstinspires.org/resources/library/frc/machine-awards) Paraphrase of the rest:
+    judged on how well the robot perceives the field, places itself or its mechanisms, and
+    carries out tasks.
+  criteria_guidelines_quote: >-
+    "Consistent and reliable operation is weighted more heavily than the ability to score
+    maximum points during any specific autonomously managed actions." (Awards Based on Machine
+    Attributes page, Autonomous guidelines, updated December 18, 2025;
+    https://www.firstinspires.org/resources/library/frc/machine-awards) Paraphrase of the next
+    guideline: judges may credit autonomous behavior during tele-operated play as well as during
+    the opening 15 seconds.
+  per_event_2026: {events_offered: 208, rows: 208, per_event: 1.00}
+  district_points: 5
+  small_team: stretch
+  small_team_note: >-
+    Hardest machine award for a low-seeded team. 80.4% of 2022-2026 winners finished
+    qualification top-8; only 4.9% came from the bottom half. Median winner rank pct 9.0.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/machine-awards"
+
+creativity:
+  name: "Creativity Award sponsored by Rockwell Automation"
+  sponsor: "Rockwell Automation"
+  category: machine
+  decided_by: pit_interview
+  submission: null
+  eligibility: "Any team."
+  advances: "No. 5 District points."
+  criteria_quote: >-
+    "Celebrates a creative robotic component, concept, or attribute that enhances strategy
+    of play that was intentionally designed and not discovered." (Awards Based on Machine
+    Attributes page, Creativity entry updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/machine-awards)
+  criteria_guidelines_quote: >-
+    "A team must be able to describe the creative/unique feature(s) and can trace its conception
+    and design." (Awards Based on Machine Attributes page, Creativity guidelines, updated
+    October 2, 2025; https://www.firstinspires.org/resources/library/frc/machine-awards)
+    Paraphrase of the other guidelines: the feature serves a practical purpose tied to the game
+    objectives, the team can explain how it managed the risk that a creative design fails, and
+    the feature adds to on-field results when it works as intended.
+  per_event_2026: {events_offered: 208, rows: 208, per_event: 1.00}
+  district_points: 5
+  small_team: winnable
+  small_team_note: >-
+    The most accessible machine award. 28.1% of 2022-2026 winners came from the bottom
+    half of qualification; median winner rank pct 31.8; 706 distinct winning teams,
+    only 42.5% repeat winners -- the lowest repeat rate of any machine award.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/machine-awards"
+
+excellence_in_engineering:
+  name: "Excellence in Engineering Award sponsored by Littelfuse"
+  sponsor: "Littelfuse"
+  category: machine
+  decided_by: pit_interview
+  submission: null
+  eligibility: "Any team."
+  advances: "No. 5 District points."
+  criteria_quote: >-
+    "Celebrates the team whose machine incorporates an engineering solution designed to have
+    components work together seamlessly." (Awards Based on Machine Attributes page, Excellence
+    in Engineering entry updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/machine-awards)
+  criteria_guidelines_quote: >-
+    "Teams do not have to design a robot that solves all game challenges." (Awards Based on
+    Machine Attributes page, Excellence in Engineering guidelines, updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/machine-awards) Paraphrase of the other
+    guidelines: the team names the game problems its machine addresses, walks through its
+    engineering process from first concept to finished design, and shows a practical, working
+    solution that introduced no new problems.
+  per_event_2026: {events_offered: 208, rows: 208, per_event: 1.00}
+  district_points: 5
+  small_team: stretch
+  small_team_note: >-
+    "Teams do not have to design a robot that solves all game challenges" is the single most
+    small-team-friendly sentence in the whole award corpus -- but the empirics do not follow it:
+    62.5% of winners were qual top-8, only 11.4% from the bottom half.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/machine-awards"
+
+industrial_design:
+  name: "Industrial Design Award"
+  sponsor: null
+  sponsor_history: "Was 'sponsored by General Motors' through the 2025 season; unsponsored from 2026."
+  category: machine
+  decided_by: pit_interview
+  submission: null
+  eligibility: "Any team."
+  advances: "No. 5 District points."
+  criteria_quote: >-
+    "Celebrates the team whose machine demonstrates industrial design principles, striking a
+    balance between form, function, and aesthetics." (Awards Based on Machine Attributes page,
+    Industrial Design entry updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/machine-awards)
+  criteria_guidelines_quote: >-
+    "The entire machine, and not just a single component, or the detailed process used to
+    develop the design, is worthy of this recognition." (Awards Based on Machine Attributes
+    page, Industrial Design guidelines, updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/machine-awards) Paraphrase of the other
+    guidelines: the team explains why its design is clean, simple to execute, and practical, and
+    the robot stands apart from others on appearance, design and performance together.
+  per_event_2026: {events_offered: 210, rows: 210, per_event: 1.00}
+  district_points: 5
+  small_team: stretch
+  small_team_note: "60.8% of winners qual top-8; 11.9% bottom half. Correlated with build resources."
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/machine-awards"
+
+innovation_in_control:
+  name: "Innovation in Control Award sponsored by nVent"
+  sponsor: "nVent"
+  sponsor_history: "Unsponsored in 2024; nVent from 2025."
+  category: machine
+  decided_by: pit_interview
+  submission: null
+  eligibility: "Any team."
+  advances: "No. 5 District points."
+  criteria_quote: >-
+    "Celebrates an innovative control system or application of control components -
+    electrical, mechanical or software - to provide unique machine functions." (Awards Based on
+    Machine Attributes page, Innovation in Control entry updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/machine-awards)
+  criteria_guidelines_quote: >-
+    "The innovation is practical; it addresses the game's challenge and is reliable under the
+    stress of competition." (Awards Based on Machine Attributes page, Innovation in Control
+    guidelines, updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/machine-awards) Paraphrase of the other
+    guidelines: the team traces its controls innovation through concept, design, fabrication or
+    deployment, and the control system is novel and tied into the machine, the human players and
+    match strategy.
+  per_event_2026: {events_offered: 208, rows: 208, per_event: 1.00}
+  district_points: 5
+  small_team: stretch
+  small_team_note: "58.5% qual top-8; 10.4% bottom half. One deep, explainable feature beats breadth."
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/machine-awards"
+
+quality:
+  name: "Quality Award"
+  sponsor: null
+  category: machine
+  decided_by: pit_interview
+  submission: null
+  eligibility: "Any team."
+  advances: "No. 5 District points."
+  criteria_quote: >-
+    "Celebrates machine robustness in concept and fabrication" (Awards Based on Machine
+    Attributes page, Quality entry updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/machine-awards)
+  criteria_guidelines_quote: >-
+    "A team must be able to describe their quality plan i.e. how their design ensures robustness
+    throughout the entire competition." (Awards Based on Machine Attributes page, Quality
+    guidelines, updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/machine-awards) Paraphrase of the other
+    guidelines: workmanship shows across the whole robot (welds, fasteners, wiring, finish),
+    built-in redundancy and planned risk reduction keep it working through the event, and build
+    quality contributes to match results.
+  per_event_2026: {events_offered: 209, rows: 209, per_event: 1.00}
+  district_points: 5
+  small_team: stretch
+  small_team_note: "57.6% qual top-8; 12.2% bottom half. A written quality plan is the cheapest lever."
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/machine-awards"
+
+# =====================================================================
+# B. TEAM ATTRIBUTE AWARDS
+#    Judged from pit interviews / observation. No pre-submission
+#    EXCEPT Engineering Inspiration, which is judged off the same pit visit
+#    but is a Cultural Award with advancement consequences.
+# =====================================================================
+
+engineering_inspiration:
+  name: "Engineering Inspiration Award sponsored by SpaceX"
+  name_tba: "Regional Engineering Inspiration Award sponsored by SpaceX / District Engineering Inspiration Award sponsored by SpaceX"
+  sponsor: "SpaceX"
+  sponsor_history: "Unsponsored in 2025; SpaceX from 2026."
+  category: team_attribute
+  subcategory: cultural_award
+  decided_by: pit_interview
+  submission: null
+  submission_note: >-
+    No written submission. This is the highest-value award in FRC that requires zero
+    pre-season paperwork.
+  eligibility: >-
+    Any team at each Regional or District event. Restricted to earning it once per level of
+    competition. District teams are NOT eligible at Regionals or inter-district events.
+    At District Championship, only District teams that already won EI at a District event.
+  advances: >-
+    YES. District Championship EI winners earn a Merit-Based FIRST Championship slot.
+    Regional EI winners qualify to compete for the award at Championship.
+    District EI winners qualify for their District Championship (for the award only).
+  criteria_quote: >-
+    "Celebrates a team who demonstrates outstanding success in advancing respect and
+    appreciation for engineering within a team's school or organization and community." (Awards
+    Based on Team Attributes page, Engineering Inspiration entry updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards)
+  criteria_guidelines_quote: >-
+    Teams describe their work "with an emphasis on the most recent year's efforts, and with
+    performance indicators that provide measurable success of their efforts" (Awards Based on
+    Team Attributes page, Engineering Inspiration guidelines, updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards). Paraphrase of the listed
+    attributes: how widely and inventively the team recruits students into engineering and other
+    STEM fields; the reach and results of its community outreach; a commitment to STEM education
+    within the team, its school and its community; carrying out the FIRST mission and explaining
+    it at events and away from them; and work that continues all year rather than only in build
+    and competition season.
+  per_event_2026: {events_offered: 56, rows: 56, per_event: 1.00, tier: regional,
+    note: "CORRECTED 2026-08-22 -- was {192-style tier sum} 204/211/1.03. Exact names never summed."}
+  per_event_2026_by_tier:
+    "Regional Engineering Inspiration Award sponsored by SpaceX": {events: 56, rows: 56, per_event: 1.00}
+    "District Engineering Inspiration Award sponsored by SpaceX": {events: 123, rows: 123, per_event: 1.00}
+    "District Championship Engineering Inspiration Award sponsored by SpaceX": {events: 15, rows: 22, per_event: 1.47}
+    "Engineering Inspiration Award sponsored by SpaceX": {events: 8, rows: 8, per_event: 1.00, scope: championship_division}
+  district_points: 8
+  regional_points: 28
+  small_team: stretch
+  small_team_note: >-
+    Better odds than FIA for a small program: 31.1% of 2022-2026 winners came from the bottom
+    half of qualification, median winner rank pct 33.3. Requires a real, measurable,
+    year-round outreach record -- but NOT a 10,000-character essay.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/team-awards"
+
+gracious_professionalism:
+  name: "Gracious Professionalism Award"
+  sponsor: null
+  category: team_attribute
+  decided_by: pit_interview
+  submission: null
+  eligibility: "Any team. No once-per-level cap."
+  advances: "No. 5 District points."
+  criteria_quote: >-
+    "Celebrates outstanding demonstration of FIRST Core Values such as continuous Gracious
+    Professionalism, sportsmanship, and working together both on and off the playing field."
+    (Awards Based on Team Attributes page, Gracious Professionalism entry updated October 2,
+    2025; https://www.firstinspires.org/resources/library/frc/team-awards)
+  criteria_guidelines_quote: >-
+    "If the team worked with another FIRST Robotics Competition team pre-season - they can
+    describe the following:" (Awards Based on Team Attributes page, Gracious Professionalism
+    guidelines, updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards) Paraphrase of the
+    guidelines: the team shows FIRST Core Values in how it treats other teams and through the
+    Gracious Professionalism it demonstrates, and it consistently shows Gracious Professionalism
+    and a positive attitude, on the field and off it. For a pre-season partnership
+    the checklist has five points: how the collaboration ran in the off-season and the build
+    season, how the work was divided fairly, how communication moved between the two teams, why
+    working as one group beat working separately, and the financial effect of collaborating
+    versus working alone.
+  per_event_2026: {events_offered: 211, rows: 211, per_event: 1.00}
+  district_points: 5
+  small_team: winnable
+  small_team_note: >-
+    41.2% of 2022-2026 winners came from the bottom half of qualification. 661 distinct
+    winners. The pre-season-collaboration bullet is a written checklist a 15-student team can
+    satisfy deliberately by partnering with one other team before January.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/team-awards"
+
+imagery:
+  name: "Imagery Award in honor of Jack Kamen"
+  sponsor: null
+  honoree: "Jack Kamen"
+  category: team_attribute
+  decided_by: pit_interview
+  submission: null
+  eligibility: "Any team."
+  advances: "No. 5 District points."
+  criteria_quote: >-
+    "This award celebrates attractiveness in engineering and outstanding visual aesthetic
+    integration of machine and team appearance." (Awards Based on Team Attributes page, Imagery
+    entry updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards) Paraphrase of the sentence
+    before it: the award honors Jack Kamen, father of FIRST founder Dean Kamen, for his art and
+    illustration work and his long support of FIRST.
+  criteria_guidelines_quote: >-
+    "The team must be able to describe its theme and its origins." (Awards Based on Team
+    Attributes page, Imagery guidelines, updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards) Paraphrase of the other
+    guidelines: the theme is original and suits the team's goals, character or history; it runs
+    through uniforms, pit, robot, mascot and the rest of the team's presence; the combined look
+    of team and robot is striking; and the theme supports FIRST Core Values.
+  per_event_2026: {events_offered: 208, rows: 208, per_event: 1.00}
+  district_points: 5
+  small_team: winnable
+  small_team_note: >-
+    47.7% of winners from the bottom half; median winner rank pct 48.7. Cost, not headcount,
+    is the constraint -- and the criteria explicitly reward a theme with an origin story,
+    which is free.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/team-awards"
+
+judges:
+  name: "Judges Award"
+  name_alt: "Judges' Award"
+  name_tba: "Judges' Award"
+  name_note: >-
+    FIRST prints BOTH forms. The team-attributes authority page and the Judge Manual use
+    "Judges Award" (no apostrophe); the All Awards list on the main awards page and every TBA
+    2026 record use "Judges' Award". Use "Judges Award" in submissions, accept either.
+  sponsor: null
+  category: team_attribute
+  decided_by: pit_interview
+  submission: null
+  eligibility: "Any team. Discretionary -- judges create the citation."
+  advances: "No. 5 District points."
+  criteria_quote: >-
+    "During the course of the competition, the judging panel may decide a team's unique
+    efforts, performance, or dynamics merit recognition." (Awards Based on Team Attributes page,
+    Judges Award entry updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards)
+  criteria_guidelines_quote: >-
+    "The team exemplifies a positive attribute or feature that is not addressed in the criteria
+    for other awards that merits recognition." (Awards Based on Team Attributes page, Judges
+    Award guidelines, updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards) Paraphrase of the other
+    guidelines: the team has fully taken FIRST principles on board, and its strengths have drawn
+    comment from many judges.
+  per_event_2026: {events_offered: 209, rows: 209, per_event: 1.00}
+  district_points: 5
+  small_team: winnable
+  small_team_note: >-
+    The single most accessible judged award in FRC. 787 distinct winning teams 2022-2026 --
+    more than any other award -- and only 31.5% of wins go to repeat winners. 49.6% of winners
+    came from the bottom half of qualification. Explicitly rewards the thing no other award
+    covers.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/team-awards"
+
+rising_all_star:
+  name: "Rising All-Star Award"
+  sponsor: null
+  history: "New for the 2025 season. Replaced the Rookie Inspiration Award, which was retired after 2024."
+  category: team_attribute
+  decided_by: pit_interview
+  submission: null
+  eligibility: >-
+    Paraphrase: meant for new teams and for teams making a fresh start. "Teams do not have to be
+    in their first year." (Awards Based on Team Attributes page, Rising All-Star guidelines,
+    updated October 2, 2025; https://www.firstinspires.org/resources/library/frc/team-awards)
+    Judges may decline to present it.
+  advances: "No. 5 District points."
+  criteria_quote: >-
+    Paraphrase: recognizes a team that has kept going through the hardships that come with being
+    young. The description continues: "This could be the result of being a new team, or a team
+    with recent turnover in membership." (Awards Based on Team Attributes page, Rising All-Star
+    entry updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards)
+  criteria_guidelines_quote: >-
+    One guideline says "the award could recognize a team in their second or third year who has
+    undergone significant growth or succeeded despite challenges." (Awards Based on Team
+    Attributes page, Rising All-Star guidelines, updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards) Paraphrase of the other
+    guidelines: the team understands the FIRST mission and practices Gracious Professionalism
+    and Coopertition at home and at events, sets an example for other young teams, and looks
+    likely to last and grow in FIRST.
+  per_event_2026: {events_offered: 204, rows: 204, per_event: 1.00}
+  district_points: 5
+  small_team: winnable
+  small_team_note: >-
+    THE highest-probability target for a small, young, or recently-rebuilt program. Only 8.8%
+    of winners were qual top-8; 69.1% came from the bottom half; median winner rank pct 67.5 --
+    the only award whose median winner is in the bottom third of the field. Median winning team
+    number 9158. Offered at 204/211 events. Eligibility explicitly extends past year one to
+    "recent turnover in membership".
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/team-awards"
+
+rookie_all_star:
+  name: "Rookie All-Star Award"
+  name_tba: "Rookie All Star Award"
+  sponsor: null
+  category: team_attribute
+  subcategory: cultural_award
+  decided_by: pit_interview
+  submission: null
+  eligibility: >-
+    Rookie teams only. Judge Manual: "Any team with a team number 10,900 or higher is eligible
+    for Rookie Award." (Judge Manual Rev 2 - 2/18/2026, Rookie All-Star Award section, p.14)
+    Once per level of competition. District teams not eligible at Regionals or inter-district
+    events. Judges may decline to present it.
+  advances: >-
+    YES. District Championship RAS winners earn a Merit-Based FIRST Championship slot.
+    District RAS winners qualify for their District Championship (for the award only).
+  criteria_quote: >-
+    "Celebrates the rookie team exemplifying a young but strong partnership effort" (Awards
+    Based on Team Attributes page, Rookie All-Star entry updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards). Paraphrase of the rest:
+    the team also puts into practice the FIRST mission of getting students interested in science
+    and technology.
+  criteria_guidelines_quote: >-
+    "This team seems like a 'FIRST Impact Award team in the making.'" (Awards Based on Team
+    Attributes page, Rookie All-Star guidelines, updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards) Paraphrase of the rest: the
+    page names community activity, leadership, vision and spirit as signs of this; the team is a
+    genuine partnership between its school or organization and its sponsors; it understands that
+    technical work is fun, demanding and a route to a future; and it has built a robot suited to
+    the game.
+  criteria_guidelines_quote_2: >-
+    Judge Manual: "Building a robot that is appropriate to the game's challenges means 'did they
+    build a robot or not'." (Judge Manual Rev 2 - 2/18/2026, Rookie All-Star Award section,
+    p.14) Paraphrase of the rest: a team that built a robot qualifies, and how that robot
+    compares with other rookie robots at the event does not matter.
+  per_event_2026: {events_offered: 133, rows: 133, per_event: 1.00}
+  district_points: 8
+  small_team: not_competable
+  small_team_note: >-
+    Rookie-only gate. Offered at just 133 of 211 events (63%) because judges decline when no
+    rookie qualifies. If the team is not a rookie, this is not a lane -- Rising All-Star is the
+    substitute and has no rookie gate.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/team-awards"
+
+team_spirit:
+  name: "Team Spirit Award"
+  sponsor: null
+  category: team_attribute
+  decided_by: pit_interview
+  submission: null
+  eligibility: "Any team."
+  advances: "No. 5 District points."
+  criteria_quote: >-
+    "Celebrates extraordinary enthusiasm and spirit through exceptional partnership and
+    teamwork furthering the objectives of FIRST." (Awards Based on Team Attributes page, Team
+    Spirit entry updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards)
+  criteria_guidelines_quote: >-
+    "They demonstrate spirit as a unified team." (Awards Based on Team Attributes page, Team
+    Spirit guidelines, updated October 2, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards) Paraphrase of the other
+    guidelines: the team shows visible enthusiasm at the event, in how it supports other teams,
+    how it looks, and how it deals with teams and judges, and that spirit carries into its
+    school, its community, its sponsors and its dealings with other teams.
+  per_event_2026: {events_offered: 210, rows: 210, per_event: 1.00}
+  district_points: 5
+  small_team: winnable
+  small_team_note: >-
+    51.9% of winners came from the bottom half of qualification -- the second-most
+    bottom-half-friendly award after Rising All-Star. 15 loud students beat 60 quiet ones.
+    Criteria demand spirit "as a unified team", which is easier at 15 than at 60.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/team-awards"
+
+team_sustainability:
+  name: "Team Sustainability Award sponsored by Dow"
+  sponsor: "Dow"
+  history: >-
+    Introduced 2023 (unsponsored). Dow sponsorship from 2024. Absorbed the retired
+    Entrepreneurship Award, which was last offered at scale in 2022 (162 events).
+  category: team_attribute
+  decided_by: pit_interview
+  submission: null
+  eligibility: "Any team."
+  advances: "No. 5 District points."
+  criteria_quote: >-
+    "Celebrates a team which has developed sustainable practices that focus on a 'triple bottom
+    line' (i.e. People, Prosperity, and Planet)" (Awards Based on Team Attributes page, Team
+    Sustainability entry updated October 7, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards). Paraphrase of the rest:
+    the aim is positive impact and a team that continues for the long term.
+  criteria_guidelines_quote: >-
+    "The team must be able to explain their plans and actions associated with one or more of the
+    following sustainability initiatives:" (Awards Based on Team Attributes page, Team
+    Sustainability guidelines, updated October 7, 2025;
+    https://www.firstinspires.org/resources/library/frc/team-awards) Paraphrase of the three
+    initiatives: People, recruiting, training and holding on to students, mentors and sponsors;
+    Prosperity, fundraising, building and tracking a budget, and spotting and handling risks to
+    money and people; Planet, measuring the team's environmental impact, reducing it, and how
+    that work helps the team last.
+  per_event_2026: {events_offered: 208, rows: 208, per_event: 1.00}
+  district_points: 5
+  small_team: winnable
+  small_team_note: >-
+    "one or more of the following" is the loophole -- a team may answer on People alone.
+    43.7% of winners from the bottom half. For a 15-student team the succession/retention story
+    IS the sustainability story, and a written budget plus a risk register is a weekend of work.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/team-awards"
+
+# =====================================================================
+# C. SUBMITTED AWARDS -- written submission with a hard deadline
+# =====================================================================
+
+first_impact:
+  name: "FIRST Impact Award"
+  name_tba: "Regional FIRST Impact Award / District FIRST Impact Award / District Championship FIRST Impact Award"
+  former_name: "Chairman's Award (through the 2022 season)"
+  sponsor: null
+  category: submitted
+  subcategory: cultural_award
+  decided_by: submission_plus_interview
+  submission:
+    opens: "2026-10-29T12:00:00-04:00"
+    closes: "2027-02-11T15:00:00-05:00"
+    submitter: "Student Award Submitter or Lead Coach 1 or 2"
+    portal: "FIRST Dashboard"
+    artifacts:
+      - "14 executive summary answers, 500 characters each (last one 250, optional)"
+      - "Essay, 10,000 character maximum"
+      - "OPTIONAL: video URL, 16:9, 1-3 minutes, hosted on Dropbox/Box/Google Drive, public"
+      - "OPTIONAL: FIRST Impact Award Documentation Form (editable Word doc)"
+      - "REQUIRED: agree to the FIRST Impact Award Video Consent & Release of Rights Form"
+    interview: "12 minutes total: up to 7 min team presentation (incl. setup), 5 min judge Q&A. Max 3 students presenting. 1 silent adult observer allowed."
+    judge_portal_opens_2026: "2026-02-16"
+    judge_portal_opens_2027: "UNVERIFIED -- expect ~2027-02-15"
+  eligibility: >-
+    Any team EXCEPT: (a) first-year teams, including rookies and new teams assigned a veteran
+    number -- "First year teams will NOT be considered for the award and will not be
+    interviewed" (Submitted Awards page, FIRST Impact Award entry, Ineligible Teams, updated
+    July 29, 2026; https://www.firstinspires.org/resources/library/frc/submitted-awards); (b)
+    Hall of Fame teams within 5 years of their Championship FIA. District
+    teams cannot win or interview at Regional or inter-district events. Once per level of
+    competition.
+  advances: >-
+    YES -- the strongest advancement in FRC. District Championship FIA winners get a
+    Championship slot. Regional FIA winners advance to Championship consideration; a Regional
+    FIA winner who does not otherwise qualify is offered a REMOTE interview to remain eligible
+    at Championship. Championship FIA winner enters the Hall of Fame and is pre-qualified for
+    the next 8 years.
+  criteria_quote: >-
+    The award "honors the team that best represents a model for other teams to emulate and best
+    embodies the mission of FIRST" (Submitted Awards page, FIRST Impact Award entry updated July
+    29, 2026; https://www.firstinspires.org/resources/library/frc/submitted-awards). Paraphrase
+    of the same sentence: FIRST describes the award as its most prestigious, and it was formerly
+    the Chairman's Award.
+  criteria_guidelines_quote: >-
+    "The criterion for the FIRST Impact Award has special emphasis on recent accomplishments
+    within the last 3 years." (Submitted Awards page, FIRST Impact Award entry updated July 29,
+    2026; https://www.firstinspires.org/resources/library/frc/submitted-awards) Paraphrase of
+    the next sentence: judges look at what a team sustains over time, not only at the robot
+    build window.
+  criteria_guidelines_quote_2: >-
+    Paraphrase: contenders are expected to have built a robot suited to the season's game. A
+    high ranking at the event is not required, but the build must show "more than just the
+    minimal effort necessary to field a drivable robot." (Submitted Awards page, FIRST Impact
+    Award entry updated July 29, 2026;
+    https://www.firstinspires.org/resources/library/frc/submitted-awards)
+  judging_axes_quote: >-
+    FIA Judging Guidelines (Rev. Jan 2026) divides outreach into 3 areas: "Spreading the FIRST
+    Mission", "Impact on the FIRST community", "Inspiring the STEM Future". It tells judges to
+    "Consider utilization of team resources, especially when comparing large teams vs small
+    teams" (same document, opening paragraph). Paraphrase of the rest of that paragraph: judges
+    should also weigh how teams keep their activities going and what each team achieved with the
+    resources it had.
+  per_event_2026: {events_offered: 56, rows: 56, per_event: 1.00, tier: regional,
+    note: "CORRECTED 2026-08-22 -- was tier sum 194/215/1.11. No team is eligible at 194 events."}
+  per_event_2026_by_tier:
+    "Regional FIRST Impact Award": {events: 56, rows: 56, per_event: 1.00}
+    "District FIRST Impact Award": {events: 122, rows: 122, per_event: 1.00}
+    "District Championship FIRST Impact Award": {events: 15, rows: 30, per_event: 2.00}
+  district_points: 10
+  regional_points: 45
+  small_team: needs_large_program
+  small_team_note: >-
+    Only 446 distinct teams won it 2022-2026 and 77.7% of wins went to repeat winners -- the
+    highest concentration of any FRC award. Offered at 83.0% of events. The 3-year sustained-
+    activity criterion structurally excludes a program that has not been running outreach for
+    3 years. The "utilization of team resources" instruction is real and does help small teams,
+    but it does not offset a thin multi-year record.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/submitted-awards"
+
+first_leadership:
+  name: "FIRST Leadership Award"
+  name_tba: "FIRST Leadership Award Finalist / District Championship FIRST Leadership Award Semi-Finalist"
+  former_name: "FIRST Dean's List Award (through the 2025 season and the first half of the 2026 season)"
+  rename_source: >-
+    2026 REBUILT Team Update 12, February 20, 2026. Paraphrase: FIRST renamed the Dean's List
+    Award to the FIRST Leadership Award for the rest of the 2025-2026 season, effective at
+    events starting February 18, 2026, and stated that the award's purpose, criteria and
+    significance did not change.
+  sponsor: null
+  category: submitted
+  subcategory: individual
+  decided_by: submission_plus_interview
+  submission:
+    opens: "2026-10-29T12:00:00-04:00"
+    closes: "2027-02-04T15:00:00-05:00"
+    submitter: "Adult Award Submitter or Lead Coach 1 or 2 -- a mentor NOT related to either nominee"
+    portal: "FIRST Dashboard"
+    artifacts:
+      - "Up to TWO student nominations per team"
+      - "Nomination essay per student (see FIRST Leadership Award Guide)"
+      - "REQUIRED: each nominee must have a signed FIRST Consent and Release form on file, or the mentor must check the paper-copy acknowledgement box"
+    judge_portal_opens_2026: "2026-02-09"
+    judge_portal_opens_2027: "UNVERIFIED -- expect ~2027-02-08"
+  eligibility: >-
+    Students in their 10th or 11th school year only. For non-grade-level regions: "students who
+    are two (2) to three (3) years away from entering college or university." (Submitted Awards
+    page, FIRST Leadership Award description note, updated July 29, 2026;
+    https://www.firstinspires.org/resources/library/frc/submitted-awards) Students who
+    mentor the team but are not active members are NOT eligible. Prior Semi-finalists and
+    Finalists may be nominated again.
+  levels:
+    - "Semi-finalists: the 2 students nominated by each team"
+    - "District Championship Semi-finalists: selected at District events, re-interview at DCMP"
+    - "Finalists: 2 per Regional; per-District count varies (ratio 1 per 9 to 1 per 6 Championship District teams)"
+    - "Winners: 10 FRC students + 10 FTC students, selected at FIRST Championship"
+  advances: >-
+    Advances the STUDENT, not the team. No Championship robot slot. No District points --
+    REBUILT 11.1.4 "If an award ... is not for a team (e.g. the FIRST Leadership Award) ...
+    no points are earned."
+  criteria_quote: >-
+    "The FIRST Leadership Award recognizes the dedication and individual contributions of
+    outstanding secondary school students" (Submitted Awards page, FIRST Leadership Award entry
+    updated July 29, 2026;
+    https://www.firstinspires.org/resources/library/frc/submitted-awards). Paraphrase of the
+    rest: the students are on FIRST Tech Challenge or FIRST Robotics Competition teams, and 10th
+    and 11th graders may be nominated by their team for standing out in areas like leadership,
+    entrepreneurial work, and commitment to advancing the FIRST mission in their communities.
+  criteria_guidelines_quote: >-
+    One listed criterion: "The student is a role model and can motivate and lead fellow team
+    members" (Submitted Awards page, FIRST Leadership Award nomination criteria, updated July
+    29, 2026; https://www.firstinspires.org/resources/library/frc/submitted-awards). Paraphrase
+    of the other criteria, which the page says are not a closed list: demonstrated leadership
+    and commitment to FIRST Core Values; success at raising awareness of FIRST at school and in
+    the community; passion for staying involved in FIRST over the long term; personal
+    contributions that drive the team's overall success; and proven experience in STEM.
+  per_event_2026: {events_offered: 1, rows: 10, per_event: 10.00, tier: championship_only,
+    note: "CORRECTED 2026-08-22 -- was 192/400/2.08, the award summed with BOTH subordinate tiers.
+      The award itself was given at ONE event in 2026 (2026cmptx), 10 FRC students. 192x overstated.
+      The tier a team can realistically reach is Finalist: 71 events."}
+  per_event_2026_by_tier:
+    "FIRST Leadership Award": {events: 1, rows: 10, per_event: 10.00, event_key: 2026cmptx}
+    "FIRST Leadership Award Finalist": {events: 71, rows: 172, per_event: 2.42}
+    "District Championship FIRST Leadership Award Semi-Finalist": {events: 120, rows: 218, per_event: 1.82}
+  district_points: 0
+  small_team: winnable
+  small_team_note: >-
+    THE most resource-independent award in FRC. Judged on one student, not on a robot, a budget
+    or a 3-year outreach record. [CORRECTED 2026-08-22] The realistic target is the FINALIST tier:
+    172 Finalists named at 71 events (2.42 per event where offered), plus 218 DCMP Semi-Finalists at
+    120 events. The FIRST Leadership Award ITSELF went to 10 FRC students at ONE event (Championship).
+    The previously published "400 recognitions over 192 events, 2.08 per event" summed all three
+    tiers and must not be quoted. A 15-student team has the same shot as a 60-student team at the two
+    nomination slots. Costs one mentor essay and one student interview.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/submitted-awards"
+
+woodie_flowers_finalist:
+  name: "Woodie Flowers Finalist Award"
+  name_short: "WFFA"
+  submission_page_name: "Woodie Flowers Award"
+  sponsor: null
+  founded: "1996, by Dr. William Murphy and Small Parts Inc."
+  category: submitted
+  subcategory: individual_mentor
+  decided_by: external_panel
+  decided_by_note: >-
+    Judge Manual Rev 2 - 2/18/2026, Ch.4 Non-Judged Awards, p.15: "Woodie Flowers Finalist Award
+    (determined via special panel prior to event)". Event judges have no role. Selected by a
+    panel of Championship Woodie Flowers Award winners not competing at that event.
+  submission:
+    opens: "2026-10-29T12:00:00-04:00"
+    closes: "2027-02-04T15:00:00-05:00"
+    submitter: "Student Award Submitter -- must be student-led"
+    portal: "FIRST Dashboard"
+    artifacts:
+      - "Essay, 3,000 character maximum, in English, written by students in their own words"
+      - "1 required headshot of the mentor alone, up to 3 additional photos, 1.0 MB total"
+      - "Adult Reference on the team + Adult Reference with any FIRST affiliation (name, phone, email)"
+  eligibility: >-
+    A mentor registered on the team in the FIRST Dashboard and actively attending meetings and
+    mentoring students on that team. "A mentor may only receive the WFFA one time regardless of
+    the number of teams the mentor has served." (Submitted Awards page, Woodie Flowers Award
+    eligibility, updated July 29, 2026;
+    https://www.firstinspires.org/resources/library/frc/submitted-awards)
+  advances: >-
+    Advances the MENTOR. WFFA winners become eligible for the Championship Woodie Flowers Award
+    in a LATER season, by re-nomination from their present team. No team advancement, no
+    District points.
+  criteria_quote: >-
+    "The Regional and District Championship Woodie Flowers Awards celebrate effective
+    communication in the art and science of engineering and design." (Submitted Awards page,
+    Woodie Flowers Award entry updated July 29, 2026;
+    https://www.firstinspires.org/resources/library/frc/submitted-awards) Paraphrase: FIRST
+    calls this regional and District Championship tier the Woodie Flowers Finalist Award.
+  criteria_guidelines_quote: >-
+    Paraphrase of the judging criteria: judges weigh two things, the mentor's record as a
+    communicator and "the student's ability to communicate clearly and concisely through their
+    nomination" (Submitted Awards page, Woodie Flowers Award judging criteria, updated July 29,
+    2026; https://www.firstinspires.org/resources/library/frc/submitted-awards). The essay is
+    judged on how the mentor inspired team members in some or all of eight listed ways: student
+    participation, creative effort, clear teaching of math, science and engineering concepts,
+    enthusiasm for science, technology and engineering, teamwork on projects, problem solving,
+    growth as communicators, and motivation through communication.
+  criteria_guidelines_quote_2: >-
+    "The award-winning essay should answer this question; 'How did the candidate inspire your
+    team throughout this process?'" (Submitted Awards page, Woodie Flowers Award judging
+    criteria, updated July 29, 2026;
+    https://www.firstinspires.org/resources/library/frc/submitted-awards)
+  per_event_2026: {events_offered: 71, rows: 79, per_event: 1.11,
+    note: "CORRECTED 2026-08-22 -- was 72/80; the 1-event Championship 'Woodie Flowers Award' was folded in."}
+  district_points: 0
+  small_team: winnable
+  small_team_note: >-
+    Explicitly about the mentor, judged from a 3,000-character student essay, decided off-site
+    before the event. Robot quality, team size and budget are irrelevant. Offered at 72 events
+    in 2026 (one per Regional, and at District Championships -- NOT at ordinary District
+    events). This team has an experienced mentor; this is a real, cheap, high-dignity target.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/submitted-awards"
+
+woodie_flowers_championship:
+  name: "Woodie Flowers Award"
+  name_short: "WFA"
+  sponsor: null
+  category: submitted
+  subcategory: individual_mentor
+  decided_by: external_panel
+  submission:
+    opens: "2026-10-29T12:00:00-04:00"
+    closes: "2027-02-04T15:00:00-05:00"
+    submitter: "Student Award Submitter"
+    artifacts: ["A NEW stand-alone 3,000-character essay -- 'previous essay are not considered'"]
+  eligibility: >-
+    "The nominee must have received the WFFA during a previous year and be re-nominated by the
+    mentor's present team this season." (Submitted Awards page, Championship Woodie Flowers
+    Award eligibility, updated July 29, 2026;
+    https://www.firstinspires.org/resources/library/frc/submitted-awards) Paraphrase of the
+    rest: the earlier WFFA may have been won while on a different team, and a team with several
+    past WFFA recipients can re-nominate only one of them per year.
+  advances: "Presented to one WFFA winner at the FIRST Championship."
+  criteria_quote: >-
+    Paraphrase: judged on the same criteria as the Woodie Flowers Finalist Award, but "it is
+    considered a more competitive award since a single recipient is chosen from all the
+    re-nominated prior WFFA winners." (Submitted Awards page, Championship Woodie Flowers Award
+    judging criteria, updated July 29, 2026;
+    https://www.firstinspires.org/resources/library/frc/submitted-awards)
+  per_event_2026: {events_offered: 1, rows: 1, per_event: 1.00}
+  small_team: not_competable
+  small_team_note: "Gated on already holding a WFFA. Not reachable in the 2027 season from a standing start."
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/submitted-awards"
+
+digital_animation:
+  name: "Digital Animation Award sponsored by Worcester Polytechnic Institute (WPI)"
+  name_verbatim_typo: "Digital Animation Award s ponsored by Worcester Polytechnic Institute (WPI)"
+  name_verbatim_typo_note: "The space in 's ponsored' reproduces a typo in FIRST's own HTML. Do not 'fix' it in scrapes."
+  sponsor: "Worcester Polytechnic Institute (WPI)"
+  category: submitted
+  subcategory: media
+  decided_by: external_panel
+  decided_by_note: "Judged by WPI faculty and staff (Robotics Resource Center, Interactive Media and Game Development Dept.)"
+  submission:
+    opens: "UNVERIFIED for 2027 -- the FRC awards page shows 'Coming Soon'"
+    closes: "UNVERIFIED for 2027"
+    closes_2026_season: "2026-01-12T23:59:00-05:00"
+    submitter: "Any Adult Mentor"
+    portal: "WPI webpage form (NOT the FIRST Dashboard)"
+    artifacts:
+      - "Animation, max 30 s (excl. title/credits), any technique, uploaded to YouTube or similar, publicly viewable"
+      - "2 s title screen + 1 s black slate before; 1 s black slate + max 5 s credits after; 39 s total max"
+      - "Title screen must show program, team number, team name, school/organization, title, duration"
+  eligibility: "Any registered FRC or FTC team. One animation per team. Optional award."
+  advances: "No. Not judged at events; no District points."
+  criteria_quote: >-
+    Paraphrase: a STEAM award (science, technology, engineering, art and mathematics) that
+    "emphasizes the ability to tell a story through animation that integrates technological,
+    social, and humanistic concepts." (Digital Animation Award page, 2026 season version;
+    https://www.firstinspires.org/resources/library/digital-animation-award)
+  criteria_guidelines_quote: >-
+    2026-season rubric, Category 1 of 4, "Connection to the Theme (30 points)". Paraphrase of
+    the top band (25-30 points): a strong, original reading of the theme, woven through both the
+    visuals and the story. (Digital Animation Award page, 2026 season version, Judging section;
+    https://www.firstinspires.org/resources/library/digital-animation-award)
+  theme_2026_season: "The Artifact that Changed Everything"
+  theme_2027_season: "UNVERIFIED -- not announced as of 2026-08-22"
+  per_event_2026: {events_offered: 0, rows: 0, per_event: 0}
+  district_points: 0
+  small_team: winnable
+  small_team_note: >-
+    Completely decoupled from the robot, the event and the season schedule. One student with
+    Blender and 30 seconds of screen time. Deadline historically falls in the first week of the
+    build season, so it must be started in the autumn, not after kickoff.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/digital-animation-award"
+
+safety_animation:
+  name: "Safety Animation Award sponsored by UL Solutions"
+  sponsor: "UL Solutions"
+  category: submitted
+  subcategory: media
+  decided_by: external_panel
+  submission:
+    opens_2026_season: "2025-10-13T12:00:00-04:00"
+    closes_2026_season: "2025-11-20T15:00:00-05:00"
+    opens_2027_season: "UNVERIFIED -- expect mid-October 2026"
+    closes_2027_season: "UNVERIFIED -- expect late November 2026"
+    submitter: "A student designated as Award Submitter, or Lead Coach 1 or 2"
+    portal: "FIRST Dashboard"
+    artifacts: ["Animation, max 40 s including opening and credits, submitted as .AVI, .MPEG, .MP4 or .WMV"]
+  eligibility: "Any registered FRC team. Also open to FTC teams (separate window and portal)."
+  advances: >-
+    No. REBUILT 11.1.4 names it explicitly -- an award "not judged at the event (e.g. Safety
+    Animation Award, sponsored by UL)" earns no District points.
+  criteria_quote: >-
+    2026-season framing: "We are excited to announce the theme for the 2025-2026 Safety
+    Animation Award sponsored by UL Solutions: Unearth Safety!" (FIRST Safety page, 2025-2026
+    season version; https://www.firstinspires.org/resources/library/safety) Paraphrase: the same
+    announcement opens the award to FIRST Tech Challenge teams as well as FRC teams.
+  criteria_guidelines_quote: >-
+    "Animations must: Be no more than 40 seconds long, including opening and credits" (FIRST
+    Safety page, Submission Requirements, 2025-2026 season version;
+    https://www.firstinspires.org/resources/library/safety). Paraphrase of the rest: any
+    animation technique counts, stop-motion included; live footage is allowed only with added
+    virtual or augmented animated elements, and footage of real people is not allowed.
+  prize: "Winner $500 and each of two Finalists $250 toward the following season's registration."
+  theme_2026_season: "Unearth Safety"
+  theme_2027_season: "UNVERIFIED -- not announced as of 2026-08-22"
+  per_event_2026: {events_offered: 0, rows: 0, per_event: 0}
+  district_points: 0
+  small_team: winnable
+  small_team_note: >-
+    NEAREST DEADLINE OF ANY 2027-SEASON AWARD. The 2026-season FRC window closed 20 Nov 2025;
+    the 2027 window should open around mid-October 2026 -- roughly 8 weeks from 2026-08-22 and
+    ~11 weeks BEFORE kickoff. 40 seconds of animation, no robot required, and the prize is cash
+    against registration. Watch the safety page weekly from September.
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/safety"
+
+# =====================================================================
+# D. ROBOT PERFORMANCE AWARDS -- objective, decided by match play
+# =====================================================================
+
+winner:
+  name: "Winner"
+  name_tba: "Regional Winners / District Event Winner / District Championship Winner"
+  sponsor: null
+  category: performance
+  decided_by: match_play
+  submission: null
+  eligibility: "The 3-4 teams on the winning Alliance."
+  advances: >-
+    YES at District Championship (Winning Alliance members earn a Merit-Based Championship
+    slot). At Regionals, advancement is by the points-based Regional Pool, not by the win itself.
+  criteria_quote: >-
+    "celebrates the Alliance that wins the competition." (FRC Awards page, All Awards list,
+    2026-27 season version; https://www.firstinspires.org/robotics/frc/awards)
+  per_event_2026: {events_offered: 56, rows: 177, per_event: 3.16, tier: regional,
+    note: "CORRECTED 2026-08-22 -- was tier sum 204/647/3.17, unlabelled."}
+  per_event_2026_by_tier:
+    "Regional Winners": {events: 56, rows: 177, per_event: 3.16}
+    "District Event Winner": {events: 123, rows: 389, per_event: 3.16}
+    "District Championship Winner": {events: 25, rows: 81, per_event: 3.24}
+    "Championship Division Winner": {events: 8, rows: 32, per_event: 4.00}
+  small_team: stretch
+  small_team_note: >-
+    Reachable by ALLIANCE SELECTION, not by seeding. A reliable, defensively-useful, quickly-
+    repaired robot gets picked. This is the only objective award a 15-student team can realistically
+    reach, and it is reached by being the best 8th-to-24th pick in the room.
+  evidence: C
+  source: "https://www.firstinspires.org/robotics/frc/awards"
+
+finalist:
+  name: "Finalist"
+  name_tba: "Regional Finalists / District Event Finalist / District Championship Finalist"
+  sponsor: null
+  category: performance
+  decided_by: match_play
+  submission: null
+  eligibility: "The 3-4 teams on the losing Alliance in the final match."
+  advances: "No direct Championship slot; contributes District/Regional points."
+  criteria_quote: >-
+    "celebrates the Alliance that makes it to the final match of the competition." (FRC Awards
+    page, All Awards list, 2026-27 season version;
+    https://www.firstinspires.org/robotics/frc/awards)
+  per_event_2026: {events_offered: 56, rows: 185, per_event: 3.30, tier: regional,
+    note: "CORRECTED 2026-08-22 -- was tier sum 204/655/3.21, unlabelled."}
+  per_event_2026_by_tier:
+    "Regional Finalists": {events: 56, rows: 185, per_event: 3.30}
+    "District Event Finalist": {events: 123, rows: 388, per_event: 3.15}
+    "District Championship Finalist": {events: 25, rows: 82, per_event: 3.28}
+    "Championship Division Finalist": {events: 8, rows: 32, per_event: 4.00}
+  small_team: stretch
+  evidence: C
+  source: "https://www.firstinspires.org/robotics/frc/awards"
+
+# =====================================================================
+# E. STANDALONE / NOT TEAM-COMPETABLE
+# =====================================================================
+
+volunteer_of_the_year:
+  name: "Volunteer of the Year Award"
+  sponsor: null
+  category: standalone
+  decided_by: event_committee
+  decided_by_note: "Judge Manual Rev 2 - 2/18/2026, Ch.4 Non-Judged Awards, p.15 -- 'Volunteer of the Year Award (determined by the planning committee pre-event)'."
+  submission: null
+  eligibility: "An individual, business, or organization. Not a team award."
+  advances: "No."
+  criteria_quote: >-
+    "presented to an individual, business, or organization that consistently excels in their
+    efforts" (FRC Awards page, All Awards list, 2026-27 season version;
+    https://www.firstinspires.org/robotics/frc/awards). Paraphrase of the rest: the recipient
+    has a proven record in impact, leadership, personal commitment, community and past
+    contributions.
+  per_event_2026: {events_offered: 12, rows: 13, per_event: 1.08,
+    note: "CORRECTED 2026-08-22 -- rows is 13, not 12; one event named two."}
+  small_team: not_competable
+  evidence: C
+  source: "https://www.firstinspires.org/robotics/frc/awards"
+
+founders:
+  name: "Founder's Award"
+  sponsor: null
+  category: standalone
+  decided_by: first_hq
+  submission: null
+  eligibility: "Individuals or organizations chosen by FIRST. Not a team award. Championship level."
+  advances: "No."
+  criteria_quote: >-
+    The awards page states only "The Founder's Award and Volunteer of the Year Award stand
+    alone." (FRC Awards page, 2026-27 season version;
+    https://www.firstinspires.org/robotics/frc/awards) No published criteria for team pursuit.
+  per_event_2026: {events_offered: 0, rows: 0, per_event: null,
+    note: "CORRECTED 2026-08-22 -- was 1/1/1.00, an assumption. The Founder's Award appears ZERO
+      times in research/awards_tba/tba_awards_2026.csv under any name. HQ-conferred, not
+      event-indexed. Availability for a competing team is not-applicable, not 1."}
+  small_team: not_competable
+  evidence: C
+  source: "https://www.firstinspires.org/robotics/frc/awards"
+
+allaire_medal:
+  name: "The Allaire Medal"
+  sponsor: null
+  category: individual
+  decided_by: first_hq
+  decided_by_note: "Selected by the adult and student members of the Championship FIRST Impact Award team itself."
+  submission: null
+  eligibility: >-
+    Paraphrase: a member of the Championship FIA team who is "a high school junior or senior who
+    has been accepted into a 4-year degree program at a college or university" (Submitted Awards
+    page, Allaire Medal section of the FIRST Impact Award entry, updated July 29, 2026;
+    https://www.firstinspires.org/resources/library/frc/submitted-awards).
+  advances: "No. Carries up to $10,000 in undergraduate scholarship support."
+  criteria_quote: >-
+    The medal "is given to the student who has demonstrated outstanding leadership on their
+    FIRST team, within their school and community" (Submitted Awards page, Allaire Medal section
+    of the FIRST Impact Award entry, updated July 29, 2026;
+    https://www.firstinspires.org/resources/library/frc/submitted-awards). Paraphrase of the
+    rest: it is named for Paul A. Allaire, a long-serving chair of the FIRST board, and the
+    student it goes to is also the one whose personal character best represents the spirit of
+    FIRST.
+  small_team: not_competable
+  small_team_note: "Downstream of winning the Championship FIRST Impact Award. Not a lane."
+  evidence: C
+  source: "https://www.firstinspires.org/resources/library/frc/submitted-awards"
+
+# =====================================================================
+# F. RETIRED -- if any of these appears in the BIOCORE manual it is NEWS
+# =====================================================================
+
+retired:
+  - name: "Chairman's Award"
+    last_season_at_scale: 2022
+    became: "FIRST Impact Award"
+    evidence: C
+  - name: "FIRST Dean's List Award / FIRST Dean's List Finalist Award / District Championship Dean's List Semi-Finalist"
+    last_season_at_scale: 2025
+    became: "FIRST Leadership Award (and its Finalist / DCMP Semi-Finalist tiers)"
+    evidence: C
+  - name: "Entrepreneurship Award"
+    last_season_at_scale: 2022
+    became: "absorbed by Team Sustainability Award (introduced 2023)"
+    evidence: C
+  - name: "Rookie Inspiration Award"
+    last_season_at_scale: 2024
+    became: "Rising All-Star Award (introduced 2025)"
+    evidence: C
+  - name: "Highest Rookie Seed"
+    last_season_at_scale: 2023
+    became: "retired outright"
+    evidence: C
+  - name: "Wildcard"
+    last_season_at_scale: 2024
+    became: "retired outright"
+    evidence: C
+  - name: "Industrial Safety Award / Safety Award"
+    last_season_at_scale: "pre-2022 (absent from all TBA in-season records 2022-2026)"
+    became: "no successor event award; Safety Animation Award is the only surviving safety-linked award and is not judged at events"
+    evidence: C
+  - name: "Media and Technology Innovation Award"
+    last_season_at_scale: "pre-2022"
+    became: "retired outright"
+    evidence: C
+
+# =====================================================================
+# G. SPONSOR CHURN LEDGER -- the thing that breaks award names every year
+# =====================================================================
+
+sponsor_churn:
+  autonomous:            {2022: "Ford", 2023: "Ford", 2024: null, 2025: null, 2026: "Google.org"}
+  industrial_design:     {2022: "General Motors", 2023: "General Motors", 2024: "General Motors", 2025: "General Motors", 2026: null}
+  innovation_in_control: {2022: null, 2023: null, 2024: null, 2025: "nVent", 2026: "nVent"}
+  excellence_in_engineering: {2022: null, 2023: null, 2024: null, 2025: null, 2026: "Littelfuse"}
+  engineering_inspiration: {2022: null, 2023: null, 2024: null, 2025: null, 2026: "SpaceX"}
+  team_sustainability:   {2023: null, 2024: "Dow", 2025: "Dow", 2026: "Dow"}
+  creativity:            {2022: "Rockwell Automation", 2026: "Rockwell Automation"}
+  note: >-
+    A sponsor suffix changed on at least one award in EVERY season 2022->2026. Never hardcode
+    a sponsor suffix into a printed handout before the 2027 award pages are re-issued.
+
+# =====================================================================
+# H. 2027-SEASON DEADLINE CALENDAR
+# =====================================================================
+
+deadlines_2027:
+  - award: "Safety Animation Award"
+    opens: "UNVERIFIED (~2026-10-13)"
+    closes: "UNVERIFIED (~2026-11-20)"
+    evidence: H
+    basis: "2026-season window was 2025-10-13 12:00 ET to 2025-11-20 15:00 ET"
+  - award: "FIRST Impact Award"
+    opens: "2026-10-29T12:00 ET"
+    closes: "2027-02-11T15:00 ET"
+    evidence: C
+  - award: "FIRST Leadership Award"
+    opens: "2026-10-29T12:00 ET"
+    closes: "2027-02-04T15:00 ET"
+    evidence: C
+  - award: "Woodie Flowers Award (WFFA nomination)"
+    opens: "2026-10-29T12:00 ET"
+    closes: "2027-02-04T15:00 ET"
+    evidence: C
+  - award: "Digital Animation Award"
+    opens: "Coming Soon"
+    closes: "Coming Soon"
+    evidence: C
+    basis: "FRC awards page prints 'Coming Soon' as of 2026-08-22; 2026-season deadline was 2026-01-12 23:59 ET"
+  - milestone: "BIOCORE kickoff"
+    date: "2027-01-09T12:00 ET"
+    evidence: C
+
+# =====================================================================
+# I. JUDGING MECHANICS THAT CHANGE STRATEGY
+# =====================================================================
+
+mechanics:
+  one_judged_award_per_event:
+    quote: '"Do not award the same team more than 1 judged award at a single event."'
+    source_doc: "Judge Manual Rev 2 - 2/18/2026, 'Equitable Award Distribution (Spread the Wealth)'"
+    consequence: >-
+      Chasing five judged awards at one event does not multiply your odds; it dilutes one pitch
+      across five stories. Pick ONE primary lane per event and one backup.
+    evidence: C
+  spread_the_wealth_is_within_event_only:
+    quote: >-
+      "The 'spread the wealth' philosophy is for within events, not between events." (Judge
+      Manual Rev 2 - 2/18/2026, 'Equitable Award Distribution (Spread the Wealth)') Paraphrase
+      of the next sentence: judges should not rule a team out of award X because it won award X at
+      an earlier event.
+    consequence: "Winning Team Spirit at event 1 does not block Team Spirit at event 2."
+    evidence: C
+  cultural_awards_once_per_level:
+    awards: ["FIRST Impact Award", "Engineering Inspiration Award", "Rookie All-Star Award"]
+    quote: >-
+      "Once a team has won a cultural award, they may not win that award again at the same level
+      of competition."
+    source_doc: "Judge Manual Rev 2 - 2/18/2026, 'Cultural Awards (FIA, EI, & RAS)', p.14"
+    evidence: C
+  judged_vs_field_awards_are_independent:
+    quote: >-
+      Paraphrase: the chance that a team wins the event must not affect a judged-award decision;
+      in the manual's words, "do not spread the wealth between judged awards and field awards"
+      (Judge Manual Rev 2 - 2/18/2026, 'Equitable Award Distribution (Spread the Wealth)').
+    consequence: "Winning the event does not cost you a judged award, and vice versa."
+    evidence: C
+  district_points_for_awards:
+    source_doc: "REB Section 11.1.4 / Table 11-2"
+    values: {first_impact: 10, engineering_inspiration: 8, rookie_all_star: 8, all_other_team_judged: 5, not_a_team_award: 0}
+    evidence: C
+  ceremony_order_2026:
+    source_doc: "REB Section 10.6.2 Table 10-2"
+    breaks:
+      - "Imagery, Gracious Professionalism, Team Spirit, and Rising All Star"
+      - "Autonomous, Creativity, Quality, and Industrial Design"
+      - "Innovation in Control, Excellence in Engineering, Team Sustainability, Judges"
+      - "Rookie All Star, FIRST Leadership Award, Engineering Inspiration"
+      - "Remaining awards, Finalists, Winners, and FIRST Impact Award"
+    note: >-
+      "** Program Delivery Partners may choose to hold these awards until after all MATCHES are
+      complete." This 5-line block is the fastest confirmation of the 2027 slate on kickoff day.
+    evidence: C
+  ai_policy:
+    quote: >-
+      Paraphrase: teams may use AI to help create award submissions and handouts and to write
+      robot code, and FIRST treats AI like other student tools such as CAD and 3D printers.
+      "Teams using AI to assist with code or content generation must provide proper credit and
+      attribution" (Submitted Awards page, 'Use of Artificial Intelligence (AI)' section,
+      2026-27 season version;
+      https://www.firstinspires.org/resources/library/frc/submitted-awards). The page gives a
+      sample credit line naming the team and the AI tool, and requires teams to respect
+      intellectual property and license terms. The same policy text appears in the Judge Manual
+      Rev 2 - 2/18/2026 and the FIRST Leadership Award Guide Rev. Feb 2026.
+    quote_2: >-
+      "Judges should not discredit a team who uses AI or rank them lower simply for using the
+      tool." (Submitted Awards page, 'Use of Artificial Intelligence (AI)' section, 2026-27
+      season version; https://www.firstinspires.org/resources/library/frc/submitted-awards)
+      Paraphrase of the rest: FIRST says sites that claim to detect AI use are not accurate and
+      should not be used to check submissions.
+    evidence: C
+    source: "https://www.firstinspires.org/resources/library/frc/submitted-awards"
+
+# =====================================================================
+# J. RANKED SHORTLIST FOR A ~15-STUDENT, FIRST-OR-SECOND-YEAR-COMPETITIVE TEAM
+#    Ordering = (empirical bottom-half winner share) x (cost to contest) x (offered-at rate)
+# =====================================================================
+
+small_team_ranked_targets:
+  - rank: 1
+    award: "Rising All-Star Award"
+    why: "69.1% of winners from the bottom half of qual; median winner rank pct 67.5; offered at 204/211 events; eligibility explicitly covers 'recent turnover in membership', not just year one"
+  - rank: 2
+    award: "FIRST Leadership Award"
+    why: "judged on ONE student, not on resources; ~2 Finalist slots per event; costs one mentor essay; deadline 2027-02-04"
+  - rank: 3
+    award: "Judges Award"
+    why: "787 distinct winners 2022-2026 (most of any award); 49.6% bottom-half; explicitly for what no other award covers"
+  - rank: 4
+    award: "Team Spirit Award"
+    why: "51.9% bottom-half; criteria reward acting 'as a unified team', which favours 15 students over 60"
+  - rank: 5
+    award: "Woodie Flowers Finalist Award"
+    why: "3,000-character student essay about the mentor; decided off-site by an external panel; robot irrelevant; deadline 2027-02-04"
+  - rank: 6
+    award: "Imagery Award in honor of Jack Kamen"
+    why: "47.7% bottom-half; a theme with an origin story costs nothing but intent"
+  - rank: 7
+    award: "Safety Animation Award"
+    why: "40 seconds of animation, no robot, cash prize -- but the window likely opens ~Oct 2026, BEFORE kickoff"
+  - rank: 8
+    award: "Team Sustainability Award"
+    why: "43.7% bottom-half; 'one or more of' lets you answer on People alone; succession IS the story for a 15-student team"
+  - rank: 9
+    award: "Gracious Professionalism Award"
+    why: "41.2% bottom-half; the pre-season-collaboration bullet is a checklist you can deliberately satisfy before January"
+  - rank: 10
+    award: "Digital Animation Award"
+    why: "fully decoupled from the robot; one student; 2027 theme and deadline not yet published"
+  - rank: 11
+    award: "Creativity Award"
+    why: "the only machine award where the bottom half wins 28.1% of the time and repeat-winner concentration is lowest (42.5%)"
+  - rank: 12
+    award: "Winner / Finalist"
+    why: "reachable via alliance selection as a reliable second or third pick, not via seeding"
+
+effectively_out_of_reach:
+  - award: "FIRST Impact Award"
+    why: "77.7% of wins go to repeat winners; only 446 distinct teams in 5 seasons; the 3-year sustained-activity criterion structurally requires an established program"
+  - award: "Autonomous Award"
+    why: "80.4% of winners were qual top-8; 4.9% bottom half -- the most performance-coupled judged award in FRC"
+  - award: "Rookie All-Star Award"
+    why: "rookie-number gate (team number >= 10,900)"
+  - award: "Woodie Flowers Award (Championship)"
+    why: "requires already holding a WFFA from a prior season"
+  - award: "Founder's Award / Volunteer of the Year / Allaire Medal"
+    why: "not team-competable"

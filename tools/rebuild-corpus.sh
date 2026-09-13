@@ -56,9 +56,6 @@
 # NOT REBUILDABLE (no tool in the repository produces these)
 #   research/rule_inventories/<year>.json   no writer exists; tools/rules-full.py reads
 #                                           <year>_bodies_v2.jsonl instead
-#   reference/awards/awards.yaml, reference/awards/01_AWARD_WINNING_PATTERNS.md
-#                                           hand-written analysis, withheld until their
-#                                           quotations of FIRST's award text are cut down
 #   review/LATEST, review/*/.ingest_dir, research/teamupdate_analysis/.watch_state.json
 #                                           per-machine run state; the tools recreate it
 #
@@ -462,9 +459,6 @@ for y in $(years_from "$INV" '^([0-9]{4})\.txt$'); do
   [ -e "$INV/$y.json" ] || absent_json="$absent_json $y"
 done
 [ -n "$absent_json" ] && echo "  research/rule_inventories/<year>.json for$absent_json: tools/rules-full.py reads <year>_bodies_v2.jsonl instead"
-for f in awards.yaml 01_AWARD_WINNING_PATTERNS.md; do
-  [ -e "$AWARDS/$f" ] || echo "  reference/awards/$f: hand-written, withheld until its FIRST quotations are cut down"
-done
 
 summary ""
 exit $?

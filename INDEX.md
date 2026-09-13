@@ -139,9 +139,9 @@ python tools/cycle-model.py --game rebuilt --sweep
 | File | Lines | One line |
 |---|---:|---|
 | [`reference/awards/00_AWARD_LIST_VERIFIED.md`](reference/awards/00_AWARD_LIST_VERIFIED.md) `DONE` | 575 | **The naming authority.** 25 current award names, submission deadlines, advancement, rename history |
-| [`reference/awards/awards.yaml`](reference/awards/awards.yaml) | — | Machine-readable award list: check any award name against this. Held back until its FIRST quotes are trimmed; [see README](README.md#what-is-not-in-this-repository) |
+| [`reference/awards/awards.yaml`](reference/awards/awards.yaml) | — | Machine-readable award list: check any award name against this. |
 | [`reference/awards/00_AWARD_LIST_EMPIRICAL_2026.md`](reference/awards/00_AWARD_LIST_EMPIRICAL_2026.md) `DONE` | 110 | Descriptive record of the real 2026 slate from TBA; **superseded as authority** by the VERIFIED file |
-| [`reference/awards/01_AWARD_WINNING_PATTERNS.md`](reference/awards/01_AWARD_WINNING_PATTERNS.md) `DONE` | 1082 | What actually wins each robot-adjacent award, with winner-seed forensics. Held back until its FIRST quotes are trimmed; [see README](README.md#what-is-not-in-this-repository) |
+| [`reference/awards/01_AWARD_WINNING_PATTERNS.md`](reference/awards/01_AWARD_WINNING_PATTERNS.md) `DONE` | 1121 | What actually wins each robot-adjacent award, with winner-seed forensics. |
 | [`reference/awards/AWARD-ALIGNMENT.md`](reference/awards/AWARD-ALIGNMENT.md) | 1135 | Which **two** awards each robot archetype should chase, and the hour cost of each |
 | [`reference/awards/award_alignment_matrix.yaml`](reference/awards/award_alignment_matrix.yaml) | — | Machine-readable archetype → award mapping |
 | [`reference/team-ops/04_tuning_testing_competition_ops.md`](reference/team-ops/04_tuning_testing_competition_ops.md) | 1539 | Tuning, testing and competition ops: practice field/robot, drive practice, reliability, spares, match day, batteries, alliance selection. Companion `04_competition_ops.yaml` |

@@ -65,7 +65,6 @@ crosswalks and churn statistics. The exact exclusion patterns are in [`.gitignor
 | Award web page snapshots: `reference/awards/_web/` | Raw text of FIRST web pages | `python reference/awards/fetch_award_pages.py` |
 | Kickoff briefing packs: `review/*/BRIEFING_PACK.md` | Mostly verbatim manual text | `tools/RUN-KICKOFF.sh`, which writes a new pack on every run |
 | Run state: `review/LATEST`, `review/*/.ingest_dir`, `research/teamupdate_analysis/.watch_state.json` | Records one machine's runs and paths | `tools/RUN-KICKOFF.sh` and `tools/teamupdate-diff.py --watch` write it on first use |
-| `reference/awards/awards.yaml` and `reference/awards/01_AWARD_WINNING_PATTERNS.md` | Both quote FIRST's full award descriptions and guidelines, so they are held back until those quotes are cut to a sentence each | Nothing yet. The trimmed copies will be published at the same paths |
 
 From the repository root, once per clone:
 

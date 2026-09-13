@@ -5,7 +5,7 @@
 # Default manual path is the 2026 REBUILT manual, so the script is runnable (and testable)
 # TODAY, before BIOCORE exists. Swap in the BIOCORE manual on 2027-01-09.
 #   --offline   skip the web fetch in step 1 and diff the snapshots already in _web/
-# FIRST's manuals, the _web/ snapshots and awards.yaml are not in the public repository.
+# FIRST's manuals and the _web/ snapshots are not in the public repository.
 # From the repository root, bash tools/rebuild-corpus.sh --fetch downloads the first two.
 
 set -uo pipefail
@@ -66,7 +66,7 @@ echo "=============================================================="
 echo " 4. DEADLINES + YOUR RANKED TARGETS  (from awards.yaml)"
 echo "=============================================================="
 if [ ! -f awards.yaml ]; then
-  echo "   MISSING: reference/awards/awards.yaml (not in the public repository, and no tool produces it; see bash tools/rebuild-corpus.sh --help)"
+  echo "   MISSING: reference/awards/awards.yaml (it is tracked; restore it with git checkout -- reference/awards/awards.yaml)"
   MISSING_INPUT=1
 else
 python - <<'PY'
